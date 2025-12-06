@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "src/bot.ts",
+      "use": "@vercel/node",
+      "config": { "outputFormat": "standalone" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/bot.ts"
+    }
+  ]
+}
