@@ -10,7 +10,8 @@ const start_js_1 = require("./commands/start.js");
 const addWord_js_1 = require("./commands/addWord.js");
 const repeatWords_js_1 = require("./commands/repeatWords.js");
 const listWords_js_1 = require("./commands/listWords.js");
-const writeWords_js_1 = require("./commands/writeWords.js");
+const sentenceCommand_js_1 = require("./commands/sentenceCommand.js");
+const grammarCommand_js_1 = require("./commands/grammarCommand.js");
 const express_1 = __importDefault(require("express"));
 const token = process.env.BOT_TOKEN;
 if (!token) {
@@ -22,7 +23,8 @@ exports.bot.use((0, grammy_1.session)({ initial: () => ({}) }));
 (0, addWord_js_1.addWordCommand)(exports.bot);
 (0, repeatWords_js_1.repeatWordsCommand)(exports.bot);
 (0, listWords_js_1.listWordsCommand)(exports.bot);
-(0, writeWords_js_1.writeWordsCommand)(exports.bot);
+(0, sentenceCommand_js_1.sentenceCommand)(exports.bot);
+(0, grammarCommand_js_1.grammarCommand)(exports.bot);
 exports.bot.start({
     onStart: (info) => {
         console.log(`Бот запущено! Username: @${info.username}`);

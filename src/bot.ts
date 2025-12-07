@@ -7,6 +7,7 @@ import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
 import { sentenceCommand } from "./commands/sentenceCommand.js";
+import { grammarCommand } from "./commands/grammarCommand.js";
 
 import express from "express";
 
@@ -27,6 +28,7 @@ addWordCommand(bot);
 repeatWordsCommand(bot);
 listWordsCommand(bot);
 sentenceCommand(bot);
+grammarCommand(bot);
 
 bot.start({
   onStart: (info) => {

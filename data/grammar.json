@@ -1,0 +1,241 @@
+[
+  {
+    "name": "Артиклі",
+    "rules": [
+      {
+        "title": "Визначений та невизначений артикль",
+        "content": "У німецькій є der/die/das (визначений) та ein/eine (невизначений). Використовуються залежно від роду та числа.",
+        "examples": [
+          "der Mann – чоловік",
+          "die Frau – жінка",
+          "das Kind – дитина",
+          "ein Mann – якийсь чоловік",
+          "eine Frau – якась жінка"
+        ]
+      },
+      {
+        "title": "Артиклі в множині",
+        "content": "У множині визначений артикль для всіх родів – die, невизначеного артикля немає.",
+        "examples": [
+          "die Männer – чоловіки",
+          "die Frauen – жінки",
+          "die Kinder – діти"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Особові займенники",
+    "rules": [
+      {
+        "title": "Personalpronomen",
+        "content": "Ich, du, er, sie, es, wir, ihr, sie, Sie – використовуються для підстановки підмета в реченні.",
+        "examples": [
+          "Ich bin müde. – Я втомлений.",
+          "Du bist freundlich. – Ти дружній.",
+          "Wir lernen Deutsch. – Ми вчимо німецьку."
+        ]
+      },
+      {
+        "title": "Займенники у відмінках",
+        "content": "Z.B. Akkusativ: mich, dich, ihn, sie, es, uns, euch, sie, Sie",
+        "examples": [
+          "Ich sehe dich. – Я бачу тебе.",
+          "Er liebt sie. – Він любить її."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Дієслова",
+    "rules": [
+      {
+        "title": "Präsens – простий теперішній час",
+        "content": "Регулярні дієслова відмінюються по особах: основа + закінчення.",
+        "examples": [
+          "ich lerne, du lernst, er/sie/es lernt",
+          "wir lernen, ihr lernt, sie lernen"
+        ]
+      },
+      {
+        "title": "Неправильні дієслова в Präsens",
+        "content": "Деякі дієслова змінюють основу в 2-й та 3-й особі однини.",
+        "examples": [
+          "ich sehe, du siehst, er sieht",
+          "ich lese, du liest, er liest"
+        ]
+      },
+      {
+        "title": "Модальні дієслова",
+        "content": "dürfen, können, mögen, müssen, sollen, wollen – використовуються для вираження можливості, дозволу, обов'язку, бажання.",
+        "examples": [
+          "Ich kann Deutsch sprechen. – Я можу говорити німецькою.",
+          "Du darfst hier nicht rauchen. – Тобі заборонено тут курити."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Заперечення",
+    "rules": [
+      {
+        "title": "nicht та kein",
+        "content": "nicht використовується для заперечення дієслів та прикметників, kein – для іменників.",
+        "examples": [
+          "Ich sehe dich nicht. – Я тебе не бачу.",
+          "Ich habe keinen Hund. – У мене немає собаки."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Питальні речення",
+    "rules": [
+      {
+        "title": "Ja/Nein Fragen",
+        "content": "Питання, на які відповідають 'так' або 'ні'. Порядок слів: дієслово на початку.",
+        "examples": [
+          "Hast du Zeit? – Чи маєш час?",
+          "Kommt er morgen? – Він приходить завтра?"
+        ]
+      },
+      {
+        "title": "W-Fragen",
+        "content": "Питальні слова: wer, was, wann, warum, wie, wohin тощо. Дієслово – на 2-й позиції.",
+        "examples": [
+          "Wer bist du? – Хто ти?",
+          "Wann kommt der Zug? – Коли приїде потяг?"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Прикметники",
+    "rules": [
+      {
+        "title": "Відмінювання прикметників перед іменником",
+        "content": "Прикметники змінюються за родом, числом та відмінком і залежно від артикля.",
+        "examples": [
+          "ein guter Mann – хороший чоловік",
+          "die schöne Frau – гарна жінка",
+          "das kleine Kind – маленька дитина"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Прислівники",
+    "rules": [
+      {
+        "title": "Позиція прислівника",
+        "content": "Прислівники часу, місця, способу ставляться у різні позиції залежно від типу речення.",
+        "examples": [
+          "Ich gehe heute ins Kino. – Я сьогодні йду в кіно.",
+          "Er arbeitet sehr schnell. – Він працює дуже швидко."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Прийменники",
+    "rules": [
+      {
+        "title": "Прийменники з відмінками",
+        "content": "zu, bei, nach, von, mit, vor, aus, seit, ab та інші. Деякі керують Dativ, інші – Akkusativ.",
+        "examples": [
+          "Ich gehe zu dem Arzt. – Я йду до лікаря. (Dativ)",
+          "Wir fahren nach Berlin. – Ми їдемо до Берліна. (Akkusativ)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Числівники",
+    "rules": [
+      {
+        "title": "Порядкові та кількісні числівники",
+        "content": "Zahlen von 1 bis 100, порядкові: erste, zweite, dritte.",
+        "examples": [
+          "Ich habe zwei Bücher. – Я маю дві книги.",
+          "Heute ist der dritte Tag. – Сьогодні третій день."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Сполучники",
+    "rules": [
+      {
+        "title": "Підрядні та головні сполучники",
+        "content": "und, oder, aber, denn, weil, dass, obwohl. Порядок слів залежить від типу сполучника.",
+        "examples": [
+          "Ich gehe nach Hause, weil es regnet. – Я йду додому, бо йде дощ.",
+          "Er kommt, obwohl er krank ist. – Він приходить, хоча він хворий."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Інфінітив (Infinitiv)",
+    "rules": [
+      {
+        "title": "Простий інфінітив",
+        "content": "Інфінітив – це основна форма дієслова, не відмінюється за особами. Використовується після модальних дієслів та допоміжних.",
+        "examples": [
+          "Ich will lernen. – Я хочу вчитися.",
+          "Du musst arbeiten. – Тобі потрібно працювати.",
+          "Wir können Deutsch sprechen. – Ми можемо говорити німецькою."
+        ]
+      },
+      {
+        "title": "Інфінітив із zu",
+        "content": "Інфінітив з часткою 'zu' використовується після певних дієслів, прикметників чи іменників.",
+        "examples": [
+          "Ich habe beschlossen, Deutsch zu lernen. – Я вирішив вчити німецьку.",
+          "Es ist wichtig, pünktlich zu sein. – Важливо бути пунктуальним.",
+          "Er hat die Absicht, nach Berlin zu fahren. – Він має намір поїхати до Берліна."
+        ]
+      },
+      {
+        "title": "Інфінітив у конструкціях з модальними дієсловами",
+        "content": "Після модальних дієслів інфінітив стоїть без 'zu'.",
+        "examples": [
+          "Ich darf gehen. – Мені дозволено йти.",
+          "Wir sollen helfen. – Ми повинні допомогти.",
+          "Er kann schwimmen. – Він може плавати."
+        ]
+      },
+      {
+        "title": "Інфінітив у пасиві (zu + Partizip II)",
+        "content": "В конструкціях пасиву часто використовується інфінітив з 'zu' перед Partizip II.",
+        "examples": [
+          "Das Buch ist zu lesen. – Книгу потрібно прочитати.",
+          "Die Aufgaben sind zu erledigen. – Завдання потрібно виконати."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Імператив",
+    "rules": [
+      {
+        "title": "Простий імператив",
+        "content": "Імператив використовується для наказів або прохань. Для 'du' – основа дієслова без закінчення, для 'ihr' – закінчення '-t', для 'Sie' – основа + 'Sie'.",
+        "examples": [
+          "Komm! – Іди! (du)",
+          "Kommt! – Ідіть! (ihr)",
+          "Kommen Sie! – Ідіть! (Ви формально)"
+        ]
+      },
+      {
+        "title": "Імператив із модальними дієсловами",
+        "content": "Для ввічливих наказів можна використовувати modale + інфінітив.",
+        "examples": [
+          "Bitte, hilf mir! – Будь ласка, допоможи мені! (du)",
+          "Bitte, helft mir! – Будь ласка, допоможіть мені! (ihr)",
+          "Bitte, helfen Sie mir! – Будь ласка, допоможіть мені! (Sie)"
+        ]
+      }
+    ]
+  }
+]

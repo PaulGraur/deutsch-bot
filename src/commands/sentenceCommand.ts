@@ -194,7 +194,7 @@ export function sentenceCommand(bot: Bot<BotContext>) {
       );
     } else {
       await ctx.editMessageText(
-        `❌ Невірно.\nВаш варіант: ${assembled.join(
+        `❌ Невірно.\nТвій варіант: ${assembled.join(
           " "
         )}\nПравильно: ${correct.join(" ")}`,
         { reply_markup: keyboard }
@@ -262,7 +262,7 @@ async function showAssembleView(ctx: BotContext, sentenceId: string) {
   let assembledText = assembled.length
     ? assembled.join(" ")
     : "(поки порожньо)";
-  assembledText = `🔷 Зібране: ${assembledText}\n\nНатисніть слова, щоб додати в кінець:`;
+  assembledText = `🔷 Зібране: ${assembledText}\n\nНатисни слова, щоб додати в кінець:`;
 
   s.words.forEach((w, idx) => {
     if (!used.has(idx)) {
