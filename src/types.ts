@@ -9,6 +9,7 @@ export interface Word {
 export interface SessionData {
   currentWord?: Word;
   attemptsLeft?: number;
+  words?: Word[];
 }
 
 import { Context } from "grammy";
