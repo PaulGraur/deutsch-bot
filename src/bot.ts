@@ -6,7 +6,7 @@ import { startCommand } from "./commands/start.js";
 import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
-import { sentenceCommand } from "./commands/sentenceCommand.js"; // НОВЕ
+import { sentenceCommand } from "./commands/sentenceCommand.js";
 
 import express from "express";
 
