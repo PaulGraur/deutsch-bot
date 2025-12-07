@@ -1,0 +1,125 @@
+[
+  {
+    "id": "s1",
+    "de": "Ich gehe morgen mit meinem Freund ins Kino.",
+    "ua": "Я йду завтра з моїм другом до кінотеатру.",
+    "structure": "S (Ich) - V (gehe) - Adv (morgen) - PrepPhrase (mit ... ins ...)",
+    "rule": "Після прийменника 'mit' — Dativ; 'ins' = in + das.",
+    "words": [
+      {
+        "text": "Ich",
+        "translation": "я",
+        "pos": "pronoun",
+        "role": "subject",
+        "difficulty": 0
+      },
+      {
+        "text": "gehe",
+        "translation": "йду",
+        "pos": "verb",
+        "role": "verb",
+        "difficulty": 1
+      },
+      {
+        "text": "morgen",
+        "translation": "завтра",
+        "pos": "adverb",
+        "role": "time",
+        "difficulty": 1
+      },
+      {
+        "text": "mit",
+        "translation": "з",
+        "pos": "preposition",
+        "role": "prep",
+        "difficulty": 2
+      },
+      {
+        "text": "meinem",
+        "translation": "моєму",
+        "pos": "possessive",
+        "case": "Dativ",
+        "gender": "m",
+        "role": "attr",
+        "difficulty": 3
+      },
+      {
+        "text": "Freund",
+        "translation": "друг",
+        "pos": "noun",
+        "gender": "m",
+        "number": "singular",
+        "role": "object",
+        "difficulty": 2
+      },
+      {
+        "text": "ins",
+        "translation": "в (у) + вказує на напрям",
+        "pos": "preposition",
+        "role": "prep",
+        "difficulty": 2
+      },
+      {
+        "text": "Kino",
+        "translation": "кінотеатр",
+        "pos": "noun",
+        "gender": "n",
+        "number": "singular",
+        "role": "place",
+        "difficulty": 1
+      }
+    ]
+  },
+  {
+    "id": "s2",
+    "de": "Das Wetter ist heute sehr schlecht.",
+    "ua": "Погода сьогодні дуже погана.",
+    "structure": "S - V - Adv - Adj",
+    "rule": "Прикметник після sein (to be) не змінюється.",
+    "words": [
+      {
+        "text": "Das",
+        "translation": "цей/те",
+        "pos": "article",
+        "role": "det",
+        "difficulty": 1
+      },
+      {
+        "text": "Wetter",
+        "translation": "погода",
+        "pos": "noun",
+        "gender": "n",
+        "role": "subject",
+        "difficulty": 1
+      },
+      {
+        "text": "ist",
+        "translation": "є",
+        "pos": "verb",
+        "role": "verb",
+        "difficulty": 0
+      },
+      {
+        "text": "heute",
+        "translation": "сьогодні",
+        "pos": "adverb",
+        "role": "time",
+        "difficulty": 1
+      },
+      {
+        "text": "sehr",
+        "translation": "дуже",
+        "pos": "adverb",
+        "role": "intensifier",
+        "difficulty": 1
+      },
+      {
+        "text": "schlecht",
+        "translation": "поганий",
+        "pos": "adjective",
+        "role": "predicate",
+        "difficulty": 2
+      }
+    ]
+  }
+]

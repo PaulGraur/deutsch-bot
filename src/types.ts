@@ -1,4 +1,25 @@
 import { SessionFlavor } from "grammy";
+import { Context } from "grammy";
+
+export interface WordMeta {
+  text: string; 
+  translation: string; 
+  pos?: string; 
+  case?: string; 
+  gender?: string; 
+  number?: string;
+  role?: string; 
+  difficulty?: number; 
+}
+
+export interface Sentence {
+  id: string; 
+  de: string; 
+  ua?: string; 
+  words: WordMeta[]; 
+  structure?: string; 
+  rule?: string; 
+}
 
 export interface Word {
   de: string;
@@ -13,7 +34,8 @@ export interface SessionData {
   words?: Word[];
   repeatMode?: "de2ua" | "ua2de";
   posFilter?: string | null;
+  currentSentenceId?: string | null;
+  assembledIndexes?: number[];
 }
 
-import { Context } from "grammy";
 export type BotContext = Context & SessionFlavor<SessionData>;

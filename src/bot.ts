@@ -1,10 +1,13 @@
 import "dotenv/config";
 import { Bot, session } from "grammy";
 import { BotContext } from "./types.js";
+
 import { startCommand } from "./commands/start.js";
 import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
+import { sentenceCommand } from "./commands/sentenceCommand.js"; // НОВЕ
+
 import express from "express";
 
 const token = process.env.BOT_TOKEN;
@@ -16,12 +19,14 @@ if (!token) {
 }
 
 export const bot = new Bot<BotContext>(token);
+
 bot.use(session({ initial: () => ({}) }));
 
 startCommand(bot);
 addWordCommand(bot);
 repeatWordsCommand(bot);
 listWordsCommand(bot);
+sentenceCommand(bot);
 
 bot.start({
   onStart: (info) => {

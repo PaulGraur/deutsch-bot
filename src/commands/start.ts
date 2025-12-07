@@ -18,7 +18,9 @@ async function showMainMenu(ctx: BotContext) {
     .row()
     .text("🔁 Повторити слова", "repeat")
     .row()
-    .text("📚 Список слів", "listwords");
+    .text("📚 Список слів", "listwords")
+    .row()
+    .text("🧩 Розбір речень", "sentenceMode"); 
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
