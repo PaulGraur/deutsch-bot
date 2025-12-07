@@ -4,6 +4,7 @@ export interface Word {
   de: string;
   ua: string;
   createdAt: string;
+  pos?: string;
 }
 
 export interface SessionData {
@@ -11,6 +12,7 @@ export interface SessionData {
   attemptsLeft?: number;
   words?: Word[];
   repeatMode?: "de2ua" | "ua2de";
+  posFilter?: string | null;
 }
 
 import { Context } from "grammy";
