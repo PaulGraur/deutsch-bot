@@ -1,5 +1,6 @@
 import { Bot, InlineKeyboard } from "grammy";
 import { BotContext } from "../types.js";
+import mainMenuTexts from "../public/mainMenuTexts.js";
 
 export function startCommand(bot: Bot<BotContext>) {
   bot.command("start", async (ctx) => {
@@ -19,7 +20,7 @@ async function showMainMenu(ctx: BotContext) {
     .row()
     .text("📚 Список слів", "listwords");
 
-  const text = "Обери дію:";
+  const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
   if (ctx.callbackQuery) {
     const message = ctx.callbackQuery.message;

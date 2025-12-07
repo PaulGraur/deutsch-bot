@@ -2,6 +2,7 @@ import { Bot, InlineKeyboard } from "grammy";
 import fs from "fs";
 import path from "path";
 import { BotContext, Word } from "../types.js";
+import regimeTexts from "../public/regime.js";
 
 const wordsPath = path.resolve("data/words.json");
 
@@ -14,6 +15,8 @@ const intervalForScore = [
   5 * 24 * 60 * 60 * 1000,
 ];
 
+const randomText = regimeTexts[Math.floor(Math.random() * regimeTexts.length)];
+
 export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("repeat", async (ctx) => {
     const keyboard = new InlineKeyboard()
@@ -23,9 +26,7 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
       .row()
       .text("🏠 Головне меню", "mainMenu");
 
-    await ctx.editMessageText("Оберіть режим повторення:", {
-      reply_markup: keyboard,
-    });
+    await ctx.editMessageText(randomText, { reply_markup: keyboard });
     await ctx.answerCallbackQuery();
   });
 
