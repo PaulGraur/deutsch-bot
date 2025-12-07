@@ -19,10 +19,21 @@ async function showMainMenu(ctx: BotContext) {
     .row()
     .text("📚 Список слів", "listwords");
 
+  const text = "Обери дію:";
+
   if (ctx.callbackQuery) {
-    await ctx.editMessageText("Обери дію:", { reply_markup: keyboard });
-    await ctx.answerCallbackQuery();
+    const message = ctx.callbackQuery.message;
+    const sameText = message?.text === text;
+    try {
+      if (!sameText) {
+        await ctx.editMessageText(text, { reply_markup: keyboard });
+      } else {
+        await ctx.answerCallbackQuery();
+      }
+    } catch {
+      await ctx.answerCallbackQuery();
+    }
   } else {
-    await ctx.reply("Обери дію:", { reply_markup: keyboard });
+    await ctx.reply(text, { reply_markup: keyboard });
   }
 }
