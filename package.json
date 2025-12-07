@@ -9,12 +9,13 @@
     "dev": "ts-node src/bot.ts"
   },
   "dependencies": {
-    "grammy": "^2.0.0",
-    "fs-extra": "^11.0.1"
+    "grammy": "^1.18.2",
+    "fs-extra": "^11.0.1",
+    "dotenv": "^16.1.4"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
+    "@types/node": "^20.6.1",
     "ts-node": "^10.9.1",
-    "@types/node": "^20.6.1"
+    "typescript": "^5.2.2"
   }
 }
