@@ -46,12 +46,14 @@ async function sendWordPage(ctx: BotContext, page: number) {
   const keyboard = new InlineKeyboard();
   if (page > 0) keyboard.text("⬅️", `listwords_${page - 1}`);
   if (end < sessionWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
+  if (page > 0 || end < sessionWords.length) keyboard.row();
+  keyboard.text("🏠 Головне меню", "mainMenu");
 
   if (ctx.callbackQuery?.message) {
     try {
       await ctx.editMessageText(text, { reply_markup: keyboard });
     } catch (err) {
-      const chunks = chunkArray(pageWords, 10); // 10 слів на частину
+      const chunks = chunkArray(pageWords, 10);
       for (const chunk of chunks) {
         const chunkText = chunk
           .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
