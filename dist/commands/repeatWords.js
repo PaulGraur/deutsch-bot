@@ -1,0 +1,62 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.repeatWordsCommand = repeatWordsCommand;
+const grammy_1 = require("grammy");
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+const wordsPath = path_1.default.resolve("data/words.json");
+function repeatWordsCommand(bot) {
+    bot.callbackQuery("repeat", async (ctx) => {
+        await showNewWord(ctx);
+        await ctx.answerCallbackQuery();
+    });
+    bot.callbackQuery(/answer:.+/, async (ctx) => {
+        const data = ctx.callbackQuery?.data;
+        if (!data)
+            return;
+        const answer = data.split(":")[1];
+        const correct = ctx.session.currentWord?.ua === answer;
+        if (correct) {
+            await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
+            await showNewWord(ctx);
+        }
+        else {
+            ctx.session.attemptsLeft = (ctx.session.attemptsLeft ?? 2) - 1;
+            if (ctx.session.attemptsLeft > 0) {
+                await ctx.answerCallbackQuery({
+                    text: `❌ Неправильно! Залишилось спроб: ${ctx.session.attemptsLeft}`,
+                });
+            }
+            else {
+                await ctx.answerCallbackQuery({
+                    text: `❌ Неправильно! Правильна відповідь: ${ctx.session.currentWord?.ua}`,
+                });
+                await showNewWord(ctx);
+            }
+        }
+    });
+}
+async function showNewWord(ctx) {
+    const words = JSON.parse(fs_1.default.readFileSync(wordsPath, "utf-8"));
+    if (!words.length)
+        return ctx.editMessageText("❌ Слів немає.");
+    const word = words[Math.floor(Math.random() * words.length)];
+    ctx.session.currentWord = word;
+    ctx.session.attemptsLeft = 2;
+    const wrongOptions = words
+        .filter((w) => w.ua !== word.ua)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((w) => w.ua);
+    const options = shuffle([word.ua, ...wrongOptions]);
+    const keyboard = new grammy_1.InlineKeyboard();
+    options.forEach((opt) => keyboard.text(opt, `answer:${opt}`).row());
+    keyboard.row().text("🏠 Головне меню", "mainMenu");
+    await ctx.editMessageText(`🇩🇪 ${word.de}`, { reply_markup: keyboard });
+}
+function shuffle(arr) {
+    return arr.sort(() => Math.random() - 0.5);
+}

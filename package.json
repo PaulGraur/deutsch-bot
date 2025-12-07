@@ -1,21 +1,20 @@
 {
-  "type": "module",
+  "name": "deutsch-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot для вивчення німецьких слів",
+  "main": "dist/bot.js",
   "scripts": {
     "build": "tsc",
-    "dev": "node --loader ts-node/esm src/bot.ts",
-    "start": "node dist/api/webhook.js"
+    "start": "node dist/bot.js",
+    "dev": "ts-node src/bot.ts"
   },
   "dependencies": {
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "grammy": "^1.38.4",
-    "telegraf": "^4.16.3"
+    "grammy": "^2.0.0",
+    "fs-extra": "^11.0.1"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/node": "^24.10.1",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.6.1"
   }
 }
