@@ -11,6 +11,8 @@ const DEFAULT_ATTEMPTS = 5;
 function writeWordsCommand(bot) {
     bot.callbackQuery("train", async (ctx) => {
         await ctx.answerCallbackQuery();
+        ctx.session.currentWord = undefined;
+        ctx.session.attemptsLeft = undefined;
         await startTraining(ctx);
     });
     bot.on("message:text", async (ctx) => {
@@ -18,10 +20,14 @@ function writeWordsCommand(bot) {
         if (!session.currentWord)
             return;
         const answer = ctx.message.text.trim();
+        try {
+            await ctx.api.deleteMessage(ctx.chat.id, ctx.message.message_id);
+        }
+        catch { }
         if (answer.toLowerCase() === session.currentWord.de.toLowerCase()) {
             await ctx.reply(`✅ Правильно! ${session.currentWord.ua} → ${session.currentWord.de}`);
-            session.currentWord = undefined;
-            session.attemptsLeft = undefined;
+            ctx.session.currentWord = undefined;
+            ctx.session.attemptsLeft = undefined;
             await startTraining(ctx);
         }
         else {
@@ -31,30 +37,28 @@ function writeWordsCommand(bot) {
             }
             else {
                 await ctx.reply(`❌ Неправильно! Правильна відповідь: ${session.currentWord.de}`);
-                session.currentWord = undefined;
-                session.attemptsLeft = undefined;
+                ctx.session.currentWord = undefined;
+                ctx.session.attemptsLeft = undefined;
                 await startTraining(ctx);
             }
         }
     });
 }
 async function startTraining(ctx) {
-    let words = [];
-    if (fs_1.default.existsSync(wordsPath)) {
-        try {
-            const data = fs_1.default.readFileSync(wordsPath, "utf-8");
-            words = JSON.parse(data);
-        }
-        catch {
-            words = [];
-        }
-    }
-    if (words.length === 0) {
+    if (!fs_1.default.existsSync(wordsPath)) {
         await ctx.reply("📝 Список слів порожній. Додай слова перед тренуванням!");
         return;
     }
-    const randomIndex = Math.floor(Math.random() * words.length);
-    const word = words[randomIndex];
+    let words = [];
+    try {
+        words = JSON.parse(fs_1.default.readFileSync(wordsPath, "utf-8"));
+    }
+    catch { }
+    if (!words.length) {
+        await ctx.reply("📝 Список слів порожній. Додай слова перед тренуванням!");
+        return;
+    }
+    const word = words[Math.floor(Math.random() * words.length)];
     ctx.session.currentWord = word;
     ctx.session.attemptsLeft = DEFAULT_ATTEMPTS;
     await ctx.reply(`Напиши німецьке слово для: "${word.ua}"`);
