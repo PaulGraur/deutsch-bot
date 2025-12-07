@@ -16,6 +16,8 @@ async function showMainMenu(ctx) {
         .row()
         .text("🔁 Повторити слова", "repeat")
         .row()
+        .text("✏️ Тренування написання", "train")
+        .row()
         .text("📚 Список слів", "listwords");
     if (ctx.callbackQuery) {
         await ctx.editMessageText("Обери дію:", { reply_markup: keyboard });

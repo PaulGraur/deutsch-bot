@@ -4,6 +4,7 @@ import { BotContext } from "./types.js";
 import { startCommand } from "./commands/start.js";
 import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
+import { writeWordsCommand } from "./commands/writeWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
 
 const token = process.env.BOT_TOKEN;
@@ -17,6 +18,7 @@ bot.use(session({ initial: () => ({}) }));
 startCommand(bot);
 addWordCommand(bot);
 repeatWordsCommand(bot);
+writeWordsCommand(bot);
 listWordsCommand(bot);
 
 bot.start({

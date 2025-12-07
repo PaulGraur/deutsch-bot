@@ -17,6 +17,8 @@ async function showMainMenu(ctx: BotContext) {
     .row()
     .text("🔁 Повторити слова", "repeat")
     .row()
+    .text("✏️ Тренування написання", "train")
+    .row()
     .text("📚 Список слів", "listwords");
 
   if (ctx.callbackQuery) {

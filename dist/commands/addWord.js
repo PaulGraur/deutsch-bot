@@ -7,7 +7,7 @@ exports.addWordCommand = addWordCommand;
 const grammy_1 = require("grammy");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const wordsPath = path_1.default.resolve("data/words.json");
+const wordsPath = path_1.default.join(process.cwd(), "data/words.json");
 function addWordCommand(bot) {
     bot.callbackQuery("add", async (ctx) => {
         const keyboard = new grammy_1.InlineKeyboard().text("🏠 Головне меню", "mainMenu");
@@ -26,12 +26,19 @@ function addWordCommand(bot) {
         if (!de || !ua) {
             return ctx.reply("Невірний формат. Приклад:\nHaus - дім");
         }
-        const words = JSON.parse(fs_1.default.readFileSync(wordsPath, "utf-8"));
+        let words = [];
+        if (fs_1.default.existsSync(wordsPath)) {
+            try {
+                words = JSON.parse(fs_1.default.readFileSync(wordsPath, "utf-8"));
+            }
+            catch { }
+        }
         words.push({ de, ua, createdAt: new Date().toISOString() });
+        fs_1.default.mkdirSync(path_1.default.dirname(wordsPath), { recursive: true });
         fs_1.default.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
         const keyboard = new grammy_1.InlineKeyboard().text("🏠 Головне меню", "mainMenu");
         try {
-            await ctx.api.deleteMessage(ctx.chat.id, ctx.message.message_id);
+            await ctx.deleteMessage();
         }
         catch { }
         const sent = await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
@@ -42,6 +49,6 @@ function addWordCommand(bot) {
                 await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
             }
             catch { }
-        }, 1000);
+        }, 5000);
     });
 }
