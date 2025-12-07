@@ -10,6 +10,7 @@ export interface SessionData {
   currentWord?: Word;
   attemptsLeft?: number;
   words?: Word[];
+  repeatMode?: "de2ua" | "ua2de";
 }
 
 import { Context } from "grammy";

@@ -16,13 +16,30 @@ const intervalForScore = [
 
 export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("repeat", async (ctx) => {
+    const keyboard = new InlineKeyboard()
+      .text("🇩🇪 → 🇺🇦", "mode:de2ua")
+      .row()
+      .text("🇺🇦 → 🇩🇪", "mode:ua2de")
+      .row()
+      .text("🏠 Головне меню", "mainMenu");
+
+    await ctx.editMessageText("Оберіть режим повторення:", {
+      reply_markup: keyboard,
+    });
+    await ctx.answerCallbackQuery();
+  });
+
+  bot.callbackQuery(/mode:.+/, async (ctx) => {
+    const mode = ctx.callbackQuery?.data?.split(":")[1];
+    if (!mode || (mode !== "de2ua" && mode !== "ua2de")) return;
+    ctx.session.repeatMode = mode;
     await showNewWord(ctx);
     await ctx.answerCallbackQuery();
   });
 
   bot.callbackQuery(/answer:.+/, async (ctx) => {
     const data = ctx.callbackQuery?.data;
-    if (!data || !ctx.session.currentWord) return;
+    if (!data || !ctx.session.currentWord || !ctx.session.repeatMode) return;
 
     const answer = data.split(":")[1];
     const word = ctx.session.currentWord as Word & {
@@ -30,7 +47,12 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
       lastSeen?: number;
     };
 
-    if (answer === word.ua) {
+    const correct =
+      ctx.session.repeatMode === "de2ua"
+        ? answer === word.ua
+        : answer === word.de;
+
+    if (correct) {
       await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
       word.score = Math.min((word.score || 0) + 1, 5);
       word.lastSeen = Date.now();
@@ -43,8 +65,10 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
           text: `❌ Неправильно! Залишилось спроб: ${ctx.session.attemptsLeft}`,
         });
       } else {
+        const correctAnswer =
+          ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
         await ctx.answerCallbackQuery({
-          text: `❌ Неправильно! Правильна відповідь: ${word.ua}`,
+          text: `❌ Неправильно! Правильна відповідь: ${correctAnswer}`,
         });
         word.score = Math.max((word.score || 0) - 1, 0);
         word.lastSeen = Date.now();
@@ -62,7 +86,6 @@ async function showNewWord(ctx: BotContext) {
   if (!words.length) return ctx.editMessageText("❌ Слів немає.");
 
   const now = Date.now();
-
   const dueWords = words.filter(
     (w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]
   );
@@ -75,19 +98,34 @@ async function showNewWord(ctx: BotContext) {
   ctx.session.currentWord = word;
   ctx.session.attemptsLeft = 2;
 
-  const wrongOptions = words
-    .filter((w) => w.ua !== word.ua)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 3)
-    .map((w) => w.ua);
+  let correctAnswer: string;
+  let wrongOptions: string[];
 
-  const options = shuffle([word.ua, ...wrongOptions]);
+  if (ctx.session.repeatMode === "de2ua") {
+    correctAnswer = word.ua;
+    wrongOptions = words
+      .filter((w) => w.ua !== word.ua)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3)
+      .map((w) => w.ua);
+  } else {
+    correctAnswer = word.de;
+    wrongOptions = words
+      .filter((w) => w.de !== word.de)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3)
+      .map((w) => w.de);
+  }
+
+  const options = shuffle([correctAnswer, ...wrongOptions]);
 
   const keyboard = new InlineKeyboard();
   options.forEach((opt) => keyboard.text(opt, `answer:${opt}`).row());
   keyboard.row().text("🏠 Головне меню", "mainMenu");
 
-  await ctx.editMessageText(`🇩🇪 ${word.de}`, { reply_markup: keyboard });
+  const text =
+    ctx.session.repeatMode === "de2ua" ? `🇩🇪 ${word.de}` : `🇺🇦 ${word.ua}`;
+  await ctx.editMessageText(text, { reply_markup: keyboard });
 }
 
 async function saveWordsProgress(
