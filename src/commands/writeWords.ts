@@ -9,6 +9,8 @@ const DEFAULT_ATTEMPTS = 5;
 export function writeWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("train", async (ctx) => {
     await ctx.answerCallbackQuery();
+    ctx.session.currentWord = undefined;
+    ctx.session.attemptsLeft = undefined;
     await startTraining(ctx);
   });
 
