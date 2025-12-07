@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { BotContext, Word } from "../types.js";
 
-const wordsPath = path.resolve("data/words.json");
+const wordsPath = path.join(process.cwd(), "data/words.json");
 
 export function addWordCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("add", async (ctx) => {
@@ -26,14 +26,22 @@ export function addWordCommand(bot: Bot<BotContext>) {
       return ctx.reply("Невірний формат. Приклад:\nHaus - дім");
     }
 
-    const words: Word[] = JSON.parse(fs.readFileSync(wordsPath, "utf-8"));
+    let words: Word[] = [];
+    if (fs.existsSync(wordsPath)) {
+      try {
+        words = JSON.parse(fs.readFileSync(wordsPath, "utf-8"));
+      } catch {}
+    }
+
     words.push({ de, ua, createdAt: new Date().toISOString() });
+
+    fs.mkdirSync(path.dirname(wordsPath), { recursive: true });
     fs.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
 
     const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
 
     try {
-      await ctx.api.deleteMessage(ctx.chat.id, ctx.message.message_id);
+      await ctx.deleteMessage();
     } catch {}
 
     const sent = await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
@@ -44,6 +52,6 @@ export function addWordCommand(bot: Bot<BotContext>) {
       try {
         await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
       } catch {}
-    }, 1000);
+    }, 5000);
   });
 }

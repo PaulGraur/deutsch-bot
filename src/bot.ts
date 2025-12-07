@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { Bot, session } from "grammy";
 import { BotContext } from "./types.js";
 
@@ -7,11 +6,11 @@ import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
 
-if (!process.env.BOT_TOKEN) {
-  throw new Error("❌ BOT_TOKEN не встановлено у .env");
-}
+const token = process.env.BOT_TOKEN;
+if (!token)
+  throw new Error("❌ BOT_TOKEN не встановлено у Environment Variables");
 
-export const bot = new Bot<BotContext>(process.env.BOT_TOKEN);
+export const bot = new Bot<BotContext>(token);
 
 bot.use(session({ initial: () => ({}) }));
 
