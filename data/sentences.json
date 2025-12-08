@@ -758,5 +758,4860 @@
         "role": "place"
       }
     ]
+  },
+  {
+    "id": "s21",
+    "de": "Sie spielt oft Karten im Wohnzimmer.",
+    "ua": "Вона часто грає в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти стоїть перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s22",
+    "de": "Wir trinken morgens frischen Kaffee auf dem Balkon.",
+    "ua": "Ми вранці п’ємо свіжу каву на балконі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу «morgens» стоїть між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frischen Kaffee",
+        "translation": "свіжу каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Balkon",
+        "translation": "на балконі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s23",
+    "de": "Er liest jeden Abend ein spannendes Buch im Bett.",
+    "ua": "Він щоночі читає захопливу книгу у ліжку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу «jeden Abend» перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Abend",
+        "translation": "щоночі",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein spannendes Buch",
+        "translation": "захопливу книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Bett",
+        "translation": "у ліжку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s24",
+    "de": "Sie kauft selten frisches Obst im Supermarkt.",
+    "ua": "Вона рідко купує свіжі фрукти в супермаркеті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти «selten» перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "selten",
+        "translation": "рідко",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Obst",
+        "translation": "свіжі фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Supermarkt",
+        "translation": "в супермаркеті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s25",
+    "de": "Wir essen manchmal eine große Pizza im Garten.",
+    "ua": "Ми іноді їмо велику піцу в саду.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "manchmal",
+        "translation": "іноді",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine große Pizza",
+        "translation": "велику піцу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Garten",
+        "translation": "в саду",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s26",
+    "de": "Er trinkt jeden Morgen einen heißen Kaffee in der Küche.",
+    "ua": "Він щоранку п’є гарячу каву на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу стоїть перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "jeden Morgen",
+        "translation": "щораку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen heißen Kaffee",
+        "translation": "гарячу каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s27",
+    "de": "Sie schreibt abends einen Brief ins Büro.",
+    "ua": "Вона ввечері пише лист в офіс.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "schreibt",
+        "translation": "пише",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Brief",
+        "translation": "лист",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "ins Büro",
+        "translation": "в офіс",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s28",
+    "de": "Wir kaufen oft frisches Brot beim Bäcker.",
+    "ua": "Ми часто купуємо свіжий хліб у пекаря.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kaufen",
+        "translation": "купуємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Brot",
+        "translation": "свіжий хліб",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "beim Bäcker",
+        "translation": "у пекаря",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s29",
+    "de": "Er liest manchmal eine Zeitung im Wohnzimmer.",
+    "ua": "Він іноді читає газету у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "manchmal",
+        "translation": "іноді",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s30",
+    "de": "Wir spielen abends ein Brettspiel im Wohnzimmer.",
+    "ua": "Ми ввечері граємо настільну гру у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу стоїть перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Brettspiel",
+        "translation": "настільну гру",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s31",
+    "de": "Er trinkt morgens einen Tee in der Küche.",
+    "ua": "Він вранці п'є чай на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п'є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Tee",
+        "translation": "чай",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s32",
+    "de": "Sie liest abends ein Buch im Schlafzimmer.",
+    "ua": "Вона ввечері читає книгу в спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Buch",
+        "translation": "книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s33",
+    "de": "Wir essen mittags eine Suppe in der Kantine.",
+    "ua": "Ми в обід їмо суп у їдальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Suppe",
+        "translation": "суп",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Kantine",
+        "translation": "у їдальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s34",
+    "de": "Er kauft selten Obst auf dem Markt.",
+    "ua": "Він рідко купує фрукти на ринку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "selten",
+        "translation": "рідко",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Obst",
+        "translation": "фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Markt",
+        "translation": "на ринку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s35",
+    "de": "Sie trinkt morgens einen Kaffee im Büro.",
+    "ua": "Вона вранці п'є каву в офісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п'є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Kaffee",
+        "translation": "каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Büro",
+        "translation": "в офісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s36",
+    "de": "Wir spielen nachmittags ein Fußballspiel auf dem Sportplatz.",
+    "ua": "Ми після обіду граємо футбольний матч на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу стоїть перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Fußballspiel",
+        "translation": "футбольний матч",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s37",
+    "de": "Er liest oft eine Zeitung im Garten.",
+    "ua": "Він часто читає газету в саду.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Garten",
+        "translation": "в саду",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s38",
+    "de": "Sie kocht jeden Tag frisches Gemüse in der Küche.",
+    "ua": "Вона щодня готує свіжі овочі на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kocht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Tag",
+        "translation": "щодня",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Gemüse",
+        "translation": "свіжі овочі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s39",
+    "de": "Wir trinken abends eine heiße Schokolade im Wohnzimmer.",
+    "ua": "Ми ввечері п’ємо гарячий шоколад у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine heiße Schokolade",
+        "translation": "гарячий шоколад",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s40",
+    "de": "Er kauft morgens frisches Obst im Supermarkt.",
+    "ua": "Він вранці купує свіжі фрукти в супермаркеті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Obst",
+        "translation": "свіжі фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Supermarkt",
+        "translation": "в супермаркеті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s41",
+    "de": "Sie spielt jeden Nachmittag Klavier im Wohnzimmer.",
+    "ua": "Вона щодня після обіду грає на піаніно у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Nachmittag",
+        "translation": "щодня після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Klavier",
+        "translation": "піаніно",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s42",
+    "de": "Wir essen abends eine Suppe in der Küche.",
+    "ua": "Ми ввечері їмо суп на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Suppe",
+        "translation": "суп",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s43",
+    "de": "Er fährt jeden Morgen mit dem Fahrrad zur Arbeit.",
+    "ua": "Він щоранку їде на велосипеді на роботу.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "jeden Morgen",
+        "translation": "щоранку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Fahrrad",
+        "translation": "на велосипеді",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Arbeit",
+        "translation": "на роботу",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s44",
+    "de": "Sie geht manchmal in den Park am Nachmittag.",
+    "ua": "Вона іноді ходить у парк після обіду.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "geht",
+        "translation": "ходить",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "manchmal",
+        "translation": "іноді",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "in den Park",
+        "translation": "у парк",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "am Nachmittag",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s45",
+    "de": "Wir trinken morgens einen Saft auf dem Balkon.",
+    "ua": "Ми вранці п’ємо сік на балконі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Saft",
+        "translation": "сік",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Balkon",
+        "translation": "на балконі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s46",
+    "de": "Er schreibt jeden Tag einen Brief ins Büro.",
+    "ua": "Він щодня пише лист в офіс.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "schreibt",
+        "translation": "пише",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Tag",
+        "translation": "щодня",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Brief",
+        "translation": "лист",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "ins Büro",
+        "translation": "в офіс",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s47",
+    "de": "Sie kauft selten Süßigkeiten im Laden.",
+    "ua": "Вона рідко купує солодощі в магазині.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "selten",
+        "translation": "рідко",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Süßigkeiten",
+        "translation": "солодощі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Laden",
+        "translation": "в магазині",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s48",
+    "de": "Wir essen jeden Morgen ein Brötchen mit Marmelade.",
+    "ua": "Ми щоранку їмо булочку з варенням.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "jeden Morgen",
+        "translation": "щоранку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Brötchen mit Marmelade",
+        "translation": "булочку з варенням",
+        "pos": "noun",
+        "role": "object"
+      },
+      { "text": "", "translation": "", "pos": "adverb", "role": "place" }
+    ]
+  },
+  {
+    "id": "s49",
+    "de": "Er hört abends leise Musik im Schlafzimmer.",
+    "ua": "Він ввечері слухає тиху музику в спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "hört",
+        "translation": "слухає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "leise Musik",
+        "translation": "тиху музику",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s50",
+    "de": "Sie schreibt morgens eine E-Mail im Büro.",
+    "ua": "Вона вранці пише імейл в офісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "schreibt",
+        "translation": "пише",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine E-Mail",
+        "translation": "імейл",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Büro",
+        "translation": "в офісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s51",
+    "de": "Wir gehen morgens spazieren im Park.",
+    "ua": "Ми вранці гуляємо в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "гуляємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "spazieren",
+        "translation": "гуляємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s52",
+    "de": "Er kauft abends frisches Gemüse im Supermarkt.",
+    "ua": "Він ввечері купує свіжі овочі в супермаркеті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Gemüse",
+        "translation": "свіжі овочі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Supermarkt",
+        "translation": "в супермаркеті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s53",
+    "de": "Sie geht morgens joggen im Park.",
+    "ua": "Вона вранці бігає в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "geht", "translation": "бігає", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "joggen",
+        "translation": "бігає",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s54",
+    "de": "Wir trinken abends Tee auf dem Balkon.",
+    "ua": "Ми ввечері п’ємо чай на балконі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Tee", "translation": "чай", "pos": "noun", "role": "object" },
+      {
+        "text": "auf dem Balkon",
+        "translation": "на балконі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s55",
+    "de": "Er liest morgens die Zeitung im Wohnzimmer.",
+    "ua": "Він вранці читає газету у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "die Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s56",
+    "de": "Sie kocht jeden Abend eine Suppe in der Küche.",
+    "ua": "Вона щовечора готує суп на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kocht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Abend",
+        "translation": "щовечора",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Suppe",
+        "translation": "суп",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s57",
+    "de": "Wir kaufen oft frisches Obst auf dem Markt.",
+    "ua": "Ми часто купуємо свіжі фрукти на ринку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kaufen",
+        "translation": "купуємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "frisches Obst",
+        "translation": "свіжі фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Markt",
+        "translation": "на ринку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s58",
+    "de": "Er trinkt morgens einen Milchkaffee im Café.",
+    "ua": "Він вранці п’є капучіно в кафе.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Milchkaffee",
+        "translation": "капучіно",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Café",
+        "translation": "в кафе",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s59",
+    "de": "Sie liest jeden Morgen ein Buch im Bett.",
+    "ua": "Вона щоранку читає книгу у ліжку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Morgen",
+        "translation": "щоранку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Buch",
+        "translation": "книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Bett",
+        "translation": "у ліжку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s60",
+    "de": "Wir gehen abends spazieren im Wald.",
+    "ua": "Ми ввечері гуляємо в лісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "гуляємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "spazieren",
+        "translation": "гуляємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wald",
+        "translation": "в лісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s61",
+    "de": "Er spielt nachmittags Fußball auf dem Sportplatz.",
+    "ua": "Він після обіду грає у футбол на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Fußball",
+        "translation": "футбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s62",
+    "de": "Wir kochen jeden Abend Pasta in der Küche.",
+    "ua": "Ми щовечора готуємо пасту на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kochen",
+        "translation": "готуємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Abend",
+        "translation": "щовечора",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Pasta",
+        "translation": "паста",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s63",
+    "de": "Sie trinkt morgens einen Kakao in der Schule.",
+    "ua": "Вона вранці п’є какао у школі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "einen Kakao",
+        "translation": "какао",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Schule",
+        "translation": "у школі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s64",
+    "de": "Wir spielen abends Karten im Wohnzimmer.",
+    "ua": "Ми ввечері граємо в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s65",
+    "de": "Er hört jeden Abend Musik im Schlafzimmer.",
+    "ua": "Він щовечора слухає музику в спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "hört",
+        "translation": "слухає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "jeden Abend",
+        "translation": "щовечора",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Musik",
+        "translation": "музику",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s66",
+    "de": "Sie spielt morgens Gitarre im Wohnzimmer.",
+    "ua": "Вона вранці грає на гітарі у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Gitarre",
+        "translation": "гітару",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s67",
+    "de": "Wir essen mittags Sandwiches in der Kantine.",
+    "ua": "Ми в обід їмо сендвічі у їдальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Sandwiches",
+        "translation": "сендвічі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Kantine",
+        "translation": "у їдальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s68",
+    "de": "Er fährt abends mit dem Bus nach Hause.",
+    "ua": "Він ввечері їде автобусом додому.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Bus",
+        "translation": "автобусом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "nach Hause",
+        "translation": "додому",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s69",
+    "de": "Sie geht jeden Morgen joggen im Park.",
+    "ua": "Вона щоранку бігає в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "geht", "translation": "бігає", "pos": "verb", "role": "verb" },
+      {
+        "text": "jeden Morgen",
+        "translation": "щоранку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "joggen",
+        "translation": "бігає",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s70",
+    "de": "Wir trinken oft Tee im Wohnzimmer.",
+    "ua": "Ми часто п’ємо чай у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Tee", "translation": "чай", "pos": "noun", "role": "object" },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s71",
+    "de": "Er kauft morgens Brot beim Bäcker.",
+    "ua": "Він вранці купує хліб у пекаря.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Brot",
+        "translation": "хліб",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "beim Bäcker",
+        "translation": "у пекаря",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s72",
+    "de": "Wir essen abends Pizza in der Pizzeria.",
+    "ua": "Ми ввечері їмо піцу в піцерії.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Pizza",
+        "translation": "піцу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Pizzeria",
+        "translation": "в піцерії",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s73",
+    "de": "Sie spielt abends Klavier im Musikzimmer.",
+    "ua": "Вона ввечері грає на піаніно в музичній кімнаті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Klavier",
+        "translation": "піаніно",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Musikzimmer",
+        "translation": "в музичній кімнаті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s74",
+    "de": "Er liest selten ein Buch in der Bibliothek.",
+    "ua": "Він рідко читає книгу в бібліотеці.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "selten",
+        "translation": "рідко",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Buch",
+        "translation": "книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Bibliothek",
+        "translation": "в бібліотеці",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s75",
+    "de": "Wir gehen morgens schwimmen im Schwimmbad.",
+    "ua": "Ми вранці плаваємо в басейні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "плаваемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "schwimmen",
+        "translation": "плавати",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schwimmbad",
+        "translation": "в басейні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s76",
+    "de": "Sie trinkt abends Tee in der Küche.",
+    "ua": "Вона ввечері п’є чай на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Tee", "translation": "чай", "pos": "noun", "role": "object" },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s77",
+    "de": "Er fährt jeden Morgen mit dem Auto zur Schule.",
+    "ua": "Він щоранку їде на машині до школи.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "jeden Morgen",
+        "translation": "щоранку",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Auto",
+        "translation": "на машині",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Schule",
+        "translation": "до школи",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s78",
+    "de": "Wir essen mittags Salat in der Kantine.",
+    "ua": "Ми в обід їмо салат у їдальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Salat",
+        "translation": "салат",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Kantine",
+        "translation": "у їдальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s79",
+    "de": "Sie hört oft Musik im Schlafzimmer.",
+    "ua": "Вона часто слухає музику в спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "hört",
+        "translation": "слухає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Musik",
+        "translation": "музику",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s80",
+    "de": "Wir gehen abends spazieren im Park.",
+    "ua": "Ми ввечері гуляємо в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "гуляємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "spazieren",
+        "translation": "гуляємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s81",
+    "de": "Er macht morgens Frühstück in der Küche.",
+    "ua": "Він вранці готує сніданок на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "macht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Frühstück",
+        "translation": "сніданок",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s82",
+    "de": "Wir gehen am Wochenende ins Kino.",
+    "ua": "Ми на вихідних йдемо в кіно.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "йдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "am Wochenende",
+        "translation": "на вихідних",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ins Kino",
+        "translation": "в кіно",
+        "pos": "noun",
+        "role": "object"
+      },
+      { "text": "", "translation": "", "pos": "adverb", "role": "place" }
+    ]
+  },
+  {
+    "id": "s83",
+    "de": "Sie trinkt morgens Kaffee auf dem Balkon.",
+    "ua": "Вона вранці п’є каву на балконі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Kaffee",
+        "translation": "каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Balkon",
+        "translation": "на балконі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s84",
+    "de": "Er schreibt nachmittags eine Nachricht auf dem Handy.",
+    "ua": "Він після обіду пише повідомлення на телефоні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "schreibt",
+        "translation": "пише",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Nachricht",
+        "translation": "повідомлення",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Handy",
+        "translation": "на телефоні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s85",
+    "de": "Wir spielen oft Brettspiele im Wohnzimmer.",
+    "ua": "Ми часто граємо у настільні ігри у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Brettspiele",
+        "translation": "настільні ігри",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s86",
+    "de": "Sie kocht mittags Pasta in der Küche.",
+    "ua": "Вона в обід готує пасту на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kocht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Pasta",
+        "translation": "паста",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s87",
+    "de": "Er fährt morgens mit dem Fahrrad zur Arbeit.",
+    "ua": "Він вранці їде на велосипеді на роботу.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Fahrrad",
+        "translation": "на велосипеді",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Arbeit",
+        "translation": "на роботу",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s88",
+    "de": "Wir essen morgens Brötchen mit Käse in der Küche.",
+    "ua": "Ми вранці їмо булочки з сиром на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Brötchen mit Käse",
+        "translation": "булочки з сиром",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s89",
+    "de": "Sie fährt abends mit dem Bus nach Hause.",
+    "ua": "Вона ввечері їде автобусом додому.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Bus",
+        "translation": "автобусом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "nach Hause",
+        "translation": "додому",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s90",
+    "de": "Wir spielen abends Karten im Wohnzimmer.",
+    "ua": "Ми ввечері граємо в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s91",
+    "de": "Er liest abends ein Buch im Schlafzimmer.",
+    "ua": "Він ввечері читає книгу у спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Buch",
+        "translation": "книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s92",
+    "de": "Wir gehen morgens joggen im Park.",
+    "ua": "Ми вранці бігаємо в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "бігаємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "joggen",
+        "translation": "бігаємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s93",
+    "de": "Sie kauft oft Obst auf dem Markt.",
+    "ua": "Вона часто купує фрукти на ринку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Obst",
+        "translation": "фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Markt",
+        "translation": "на ринку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s94",
+    "de": "Er fährt mittags mit dem Auto zur Arbeit.",
+    "ua": "Він в обід їде на машині на роботу.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Auto",
+        "translation": "на машині",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Arbeit",
+        "translation": "на роботу",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s95",
+    "de": "Wir trinken morgens Kaffee in der Küche.",
+    "ua": "Ми вранці п’ємо каву на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Kaffee",
+        "translation": "каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s96",
+    "de": "Sie spielt nachmittags Tennis auf dem Sportplatz.",
+    "ua": "Вона після обіду грає у теніс на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Tennis",
+        "translation": "теніс",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s97",
+    "de": "Er kocht abends Suppe in der Küche.",
+    "ua": "Він ввечері готує суп на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kocht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Suppe",
+        "translation": "суп",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s98",
+    "de": "Wir spielen oft Fußball auf dem Sportplatz.",
+    "ua": "Ми часто граємо у футбол на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Fußball",
+        "translation": "футбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s99",
+    "de": "Sie liest morgens die Zeitung im Wohnzimmer.",
+    "ua": "Вона вранці читає газету у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "die Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s100",
+    "de": "Wir fahren abends mit dem Zug nach Berlin.",
+    "ua": "Ми ввечері їдемо поїздом до Берліна.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fahren",
+        "translation": "їдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Zug",
+        "translation": "поїздом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "nach Berlin",
+        "translation": "до Берліна",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s101",
+    "de": "Er spielt morgens Gitarre im Wohnzimmer.",
+    "ua": "Він вранці грає на гітарі у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Gitarre",
+        "translation": "гітару",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s102",
+    "de": "Wir essen morgens Müsli in der Küche.",
+    "ua": "Ми вранці їмо мюслі на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Müsli",
+        "translation": "мюслі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s103",
+    "de": "Sie spielt abends Schach im Wohnzimmer.",
+    "ua": "Вона ввечері грає в шахи у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Schach",
+        "translation": "шахи",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s104",
+    "de": "Er hört oft Musik im Büro.",
+    "ua": "Він часто слухає музику в офісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "hört",
+        "translation": "слухає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Musik",
+        "translation": "музику",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Büro",
+        "translation": "в офісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s105",
+    "de": "Wir fahren mittags mit dem Bus in die Stadt.",
+    "ua": "Ми в обід їдемо автобусом у місто.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fahren",
+        "translation": "їдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Bus",
+        "translation": "автобусом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in die Stadt",
+        "translation": "у місто",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s106",
+    "de": "Sie geht morgens spazieren im Park.",
+    "ua": "Вона вранці гуляє в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "geht", "translation": "гуляє", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "spazieren",
+        "translation": "гуляє",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s107",
+    "de": "Er spielt nachmittags Fußball auf dem Sportplatz.",
+    "ua": "Він після обіду грає у футбол на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Fußball",
+        "translation": "футбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s108",
+    "de": "Wir essen abends Suppe in der Kantine.",
+    "ua": "Ми ввечері їмо суп у їдальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Suppe",
+        "translation": "суп",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Kantine",
+        "translation": "у їдальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s109",
+    "de": "Sie kauft morgens Brot beim Bäcker.",
+    "ua": "Вона вранці купує хліб у пекаря.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Brot",
+        "translation": "хліб",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "beim Bäcker",
+        "translation": "у пекаря",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s110",
+    "de": "Wir spielen nachmittags Karten im Wohnzimmer.",
+    "ua": "Ми після обіду граємо в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s111",
+    "de": "Er trinkt morgens Tee in der Küche.",
+    "ua": "Він вранці п’є чай на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Tee", "translation": "чай", "pos": "noun", "role": "object" },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s112",
+    "de": "Wir gehen abends ins Kino.",
+    "ua": "Ми ввечері йдемо в кіно.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "йдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ins Kino",
+        "translation": "в кіно",
+        "pos": "noun",
+        "role": "object"
+      },
+      { "text": "", "translation": "", "pos": "adverb", "role": "place" }
+    ]
+  },
+  {
+    "id": "s113",
+    "de": "Sie fährt morgens mit dem Bus zur Schule.",
+    "ua": "Вона вранці їде автобусом до школи.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "fährt", "translation": "їде", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Bus",
+        "translation": "автобусом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Schule",
+        "translation": "до школи",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s114",
+    "de": "Wir spielen oft Basketball in der Turnhalle.",
+    "ua": "Ми часто граємо у баскетбол у спортивному залі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Basketball",
+        "translation": "баскетбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Turnhalle",
+        "translation": "у спортивному залі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s115",
+    "de": "Er kauft mittags Obst im Supermarkt.",
+    "ua": "Він в обід купує фрукти в супермаркеті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Obst",
+        "translation": "фрукти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Supermarkt",
+        "translation": "в супермаркеті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s116",
+    "de": "Wir essen abends Pizza im Restaurant.",
+    "ua": "Ми ввечері їмо піцу в ресторані.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Pizza",
+        "translation": "піцу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Restaurant",
+        "translation": "в ресторані",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s117",
+    "de": "Sie liest morgens eine Zeitschrift im Wohnzimmer.",
+    "ua": "Вона вранці читає журнал у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "eine Zeitschrift",
+        "translation": "журнал",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s118",
+    "de": "Er spielt abends Klavier im Musikzimmer.",
+    "ua": "Він ввечері грає на піаніно в музичній кімнаті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Klavier",
+        "translation": "піаніно",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Musikzimmer",
+        "translation": "в музичній кімнаті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s119",
+    "de": "Wir gehen mittags essen im Restaurant.",
+    "ua": "Ми в обід йдемо їсти в ресторані.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "йдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "essen",
+        "translation": "їсти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Restaurant",
+        "translation": "в ресторані",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s120",
+    "de": "Sie fährt oft mit dem Fahrrad zur Arbeit.",
+    "ua": "Вона часто їздить на велосипеді на роботу.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fährt",
+        "translation": "їздить",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Fahrrad",
+        "translation": "на велосипеді",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Arbeit",
+        "translation": "на роботу",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s121",
+    "de": "Wir gehen morgens spazieren im Wald.",
+    "ua": "Ми вранці гуляємо в лісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "гуляємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "spazieren",
+        "translation": "гуляємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wald",
+        "translation": "в лісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s122",
+    "de": "Er liest abends ein Magazin im Wohnzimmer.",
+    "ua": "Він ввечері читає журнал у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Magazin",
+        "translation": "журнал",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s123",
+    "de": "Wir fahren oft mit dem Auto in die Stadt.",
+    "ua": "Ми часто їздимо машиною у місто.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fahren",
+        "translation": "їздимо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Auto",
+        "translation": "машиною",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in die Stadt",
+        "translation": "у місто",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s124",
+    "de": "Sie kocht mittags Nudeln in der Küche.",
+    "ua": "Вона в обід готує локшину на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kocht",
+        "translation": "готує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Nudeln",
+        "translation": "локшину",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s125",
+    "de": "Wir trinken morgens Saft in der Küche.",
+    "ua": "Ми вранці п’ємо сік на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Saft", "translation": "сік", "pos": "noun", "role": "object" },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s126",
+    "de": "Er hört nachmittags Musik im Wohnzimmer.",
+    "ua": "Він після обіду слухає музику у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "hört",
+        "translation": "слухає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Musik",
+        "translation": "музику",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s127",
+    "de": "Wir spielen abends Karten im Wohnzimmer.",
+    "ua": "Ми ввечері граємо в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s128",
+    "de": "Sie fährt oft mit dem Auto in die Stadt.",
+    "ua": "Вона часто їздить машиною у місто.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fährt",
+        "translation": "їздить",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Auto",
+        "translation": "машиною",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in die Stadt",
+        "translation": "у місто",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s129",
+    "de": "Er spielt morgens Fußball auf dem Sportplatz.",
+    "ua": "Він вранці грає у футбол на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Fußball",
+        "translation": "футбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s130",
+    "de": "Wir lesen abends Bücher im Wohnzimmer.",
+    "ua": "Ми ввечері читаємо книги у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "lesen",
+        "translation": "читаємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Bücher",
+        "translation": "книги",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s131",
+    "de": "Sie trinkt morgens Kaffee auf dem Balkon.",
+    "ua": "Вона вранці п’є каву на балконі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Kaffee",
+        "translation": "каву",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Balkon",
+        "translation": "на балконі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s132",
+    "de": "Wir gehen abends schwimmen im Schwimmbad.",
+    "ua": "Ми ввечері йдемо плавати в басейн.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "йдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "schwimmen",
+        "translation": "плавати",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schwimmbad",
+        "translation": "в басейні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s133",
+    "de": "Er liest oft Bücher in der Bibliothek.",
+    "ua": "Він часто читає книги в бібліотеці.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Bücher",
+        "translation": "книги",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in der Bibliothek",
+        "translation": "в бібліотеці",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s134",
+    "de": "Wir essen mittags Sandwiches im Garten.",
+    "ua": "Ми в обід їмо сендвічі в саду.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "essen", "translation": "їмо", "pos": "verb", "role": "verb" },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Sandwiches",
+        "translation": "сендвічі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Garten",
+        "translation": "в саду",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s135",
+    "de": "Sie spielt morgens Klavier im Musikzimmer.",
+    "ua": "Вона вранці грає на піаніно в музичній кімнаті.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Klavier",
+        "translation": "піаніно",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Musikzimmer",
+        "translation": "в музичній кімнаті",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s136",
+    "de": "Wir trinken abends Tee im Wohnzimmer.",
+    "ua": "Ми ввечері п’ємо чай у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "trinken",
+        "translation": "п’ємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Tee", "translation": "чай", "pos": "noun", "role": "object" },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s137",
+    "de": "Er spielt nachmittags Tennis auf dem Sportplatz.",
+    "ua": "Він після обіду грає у теніс на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Tennis",
+        "translation": "теніс",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s138",
+    "de": "Wir fahren oft mit dem Fahrrad in den Park.",
+    "ua": "Ми часто їздимо велосипедом у парк.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fahren",
+        "translation": "їздимо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Fahrrad",
+        "translation": "велосипедом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "in den Park",
+        "translation": "у парк",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s139",
+    "de": "Sie liest abends ein Buch im Schlafzimmer.",
+    "ua": "Вона ввечері читає книгу у спальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "ein Buch",
+        "translation": "книгу",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Schlafzimmer",
+        "translation": "у спальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s140",
+    "de": "Wir spielen nachmittags Volleyball auf dem Sportplatz.",
+    "ua": "Ми після обіду граємо у волейбол на спортивному майданчику.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Volleyball",
+        "translation": "волейбол",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sportplatz",
+        "translation": "на спортивному майданчику",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s141",
+    "de": "Er trinkt abends Milch im Wohnzimmer.",
+    "ua": "Він ввечері п’є молоко у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Milch",
+        "translation": "молоко",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s142",
+    "de": "Wir gehen morgens joggen im Park.",
+    "ua": "Ми вранці бігаємо в парку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "gehen",
+        "translation": "бігаємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "joggen",
+        "translation": "бігаємо",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Park",
+        "translation": "в парку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s143",
+    "de": "Sie kauft mittags Gemüse auf dem Markt.",
+    "ua": "Вона в обід купує овочі на ринку.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kauft",
+        "translation": "купує",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Gemüse",
+        "translation": "овочі",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Markt",
+        "translation": "на ринку",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s144",
+    "de": "Wir lesen abends Zeitung im Wohnzimmer.",
+    "ua": "Ми ввечері читаємо газету у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "lesen",
+        "translation": "читаємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s145",
+    "de": "Er spielt morgens Schach im Wohnzimmer.",
+    "ua": "Він вранці грає в шахи у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielt",
+        "translation": "грає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Schach",
+        "translation": "шахи",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s146",
+    "de": "Wir fahren nachmittags mit dem Bus zur Schule.",
+    "ua": "Ми після обіду їдемо автобусом до школи.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед дієсловом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "fahren",
+        "translation": "їдемо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "nachmittags",
+        "translation": "після обіду",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "mit dem Bus",
+        "translation": "автобусом",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "zur Schule",
+        "translation": "до школи",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s147",
+    "de": "Sie trinkt oft Wasser im Büro.",
+    "ua": "Вона часто п’є воду в офісі.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Прислівник частоти перед дієсловом.",
+    "words": [
+      {
+        "text": "Sie",
+        "translation": "Вона",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      { "text": "trinkt", "translation": "п’є", "pos": "verb", "role": "verb" },
+      {
+        "text": "oft",
+        "translation": "часто",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Wasser",
+        "translation": "воду",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Büro",
+        "translation": "в офісі",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s148",
+    "de": "Wir kochen mittags Reis in der Küche.",
+    "ua": "Ми в обід готуємо рис на кухні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "kochen",
+        "translation": "готуємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "mittags",
+        "translation": "в обід",
+        "pos": "adverb",
+        "role": "time"
+      },
+      { "text": "Reis", "translation": "рис", "pos": "noun", "role": "object" },
+      {
+        "text": "in der Küche",
+        "translation": "на кухні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s149",
+    "de": "Er liest abends Zeitung auf dem Sofa.",
+    "ua": "Він ввечері читає газету на дивані.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу перед об’єктом.",
+    "words": [
+      {
+        "text": "Er",
+        "translation": "Він",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "liest",
+        "translation": "читає",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "abends",
+        "translation": "ввечері",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Zeitung",
+        "translation": "газету",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "auf dem Sofa",
+        "translation": "на дивані",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
+  },
+  {
+    "id": "s150",
+    "de": "Wir spielen morgens Karten im Wohnzimmer.",
+    "ua": "Ми вранці граємо в карти у вітальні.",
+    "structure": "S - V - Adv - O - Place",
+    "rule": "Обставина часу між дієсловом і об’єктом.",
+    "words": [
+      {
+        "text": "Wir",
+        "translation": "Ми",
+        "pos": "pronoun",
+        "role": "subject"
+      },
+      {
+        "text": "spielen",
+        "translation": "граємо",
+        "pos": "verb",
+        "role": "verb"
+      },
+      {
+        "text": "morgens",
+        "translation": "вранці",
+        "pos": "adverb",
+        "role": "time"
+      },
+      {
+        "text": "Karten",
+        "translation": "карти",
+        "pos": "noun",
+        "role": "object"
+      },
+      {
+        "text": "im Wohnzimmer",
+        "translation": "у вітальні",
+        "pos": "adverb",
+        "role": "place"
+      }
+    ]
   }
 ]

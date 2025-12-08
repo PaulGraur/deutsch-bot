@@ -47,6 +47,8 @@ export interface SessionData {
   posFilter?: string | null;
   currentSentenceId?: string | null;
   assembledIndexes?: number[];
+  articleRepeatMode?: boolean;
+  currentArticleWord?: Word & { article?: string; noun?: string };
 }
 
 export type BotContext = Context & SessionFlavor<SessionData>;
