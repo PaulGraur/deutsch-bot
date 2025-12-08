@@ -237,5 +237,47 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Модальні дієслова",
+    "rules": [
+      {
+        "title": "Список основних модальних дієслів",
+        "content": "Модальні дієслова в німецькій: können, müssen, dürfen, sollen, wollen, mögen. Використовуються для вираження можливості, необхідності, дозволу, бажання або обов'язку.",
+        "examples": [
+          "Ich kann Deutsch sprechen. – Я можу говорити німецькою.",
+          "Du musst lernen. – Ти повинен вчитися.",
+          "Wir dürfen hier parken. – Нам дозволено паркуватися тут."
+        ]
+      },
+      {
+        "title": "Форма та порядок слів",
+        "content": "Модальні дієслова стоять у другій позиції в реченні, інше дієслово ставиться в інфінітив у кінці речення.",
+        "examples": [
+          "Er will ins Kino gehen. – Він хоче піти в кіно.",
+          "Ich soll das Buch lesen. – Я повинен прочитати цю книгу."
+        ]
+      },
+      {
+        "title": "Запитання з модальними дієсловами",
+        "content": "У запитаннях модальне дієслово стає на перше місце, основне дієслово залишається в інфінітиві в кінці.",
+        "examples": [
+          "Kannst du mir helfen? – Ти можеш мені допомогти?",
+          "Müssen wir jetzt gehen? – Нам потрібно йти зараз?"
+        ]
+      },
+      {
+        "title": "Відмінювання модальних дієслів (Präsens)",
+        "content": "Тут наведено відмінювання основних модальних дієслів у теперішньому часі:",
+        "examples": [
+          "können – ich kann, du kannst, er/sie/es kann, wir können, ihr könnt, sie/Sie können",
+          "müssen – ich muss, du musst, er/sie/es muss, wir müssen, ihr müsst, sie/Sie müssen",
+          "dürfen – ich darf, du darfst, er/sie/es darf, wir dürfen, ihr dürft, sie/Sie dürfen",
+          "sollen – ich soll, du sollst, er/sie/es soll, wir sollen, ihr sollt, sie/Sie sollen",
+          "wollen – ich will, du willst, er/sie/es will, wir wollen, ihr wollt, sie/Sie wollen",
+          "mögen – ich mag, du magst, er/sie/es mag, wir mögen, ihr mögt, sie/Sie mögen"
+        ]
+      }
+    ]
   }
 ]
