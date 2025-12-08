@@ -82,6 +82,7 @@ export function sentenceCommand(bot: Bot<BotContext>) {
 
   bot.callbackQuery(/sentence:structure:(.+)/, async (ctx) => {
     const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+    if (!sentenceId) return;
     const s = loadSentences().find((x) => x.id === sentenceId);
     if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
 
@@ -93,42 +94,6 @@ export function sentenceCommand(bot: Bot<BotContext>) {
 
     const keyboard = new InlineKeyboard()
       .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
-      .row()
-      .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
-      .row()
-      .text("🏠 Головне меню", "mainMenu");
-
-    await ctx.editMessageText(txt, { reply_markup: keyboard });
-    await ctx.answerCallbackQuery();
-  });
-
-  bot.callbackQuery(/sentence:hard:(.+)/, async (ctx) => {
-    const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
-    const s = loadSentences().find((x) => x.id === sentenceId);
-    if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
-
-    const hardest = s.words
-      .slice()
-      .sort((a, b) => (b.difficulty || 0) - (a.difficulty || 0))[0];
-    if (!hardest) return ctx.answerCallbackQuery({ text: "Слів немає" });
-
-    const txt = [
-      `🎯 Найскладніше слово: ${hardest.text}`,
-      `Переклад: ${hardest.translation}`,
-      hardest.pos ? `Частина мови: ${hardest.pos}` : "",
-      hardest.case ? `Падіж: ${hardest.case}` : "",
-      hardest.role ? `Роль: ${hardest.role}` : "",
-      hardest.difficulty !== undefined
-        ? `Складність: ${hardest.difficulty}`
-        : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    const keyboard = new InlineKeyboard()
-      .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
-      .row()
-      .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
       .row()
       .text("🏠 Головне меню", "mainMenu");
 
@@ -215,7 +180,11 @@ async function sendRandomSentence(ctx: BotContext) {
   await showSentence(ctx, id);
 }
 
-async function showSentence(ctx: BotContext, sentenceId: string) {
+async function showSentence(
+  ctx: BotContext,
+  sentenceId: string,
+  hideOther = false
+) {
   const sentences = loadSentences();
   const s = sentences.find((x) => x.id === sentenceId);
   if (!s) return ctx.reply("❌ Речення не знайдено.");
@@ -226,23 +195,22 @@ async function showSentence(ctx: BotContext, sentenceId: string) {
   const keyboard = new InlineKeyboard();
 
   const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
-
   shuffledWords.forEach((w) => {
     keyboard
       .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
       .row();
   });
 
-  // Кнопки у перегляді речення без режимів "assemble" і "structure"
+  keyboard.row().text("🧩 Зібрати речення", `sentence:assemble:${sentenceId}`);
   keyboard
     .row()
-    .text("🧩 Зібрати речення", `sentence:assemble:${sentenceId}`)
-    .row()
-    .text("🧭 Показати структуру", `sentence:structure:${sentenceId}`)
-    .row()
-    .text("♻️ Інше речення", `sentence:other:${sentenceId}`) // показуємо тільки тут
-    .row()
-    .text("🏠 Головне меню", "mainMenu");
+    .text("🧭 Показати структуру", `sentence:structure:${sentenceId}`);
+
+  if (!hideOther) {
+    keyboard.row().text("♻️ Інше речення", `sentence:other:${sentenceId}`);
+  }
+
+  keyboard.row().text("🏠 Головне меню", "mainMenu");
 
   const text = [`🇩🇪 ${s.de}`, s.ua ? `🇺🇦 ${s.ua}` : ""]
     .filter(Boolean)
@@ -277,33 +245,13 @@ async function showAssembleView(ctx: BotContext, sentenceId: string) {
     kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
   });
 
-  kb.row()
-    .text("↩️ Видалити останнє", `sentence:assemble_remove:${sentenceId}`)
-    .row()
-    .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
-    .row()
-    .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
-    .row()
-    .text("🏠 Головне меню", "mainMenu");
+  kb.row().text(
+    "↩️ Видалити останнє",
+    `sentence:assemble_remove:${sentenceId}`
+  );
+  kb.row().text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`);
+  kb.row().text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`);
+  kb.row().text("🏠 Головне меню", "mainMenu");
 
   await ctx.editMessageText(`${assembledText}`, { reply_markup: kb });
-}
-
-async function showStructure(ctx: BotContext, sentenceId: string) {
-  const s = loadSentences().find((x) => x.id === sentenceId);
-  if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
-
-  const txt = [
-    `🧩 Структура речення:`,
-    s.structure || "Немає опису структури.",
-    s.rule ? `\n📘 Правило: ${s.rule}` : "",
-  ].join("\n");
-
-  const keyboard = new InlineKeyboard()
-    .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
-    .row()
-    .text("🏠 Головне меню", "mainMenu");
-
-  await ctx.editMessageText(txt, { reply_markup: keyboard });
-  await ctx.answerCallbackQuery();
 }
