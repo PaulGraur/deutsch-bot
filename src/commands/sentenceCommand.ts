@@ -227,19 +227,20 @@ async function showSentence(ctx: BotContext, sentenceId: string) {
 
   const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
 
-  shuffledWords.forEach((w, idx) => {
+  shuffledWords.forEach((w) => {
     keyboard
       .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
       .row();
   });
 
+  // Кнопки у перегляді речення без режимів "assemble" і "structure"
   keyboard
     .row()
     .text("🧩 Зібрати речення", `sentence:assemble:${sentenceId}`)
     .row()
     .text("🧭 Показати структуру", `sentence:structure:${sentenceId}`)
     .row()
-    .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
+    .text("♻️ Інше речення", `sentence:other:${sentenceId}`) // показуємо тільки тут
     .row()
     .text("🏠 Головне меню", "mainMenu");
 
@@ -281,11 +282,28 @@ async function showAssembleView(ctx: BotContext, sentenceId: string) {
     .row()
     .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
     .row()
-    .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
-    .row()
     .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
     .row()
     .text("🏠 Головне меню", "mainMenu");
 
   await ctx.editMessageText(`${assembledText}`, { reply_markup: kb });
+}
+
+async function showStructure(ctx: BotContext, sentenceId: string) {
+  const s = loadSentences().find((x) => x.id === sentenceId);
+  if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
+
+  const txt = [
+    `🧩 Структура речення:`,
+    s.structure || "Немає опису структури.",
+    s.rule ? `\n📘 Правило: ${s.rule}` : "",
+  ].join("\n");
+
+  const keyboard = new InlineKeyboard()
+    .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
+    .row()
+    .text("🏠 Головне меню", "mainMenu");
+
+  await ctx.editMessageText(txt, { reply_markup: keyboard });
+  await ctx.answerCallbackQuery();
 }
