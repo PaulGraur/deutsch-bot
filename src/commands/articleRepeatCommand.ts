@@ -112,6 +112,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } catch {}
   }
 
+  
   function safeAnswer(ctx: BotContext) {
     try {
       if (ctx.callbackQuery) ctx.answerCallbackQuery();
