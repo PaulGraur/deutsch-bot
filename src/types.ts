@@ -48,8 +48,10 @@ export interface SessionData {
   currentSentenceId?: string | null;
   assembledIndexes?: number[];
   articleRepeatMode?: boolean;
-  currentArticleWord?: Word & { article: string; noun: string };
-  articleQueue?: (Word & { article: string; noun: string })[];
+  articleRepeat?: {
+    nouns: Word[];
+    index: number;
+  };
 }
 
 export type BotContext = Context & SessionFlavor<SessionData>;

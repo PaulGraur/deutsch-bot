@@ -53,12 +53,7 @@ function repeatWordsCommand(bot) {
     });
     bot.callbackQuery(/pos:.+/, async (ctx) => {
         const pos = ctx.callbackQuery?.data?.split(":")[1];
-        if (pos === "all") {
-            ctx.session.posFilter = null;
-        }
-        else {
-            ctx.session.posFilter = pos;
-        }
+        ctx.session.posFilter = pos === "all" ? null : pos;
         await ctx.answerCallbackQuery({ text: "✔️ Фільтр застосовано" });
         await ctx.editMessageText("Вибери режим повторення:", {
             reply_markup: new grammy_1.InlineKeyboard()
@@ -123,28 +118,19 @@ async function showNewWord(ctx) {
     }
     const now = Date.now();
     const dueWords = words.filter((w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]);
-    const word = dueWords.length > 0
-        ? dueWords.sort((a, b) => (a.score || 0) - (b.score || 0))[0]
-        : words[Math.floor(Math.random() * words.length)];
+    const wordPool = dueWords.length > 0 ? dueWords : words;
+    const word = wordPool[Math.floor(Math.random() * wordPool.length)];
     ctx.session.currentWord = word;
     ctx.session.attemptsLeft = 2;
     let correctAnswer;
     let wrongOptions;
     if (ctx.session.repeatMode === "de2ua") {
         correctAnswer = word.ua;
-        wrongOptions = words
-            .filter((w) => w.ua !== word.ua)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 3)
-            .map((w) => w.ua);
+        wrongOptions = shuffle(words.filter((w) => w.ua !== word.ua).map((w) => w.ua)).slice(0, 3);
     }
     else {
         correctAnswer = word.de;
-        wrongOptions = words
-            .filter((w) => w.de !== word.de)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 3)
-            .map((w) => w.de);
+        wrongOptions = shuffle(words.filter((w) => w.de !== word.de).map((w) => w.de)).slice(0, 3);
     }
     const options = shuffle([correctAnswer, ...wrongOptions]);
     const keyboard = new grammy_1.InlineKeyboard();
@@ -161,6 +147,11 @@ async function saveWordsProgress(updatedWord) {
         fs_1.default.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
     }
 }
-function shuffle(arr) {
-    return arr.sort(() => Math.random() - 0.5);
+function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
 }

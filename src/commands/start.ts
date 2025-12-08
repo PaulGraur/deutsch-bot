@@ -12,7 +12,7 @@ export function startCommand(bot: Bot<BotContext>) {
   });
 }
 
-async function showMainMenu(ctx: BotContext) {
+export async function showMainMenu(ctx: BotContext) {
   const keyboard = new InlineKeyboard()
     .text("➕ Додати слово", "add")
     .row()

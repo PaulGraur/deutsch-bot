@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startCommand = startCommand;
+exports.showMainMenu = showMainMenu;
 const grammy_1 = require("grammy");
 const mainMenuTexts_js_1 = __importDefault(require("../public/mainMenuTexts.js"));
 function startCommand(bot) {
@@ -24,7 +25,9 @@ async function showMainMenu(ctx) {
         .row()
         .text("🧩 Розбір речень", "sentenceMode")
         .row()
-        .text("📖 Граматика А1–А2", "grammar");
+        .text("📖 Граматика А1–А2", "grammar")
+        .row()
+        .text("📰 Повторити артиклі", "article_repeat");
     const text = mainMenuTexts_js_1.default[Math.floor(Math.random() * mainMenuTexts_js_1.default.length)];
     if (ctx.callbackQuery) {
         const message = ctx.callbackQuery.message;

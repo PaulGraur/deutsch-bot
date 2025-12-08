@@ -1,103 +1,120 @@
 import { Bot, InlineKeyboard } from "grammy";
+import { BotContext, Word } from "../types.js";
 import fs from "fs";
 import path from "path";
-import { BotContext, Word } from "../types.js";
+import { showMainMenu } from "./start.js";
 
-const wordsPath = path.resolve("data/words.json");
-const articles = ["🔵 der", "🔴 die", "🟢 das"];
+const words: Word[] = JSON.parse(
+  fs.readFileSync(path.join("./data/words.json"), "utf-8")
+);
+
+function escapeMarkdownV2(text: string) {
+  return text.replace(/([_*[\]()~`>#+\-=|{}.!])/g, "\\$1");
+}
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
-  bot.command("article_repeat", async (ctx) => {
-    ctx.session.articleRepeatMode = true;
-    ctx.session.articleQueue = generateArticleQueue();
-    await showNewArticleWord(ctx, true);
-  });
+  bot.command("article_repeat", startArticleRepeat);
+  bot.callbackQuery("article_repeat", startArticleRepeat);
 
-  bot.callbackQuery("article_repeat", async (ctx) => {
-    ctx.session.articleRepeatMode = true;
-    if (!ctx.session.articleQueue || ctx.session.articleQueue.length === 0) {
-      ctx.session.articleQueue = generateArticleQueue();
+  bot.callbackQuery(/^article_(der|die|das|mainMenu)$/, async (ctx) => {
+    safeAnswer(ctx);
+
+    const selected = ctx.callbackQuery.data.split("_")[1];
+
+    if (selected === "mainMenu") {
+      ctx.session.articleRepeat = undefined;
+      ctx.session.articleRepeatMode = false;
+      await showMainMenu(ctx);
+      return;
     }
-    await showNewArticleWord(ctx);
-    await ctx.answerCallbackQuery();
-  });
 
-  bot.callbackQuery(/article_answer:.+/, async (ctx) => {
-    const data = ctx.callbackQuery?.data;
-    if (!data || !ctx.session.currentArticleWord) return;
+    const sessionData = ctx.session.articleRepeat;
+    if (!sessionData) return;
 
-    const selectedArticle = data.split(":")[1];
-    const word = ctx.session.currentArticleWord as Word & {
-      article: string;
-      noun: string;
-    };
+    const currentWord = sessionData.nouns[sessionData.index];
+    const correctArticle = currentWord.de.split(" ")[0];
 
-    if (selectedArticle === word.article) {
-      await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
+    if (selected === correctArticle) {
+      sessionData.index = Math.floor(Math.random() * sessionData.nouns.length);
+      await sendArticleQuestion(ctx);
     } else {
-      await ctx.answerCallbackQuery({
-        text: `❌ Неправильно! Правильний артикль: ${word.article}`,
-      });
+      await sendArticleQuestion(ctx, true);
+    }
+  });
+
+  async function startArticleRepeat(ctx: BotContext) {
+    const nouns = words.filter((w) => w.pos === "noun");
+    if (nouns.length === 0) {
+      try {
+        if (ctx.callbackQuery?.message) {
+          await ctx.editMessageText(
+            "Немає іменників для повторення артиклів 😕"
+          );
+        } else {
+          await ctx.reply("Немає іменників для повторення артиклів 😕");
+        }
+      } catch {}
+      return;
     }
 
-    await showNewArticleWord(ctx);
-  });
-}
-
-function generateArticleQueue(): (Word & { article: string; noun: string })[] {
-  const words: (Word & { article: string; noun: string })[] = JSON.parse(
-    fs.readFileSync(wordsPath, "utf-8")
-  )
-    .filter((w: Word) => w.pos === "noun" && w.de.includes(" "))
-    .map((w: Word) => {
-      const [article, ...nounParts] = w.de.split(" ");
-      if (!article || nounParts.length === 0) {
-        throw new Error(`Некоректне слово у словнику: ${w.de}`);
-      }
-      const noun = nounParts.join(" ");
-      const uaClean = w.ua.replace(/[🔴🔵🟢]/g, "").trim();
-      return { ...w, article, noun, ua: uaClean };
-    });
-  return shuffle(words);
-}
-
-async function showNewArticleWord(ctx: BotContext, forceReply = false) {
-  if (!ctx.session.articleQueue || ctx.session.articleQueue.length === 0) {
-    ctx.session.articleQueue = generateArticleQueue();
+    ctx.session.articleRepeatMode = true;
+    ctx.session.articleRepeat = {
+      nouns,
+      index: Math.floor(Math.random() * nouns.length),
+    };
+    await sendArticleQuestion(ctx);
   }
 
-  const word = ctx.session.articleQueue!.shift()!;
-  ctx.session.currentArticleWord = word;
+  async function sendArticleQuestion(ctx: BotContext, retry = false) {
+    const sessionData = ctx.session.articleRepeat!;
+    const word = sessionData.nouns[sessionData.index];
+    const wordWithoutArticle = escapeMarkdownV2(
+      word.de.split(" ").slice(1).join(" ")
+    );
 
-  const keyboard = new InlineKeyboard();
-  const options = shuffle([...articles]);
-  options.forEach((opt) => {
-    const clean = opt.replace(/[🔴🔵🟢]/g, "").trim();
-    keyboard.text(opt, `article_answer:${clean}`).row();
-  });
-  keyboard.row().text("🏠 Головне меню", "mainMenu");
+    const articles = [
+      { text: "🔵 der", value: "der" },
+      { text: "🔴 die", value: "die" },
+      { text: "🟢 das", value: "das" },
+    ];
 
-  const text = `Вибери правильний артикль для:\n\n🇩🇪 ${word.noun}\n🇺🇦 ${word.ua}`;
-  await sendOrEdit(ctx, text, keyboard, forceReply);
-}
+    for (let i = articles.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [articles[i], articles[j]] = [articles[j], articles[i]];
+    }
 
-async function sendOrEdit(
-  ctx: BotContext,
-  text: string,
-  keyboard: InlineKeyboard | null,
-  forceReply = false
-) {
-  if (ctx.callbackQuery && !forceReply) {
+    const keyboard = new InlineKeyboard()
+      .text(articles[0].text, `article_${articles[0].value}`)
+      .text(articles[1].text, `article_${articles[1].value}`)
+      .text(articles[2].text, `article_${articles[2].value}`)
+      .row()
+      .text("🏠 Головне меню", "article_mainMenu");
+
+    const text = retry
+      ? `😥 Спробуй ще раз:  * ${wordWithoutArticle}* \u200B`
+      : `😏 Який артикль для слова:  * ${wordWithoutArticle}*? \u200B`;
+
     try {
-      await ctx.editMessageText(text, { reply_markup: keyboard ?? undefined });
-    } catch {
-      await ctx.reply(text, { reply_markup: keyboard ?? undefined });
-    }
-  } else {
-    await ctx.reply(text, { reply_markup: keyboard ?? undefined });
+      if (ctx.callbackQuery?.message) {
+        const message = ctx.callbackQuery.message;
+        if (message.text !== text) {
+          await ctx.editMessageText(text, {
+            reply_markup: keyboard,
+            parse_mode: "MarkdownV2",
+          });
+        }
+      } else {
+        await ctx.reply(text, {
+          reply_markup: keyboard,
+          parse_mode: "MarkdownV2",
+        });
+      }
+    } catch {}
   }
-}
 
-function shuffle<T>(arr: T[]): T[] {
-  return arr.sort(() => Math.random() - 0.5);
+  function safeAnswer(ctx: BotContext) {
+    try {
+      if (ctx.callbackQuery) ctx.answerCallbackQuery();
+    } catch {}
+  }
 }
