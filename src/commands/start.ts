@@ -23,7 +23,6 @@ async function showMainMenu(ctx: BotContext) {
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
     .text("📖 Граматика А1–А2", "grammar");
-    
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
