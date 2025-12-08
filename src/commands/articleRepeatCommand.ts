@@ -4,7 +4,8 @@ import path from "path";
 import { BotContext, Word } from "../types.js";
 
 const wordsPath = path.resolve("data/words.json");
-const articles = ["der", "die", "das"];
+
+const articles = ["🔵der", "🔴die", "🟢das"];
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", async (ctx) => {
@@ -22,7 +23,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     const data = ctx.callbackQuery?.data;
     if (!data || !ctx.session.currentArticleWord) return;
 
-    const selectedArticle = data.split(":")[1];
+    const selectedArticle = data.split(":")[1].replace(/[🔴🔵🟢]/g, "");
     const word = ctx.session.currentArticleWord as Word & {
       article: string;
       noun: string;
@@ -64,7 +65,7 @@ async function showNewArticleWord(ctx: BotContext, forceReply = false) {
   options.forEach((opt) => keyboard.text(opt, `article_answer:${opt}`).row());
   keyboard.row().text("🏠 Головне меню", "mainMenu");
 
-  const text = `Виберіть правильний артикль для: ${word.noun}\nУкраїнською: ${word.ua}`;
+  const text = `Вибери правильний артикль для:\n\n🇩🇪 ${word.noun}\n🇺🇦 ${word.ua}`;
   await sendOrEdit(ctx, text, keyboard, forceReply);
 }
 
