@@ -9,7 +9,7 @@ const articles = ["der", "die", "das"];
 export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", async (ctx) => {
     ctx.session.articleRepeatMode = true;
-    await showNewArticleWord(ctx);
+    await showNewArticleWord(ctx, true);
   });
 
   bot.callbackQuery("article_repeat", async (ctx) => {
@@ -40,7 +40,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   });
 }
 
-async function showNewArticleWord(ctx: BotContext) {
+async function showNewArticleWord(ctx: BotContext, forceReply = false) {
   const words: (Word & { article?: string; noun?: string })[] = JSON.parse(
     fs.readFileSync(wordsPath, "utf-8")
   )
@@ -53,24 +53,36 @@ async function showNewArticleWord(ctx: BotContext) {
     });
 
   if (!words.length) {
-    return ctx.reply("❌ Немає іменників у словнику.");
+    return sendOrEdit(ctx, "❌ Немає іменників у словнику.", null);
   }
 
   const word = words[Math.floor(Math.random() * words.length)];
   ctx.session.currentArticleWord = word;
 
   const options = shuffle([...articles]);
-
   const keyboard = new InlineKeyboard();
   options.forEach((opt) => keyboard.text(opt, `article_answer:${opt}`).row());
   keyboard.row().text("🏠 Головне меню", "mainMenu");
 
-  await ctx.reply(
-    `Виберіть правильний артикль для: ${word.noun}\nУкраїнською: ${word.ua}`,
-    {
-      reply_markup: keyboard,
+  const text = `Виберіть правильний артикль для: ${word.noun}\nУкраїнською: ${word.ua}`;
+  await sendOrEdit(ctx, text, keyboard, forceReply);
+}
+
+async function sendOrEdit(
+  ctx: BotContext,
+  text: string,
+  keyboard: InlineKeyboard | null,
+  forceReply = false
+) {
+  if (ctx.callbackQuery && !forceReply) {
+    try {
+      await ctx.editMessageText(text, { reply_markup: keyboard ?? undefined });
+    } catch {
+      await ctx.reply(text, { reply_markup: keyboard ?? undefined });
     }
-  );
+  } else {
+    await ctx.reply(text, { reply_markup: keyboard ?? undefined });
+  }
 }
 
 function shuffle<T>(arr: T[]): T[] {
