@@ -20,11 +20,11 @@ export async function showMainMenu(ctx: BotContext) {
     .row()
     .text("🔁 Повторити слова", "repeat")
     .row()
+    .text("📰 Повторити артиклі", "article_repeat")
+    .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
-    .text("📚 Список слів", "listwords")
-    .row()
-    .text("📰 Повторити артиклі", "article_repeat");
+    .text("📚 Список слів", "listwords");
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
