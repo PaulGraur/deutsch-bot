@@ -224,19 +224,22 @@ async function showSentence(ctx: BotContext, sentenceId: string) {
   ctx.session.assembledIndexes = [];
 
   const keyboard = new InlineKeyboard();
-  s.words.forEach((w, idx) => {
-    keyboard.text(w.text, `sentence:word:${sentenceId}:${idx}`).row();
+
+  const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
+
+  shuffledWords.forEach((w, idx) => {
+    keyboard
+      .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
+      .row();
   });
 
   keyboard
-    .row()
-    .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
     .row()
     .text("🧩 Зібрати речення", `sentence:assemble:${sentenceId}`)
     .row()
     .text("🧭 Показати структуру", `sentence:structure:${sentenceId}`)
     .row()
-    .text("🎯 Найскладніше слово", `sentence:hard:${sentenceId}`)
+    .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
     .row()
     .text("🏠 Головне меню", "mainMenu");
 
@@ -264,16 +267,21 @@ async function showAssembleView(ctx: BotContext, sentenceId: string) {
     : "(поки порожньо)";
   assembledText = `🔷 Зібране: ${assembledText}\n\nНатисни слова, щоб додати в кінець:`;
 
-  s.words.forEach((w, idx) => {
-    if (!used.has(idx)) {
-      kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
-    }
+  const remainingWords = s.words
+    .map((w, idx) => ({ w, idx }))
+    .filter(({ idx }) => !used.has(idx))
+    .sort(() => Math.random() - 0.5);
+
+  remainingWords.forEach(({ w, idx }) => {
+    kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
   });
 
   kb.row()
     .text("↩️ Видалити останнє", `sentence:assemble_remove:${sentenceId}`)
     .row()
     .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
+    .row()
+    .text("♻️ Інше речення", `sentence:other:${sentenceId}`)
     .row()
     .text("🔙 Повернутись до речення", `sentence:show:${sentenceId}`)
     .row()
