@@ -8,7 +8,6 @@ import { addWordCommand } from "./commands/addWord.js";
 import { repeatWordsCommand } from "./commands/repeatWords.js";
 import { listWordsCommand } from "./commands/listWords.js";
 import { sentenceCommand } from "./commands/sentenceCommand.js";
-import { fillCommand } from "./commands/fillCommand.js";
 
 import { articleRepeatCommand } from "./commands/articleRepeatCommand.js";
 
@@ -28,5 +27,4 @@ addWordCommand(bot);
 repeatWordsCommand(bot);
 listWordsCommand(bot);
 sentenceCommand(bot);
-fillCommand(bot);
 articleRepeatCommand(bot);

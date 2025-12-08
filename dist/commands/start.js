@@ -17,17 +17,19 @@ function startCommand(bot) {
 }
 async function showMainMenu(ctx) {
     const keyboard = new grammy_1.InlineKeyboard()
+        .text("📖 Граматика А1–А2", "grammar")
+        .row()
         .text("➕ Додати слово", "add")
         .row()
         .text("🔁 Повторити слова", "repeat")
         .row()
-        .text("📚 Список слів", "listwords")
+        .text("📰 Повторити артиклі", "article_repeat")
         .row()
         .text("🧩 Розбір речень", "sentenceMode")
         .row()
-        .text("📖 Граматика А1–А2", "grammar")
+        .text("📝 Заповни пропуск", "fill")
         .row()
-        .text("📰 Повторити артиклі", "article_repeat");
+        .text("📚 Список слів", "listwords");
     const text = mainMenuTexts_js_1.default[Math.floor(Math.random() * mainMenuTexts_js_1.default.length)];
     if (ctx.callbackQuery) {
         const message = ctx.callbackQuery.message;

@@ -67,10 +67,6 @@ function articleRepeatCommand(bot) {
             { text: "🔴 die", value: "die" },
             { text: "🟢 das", value: "das" },
         ];
-        for (let i = articles.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [articles[i], articles[j]] = [articles[j], articles[i]];
-        }
         const keyboard = new grammy_1.InlineKeyboard()
             .text(articles[0].text, `article_${articles[0].value}`)
             .text(articles[1].text, `article_${articles[1].value}`)
@@ -78,8 +74,8 @@ function articleRepeatCommand(bot) {
             .row()
             .text("🏠 Головне меню", "article_mainMenu");
         const text = retry
-            ? `😥 Спробуй ще раз: ... *${wordWithoutArticle}* \u200B`
-            : `Який артикль для слова: ... *${wordWithoutArticle}*? \u200B`;
+            ? `😥 Спробуй ще раз:  *${wordWithoutArticle}* \u200B`
+            : `😏 Який артикль для слова:  *${wordWithoutArticle}*? \u200B`;
         try {
             if (ctx.callbackQuery?.message) {
                 const message = ctx.callbackQuery.message;
