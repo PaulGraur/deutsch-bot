@@ -52,6 +52,11 @@ export interface SessionData {
     nouns: Word[];
     index: number;
   };
+  fillSession?: {
+    sentenceId: string;
+    missingIndex: number;
+    isArticle?: boolean;
+  };
 }
 
 export type BotContext = Context & SessionFlavor<SessionData>;

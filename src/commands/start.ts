@@ -24,6 +24,8 @@ export async function showMainMenu(ctx: BotContext) {
     .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
+    .text("📝 Заповни пропуск", "fill") 
+    .row()
     .text("📚 Список слів", "listwords");
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
