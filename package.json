@@ -2,11 +2,11 @@
   "name": "deutsch-bot",
   "version": "1.0.0",
   "description": "Telegram bot для вивчення німецьких слів",
-  "main": "dist/bot.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/bot.js",
-    "dev": "ts-node src/bot.ts"
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
   },
   "dependencies": {
     "dotenv": "^16.1.4",

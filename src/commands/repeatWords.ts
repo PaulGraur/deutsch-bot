@@ -57,11 +57,7 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery(/pos:.+/, async (ctx) => {
     const pos = ctx.callbackQuery?.data?.split(":")[1];
 
-    if (pos === "all") {
-      ctx.session.posFilter = null;
-    } else {
-      ctx.session.posFilter = pos;
-    }
+    ctx.session.posFilter = pos === "all" ? null : pos;
 
     await ctx.answerCallbackQuery({ text: "✔️ Фільтр застосовано" });
 
@@ -148,10 +144,8 @@ async function showNewWord(ctx: BotContext) {
     (w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]
   );
 
-  const word =
-    dueWords.length > 0
-      ? dueWords.sort((a, b) => (a.score || 0) - (b.score || 0))[0]
-      : words[Math.floor(Math.random() * words.length)];
+  const wordPool = dueWords.length > 0 ? dueWords : words;
+  const word = wordPool[Math.floor(Math.random() * wordPool.length)];
 
   ctx.session.currentWord = word;
   ctx.session.attemptsLeft = 2;
@@ -161,18 +155,14 @@ async function showNewWord(ctx: BotContext) {
 
   if (ctx.session.repeatMode === "de2ua") {
     correctAnswer = word.ua;
-    wrongOptions = words
-      .filter((w) => w.ua !== word.ua)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-      .map((w) => w.ua);
+    wrongOptions = shuffle(
+      words.filter((w) => w.ua !== word.ua).map((w) => w.ua)
+    ).slice(0, 3);
   } else {
     correctAnswer = word.de;
-    wrongOptions = words
-      .filter((w) => w.de !== word.de)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-      .map((w) => w.de);
+    wrongOptions = shuffle(
+      words.filter((w) => w.de !== word.de).map((w) => w.de)
+    ).slice(0, 3);
   }
 
   const options = shuffle([correctAnswer, ...wrongOptions]);
@@ -203,6 +193,11 @@ async function saveWordsProgress(
   }
 }
 
-function shuffle<T>(arr: T[]): T[] {
-  return arr.sort(() => Math.random() - 0.5);
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
