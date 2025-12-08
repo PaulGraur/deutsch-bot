@@ -14,17 +14,17 @@ export function startCommand(bot: Bot<BotContext>) {
 
 export async function showMainMenu(ctx: BotContext) {
   const keyboard = new InlineKeyboard()
+    .text("📖 Граматика А1–А2", "grammar")
+    .row()
     .text("➕ Додати слово", "add")
     .row()
     .text("🔁 Повторити слова", "repeat")
     .row()
-    .text("📚 Список слів", "listwords")
-    .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
-    .text("📖 Граматика А1–А2", "grammar")
+    .text("📚 Список слів", "listwords")
     .row()
-    .text("📰 Повторити артиклі", "article_repeat"); 
+    .text("📰 Повторити артиклі", "article_repeat");
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
