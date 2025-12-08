@@ -9,7 +9,6 @@ const addWord_js_1 = require("./commands/addWord.js");
 const repeatWords_js_1 = require("./commands/repeatWords.js");
 const listWords_js_1 = require("./commands/listWords.js");
 const sentenceCommand_js_1 = require("./commands/sentenceCommand.js");
-const fillCommand_js_1 = require("./commands/fillCommand.js");
 const articleRepeatCommand_js_1 = require("./commands/articleRepeatCommand.js");
 const token = process.env.BOT_TOKEN;
 if (!token) {
@@ -23,5 +22,4 @@ exports.bot.use((0, grammy_1.session)({ initial: () => ({}) }));
 (0, repeatWords_js_1.repeatWordsCommand)(exports.bot);
 (0, listWords_js_1.listWordsCommand)(exports.bot);
 (0, sentenceCommand_js_1.sentenceCommand)(exports.bot);
-(0, fillCommand_js_1.fillCommand)(exports.bot);
 (0, articleRepeatCommand_js_1.articleRepeatCommand)(exports.bot);
