@@ -101,3 +101,5 @@ async function sendRule(
 
   await safeEdit(ctx, text, keyboard);
 }
+
+//
