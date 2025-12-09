@@ -4,6 +4,7 @@ import { Context } from "grammy";
 export interface GrammarRule {
   title: string;
   content: string;
+  notes: string;
   examples: string[];
 }
 
