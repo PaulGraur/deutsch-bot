@@ -79,3 +79,4 @@ async function sendRule(ctx, topicIndex, ruleIndex) {
         text += `\n\n*Примітки:*\n${rule.notes}`;
     await safeEdit(ctx, text, keyboard);
 }
+//

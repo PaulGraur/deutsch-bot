@@ -52,6 +52,14 @@ export interface SessionData {
   articleRepeat?: {
     nouns: Word[];
     index: number;
+    correctCount: number;
+    wrongCount: number;
+    totalClicks: number;
+    timerEnd: number | null;
+    timerActive: boolean;
+    timerMessageId?: number;
+    timerInterval?: NodeJS.Timeout;
+    timerSelected?: string;
   };
 }
 
