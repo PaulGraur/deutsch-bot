@@ -2,4285 +2,4285 @@
   {
     "de": "um",
     "ua": "навколо, близько до",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "für",
     "ua": "для, за",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "gegen",
     "ua": "проти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "ohne",
     "ua": "без",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "aus",
     "ua": "з, звідки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "zu",
     "ua": "до, занадто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "von",
     "ua": "від, з",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "bei",
     "ua": "у, при, біля",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "seit",
     "ua": "з якогось часу",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "mit",
     "ua": "з",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "mindestens",
     "ua": "принаймні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "selbst / selber",
     "ua": "сам (особисто)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Verbesserung",
     "ua": "🔴 покращення",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wechseln",
     "ua": "міняти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "spazieren",
     "ua": "гуляти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "aufstehen",
     "ua": "вставати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "sechzehn",
     "ua": "шістнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "bleiben",
     "ua": "залишитися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "wehen",
     "ua": "дмухати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "sprechen",
     "ua": "розмовляти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "heißen",
     "ua": "називатися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "lieben",
     "ua": "любити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "zeigen",
     "ua": "показувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "joggen",
     "ua": "бігати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "siebzehn",
     "ua": "сімнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "fliegen",
     "ua": "літати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Mittwoch",
     "ua": "🔵 середа",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Büro",
     "ua": "🟢 офіс",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "hungrig",
     "ua": "голодний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "riechen",
     "ua": "нюхати, пахнути",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "sagen",
     "ua": "казати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "bald",
     "ua": "скоро",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "einige",
     "ua": "деякі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "fleißig",
     "ua": "працьовитий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Welt",
     "ua": "🔴 світ",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "beginnen",
     "ua": "починати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Person",
     "ua": "🔴 особа",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sauer",
     "ua": "кислий, сердитий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Algorithmus",
     "ua": "🔵 алгоритм",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schwer",
     "ua": "важко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "sechzig",
     "ua": "шістдесят",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "der Flug",
     "ua": "🔵 рейс",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "achtzehn",
     "ua": "вісімнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "unter",
     "ua": "під",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "der Himmel",
     "ua": "🔵 небо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "noch",
     "ua": "ще",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "tausend",
     "ua": "тисяча",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "bekommen",
     "ua": "отримувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "wiederholen",
     "ua": "повторювати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "um zu",
     "ua": "щоб",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "weiter",
     "ua": "далі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "wohin",
     "ua": "куди",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "beraten",
     "ua": "консультувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "zweihundert",
     "ua": "двісті",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Plätze",
     "ua": "🔴 місця",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Zeitung",
     "ua": "🔴 газета",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wandern",
     "ua": "мандрувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "also",
     "ua": "таким чином, отже",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Fortschritt",
     "ua": "🔵 прогрес",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "weg",
     "ua": "шлях",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "glauben",
     "ua": "думати, вірити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "wichtig",
     "ua": "важливий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Leben",
     "ua": "🟢 життя",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "singen",
     "ua": "співати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Ort",
     "ua": "🔵 місце",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "verdienen",
     "ua": "заробляти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "kaufen",
     "ua": "купувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "verwenden",
     "ua": "використовувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "zahlen",
     "ua": "платити, рахувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "stoppen",
     "ua": "зупиняти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Haltestelle",
     "ua": "🔴 автобусна зупинка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Altenpfleger",
     "ua": "🔵 доглядальник (за літніми людьми)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "verspätet",
     "ua": "запізнений",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Das ist alles, danke",
     "ua": "Це все, дякую",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich habe Hunger",
     "ua": "Я голодний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Haben Sie noch einen Wunsch?",
     "ua": "У вас є ще якесь побажання?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich möchte sagen",
     "ua": "Я хочу сказати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ist hier frei?",
     "ua": "Тут вільне місце?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich habe Durst",
     "ua": "Я хочу пити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sollen",
     "ua": "повинен",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "dann bis später",
     "ua": "тоді побачимося пізніше",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Was ist los?",
     "ua": "Що відбувається?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wohin fahren Sie?",
     "ua": "Куди ви їдете?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich hätte gern",
     "ua": "я б хотів",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Gute Nacht!",
     "ua": "Надобраніч!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie heißt du?",
     "ua": "Як тебе звати?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie heißen Sie?",
     "ua": "Як вас звати?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich heiße Pavlo",
     "ua": "Мене звати Павло",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie geht es dir?",
     "ua": "Як ти?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie geht's?",
     "ua": "Як ти?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Es geht mi gut",
     "ua": "У мене все добре",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Woher kommst du?",
     "ua": "Звідки ти прибув?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie alt bist du?",
     "ua": "Скільки тобі років?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich bin fünf und zwanzig Jahre alt",
     "ua": "Мені двадцять п'ять років",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Was bist du?",
     "ua": "Чим ти займаєшся?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich bin Softwareentwickler",
     "ua": "Я розробник ПЗ",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Was bist du von Beruf?",
     "ua": "Яка твоя професія?",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich bin Softwareentwickler von Beruf",
     "ua": "Я за професією розробник ПЗ",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich spreche Ukrainisch",
     "ua": "Я розмовляю українською мовою",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kosten",
     "ua": "🔴 витрати, видатки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "nach",
     "ua": "після, до",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "günstig",
     "ua": "вигідни, доступний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "kostenlos",
     "ua": "безкоштовно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "arbeitslos",
     "ua": "безробітні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "normalerweise",
     "ua": "зазвичай",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "jemand",
     "ua": "хтось",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "niemand",
     "ua": "ніхто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "das Geschenk",
     "ua": "🟢 подарунок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Sache",
     "ua": "🔴 річ, предмет, справа",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "dort",
     "ua": "там",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "etwa",
     "ua": "приблизно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "besonders",
     "ua": "особливо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "anders",
     "ua": "інакше, іншим чином",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "zahle bar",
     "ua": "платити готівкою",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "anfängen",
     "ua": "починати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Gute Mahlzeit!",
     "ua": "Смачного!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sich ankleiden",
     "ua": "одягатися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Frühstück machen",
     "ua": "Готувати сніданок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wecken",
     "ua": "будити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "waschen",
     "ua": "прати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Mittagsschlaf machen",
     "ua": "Поспати вдень",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "nähen",
     "ua": "шити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Pferd",
     "ua": "🟢 кінь",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Kaninchen",
     "ua": "🟢 кролик",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Reise",
     "ua": "🔴 поїздка, пдорож",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Bankkaufmann",
     "ua": "🔵 банкір",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Reinigungskraft",
     "ua": "🔴 прибиральник",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Taxifahrer",
     "ua": "🔵 таксист",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Briefträger",
     "ua": "🔵 листоноша",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Koch",
     "ua": "🔵 шеф-кухар",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Köchin",
     "ua": "🔴 кухарка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Baustelle",
     "ua": "🔴 будівельний майданчик",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Werkstatt",
     "ua": "🔴 майстерня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Überweisung",
     "ua": "🔴 переказ (фін. мед. напрямок)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kassa",
     "ua": "🔴 каса",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Formular",
     "ua": "🟢 форма",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "möchten",
     "ua": "хотіти (ввічливе)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Sekretär",
     "ua": "🔵 секретар",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Sekretärin",
     "ua": "🔴 секретарка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Arbeitszeit",
     "ua": "🔴 робочий час",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "anstrengend",
     "ua": "виснажливий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "allein",
     "ua": "сам",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "alleine",
     "ua": "наодинці",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Karriere",
     "ua": "🔴 кар’єра",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "drinnen",
     "ua": "всередині",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Krankenpfleger",
     "ua": "🔵 медбрат",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Krankenpflegerin",
     "ua": "🔴 медсестра",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Krankenschwester",
     "ua": "🔴 медсестра",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kontonummer",
     "ua": "🔴 номер рахунку",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kontoauszug",
     "ua": "🔵 виписка з рахунку",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "dürfen",
     "ua": "могти, мати право, мати дозвіл",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "mögen",
     "ua": "любити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "wollen",
     "ua": "хотіти (вимога)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "können",
     "ua": "могти, вміти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "müssen",
     "ua": "повинен",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Bankverbindung",
     "ua": "🔴 банківські реквізити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Gebühr",
     "ua": "🔴 комісія, плата",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Schichtdienst",
     "ua": "🔵 позмінна робота",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Bankomatkarte",
     "ua": "🔴 банківська картка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zwanzig",
     "ua": "двадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "kochen",
     "ua": "готувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "immer",
     "ua": "завжди",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "öffnen",
     "ua": "відкривати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "trinken",
     "ua": "пити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "schreiben",
     "ua": "писати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "verstehen",
     "ua": "розуміти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "da",
     "ua": "тому що",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "zehn",
     "ua": "десять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "danken",
     "ua": "дякувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "bringen",
     "ua": "принести",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "probieren",
     "ua": "спробувати, перевірити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "essen",
     "ua": "їсти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "unterschreiben",
     "ua": "підписувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "telefonieren",
     "ua": "зробити телефонний дзвінок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "stattfinden",
     "ua": "відбуватися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "werden",
     "ua": "ставати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "spielen",
     "ua": "грати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "schlafen",
     "ua": "спати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "fragen",
     "ua": "запитувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "überweisen",
     "ua": "переказувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "dreißig",
     "ua": "тридцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "suchen",
     "ua": "шукати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "frühstücken",
     "ua": "снідати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "arbeiten",
     "ua": "працювати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "antworten (auf)",
     "ua": "відповідати (на)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schmecken",
     "ua": "смакувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "einsteigen",
     "ua": "входити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "stehen",
     "ua": "стояти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "regnen",
     "ua": "дощити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "fallen",
     "ua": "падати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "sehen",
     "ua": "бачити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "fernsehen",
     "ua": "дивитись телевізор",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "holen",
     "ua": "приносити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "brauchen",
     "ua": "потребувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "vier",
     "ua": "чотири",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "ausfallen",
     "ua": "випадати, скасувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "versuchen",
     "ua": "спробувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "verkaufen",
     "ua": "продавати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "kennen",
     "ua": "знати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "praktizieren",
     "ua": "практикувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Koffer",
     "ua": "🔵 валіза",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "geben",
     "ua": "давати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Getränk",
     "ua": "🟢 напій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schneiden",
     "ua": "різати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "es geben",
     "ua": "існувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zwölf",
     "ua": "дванадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "fünf",
     "ua": "п'ять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "scheinen",
     "ua": "світити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "steigen",
     "ua": "підніматися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "schauen",
     "ua": "дивитися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "haben",
     "ua": "мати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "besuchen",
     "ua": "відвідувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "lachen",
     "ua": "сміятися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "helfen",
     "ua": "допомагати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "acht",
     "ua": "вісім",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "dauern",
     "ua": "тривати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "kontrollieren",
     "ua": "контролювати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "schließen",
     "ua": "закривати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "hassen",
     "ua": "ненавидіти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "reisen",
     "ua": "подорожувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "vergessen",
     "ua": "забути",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "tun",
     "ua": "робити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "aufhören",
     "ua": "перестати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Bordkarte",
     "ua": "🔴 посадковий талон",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "mitnehmen",
     "ua": "взяти з собою",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Zeit",
     "ua": "🔴 час",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zwischen",
     "ua": "між",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "das Fleisch",
     "ua": "🟢 м'ясо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "anfangen",
     "ua": "починати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Schlaf",
     "ua": "🔵 сон",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wissen",
     "ua": "знати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "sechs",
     "ua": "шість",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "in Echtzeit",
     "ua": "в реальному часі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schenken",
     "ua": "дарувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "hören",
     "ua": "чути",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "schneien",
     "ua": "сніжити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "auffordern",
     "ua": "наказувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "etwas",
     "ua": "щось",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Dienstagabend",
     "ua": "🔴 вівторок ввечері",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schwierig",
     "ua": "складний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "schon",
     "ua": "вже",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Bankkaufleute",
     "ua": "банкіри",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "einfach",
     "ua": "легко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "nichts",
     "ua": "нічого",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Leute",
     "ua": "🔴 люди",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kontext",
     "ua": "🔵 контекст",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Zug",
     "ua": "🔵 поїзд",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schlank",
     "ua": "стрункий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Markt",
     "ua": "🔵 ринок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kartoffel",
     "ua": "🔴 картопля",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Termin",
     "ua": "🔵 зустріч, призначення",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Reis",
     "ua": "🔵 рис",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "leise",
     "ua": "тихий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Flughafen",
     "ua": "🔵 аеропорт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Flugnummer",
     "ua": "🔴 номер рейсу",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "bedienen",
     "ua": "обслуговувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Bank",
     "ua": "🔴 банк",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Freund",
     "ua": "🔵 друг",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "dir",
     "ua": "тобі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "als",
     "ua": "як",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "in der Nacht",
     "ua": "вночі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ihr",
     "ua": "Ви",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "der Sonntag",
     "ua": "🔵 неділя",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Kilo",
     "ua": "🟢 кілограм",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Speisekarte",
     "ua": "🔴 меню",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "was",
     "ua": "що",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "manchmal",
     "ua": "іноді",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Frühstück",
     "ua": "🟢 сніданок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "langweilig",
     "ua": "нудно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Oma",
     "ua": "🔴 бабуся",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "hoi",
     "ua": "Ого!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Schnitzel",
     "ua": "🟢 шніцель",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "ansonsten",
     "ua": "інакше",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Universität",
     "ua": "🔴 університет",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wie viel",
     "ua": "Скільки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Sofa",
     "ua": "🟢 диван",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "violett",
     "ua": "фіолетовий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Tür",
     "ua": "🔴 двері",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Bis bald",
     "ua": "До зустрічі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "nie",
     "ua": "ніколи",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Geschäft",
     "ua": "🟢 магазин",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zur",
     "ua": "до",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "langsam",
     "ua": "повільно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Spaghetti",
     "ua": "🔴 спагетті",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Dollar",
     "ua": "🔵 долар",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Entschuldigung!",
     "ua": "Вибачте!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Geld",
     "ua": "🟢 гроші",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Gewitter",
     "ua": "🟢 гроза",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "deine",
     "ua": "твоя",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "für mich",
     "ua": "для мене",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "richtig",
     "ua": "правильно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Fleischhauerei",
     "ua": "🔴 м'ясна лавка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Vielen Dank",
     "ua": "Дуже дякую",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kollege",
     "ua": "🔵 колега",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "junge",
     "ua": "молодий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "meine",
     "ua": "мій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "sauber",
     "ua": "чистий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "gesund",
     "ua": "здоровий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Mit Karte, bitte",
     "ua": "Оплата карткою, будь ласка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "ins",
     "ua": "в",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Name",
     "ua": "🔵 ім'я",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schnell",
     "ua": "швидко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "nicht",
     "ua": "не",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Fisch",
     "ua": "🔵 риба",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zu laut",
     "ua": "занадто голосно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Er",
     "ua": "Він",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "faul",
     "ua": "ледачий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Lust haben",
     "ua": "мати бажання",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Orange",
     "ua": "🔴 апельсин",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Pizza",
     "ua": "🔴 піца",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "täglich",
     "ua": "щодня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Sackerl",
     "ua": "🟢 пакет",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "weil",
     "ua": "оскільки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Flugzeug",
     "ua": "🟢 літак",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Pommes",
     "ua": "🔴 картопля фрі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Ei",
     "ua": "🟢 яйце",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Sie",
     "ua": "Вона",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "falsch",
     "ua": "неправильно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "wann",
     "ua": "коли",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Krankenhaus",
     "ua": "🟢 лікарня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "so",
     "ua": "таким чином",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Haustiere",
     "ua": "Домашні тварини",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "die Stadt",
     "ua": "🔴 місто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Liter",
     "ua": "🔵 літр",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wo",
     "ua": "де",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Schwester",
     "ua": "🔴 сестра",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Monat",
     "ua": "🔵 місяць",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Durst",
     "ua": "🔵 спрага",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Wind",
     "ua": "🔵 вітер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Hallo!",
     "ua": "Привіт!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "süß",
     "ua": "солодкий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "schade",
     "ua": "шкода",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "am Nachmittag",
     "ua": "у другій половині дня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Bahnhof",
     "ua": "🔵 вокзал",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Krimi",
     "ua": "🔵 детектив",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Samstag",
     "ua": "🔵 субота",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Urlaub",
     "ua": "🔵 відпустка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "am Mittag",
     "ua": "опівдні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Minute",
     "ua": "🔴 хвилина",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kunde",
     "ua": "🔵 клієнт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "hilfe",
     "ua": "допомога",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "soll",
     "ua": "ціль",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Du",
     "ua": "Ти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "das Hotel",
     "ua": "🟢 готель",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich mag",
     "ua": "мені подобається",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kellner",
     "ua": "🔵 офіціант",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "einkaufen",
     "ua": "купувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Auszeit",
     "ua": "🔴 перерва",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Land",
     "ua": "🟢 країна",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kamera",
     "ua": "🔴 камера",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Glas",
     "ua": "🟢 склянка, скло",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Museum",
     "ua": "🟢 музей",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Telefon",
     "ua": "🟢 телефон",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "am Vormittag",
     "ua": "вранці",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Pause",
     "ua": "🔴 перерва",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Tag",
     "ua": "🔵 день",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "am Abend",
     "ua": "ввечері",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "am Morgen",
     "ua": "вранці",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Süßigkeit",
     "ua": "🔴 солодощі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "oder",
     "ua": "або",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "da drüben",
     "ua": "там",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "gelb",
     "ua": "жовтий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Grüß Gott!",
     "ua": "Вітаю вас!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kaffee",
     "ua": "🔵 кава",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Unterricht",
     "ua": "🔵 урок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "in der Früh",
     "ua": "вранці",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "mich",
     "ua": "мене",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "die Mutter",
     "ua": "🔴 мама",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Zucker",
     "ua": "🔵 цукор",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Wein",
     "ua": "🔵 вино",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Saft",
     "ua": "🔵 сік",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Auf Wiedersehen!",
     "ua": "До побачення!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "komme aus",
     "ua": "походять з",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kiste",
     "ua": "🔴 ящик, коробка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Vorschläge",
     "ua": "Пропозиції",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "kreativ",
     "ua": "креативний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Tisch",
     "ua": "🔵 стіл",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "laut",
     "ua": "гучно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "leider",
     "ua": "на жаль",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "billig",
     "ua": "дешевий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "der Radiowecker",
     "ua": "🔵 радіобудильник",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Hand",
     "ua": "🔴 рука",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Viertel vor",
     "ua": "Чверть до",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "rot",
     "ua": "червоний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "viel / viele",
     "ua": "багато / багато",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Das ist",
     "ua": "Це є",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Kein Problem",
     "ua": "Без проблем",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Bild",
     "ua": "🟢 картина, малюнок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Arm",
     "ua": "🔵 рука",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Tee",
     "ua": "🔵 чай",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "spazieren gehen",
     "ua": "йти на прогулянку",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Mitbewohner",
     "ua": "Сусід по кімнаті",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "das Hobby",
     "ua": "🟢 хобі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich",
     "ua": "Я",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "der Plan",
     "ua": "🔵 план",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Regenschauer",
     "ua": "🔵 злива",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Regal",
     "ua": "🟢 полиця",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die U-bahn",
     "ua": "🔴 метро",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das System",
     "ua": "🟢 система",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Brief",
     "ua": "🔵 лист",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Hospital",
     "ua": "🟢 лікарня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Tafel Schokolade",
     "ua": "🔴 плитка шоколаду",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Dose",
     "ua": "🔴 банка, контейнер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Unterrichtsstunden",
     "ua": "🔴 уроки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Möbel",
     "ua": "🔴 меблі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "komisch",
     "ua": "смішно, дивно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Banane",
     "ua": "🔴 банан",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Familie",
     "ua": "🔴 сім'я",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Salat",
     "ua": "🔵 листя салату",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Apfelsaft",
     "ua": "🔵 яблучний сік",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Freunde",
     "ua": "Друзі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "wer",
     "ua": "хто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Hunger",
     "ua": "🔵 голод",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Milch",
     "ua": "🔴 молоко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Schnee",
     "ua": "сніг",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Nummer",
     "ua": "🔴 номер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Birne",
     "ua": "🔴 груша",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "warm",
     "ua": "теплий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "danke",
     "ua": "дякую",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Guten Tag!",
     "ua": "Добрий день!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "heute",
     "ua": "сьогодні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "alles",
     "ua": "все",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Montag",
     "ua": "🔵 понеділок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "voll",
     "ua": "повний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "der Donnerstag",
     "ua": "🔵 четвер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Ausflug",
     "ua": "🔵 екскурсія, поїздка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Bibliothek",
     "ua": "🔴 бібліотека",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Um wie viel Uhr",
     "ua": "О котрій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "ist da",
     "ua": "чи є",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kuchen",
     "ua": "🔵 пиріг",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "neben",
     "ua": "поряд",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Torte",
     "ua": "🔴 торт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Freitag",
     "ua": "🔵 п'ятниця",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "kalt",
     "ua": "холодний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Sonne",
     "ua": "🔴 сонце",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Garten",
     "ua": "🔵 сад",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Baby",
     "ua": "🟢 дитина, немовля",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Pilot",
     "ua": "🔵 пілот",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Projekt",
     "ua": "🟢 проект",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kollegin",
     "ua": "🔴 колега",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Pass",
     "ua": "🔵 паспорт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Wetter",
     "ua": "🟢 погода",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Nebel",
     "ua": "🔵 туман",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "leicht",
     "ua": "легкий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "hier",
     "ua": "тут",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "von Beruf",
     "ua": "за фахом",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "genau",
     "ua": "точно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "wirklich",
     "ua": "справді",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Bier",
     "ua": "🟢 пиво",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Ozean",
     "ua": "🔵 океан",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Temperatur",
     "ua": "🔴 температура",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Manager",
     "ua": "🔵 менеджер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "praktisch",
     "ua": "практичний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Packerl",
     "ua": "🟢 пакунок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "müde",
     "ua": "втомився",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "hell",
     "ua": "яскравий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "leer",
     "ua": "порожній",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Erbse",
     "ua": "🔴 горох",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Frage",
     "ua": "🔴 запитання",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Handy",
     "ua": "🟢 мобільний телефон",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Freut mich",
     "ua": "Приємно познайомитись",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "halb",
     "ua": "половина",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Scheibe",
     "ua": "🔴 слайс, диск",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "selten",
     "ua": "рідко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "auf",
     "ua": "на, в, до",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "das Ticket",
     "ua": "🟢 квиток",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Wochenende",
     "ua": "Вихідні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "Sein",
     "ua": "Бути",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Gemüse",
     "ua": "🟢 овочі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "mitbringen",
     "ua": "принести з собою",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "höflich",
     "ua": "ввічливий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "der Paradeiser",
     "ua": "🔵 помідор",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "weiß",
     "ua": "білий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Internet",
     "ua": "🟢 інтернет",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "anrufen",
     "ua": "телефонувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "spät dran",
     "ua": "запізнюватись",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Gurke",
     "ua": "🔴 огірок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Bus",
     "ua": "🔵 автобус",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Radio",
     "ua": "🟢 радіо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "einkaufen gehen",
     "ua": "іти купувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Bäckerei",
     "ua": "🔴 пекарня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "nur",
     "ua": "тільки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Guten Appetit!",
     "ua": "Смачного!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Schaden",
     "ua": "🔵 шкода, збиток",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Chefin",
     "ua": "🔴 начальниця",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Abendessen",
     "ua": "🟢 вечеря",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "mehr",
     "ua": "більше",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "dann",
     "ua": "потім, тоді",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Tschüss",
     "ua": "До побачення",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "in",
     "ua": "в",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "drei",
     "ua": "три",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Preis",
     "ua": "🔵 ціна",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "später",
     "ua": "пізніше",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "groß",
     "ua": "великий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Ferien",
     "ua": "🔴 канікули",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Essen",
     "ua": "🟢 їжа",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "brav",
     "ua": "слухняний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "mitkommen",
     "ua": "йти з кимось",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Problem",
     "ua": "🟢 проблема",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "warum",
     "ua": "чому",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Regen",
     "ua": "🔵 дощ",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Wort",
     "ua": "🟢 слово",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Sohn",
     "ua": "🔵 син",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Hund",
     "ua": "🔵 собака",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Party",
     "ua": "🔴 вечірка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "ganz",
     "ua": "досить",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "alt",
     "ua": "старий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "windig",
     "ua": "вітряний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "kaputt",
     "ua": "зламаний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Hausaufgabe",
     "ua": "🔴 домашня робота",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "aber",
     "ua": "але",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Film",
     "ua": "🔵 фільм",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "woher",
     "ua": "звідки",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "sehr",
     "ua": "дуже",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Wurst",
     "ua": "🔴 ковбаса",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Viertel nach",
     "ua": "Чверть після",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Computer",
     "ua": "🔵 комп'ютер",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sportlich",
     "ua": "спортивний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "neun",
     "ua": "дев'ять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Stunde",
     "ua": "🔴 година",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kirche",
     "ua": "🔴 церква",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Bankomat",
     "ua": "🔵 банкомат",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "alle",
     "ua": "всі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Käse",
     "ua": "🔵 сир",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "falls",
     "ua": "якщо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "krank",
     "ua": "хворий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "dick",
     "ua": "товстий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Bäcker",
     "ua": "🔵 пекар",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Spital",
     "ua": "🟢 лікарня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Apfel",
     "ua": "🔵 яблуко",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Guten Abend!",
     "ua": "Добрий вечір!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Sport",
     "ua": "🔵 спорт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Imbiss",
     "ua": "🔵 закусочна",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sonnig",
     "ua": "сонячний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "der Arzt",
     "ua": "🔵 лікар",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "mein",
     "ua": "мій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "und",
     "ua": "і",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Woche",
     "ua": "🔴 тиждень",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich weiß",
     "ua": "я знаю",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "stark",
     "ua": "сильний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Komma",
     "ua": "🟢 кома",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Garage",
     "ua": "🔴 гараж",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "gemacht",
     "ua": "зроблено",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "dein",
     "ua": "твій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Café",
     "ua": "🟢 кав'ярня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Bruder",
     "ua": "🔵 брат",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sinken",
     "ua": "падати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die IBAN",
     "ua": "🔴 IBAN (МНБР)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wie",
     "ua": "як",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Grad",
     "ua": "🔵 градус",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "jahre alt",
     "ua": "років",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Wohnung",
     "ua": "🔴 квартира",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Suppe",
     "ua": "🔴 суп",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Butter",
     "ua": "🔴 вершкове масло",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "grillen",
     "ua": "гриль (смажити на грилі)",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Motor",
     "ua": "🔵 двигун",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "spät",
     "ua": "пізно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Mal",
     "ua": "🟢 раз",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Arbeit",
     "ua": "🔴 робота",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "es",
     "ua": "це",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "neunzehn",
     "ua": "дев'ятнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Chef",
     "ua": "🔵 бос",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "auch",
     "ua": "також",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Ausland",
     "ua": "🟢 закордон",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "rechts",
     "ua": "праворуч",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Kundin",
     "ua": "🔴 покупець",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Katze",
     "ua": "🔴 кіт",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Stück",
     "ua": "🟢 частина, фрагмент",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "vierzig",
     "ua": "сорок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "cool",
     "ua": "круто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "bestellen",
     "ua": "замовляти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Vater",
     "ua": "🔵 батько",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Kantine",
     "ua": "🔴 їдальня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Programm",
     "ua": "🟢 програма",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "zusammen",
     "ua": "разом",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "frech",
     "ua": "нахабний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "ausgehen",
     "ua": "виходити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "kommunizieren",
     "ua": "спілкуватися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "dunkel",
     "ua": "темний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Test",
     "ua": "🔵 тест",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "links",
     "ua": "ліворуч",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "elf",
     "ua": "одинадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "zum Beispiel",
     "ua": "наприклад",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Park",
     "ua": "🔵 парк",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "salzig",
     "ua": "солоний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "die Österreich",
     "ua": "🔴 Австрія",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Verkäufer",
     "ua": "🔵 продавець",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "gut",
     "ua": "добре",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Toilette",
     "ua": "🔴 туалет",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "lernen",
     "ua": "вчитися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Beruf",
     "ua": "🔵 професія",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Mittagspause",
     "ua": "🔴 обідня перерва",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Taxi",
     "ua": "🟢 таксі",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Fahrrad",
     "ua": "🟢 велосипед",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "super",
     "ua": "чудово",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Becher",
     "ua": "🔵 чашка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Menschen",
     "ua": "Люди",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "teuer",
     "ua": "дорогий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Antwort",
     "ua": "🔴 відповідь",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "siebzig",
     "ua": "сімдесят",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Restaurant",
     "ua": "🟢 ресторан",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Wasser",
     "ua": "🟢 Вода",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Brot",
     "ua": "🟢 хліб",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "lustig",
     "ua": "весело",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "oft",
     "ua": "часто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Hendl",
     "ua": "🟢 курча",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "vielleicht",
     "ua": "можливо",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "Es klingt gut",
     "ua": "Звучить добре",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Lust",
     "ua": "🔴 бажання",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "malen",
     "ua": "малювати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "hart",
     "ua": "жорсткий, твердий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "leine",
     "ua": "поводок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Jahr",
     "ua": "🟢 рік",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Frau",
     "ua": "🔴 жінка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "jeden Tag",
     "ua": "кожен день",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Blitz",
     "ua": "🔵 блискавка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Aufgabe",
     "ua": "🔴 завдання",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Blut",
     "ua": "🟢 кров",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wegfahren",
     "ua": "від'їжджати, поїхати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "klein",
     "ua": "маленький",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "doch",
     "ua": "справді",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Celsius",
     "ua": "🟢 цельсій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Tochter",
     "ua": "🔴 донька",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Obst",
     "ua": "🟢 фрукти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Tourist",
     "ua": "🔵 турист",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "tanzen",
     "ua": "танцювати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "frisch",
     "ua": "свіжий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "In Bar, bitte",
     "ua": "Готівкою, будь ласка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "blitzen",
     "ua": "блискати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "blau",
     "ua": "синій",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Semmel",
     "ua": "🔴 булочка, хлібчик",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Wörterbuch",
     "ua": "🟢 словник",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "schön",
     "ua": "приємно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "zurück",
     "ua": "назад",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "nan",
     "ua": "нуль",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "fünfzehn",
     "ua": "п'ятнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "satt",
     "ua": "ситий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "interessant",
     "ua": "цікаво",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "braun",
     "ua": "коричневий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Nudeln",
     "ua": "🔴 макарони",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Mensch",
     "ua": "🔵 людина",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Club",
     "ua": "🔵 клуб",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "bitte",
     "ua": "будь ласка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "morgen",
     "ua": "завтра",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Speise",
     "ua": "🔴 страва",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Guck mal!",
     "ua": "Подивись!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Mais",
     "ua": "🔵 кукурудза",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "draußen",
     "ua": "зовні",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "dreiviertel",
     "ua": "три чверті",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "der Erdapfel",
     "ua": "🔵 картопля",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Mehl",
     "ua": "🟢 мука",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "natürlich",
     "ua": "звичайно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "achtzig",
     "ua": "вісімдесят",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "machen",
     "ua": "робити",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "fahren",
     "ua": "їхати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "kommen",
     "ua": "приходити, приїжджати, бути родом",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Guten Morgen!",
     "ua": "Доброго ранку!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Student",
     "ua": "🔵 студент",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "das Zimmer",
     "ua": "🟢 кімната",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "sieben",
     "ua": "сім",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "eins",
     "ua": "один",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "gehen",
     "ua": "іти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "neunzig",
     "ua": "дев'яносто",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "das Team",
     "ua": "🟢 команда",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Beispiel",
     "ua": "Приклад",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "noun"
   },
   {
     "de": "laufen",
     "ua": "бігти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "alles klar",
     "ua": "зрозумів",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "lecker",
     "ua": "смачно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "die Prüfung",
     "ua": "🔴 екзамен",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Bankkauffrau",
     "ua": "🔴 банкірка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "durstig",
     "ua": "спраглий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "jetzt",
     "ua": "зараз",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Mittagessen",
     "ua": "🟢 обід",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Fahrkarte",
     "ua": "🔴 квиток",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "Ich versuche es",
     "ua": "Я намагаюсь",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "finden",
     "ua": "знаходити, вважати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Ach so!",
     "ua": "Зрозуміло!",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Regenbogen",
     "ua": "🔵 веселка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "denken",
     "ua": "думати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "der Dienstag",
     "ua": "🔵 вівторок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Uhr",
     "ua": "🔴 годинник, час",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "gerne",
     "ua": "із задоволенням",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "schwarz",
     "ua": "чорний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "das Eis",
     "ua": "🟢 морозиво",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "die Praxis",
     "ua": "🔴 практика",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Mann",
     "ua": "🔵 чоловік",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "dreizehn",
     "ua": "тринадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Ich finde",
     "ua": "Я вважаю",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "der Kindergarten",
     "ua": "🔵 дитячий садок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "weich",
     "ua": "м'який",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "lesen",
     "ua": "читати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Rechnung",
     "ua": "🔴 рахунок",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "klingeln",
     "ua": "дзвонити, дзвеніти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "über",
     "ua": "про, над",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
+    "createdAt": "2025-12-10T20:18:04.276313Z",
     "pos": "preposition"
   },
   {
     "de": "vierzehn",
     "ua": "чотирнадцять",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "zwei",
     "ua": "два",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "backen",
     "ua": "пекти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "enden",
     "ua": "закінчуватися",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "glücklich",
     "ua": "щасливий",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "fünfzig",
     "ua": "п'ятдесят",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "klingen",
     "ua": "звучати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "nehmen",
     "ua": "брати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "aufräumen",
     "ua": "прибирати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "hundert",
     "ua": "сотня",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   },
   {
     "de": "warten",
     "ua": "чекати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "die Kellnerin",
     "ua": "🔴 офіціантка",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "buchen",
     "ua": "бронювати, замовляти",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "Zeit haben",
     "ua": "Мати час",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "grün",
     "ua": "зелений",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "nebelig",
     "ua": "туманний",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "adjective"
   },
   {
     "de": "reparieren",
     "ua": "ремонтувати",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "verb"
   },
   {
     "de": "das Kino",
     "ua": "🟢 кіно",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "phrase"
   },
   {
     "de": "wir",
     "ua": "ми",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "pronoun"
   },
   {
     "de": "besser",
     "ua": "краще",
-    "createdAt": "2025-12-10T20:13:47.453657Z",
-    "pos": "preposition"
+    "createdAt": "2025-12-10T20:18:04.276313Z",
+    "pos": "other"
   }
 ]
