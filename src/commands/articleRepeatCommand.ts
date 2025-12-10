@@ -19,6 +19,7 @@ type ArticleSession = {
   timerInterval?: NodeJS.Timeout;
   timerSelected?: string;
   messageId?: number;
+  timerMessageId?: number;
 };
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
@@ -60,6 +61,11 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } as ArticleSession;
 
     if (selected !== "none") {
+      const timerMsg = await ctx.reply("⏱ Таймер: завантаження...", {
+        reply_markup: undefined,
+      });
+      ctx.session.articleRepeat.timerMessageId = timerMsg.message_id;
+
       ctx.session.articleRepeat.timerInterval = setInterval(async () => {
         const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
@@ -70,7 +76,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
           await endArticleSession(ctx, s);
           return;
         }
-        await updateSessionMessage(ctx);
+        await updateTimerMessage(ctx);
       }, 1000);
     }
 
@@ -185,25 +191,41 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("🏠 Головне меню", "article_mainMenu");
 
-    let timerText = "";
-    if (sessionData.timerActive && sessionData.timerEnd) {
-      const remainingMs = sessionData.timerEnd - Date.now();
-      const minutesLeft = Math.floor(remainingMs / 60000);
-      const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
-        .toString()
-        .padStart(2, "0");
-      timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}\n\n`;
-    }
-
     const text = retry
-      ? `${timerText}😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
-      : `${timerText}😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
+      ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
+      : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
     try {
       await ctx.api.editMessageText(ctx.chat.id, sessionData.messageId, text, {
         reply_markup: keyboard,
         parse_mode: "HTML",
       });
+    } catch {}
+  }
+
+  async function updateTimerMessage(ctx: BotContext) {
+    const sessionData = ctx.session.articleRepeat as ArticleSession;
+    if (
+      !sessionData ||
+      !ctx.chat ||
+      !sessionData.timerMessageId ||
+      !sessionData.timerActive
+    )
+      return;
+
+    const remainingMs = sessionData.timerEnd! - Date.now();
+    const minutesLeft = Math.floor(remainingMs / 60000);
+    const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
+      .toString()
+      .padStart(2, "0");
+    const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
+
+    try {
+      await ctx.api.editMessageText(
+        ctx.chat.id,
+        sessionData.timerMessageId,
+        timerText
+      );
     } catch {}
   }
 
@@ -253,7 +275,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       } catch {}
     }
 
+    if (ctx.chat && sessionData.timerMessageId) {
+      try {
+        await ctx.api.deleteMessage(ctx.chat.id, sessionData.timerMessageId);
+      } catch {}
+    }
+
     await showMainMenu(ctx, false);
   }
-  
 }
