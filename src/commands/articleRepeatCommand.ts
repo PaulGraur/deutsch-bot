@@ -94,6 +94,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .text("🏠 Головне меню", "global_mainMenu");
 
     const text = "Вибери таймер для вправи:";
+
     try {
       if (ctx.callbackQuery?.message) {
         await ctx.api.editMessageText(
@@ -103,11 +104,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
           { reply_markup: timerKeyboard }
         );
       } else {
-        const msg = await ctx.reply(text, { reply_markup: timerKeyboard });
-        ctx.session.articleRepeatMode = true;
-        ctx.session.articleRepeat = {
-          messageId: msg.message_id,
-        } as ArticleSession;
+        await ctx.reply(text, { reply_markup: timerKeyboard });
       }
     } catch {}
   }
@@ -167,16 +164,10 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   });
 
   async function updateSessionMessage(ctx: BotContext, retry = false) {
-    const sessionData = ctx.session.articleRepeat as ArticleSession;
-    if (
-      !sessionData ||
-      !ctx.chat ||
-      !sessionData.nouns?.length ||
-      !sessionData.messageId
-    )
-      return;
+    const s = ctx.session.articleRepeat as ArticleSession;
+    if (!s || !ctx.chat || !s.nouns?.length) return;
 
-    const word = sessionData.nouns[sessionData.index];
+    const word = s.nouns[s.index];
     const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
     const articles = [
       { text: "🔵 der", value: "der" },
@@ -196,36 +187,33 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
     try {
-      await ctx.api.editMessageText(ctx.chat.id, sessionData.messageId, text, {
+      if (s.messageId) {
+        await ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+      }
+
+      const msg = await ctx.reply(text, {
         reply_markup: keyboard,
         parse_mode: "HTML",
       });
+
+      s.messageId = msg.message_id;
     } catch {}
   }
 
   async function updateTimerMessage(ctx: BotContext) {
-    const sessionData = ctx.session.articleRepeat as ArticleSession;
-    if (
-      !sessionData ||
-      !ctx.chat ||
-      !sessionData.timerMessageId ||
-      !sessionData.timerActive
-    )
-      return;
+    const s = ctx.session.articleRepeat as ArticleSession;
+    if (!s || !ctx.chat || !s.timerMessageId || !s.timerActive) return;
 
-    const remainingMs = sessionData.timerEnd! - Date.now();
+    const remainingMs = s.timerEnd! - Date.now();
     const minutesLeft = Math.floor(remainingMs / 60000);
     const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
       .toString()
       .padStart(2, "0");
+
     const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
 
     try {
-      await ctx.api.editMessageText(
-        ctx.chat.id,
-        sessionData.timerMessageId,
-        timerText
-      );
+      await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, timerText);
     } catch {}
   }
 
