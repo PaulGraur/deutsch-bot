@@ -29,7 +29,7 @@ export function startCommand(bot: Bot<BotContext>) {
 
 export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
   const keyboard = new InlineKeyboard()
-    .text("📖 Граматика А1–А2", "grammar")
+    .text("📖 Граматика", "grammar_levels")
     .row()
     .text("➕ Додати слово", "add")
     .row()

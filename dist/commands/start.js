@@ -29,7 +29,7 @@ function startCommand(bot) {
 }
 async function showMainMenu(ctx, createNewMessage = true) {
     const keyboard = new grammy_1.InlineKeyboard()
-        .text("📖 Граматика А1–А2", "grammar")
+        .text("📖 Граматика", "grammar_levels")
         .row()
         .text("➕ Додати слово", "add")
         .row()

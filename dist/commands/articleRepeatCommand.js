@@ -210,7 +210,7 @@ function articleRepeatCommand(bot) {
             }
             catch { }
         }
-        await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Таймер: ${sessionData.timerSelected === "none"
+        await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Час проходження: ${sessionData.timerSelected === "none"
             ? "Без таймера"
             : sessionData.timerSelected + " хв"}\n\n✅ <b>Правильно:</b> ${sessionData.correctCount}  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${sessionData.totalClicks}`, { parse_mode: "HTML" });
         ctx.session.articleRepeat = undefined;

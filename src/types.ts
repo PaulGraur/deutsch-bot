@@ -9,6 +9,7 @@ export interface GrammarRule {
 }
 
 export interface GrammarTopic {
+  level: string;
   name: string;
   rules: GrammarRule[];
 }
