@@ -9,8 +9,8 @@ function loadSentences(): Sentence[] {
   try {
     const raw = fs.readFileSync(sentencesPath, "utf-8");
     return JSON.parse(raw) as Sentence[];
-  } catch (e) {
-    console.error("Cannot load sentences:", e);
+  } catch (err: unknown) {
+    console.error("Cannot load sentences:", (err as Error).message || err);
     return [];
   }
 }
@@ -22,263 +22,315 @@ function randomSentenceId(sentences: Sentence[], excludeId?: string | null) {
 }
 
 export function sentenceCommand(bot: Bot<BotContext>) {
-  bot.command("sentence", async (ctx) => {
-    await sendRandomSentence(ctx);
-  });
+  bot.command("sentence", async (ctx) => safeSendRandomSentence(ctx));
 
-  bot.callbackQuery("sentenceMode", async (ctx) => {
-    await sendRandomSentence(ctx);
-    await ctx.answerCallbackQuery();
-  });
+  bot.callbackQuery("sentenceMode", async (ctx) => safeSendRandomSentence(ctx));
 
   bot.callbackQuery(/sentence:other:(.+)/, async (ctx) => {
-    const sentences = loadSentences();
-    const curId = ctx.callbackQuery?.data?.split(":")[2] ?? null;
-    const nextId = randomSentenceId(sentences, curId);
-    if (!nextId) return ctx.answerCallbackQuery({ text: "Немає речень." });
-    await showSentence(ctx, nextId);
-    await ctx.answerCallbackQuery();
+    try {
+      const sentences = loadSentences();
+      const curId = ctx.callbackQuery?.data?.split(":")[2] ?? null;
+      const nextId = randomSentenceId(sentences, curId);
+      if (!nextId)
+        return await ctx.answerCallbackQuery({ text: "Немає речень." });
+      await safeShowSentence(ctx, nextId);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:other callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:show:(.+)/, async (ctx) => {
-    const id = ctx.callbackQuery?.data?.split(":")[2];
-    if (!id) return;
-    await showSentence(ctx, id);
-    await ctx.answerCallbackQuery();
+    try {
+      const id = ctx.callbackQuery?.data?.split(":")[2];
+      if (!id) return;
+      await safeShowSentence(ctx, id);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:show callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:word:(.+):(\d+)/, async (ctx) => {
-    const parts = (ctx.callbackQuery?.data ?? "").split(":");
-    const sentenceId = parts[2];
-    const index = Number(parts[3]);
-    if (!sentenceId || isNaN(index)) return;
+    try {
+      const parts = (ctx.callbackQuery?.data ?? "").split(":");
+      const sentenceId = parts[2];
+      const index = Number(parts[3]);
+      if (!sentenceId || isNaN(index)) return;
 
-    const sentences = loadSentences();
-    const s = sentences.find((x) => x.id === sentenceId);
-    if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
+      const sentences = loadSentences();
+      const s = sentences.find((x) => x.id === sentenceId);
+      if (!s)
+        return await ctx.answerCallbackQuery({ text: "Речення не знайдено" });
 
-    const w = s.words[index];
-    if (!w) return ctx.answerCallbackQuery({ text: "Слово не знайдено" });
+      const w = s.words[index];
+      if (!w)
+        return await ctx.answerCallbackQuery({ text: "Слово не знайдено" });
 
-    const txt = [
-      `🔹 *${w.text}*`,
-      "",
-      `🇺🇦 *Переклад:* ${w.translation}`,
-      w.pos ? `📌 *Частина мови:* ${w.pos}` : "",
-      w.case ? `📘 *Відмінок:* ${w.case}` : "",
-      w.gender ? `⚥ *Рід:* ${w.gender}` : "",
-      w.number ? `🔢 *Число:* ${w.number}` : "",
-      w.role ? `🧠 *Роль у реченні:* ${w.role}` : "",
-      w.difficulty !== undefined ? `🔥 *Складність:* ${w.difficulty}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
+      const txt = [
+        `🔹 *${w.text}*`,
+        "",
+        `🇺🇦 *Переклад:* ${w.translation}`,
+        w.pos ? `📌 *Частина мови:* ${w.pos}` : "",
+        w.case ? `📘 *Відмінок:* ${w.case}` : "",
+        w.gender ? `⚥ *Рід:* ${w.gender}` : "",
+        w.number ? `🔢 *Число:* ${w.number}` : "",
+        w.role ? `🧠 *Роль у реченні:* ${w.role}` : "",
+        w.difficulty !== undefined ? `🔥 *Складність:* ${w.difficulty}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
 
-    const keyboard = new InlineKeyboard()
-      .text("🔙 До речення", `sentence:show:${sentenceId}`)
-      .row()
-      .text("🏠 Меню", "mainMenu");
+      const keyboard = new InlineKeyboard()
+        .text("🔙 До речення", `sentence:show:${sentenceId}`)
+        .row()
+        .text("🏠 Меню", "mainMenu");
 
-    await ctx.editMessageText(txt, {
-      reply_markup: keyboard,
-      parse_mode: "Markdown",
-    });
-    await ctx.answerCallbackQuery();
+      await ctx.editMessageText(txt, {
+        reply_markup: keyboard,
+        parse_mode: "Markdown",
+      });
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:word callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:structure:(.+)/, async (ctx) => {
-    const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
-    if (!sentenceId) return;
+    try {
+      const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+      if (!sentenceId) return;
 
-    const s = loadSentences().find((x) => x.id === sentenceId);
-    if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
+      const s = loadSentences().find((x) => x.id === sentenceId);
+      if (!s)
+        return await ctx.answerCallbackQuery({ text: "Речення не знайдено" });
 
-    const txt = [
-      "🧠 *Структура речення (DE)*",
-      "━━━━━━━━━━━━━━━━━━",
-      "",
-      "🧩 *Схема:*",
-      s.structure || "— Немає опису —",
-      "",
-      s.rule ? ["📘 *Граматичне правило:*", s.rule].join("\n") : "",
-      "",
-      "⚡ *Підказка:*",
-      "Починай з дієслова — в німецькій це вісь речення.",
-    ].join("\n");
+      const txt = [
+        "🧠 *Структура речення (DE)*",
+        "━━━━━━━━━━━━━━━━━━",
+        "",
+        "🧩 *Схема:*",
+        s.structure || "— Немає опису —",
+        "",
+        s.rule ? ["📘 *Граматичне правило:*", s.rule].join("\n") : "",
+        "",
+        "⚡ *Підказка:*",
+        "Починай з дієслова — в німецькій це вісь речення.",
+      ].join("\n");
 
-    const keyboard = new InlineKeyboard()
-      .text("🔙 До речення", `sentence:show:${sentenceId}`)
-      .row()
-      .text("🏠 Меню", "mainMenu");
+      const keyboard = new InlineKeyboard()
+        .text("🔙 До речення", `sentence:show:${sentenceId}`)
+        .row()
+        .text("🏠 Меню", "mainMenu");
 
-    await ctx.editMessageText(txt, {
-      reply_markup: keyboard,
-      parse_mode: "Markdown",
-    });
-
-    await ctx.answerCallbackQuery();
+      await ctx.editMessageText(txt, {
+        reply_markup: keyboard,
+        parse_mode: "Markdown",
+      });
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:structure callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:assemble:(.+)/, async (ctx) => {
-    const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
-    if (!sentenceId) return;
-
-    ctx.session.currentSentenceId = sentenceId;
-    ctx.session.assembledIndexes = [];
-    await showAssembleView(ctx, sentenceId);
-    await ctx.answerCallbackQuery();
+    try {
+      const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+      if (!sentenceId) return;
+      ctx.session.currentSentenceId = sentenceId;
+      ctx.session.assembledIndexes = [];
+      await safeShowAssembleView(ctx, sentenceId);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:assemble callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:assemble_add:(.+):(\d+)/, async (ctx) => {
-    const parts = (ctx.callbackQuery?.data ?? "").split(":");
-    const sentenceId = parts[2];
-    const idx = Number(parts[3]);
-    if (!sentenceId || isNaN(idx)) return;
+    try {
+      const parts = (ctx.callbackQuery?.data ?? "").split(":");
+      const sentenceId = parts[2];
+      const idx = Number(parts[3]);
+      if (!sentenceId || isNaN(idx)) return;
 
-    if (!ctx.session.assembledIndexes) ctx.session.assembledIndexes = [];
-    ctx.session.assembledIndexes.push(idx);
+      if (!ctx.session.assembledIndexes) ctx.session.assembledIndexes = [];
+      ctx.session.assembledIndexes.push(idx);
 
-    await showAssembleView(ctx, sentenceId);
-    await ctx.answerCallbackQuery();
+      await safeShowAssembleView(ctx, sentenceId);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:assemble_add callback failed:",
+        (err as Error).message || err
+      );
+    }
   });
 
   bot.callbackQuery(/sentence:assemble_remove:(.+)/, async (ctx) => {
-    const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
-    if (!sentenceId) return;
-
-    if (ctx.session.assembledIndexes?.length) {
-      ctx.session.assembledIndexes.pop();
+    try {
+      const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+      if (!sentenceId) return;
+      ctx.session.assembledIndexes?.pop();
+      await safeShowAssembleView(ctx, sentenceId);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:assemble_remove callback failed:",
+        (err as Error).message || err
+      );
     }
-
-    await showAssembleView(ctx, sentenceId);
-    await ctx.answerCallbackQuery();
   });
 
   bot.callbackQuery(/sentence:assemble_submit:(.+)/, async (ctx) => {
-    const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
-    const s = loadSentences().find((x) => x.id === sentenceId);
-    if (!s) return ctx.answerCallbackQuery({ text: "Речення не знайдено" });
+    try {
+      const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+      const s = loadSentences().find((x) => x.id === sentenceId);
+      if (!s)
+        return await ctx.answerCallbackQuery({ text: "Речення не знайдено" });
+
+      const assembled = (ctx.session.assembledIndexes || []).map(
+        (i) => s.words[i]?.text || ""
+      );
+      const correct = s.words.map((w) => w.text);
+      const ok =
+        assembled.length === correct.length &&
+        assembled.every((v, i) => v === correct[i]);
+
+      const keyboard = new InlineKeyboard()
+        .text("🔙 До речення", `sentence:show:${sentenceId}`)
+        .row()
+        .text("♻️ Інше", `sentence:other:${sentenceId}`)
+        .row()
+        .text("🏠 Меню", "mainMenu");
+
+      const msg = ok
+        ? `✅ *Вірно!*\n\n🧩 ${assembled.join(" ")}`
+        : `❌ *Помилка!*\n\nТвій варіант:\n${assembled.join(
+            " "
+          )}\n\n✅ Правильно:\n${correct.join(" ")}`;
+
+      await ctx.editMessageText(msg, {
+        reply_markup: keyboard,
+        parse_mode: "Markdown",
+      });
+      ctx.session.assembledIndexes = [];
+      ctx.session.currentSentenceId = null;
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log(
+        "sentence:assemble_submit callback failed:",
+        (err as Error).message || err
+      );
+    }
+  });
+}
+
+async function safeSendRandomSentence(ctx: BotContext) {
+  try {
+    const sentences = loadSentences();
+    if (!sentences.length) return await ctx.reply("❌ Немає речень у базі.");
+
+    const id = randomSentenceId(sentences);
+    if (!id) return await ctx.reply("❌ Немає речень.");
+
+    await safeShowSentence(ctx, id);
+  } catch (err: unknown) {
+    console.log("sendRandomSentence failed:", (err as Error).message || err);
+  }
+}
+
+async function safeShowSentence(ctx: BotContext, sentenceId: string) {
+  try {
+    const sentences = loadSentences();
+    const s = sentences.find((x) => x.id === sentenceId);
+    if (!s) return;
+
+    ctx.session.currentSentenceId = sentenceId;
+    ctx.session.assembledIndexes = [];
+
+    const keyboard = new InlineKeyboard();
+    const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
+
+    shuffledWords.forEach((w) => {
+      keyboard
+        .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
+        .row();
+    });
+
+    keyboard
+      .row()
+      .text("🧩 Зібрати", `sentence:assemble:${sentenceId}`)
+      .text("🧭 Структура", `sentence:structure:${sentenceId}`)
+      .row()
+      .text("♻️ Інше", `sentence:other:${sentenceId}`)
+      .text("🏠 Меню", "mainMenu");
+
+    const text = [`🇩🇪 *${s.de}*`, s.ua ? `🇺🇦 ${s.ua}` : ""]
+      .filter(Boolean)
+      .join("\n");
+
+    await ctx.editMessageText(text, {
+      reply_markup: keyboard,
+      parse_mode: "Markdown",
+    });
+  } catch (err: unknown) {
+    console.log("showSentence failed:", (err as Error).message || err);
+  }
+}
+
+async function safeShowAssembleView(ctx: BotContext, sentenceId: string) {
+  try {
+    const sentences = loadSentences();
+    const s = sentences.find((x) => x.id === sentenceId);
+    if (!s) return;
 
     const assembled = (ctx.session.assembledIndexes || []).map(
       (i) => s.words[i]?.text || ""
     );
-    const correct = s.words.map((w) => w.text);
+    const used = new Set(ctx.session.assembledIndexes || []);
 
-    const ok =
-      assembled.length === correct.length &&
-      assembled.every((v, i) => v === correct[i]);
+    const kb = new InlineKeyboard();
+    const assembledText = assembled.length
+      ? assembled.join(" ")
+      : "— поки порожньо —";
+    const header = `🧩 *Зібране:*\n${assembledText}\n\n⬇️ Обирай слова:`;
 
-    const keyboard = new InlineKeyboard()
+    const remainingWords = s.words
+      .map((w, idx) => ({ w, idx }))
+      .filter(({ idx }) => !used.has(idx))
+      .sort(() => Math.random() - 0.5);
+
+    remainingWords.forEach(({ w, idx }) => {
+      kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
+    });
+
+    kb.row()
+      .text("↩️ Видалити", `sentence:assemble_remove:${sentenceId}`)
+      .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
+      .row()
       .text("🔙 До речення", `sentence:show:${sentenceId}`)
-      .row()
-      .text("♻️ Інше", `sentence:other:${sentenceId}`)
-      .row()
       .text("🏠 Меню", "mainMenu");
 
-    if (ok) {
-      await ctx.editMessageText(`✅ *Вірно!*\n\n🧩 ${assembled.join(" ")}`, {
-        reply_markup: keyboard,
-        parse_mode: "Markdown",
-      });
-    } else {
-      await ctx.editMessageText(
-        `❌ *Помилка!*\n\nТвій варіант:\n${assembled.join(
-          " "
-        )}\n\n✅ Правильно:\n${correct.join(" ")}`,
-        { reply_markup: keyboard, parse_mode: "Markdown" }
-      );
-    }
-
-    ctx.session.assembledIndexes = [];
-    ctx.session.currentSentenceId = null;
-    await ctx.answerCallbackQuery();
-  });
-}
-
-async function sendRandomSentence(ctx: BotContext) {
-  const sentences = loadSentences();
-  if (!sentences.length) return ctx.reply("❌ Немає речень у базі.");
-
-  const id = randomSentenceId(sentences);
-  if (!id) return ctx.reply("❌ Немає речень.");
-
-  await showSentence(ctx, id);
-}
-
-async function showSentence(ctx: BotContext, sentenceId: string) {
-  const sentences = loadSentences();
-  const s = sentences.find((x) => x.id === sentenceId);
-  if (!s) return ctx.reply("❌ Речення не знайдено.");
-
-  ctx.session.currentSentenceId = sentenceId;
-  ctx.session.assembledIndexes = [];
-
-  const keyboard = new InlineKeyboard();
-  const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
-
-  shuffledWords.forEach((w) => {
-    keyboard
-      .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
-      .row();
-  });
-
-  keyboard
-    .row()
-    .text("🧩 Зібрати", `sentence:assemble:${sentenceId}`)
-    .text("🧭 Структура", `sentence:structure:${sentenceId}`);
-
-  keyboard
-    .row()
-    .text("♻️ Інше", `sentence:other:${sentenceId}`)
-    .text("🏠 Меню", "mainMenu");
-
-  const text = [`🇩🇪 *${s.de}*`, s.ua ? `🇺🇦 ${s.ua}` : ""]
-    .filter(Boolean)
-    .join("\n");
-
-  await ctx.editMessageText(text, {
-    reply_markup: keyboard,
-    parse_mode: "Markdown",
-  });
-}
-
-async function showAssembleView(ctx: BotContext, sentenceId: string) {
-  const sentences = loadSentences();
-  const s = sentences.find((x) => x.id === sentenceId);
-  if (!s) return;
-
-  const assembled = (ctx.session.assembledIndexes || []).map(
-    (i) => s.words[i]?.text || ""
-  );
-  const used = new Set(ctx.session.assembledIndexes || []);
-
-  const kb = new InlineKeyboard();
-
-  const assembledText = assembled.length
-    ? assembled.join(" ")
-    : "— поки порожньо —";
-
-  const header = `🧩 *Зібране:*\n${assembledText}\n\n⬇️ Обирай слова:`;
-
-  const remainingWords = s.words
-    .map((w, idx) => ({ w, idx }))
-    .filter(({ idx }) => !used.has(idx))
-    .sort(() => Math.random() - 0.5);
-
-  remainingWords.forEach(({ w, idx }) => {
-    kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
-  });
-
-  kb.row()
-    .text("↩️ Видалити", `sentence:assemble_remove:${sentenceId}`)
-    .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`);
-
-  kb.row()
-    .text("🔙 До речення", `sentence:show:${sentenceId}`)
-    .text("🏠 Меню", "mainMenu");
-
-  await ctx.editMessageText(header, {
-    reply_markup: kb,
-    parse_mode: "Markdown",
-  });
+    await ctx.editMessageText(header, {
+      reply_markup: kb,
+      parse_mode: "Markdown",
+    });
+  } catch (err: unknown) {
+    console.log("showAssembleView failed:", (err as Error).message || err);
+  }
 }

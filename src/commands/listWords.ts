@@ -4,7 +4,6 @@ import fs from "fs";
 import path from "path";
 
 const PAGE_SIZE = 20;
-
 const WORDS_FILE = path.join(process.cwd(), "data", "words.json");
 const allWords: Word[] = JSON.parse(fs.readFileSync(WORDS_FILE, "utf-8"));
 
@@ -13,13 +12,16 @@ export function listWordsCommand(bot: Bot<BotContext>) {
     ctx.session.words = allWords;
     ctx.session.posFilter = null;
 
-    await sendWordPage(ctx, 0);
-    await ctx.answerCallbackQuery();
+    try {
+      await sendWordPage(ctx, 0);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log("listwords callback failed:", (err as Error).message || err);
+    }
   });
 
   bot.callbackQuery(/listfilter:(.+)/, async (ctx) => {
     const filter = ctx.match[1];
-
     if (filter === "all") {
       ctx.session.posFilter = null;
       ctx.session.words = allWords;
@@ -28,16 +30,24 @@ export function listWordsCommand(bot: Bot<BotContext>) {
       ctx.session.words = allWords.filter((w) => w.pos === filter);
     }
 
-    await sendWordPage(ctx, 0);
-    await ctx.answerCallbackQuery();
+    try {
+      await sendWordPage(ctx, 0);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log("listfilter callback failed:", (err as Error).message || err);
+    }
   });
 
   bot.callbackQuery(/listwords_(\d+)/, async (ctx) => {
     const page = parseInt(ctx.match[1]);
     if (!ctx.session.words) ctx.session.words = allWords;
 
-    await sendWordPage(ctx, page);
-    await ctx.answerCallbackQuery();
+    try {
+      await sendWordPage(ctx, page);
+      await ctx.answerCallbackQuery();
+    } catch (err: unknown) {
+      console.log("pagination callback failed:", (err as Error).message || err);
+    }
   });
 }
 
@@ -46,24 +56,20 @@ async function sendWordPage(ctx: BotContext, page: number) {
   const start = page * PAGE_SIZE;
   const end = start + PAGE_SIZE;
   const pageWords = sessionWords.slice(start, end);
-
   const currentFilter = ctx.session.posFilter ?? "all";
 
   let header =
     currentFilter === "all"
       ? "📚 Всі слова"
       : `📚 ${translatePosToLabel(currentFilter)}`;
-
   let text = `${header}\n${start + 1}-${Math.min(end, sessionWords.length)} з ${
     sessionWords.length
   }:\n\n`;
-
   text += pageWords
     .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
     .join("\n");
 
   const keyboard = new InlineKeyboard();
-
   keyboard
     .text("📘 Іменники", "listfilter:noun")
     .text("⚡ Дієслова", "listfilter:verb")
@@ -79,23 +85,28 @@ async function sendWordPage(ctx: BotContext, page: number) {
   if (page > 0) keyboard.text("⬅️", `listwords_${page - 1}`);
   if (end < sessionWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
   if (page > 0 || end < sessionWords.length) keyboard.row();
-
   keyboard.text("🏠 Головне меню", "mainMenu");
 
-  if (ctx.callbackQuery?.message) {
-    try {
-      await ctx.editMessageText(text, { reply_markup: keyboard });
-    } catch (err) {
-      const chunks = chunkArray(pageWords, 10);
-      for (const chunk of chunks) {
-        const chunkText = chunk
-          .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
-          .join("\n");
-        await ctx.reply(chunkText);
+  try {
+    if (ctx.callbackQuery?.message) {
+      try {
+        await ctx.editMessageText(text, { reply_markup: keyboard });
+      } catch (err: unknown) {
+        const chunks = chunkArray(pageWords, 10);
+        for (const chunk of chunks) {
+          const chunkText = chunk
+            .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
+            .join("\n");
+          try {
+            await ctx.reply(chunkText);
+          } catch {}
+        }
       }
+    } else {
+      await ctx.reply(text, { reply_markup: keyboard });
     }
-  } else {
-    await ctx.reply(text, { reply_markup: keyboard });
+  } catch (err: unknown) {
+    console.log("sendWordPage failed:", (err as Error).message || err);
   }
 }
 

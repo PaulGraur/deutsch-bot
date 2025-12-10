@@ -10,10 +10,22 @@ export function addWordCommand(bot: Bot<BotContext>) {
     const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
 
     if (ctx.callbackQuery) {
-      await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
-        reply_markup: keyboard,
-      });
-      await ctx.answerCallbackQuery();
+      try {
+        await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
+          reply_markup: keyboard,
+        });
+      } catch (err: unknown) {
+        console.log("editMessageText skipped:", (err as Error).message || err);
+      }
+
+      try {
+        await ctx.answerCallbackQuery();
+      } catch (err: unknown) {
+        console.log(
+          "answerCallbackQuery skipped:",
+          (err as Error).message || err
+        );
+      }
     }
   });
 
@@ -23,20 +35,34 @@ export function addWordCommand(bot: Bot<BotContext>) {
 
     const [de, ua] = text.split("-").map((s) => s.trim());
     if (!de || !ua) {
-      return ctx.reply("Невірний формат. Приклад:\nHaus - дім");
+      try {
+        await ctx.reply("Невірний формат. Приклад:\nHaus - дім");
+      } catch (err: unknown) {
+        console.log("reply skipped:", (err as Error).message || err);
+      }
+      return;
     }
 
     let words: Word[] = [];
     if (fs.existsSync(wordsPath)) {
       try {
         words = JSON.parse(fs.readFileSync(wordsPath, "utf-8"));
-      } catch {}
+      } catch (err: unknown) {
+        console.log(
+          "Failed to read words.json:",
+          (err as Error).message || err
+        );
+      }
     }
 
     words.push({ de, ua, createdAt: new Date().toISOString() });
 
-    fs.mkdirSync(path.dirname(wordsPath), { recursive: true });
-    fs.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
+    try {
+      fs.mkdirSync(path.dirname(wordsPath), { recursive: true });
+      fs.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
+    } catch (err: unknown) {
+      console.log("Failed to write words.json:", (err as Error).message || err);
+    }
 
     const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
 
@@ -44,13 +70,18 @@ export function addWordCommand(bot: Bot<BotContext>) {
       await ctx.deleteMessage();
     } catch {}
 
-    const sent = await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
-      reply_markup: keyboard,
-    });
+    let sent = undefined as typeof ctx.message | undefined;
+    try {
+      sent = (await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
+        reply_markup: keyboard,
+      })) as typeof ctx.message;
+    } catch (err: unknown) {
+      console.log("reply sent skipped:", (err as Error).message || err);
+    }
 
     setTimeout(async () => {
       try {
-        await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
+        if (sent) await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
       } catch {}
     }, 5000);
   });
