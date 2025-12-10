@@ -113,30 +113,37 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
+
     const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
     if (!selected) return;
 
     if (selected === "mainmenu") {
-      const sessionData = ctx.session.articleRepeat as ArticleSession;
-      if (sessionData?.timerInterval) clearInterval(sessionData.timerInterval);
+      const s = ctx.session.articleRepeat as ArticleSession;
+
+      if (s?.timerInterval) clearInterval(s.timerInterval);
+
+      if (ctx.chat && s?.timerMessageId) {
+        try {
+          await ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
+        } catch {}
+      }
+
+      if (ctx.chat && s?.messageId) {
+        try {
+          await ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+        } catch {}
+      }
+
       ctx.session.articleRepeat = undefined;
       ctx.session.articleRepeatMode = false;
-      if (ctx.callbackQuery?.message) {
-        await ctx.api.editMessageText(
-          ctx.chat!.id,
-          ctx.callbackQuery.message.message_id,
-          "🏠 Головне меню",
-          { reply_markup: undefined }
-        );
-        await showMainMenu(ctx, false);
-      } else {
-        await showMainMenu(ctx, false);
-      }
+
+      await showMainMenu(ctx, false);
       return;
     }
 
     const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData) return;
+
     sessionData.totalClicks++;
 
     if (
