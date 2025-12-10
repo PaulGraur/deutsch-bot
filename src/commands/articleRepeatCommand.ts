@@ -194,16 +194,18 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
     try {
-      if (s.messageId) {
-        await ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+      if (!s.messageId) {
+        const msg = await ctx.reply(text, {
+          reply_markup: keyboard,
+          parse_mode: "HTML",
+        });
+        s.messageId = msg.message_id;
+      } else {
+        await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+          reply_markup: keyboard,
+          parse_mode: "HTML",
+        });
       }
-
-      const msg = await ctx.reply(text, {
-        reply_markup: keyboard,
-        parse_mode: "HTML",
-      });
-
-      s.messageId = msg.message_id;
     } catch {}
   }
 
