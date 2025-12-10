@@ -58,15 +58,21 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     const session = ctx.session.articleRepeat as ArticleSession;
 
-    if (selected !== "none" && ctx.chat) {
+    const startTime = Date.now();
+    if (selected !== "none") {
       const minutes = parseInt(selected);
-      const startTime = Date.now();
       session.timerActive = true;
       session.timerEnd = startTime + minutes * 60 * 1000;
-      await updateSessionMessage(ctx);
+    }
+
+    // Відправляємо одне повідомлення, яке редагуватиметься
+    await updateSessionMessage(ctx);
+
+    if (session.timerActive) {
       session.timerInterval = setInterval(async () => {
         const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
+
         const remainingMs = s.timerEnd! - Date.now();
         if (remainingMs <= 0) {
           clearInterval(s.timerInterval);
@@ -74,10 +80,9 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
           await endArticleSession(ctx, s);
           return;
         }
+
         await updateSessionMessage(ctx);
       }, 1000);
-    } else {
-      await updateSessionMessage(ctx);
     }
   });
 
@@ -90,6 +95,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .text("Без таймера", "timer_none")
       .row()
       .text("🏠 Головне меню", "global_mainMenu");
+
     const text = "Вибери таймер для вправи:";
     try {
       if (ctx.callbackQuery?.message) {
