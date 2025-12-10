@@ -39,17 +39,13 @@ function articleRepeatCommand(bot) {
             correctCount: 0,
             wrongCount: 0,
             totalClicks: 0,
-            timerActive: false,
-            timerEnd: null,
+            timerActive: selected !== "none",
+            timerEnd: selected !== "none" ? Date.now() + parseInt(selected) * 60000 : null,
             timerSelected: selected,
             messageId: msgId,
         };
-        const session = ctx.session.articleRepeat;
         if (selected !== "none") {
-            const minutes = parseInt(selected);
-            session.timerActive = true;
-            session.timerEnd = Date.now() + minutes * 60 * 1000;
-            session.timerInterval = setInterval(async () => {
+            ctx.session.articleRepeat.timerInterval = setInterval(async () => {
                 const s = ctx.session.articleRepeat;
                 if (!s || !ctx.chat || !s.timerActive)
                     return;
@@ -77,11 +73,7 @@ function articleRepeatCommand(bot) {
         const text = "Вибери таймер для вправи:";
         try {
             if (ctx.callbackQuery?.message) {
-                await ctx.editMessageText(text, { reply_markup: timerKeyboard });
-                ctx.session.articleRepeatMode = true;
-                ctx.session.articleRepeat = {
-                    messageId: ctx.callbackQuery.message.message_id,
-                };
+                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, text, { reply_markup: timerKeyboard });
             }
             else {
                 const msg = await ctx.reply(text, { reply_markup: timerKeyboard });
@@ -108,9 +100,7 @@ function articleRepeatCommand(bot) {
             ctx.session.articleRepeat = undefined;
             ctx.session.articleRepeatMode = false;
             if (ctx.callbackQuery?.message) {
-                await ctx.editMessageText("🏠 Головне меню", {
-                    reply_markup: undefined,
-                });
+                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, "🏠 Головне меню", { reply_markup: undefined });
                 await (0, start_js_1.showMainMenu)(ctx, false);
             }
             else {
@@ -147,8 +137,7 @@ function articleRepeatCommand(bot) {
         const sessionData = ctx.session.articleRepeat;
         if (!sessionData ||
             !ctx.chat ||
-            !sessionData.nouns ||
-            !sessionData.nouns.length ||
+            !sessionData.nouns?.length ||
             !sessionData.messageId)
             return;
         const word = sessionData.nouns[sessionData.index];
@@ -189,14 +178,28 @@ function articleRepeatCommand(bot) {
             return;
         if (sessionData.timerInterval)
             clearInterval(sessionData.timerInterval);
+        const endTime = new Date();
+        const formattedDate = endTime.toLocaleString("uk-UA", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
+        if (ctx.chat) {
+            await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Час проходження: ${sessionData.timerSelected === "none"
+                ? "Без таймера"
+                : sessionData.timerSelected + " хв"}\n\n✅ <b>Правильно:</b> ${sessionData.correctCount}  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${sessionData.totalClicks}`, { parse_mode: "HTML" });
+        }
+        ctx.session.articleRepeat = undefined;
+        ctx.session.articleRepeatMode = false;
         if (ctx.chat && sessionData.messageId) {
             try {
                 await ctx.api.editMessageText(ctx.chat.id, sessionData.messageId, "🏠 Головне меню", { reply_markup: undefined });
             }
             catch { }
         }
-        ctx.session.articleRepeat = undefined;
-        ctx.session.articleRepeatMode = false;
         await (0, start_js_1.showMainMenu)(ctx, false);
     }
 }
