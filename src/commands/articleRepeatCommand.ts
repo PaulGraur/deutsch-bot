@@ -8,6 +8,20 @@ const words: Word[] = JSON.parse(
   fs.readFileSync(path.join("./data/words.json"), "utf-8")
 );
 
+type ArticleSession = {
+  nouns: Word[];
+  index: number;
+  correctCount: number;
+  wrongCount: number;
+  totalClicks: number;
+  timerActive: boolean;
+  timerEnd: number | null;
+  timerInterval?: NodeJS.Timeout;
+  timerSelected?: string;
+  timerMessageId?: number;
+  exerciseMessageId?: number;
+};
+
 export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", startTimerSelection);
   bot.callbackQuery("article_repeat", startTimerSelection);
@@ -40,12 +54,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       totalClicks: 0,
       timerActive: false,
       timerEnd: null,
-      timerInterval: undefined,
       timerSelected: selected,
       timerMessageId: undefined,
-    };
+      exerciseMessageId: undefined,
+    } as ArticleSession;
 
-    const session = ctx.session.articleRepeat;
+    const session = ctx.session.articleRepeat as ArticleSession;
 
     if (selected !== "none" && ctx.chat) {
       const minutes = parseInt(selected);
@@ -57,7 +71,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       await updateTimerMessage(ctx);
 
       session.timerInterval = setInterval(async () => {
-        const s = ctx.session.articleRepeat;
+        const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
 
         const remainingMs = s.timerEnd! - Date.now();
@@ -105,7 +119,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (!selected) return;
 
     if (selected === "mainmenu") {
-      const sessionData = ctx.session.articleRepeat;
+      const sessionData = ctx.session.articleRepeat as ArticleSession;
       if (sessionData?.timerInterval) clearInterval(sessionData.timerInterval);
 
       ctx.session.articleRepeat = undefined;
@@ -122,7 +136,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       return;
     }
 
-    const sessionData = ctx.session.articleRepeat;
+    const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData) return;
 
     sessionData.totalClicks++;
@@ -152,7 +166,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   });
 
   async function sendArticleQuestion(ctx: BotContext, retry = false) {
-    const sessionData = ctx.session.articleRepeat;
+    const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData || !ctx.chat) return;
 
     const word = sessionData.nouns[sessionData.index];
@@ -176,22 +190,25 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
     try {
-      if (ctx.callbackQuery?.message) {
-        await ctx.editMessageText(text, {
+      if (!sessionData.exerciseMessageId) {
+        const exerciseMsg = await ctx.reply(text, {
           reply_markup: keyboard,
           parse_mode: "HTML",
         });
+        sessionData.exerciseMessageId = exerciseMsg.message_id;
       } else {
-        await ctx.reply(text, {
-          reply_markup: keyboard,
-          parse_mode: "HTML",
-        });
+        await ctx.api.editMessageText(
+          ctx.chat.id,
+          sessionData.exerciseMessageId,
+          text,
+          { reply_markup: keyboard, parse_mode: "HTML" }
+        );
       }
     } catch {}
   }
 
   async function updateTimerMessage(ctx: BotContext) {
-    const sessionData = ctx.session.articleRepeat;
+    const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (
       !sessionData ||
       !ctx.chat ||
@@ -207,23 +224,23 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .padStart(2, "0");
     const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
 
-    if (!sessionData.timerMessageId) {
-      const msg = await ctx.reply(timerText);
-      sessionData.timerMessageId = msg.message_id;
-    } else {
-      try {
+    try {
+      if (!sessionData.timerMessageId) {
+        const timerMsg = await ctx.reply(timerText);
+        sessionData.timerMessageId = timerMsg.message_id;
+      } else {
         await ctx.api.editMessageText(
           ctx.chat.id,
           sessionData.timerMessageId,
           timerText
         );
-      } catch {}
-    }
+      }
+    } catch {}
   }
 
   async function endArticleSession(
     ctx: BotContext,
-    sessionData: typeof ctx.session.articleRepeat
+    sessionData: ArticleSession
   ) {
     if (!sessionData) return;
 
