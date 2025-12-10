@@ -214,6 +214,34 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (!sessionData) return;
     if (sessionData.timerInterval) clearInterval(sessionData.timerInterval);
 
+    const endTime = new Date();
+    const formattedDate = endTime.toLocaleString("uk-UA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+    if (ctx.chat) {
+      await ctx.reply(
+        `📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Час проходження: ${
+          sessionData.timerSelected === "none"
+            ? "Без таймера"
+            : sessionData.timerSelected + " хв"
+        }\n\n✅ <b>Правильно:</b> ${
+          sessionData.correctCount
+        }  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${
+          sessionData.totalClicks
+        }`,
+        { parse_mode: "HTML" }
+      );
+    }
+
+    ctx.session.articleRepeat = undefined;
+    ctx.session.articleRepeatMode = false;
+
     if (ctx.chat && sessionData.messageId) {
       try {
         await ctx.api.editMessageText(
@@ -225,8 +253,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       } catch {}
     }
 
-    ctx.session.articleRepeat = undefined;
-    ctx.session.articleRepeatMode = false;
     await showMainMenu(ctx, false);
   }
 }
