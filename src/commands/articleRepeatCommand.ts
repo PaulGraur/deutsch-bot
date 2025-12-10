@@ -18,8 +18,7 @@ type ArticleSession = {
   timerEnd: number | null;
   timerInterval?: NodeJS.Timeout;
   timerSelected?: string;
-  timerMessageId?: number;
-  exerciseMessageId?: number;
+  messageId?: number;
 };
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
@@ -33,7 +32,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
-
     if (selected === "mainMenu") {
       await showMainMenu(ctx);
       return;
@@ -55,8 +53,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       timerActive: false,
       timerEnd: null,
       timerSelected: selected,
-      timerMessageId: undefined,
-      exerciseMessageId: undefined,
+      messageId: undefined,
     } as ArticleSession;
 
     const session = ctx.session.articleRepeat as ArticleSession;
@@ -64,29 +61,28 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (selected !== "none" && ctx.chat) {
       const minutes = parseInt(selected);
       const startTime = Date.now();
-
       session.timerActive = true;
       session.timerEnd = startTime + minutes * 60 * 1000;
+    }
 
-      await updateTimerMessage(ctx);
+    await updateMessage(ctx);
 
-      session.timerInterval = setInterval(async () => {
+    const sessionData = ctx.session.articleRepeat as ArticleSession;
+    if (sessionData.timerActive) {
+      sessionData.timerInterval = setInterval(async () => {
         const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
-
         const remainingMs = s.timerEnd! - Date.now();
         if (remainingMs <= 0) {
           clearInterval(s.timerInterval);
           s.timerActive = false;
+          await updateMessage(ctx);
           await endArticleSession(ctx, s);
           return;
         }
-
-        await updateTimerMessage(ctx);
+        await updateMessage(ctx);
       }, 1000);
     }
-
-    await sendArticleQuestion(ctx);
   });
 
   async function startTimerSelection(ctx: BotContext) {
@@ -121,10 +117,8 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (selected === "mainmenu") {
       const sessionData = ctx.session.articleRepeat as ArticleSession;
       if (sessionData?.timerInterval) clearInterval(sessionData.timerInterval);
-
       ctx.session.articleRepeat = undefined;
       ctx.session.articleRepeatMode = false;
-
       if (ctx.callbackQuery?.message) {
         await ctx.editMessageText("🏠 Головне меню", {
           reply_markup: undefined,
@@ -138,7 +132,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData) return;
-
     sessionData.totalClicks++;
 
     if (
@@ -158,14 +151,14 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (selected === correctArticle) {
       sessionData.correctCount++;
       sessionData.index = Math.floor(Math.random() * sessionData.nouns.length);
-      await sendArticleQuestion(ctx);
+      await updateMessage(ctx);
     } else {
       sessionData.wrongCount++;
-      await sendArticleQuestion(ctx, true);
+      await updateMessage(ctx, true);
     }
   });
 
-  async function sendArticleQuestion(ctx: BotContext, retry = false) {
+  async function updateMessage(ctx: BotContext, retry = false) {
     const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData || !ctx.chat) return;
 
@@ -185,54 +178,39 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("🏠 Головне меню", "article_mainMenu");
 
+    let timerText = "";
+    if (sessionData.timerActive && sessionData.timerEnd) {
+      const remainingMs = sessionData.timerEnd - Date.now();
+      if (remainingMs > 0) {
+        const minutesLeft = Math.floor(remainingMs / 60000);
+        const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
+          .toString()
+          .padStart(2, "0");
+        timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}\n\n`;
+      } else {
+        timerText = `⏱ Час вичерпано!\n\n`;
+      }
+    }
+
     const text = retry
       ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
       : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
+    const finalText = timerText + text;
+
     try {
-      if (!sessionData.exerciseMessageId) {
-        const exerciseMsg = await ctx.reply(text, {
+      if (!sessionData.messageId) {
+        const msg = await ctx.reply(finalText, {
           reply_markup: keyboard,
           parse_mode: "HTML",
         });
-        sessionData.exerciseMessageId = exerciseMsg.message_id;
+        sessionData.messageId = msg.message_id;
       } else {
         await ctx.api.editMessageText(
           ctx.chat.id,
-          sessionData.exerciseMessageId,
-          text,
+          sessionData.messageId,
+          finalText,
           { reply_markup: keyboard, parse_mode: "HTML" }
-        );
-      }
-    } catch {}
-  }
-
-  async function updateTimerMessage(ctx: BotContext) {
-    const sessionData = ctx.session.articleRepeat as ArticleSession;
-    if (
-      !sessionData ||
-      !ctx.chat ||
-      !sessionData.timerActive ||
-      !sessionData.timerEnd
-    )
-      return;
-
-    const remainingMs = sessionData.timerEnd - Date.now();
-    const minutesLeft = Math.floor(remainingMs / 60000);
-    const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
-      .toString()
-      .padStart(2, "0");
-    const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
-
-    try {
-      if (!sessionData.timerMessageId) {
-        const timerMsg = await ctx.reply(timerText);
-        sessionData.timerMessageId = timerMsg.message_id;
-      } else {
-        await ctx.api.editMessageText(
-          ctx.chat.id,
-          sessionData.timerMessageId,
-          timerText
         );
       }
     } catch {}
@@ -242,8 +220,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     ctx: BotContext,
     sessionData: ArticleSession
   ) {
-    if (!sessionData) return;
-
     if (sessionData.timerInterval) clearInterval(sessionData.timerInterval);
 
     const endTime = new Date();
@@ -256,9 +232,9 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       second: "2-digit",
     });
 
-    if (ctx.chat && sessionData.timerMessageId) {
+    if (ctx.chat && sessionData.messageId) {
       try {
-        await ctx.api.deleteMessage(ctx.chat.id, sessionData.timerMessageId);
+        await ctx.api.deleteMessage(ctx.chat.id, sessionData.messageId);
       } catch {}
     }
 
@@ -277,7 +253,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     ctx.session.articleRepeat = undefined;
     ctx.session.articleRepeatMode = false;
-
     await showMainMenu(ctx, false);
   }
 }
