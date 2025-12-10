@@ -93,7 +93,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("🏠 Головне меню", "global_mainMenu");
 
-    const text = "Вибери таймер для вправи:";
+    const text = "⏱️ Вибери таймер для вправи:";
 
     try {
       if (ctx.callbackQuery?.message) {
