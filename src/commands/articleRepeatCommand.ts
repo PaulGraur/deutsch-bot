@@ -63,25 +63,21 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       const startTime = Date.now();
       session.timerActive = true;
       session.timerEnd = startTime + minutes * 60 * 1000;
-    }
-
-    await updateMessage(ctx);
-
-    const sessionData = ctx.session.articleRepeat as ArticleSession;
-    if (sessionData.timerActive) {
-      sessionData.timerInterval = setInterval(async () => {
+      await updateSessionMessage(ctx);
+      session.timerInterval = setInterval(async () => {
         const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
         const remainingMs = s.timerEnd! - Date.now();
         if (remainingMs <= 0) {
           clearInterval(s.timerInterval);
           s.timerActive = false;
-          await updateMessage(ctx);
           await endArticleSession(ctx, s);
           return;
         }
-        await updateMessage(ctx);
+        await updateSessionMessage(ctx);
       }, 1000);
+    } else {
+      await updateSessionMessage(ctx);
     }
   });
 
@@ -94,9 +90,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .text("Без таймера", "timer_none")
       .row()
       .text("🏠 Головне меню", "global_mainMenu");
-
     const text = "Вибери таймер для вправи:";
-
     try {
       if (ctx.callbackQuery?.message) {
         await ctx.editMessageText(text, { reply_markup: timerKeyboard });
@@ -110,7 +104,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
     const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
     if (!selected) return;
 
@@ -151,20 +144,19 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (selected === correctArticle) {
       sessionData.correctCount++;
       sessionData.index = Math.floor(Math.random() * sessionData.nouns.length);
-      await updateMessage(ctx);
+      await updateSessionMessage(ctx);
     } else {
       sessionData.wrongCount++;
-      await updateMessage(ctx, true);
+      await updateSessionMessage(ctx, true);
     }
   });
 
-  async function updateMessage(ctx: BotContext, retry = false) {
+  async function updateSessionMessage(ctx: BotContext, retry = false) {
     const sessionData = ctx.session.articleRepeat as ArticleSession;
     if (!sessionData || !ctx.chat) return;
 
     const word = sessionData.nouns[sessionData.index];
     const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
-
     const articles = [
       { text: "🔵 der", value: "der" },
       { text: "🔴 die", value: "die" },
@@ -181,26 +173,20 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     let timerText = "";
     if (sessionData.timerActive && sessionData.timerEnd) {
       const remainingMs = sessionData.timerEnd - Date.now();
-      if (remainingMs > 0) {
-        const minutesLeft = Math.floor(remainingMs / 60000);
-        const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
-          .toString()
-          .padStart(2, "0");
-        timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}\n\n`;
-      } else {
-        timerText = `⏱ Час вичерпано!\n\n`;
-      }
+      const minutesLeft = Math.floor(remainingMs / 60000);
+      const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
+        .toString()
+        .padStart(2, "0");
+      timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}\n\n`;
     }
 
     const text = retry
-      ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
-      : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
-
-    const finalText = timerText + text;
+      ? `${timerText}😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
+      : `${timerText}😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
     try {
       if (!sessionData.messageId) {
-        const msg = await ctx.reply(finalText, {
+        const msg = await ctx.reply(text, {
           reply_markup: keyboard,
           parse_mode: "HTML",
         });
@@ -209,7 +195,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
         await ctx.api.editMessageText(
           ctx.chat.id,
           sessionData.messageId,
-          finalText,
+          text,
           { reply_markup: keyboard, parse_mode: "HTML" }
         );
       }
@@ -220,6 +206,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     ctx: BotContext,
     sessionData: ArticleSession
   ) {
+    if (!sessionData) return;
     if (sessionData.timerInterval) clearInterval(sessionData.timerInterval);
 
     const endTime = new Date();
