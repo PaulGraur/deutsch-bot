@@ -9,15 +9,17 @@ export function startCommand(bot: Bot<BotContext>) {
   });
 
   bot.callbackQuery("global_mainMenu", async (ctx) => {
-    safeAnswer(ctx);
+    await safeAnswer(ctx);
 
     try {
       if (ctx.callbackQuery?.message) {
-        await ctx.deleteMessage();
+        await ctx.deleteMessage().catch(() => {});
       }
 
       await showMainMenu(ctx);
-    } catch {}
+    } catch (err) {
+      console.log("Помилка глобального меню:", err);
+    }
   });
 
   bot.callbackQuery("mainMenu", async (ctx) => {
@@ -45,26 +47,28 @@ export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
+  if (ctx.callbackQuery) await safeAnswer(ctx);
+
   try {
     if (ctx.callbackQuery?.message && !createNewMessage) {
       const message = ctx.callbackQuery.message;
       const sameText = message?.text === text;
       if (!sameText) {
-        await ctx.editMessageText(text, { reply_markup: keyboard });
-      } else {
-        await ctx.answerCallbackQuery();
+        await ctx
+          .editMessageText(text, { reply_markup: keyboard })
+          .catch(() => {});
       }
     } else {
-      await ctx.reply(text, { reply_markup: keyboard });
-      if (ctx.callbackQuery) await ctx.answerCallbackQuery();
+      await ctx.reply(text, { reply_markup: keyboard }).catch(() => {});
     }
-  } catch {
-    if (ctx.callbackQuery) await ctx.answerCallbackQuery();
+  } catch (err) {
+    console.log("Помилка при показі меню:", err);
   }
 }
 
-function safeAnswer(ctx: BotContext) {
+async function safeAnswer(ctx: BotContext) {
+  if (!ctx.callbackQuery) return;
   try {
-    if (ctx.callbackQuery) ctx.answerCallbackQuery();
+    await ctx.answerCallbackQuery();
   } catch {}
 }
