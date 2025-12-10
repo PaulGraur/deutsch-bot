@@ -24,5 +24,6 @@ app.listen(PORT, async () => {
 
   await bot.api.setWebhook(webhookUrl);
 
+  
   console.log(`✅ Webhook встановлено: ${webhookUrl}`);
 });
