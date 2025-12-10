@@ -29,10 +29,8 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
-
     if (selected === "mainMenu") {
       await showMainMenu(ctx);
       return;
@@ -54,19 +52,15 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       correctCount: 0,
       wrongCount: 0,
       totalClicks: 0,
-      timerActive: false,
-      timerEnd: null,
+      timerActive: selected !== "none",
+      timerEnd:
+        selected !== "none" ? Date.now() + parseInt(selected) * 60000 : null,
       timerSelected: selected,
       messageId: msgId,
     } as ArticleSession;
 
-    const session = ctx.session.articleRepeat as ArticleSession;
-
     if (selected !== "none") {
-      const minutes = parseInt(selected);
-      session.timerActive = true;
-      session.timerEnd = Date.now() + minutes * 60 * 1000;
-      session.timerInterval = setInterval(async () => {
+      ctx.session.articleRepeat.timerInterval = setInterval(async () => {
         const s = ctx.session.articleRepeat as ArticleSession;
         if (!s || !ctx.chat || !s.timerActive) return;
         const remainingMs = s.timerEnd! - Date.now();
@@ -96,11 +90,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     const text = "Вибери таймер для вправи:";
     try {
       if (ctx.callbackQuery?.message) {
-        await ctx.editMessageText(text, { reply_markup: timerKeyboard });
-        ctx.session.articleRepeatMode = true;
-        ctx.session.articleRepeat = {
-          messageId: ctx.callbackQuery.message.message_id,
-        } as ArticleSession;
+        await ctx.api.editMessageText(
+          ctx.chat!.id,
+          ctx.callbackQuery.message.message_id,
+          text,
+          { reply_markup: timerKeyboard }
+        );
       } else {
         const msg = await ctx.reply(text, { reply_markup: timerKeyboard });
         ctx.session.articleRepeatMode = true;
@@ -124,9 +119,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       ctx.session.articleRepeat = undefined;
       ctx.session.articleRepeatMode = false;
       if (ctx.callbackQuery?.message) {
-        await ctx.editMessageText("🏠 Головне меню", {
-          reply_markup: undefined,
-        });
+        await ctx.api.editMessageText(
+          ctx.chat!.id,
+          ctx.callbackQuery.message.message_id,
+          "🏠 Головне меню",
+          { reply_markup: undefined }
+        );
         await showMainMenu(ctx, false);
       } else {
         await showMainMenu(ctx, false);
@@ -167,8 +165,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (
       !sessionData ||
       !ctx.chat ||
-      !sessionData.nouns ||
-      !sessionData.nouns.length ||
+      !sessionData.nouns?.length ||
       !sessionData.messageId
     )
       return;
