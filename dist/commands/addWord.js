@@ -12,10 +12,20 @@ function addWordCommand(bot) {
     bot.callbackQuery("add", async (ctx) => {
         const keyboard = new grammy_1.InlineKeyboard().text("🏠 Головне меню", "mainMenu");
         if (ctx.callbackQuery) {
-            await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
-                reply_markup: keyboard,
-            });
-            await ctx.answerCallbackQuery();
+            try {
+                await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
+                    reply_markup: keyboard,
+                });
+            }
+            catch (err) {
+                console.log("editMessageText skipped:", err.message || err);
+            }
+            try {
+                await ctx.answerCallbackQuery();
+            }
+            catch (err) {
+                console.log("answerCallbackQuery skipped:", err.message || err);
+            }
         }
     });
     bot.on("message:text", async (ctx) => {
@@ -24,29 +34,49 @@ function addWordCommand(bot) {
             return;
         const [de, ua] = text.split("-").map((s) => s.trim());
         if (!de || !ua) {
-            return ctx.reply("Невірний формат. Приклад:\nHaus - дім");
+            try {
+                await ctx.reply("Невірний формат. Приклад:\nHaus - дім");
+            }
+            catch (err) {
+                console.log("reply skipped:", err.message || err);
+            }
+            return;
         }
         let words = [];
         if (fs_1.default.existsSync(wordsPath)) {
             try {
                 words = JSON.parse(fs_1.default.readFileSync(wordsPath, "utf-8"));
             }
-            catch { }
+            catch (err) {
+                console.log("Failed to read words.json:", err.message || err);
+            }
         }
         words.push({ de, ua, createdAt: new Date().toISOString() });
-        fs_1.default.mkdirSync(path_1.default.dirname(wordsPath), { recursive: true });
-        fs_1.default.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
+        try {
+            fs_1.default.mkdirSync(path_1.default.dirname(wordsPath), { recursive: true });
+            fs_1.default.writeFileSync(wordsPath, JSON.stringify(words, null, 2));
+        }
+        catch (err) {
+            console.log("Failed to write words.json:", err.message || err);
+        }
         const keyboard = new grammy_1.InlineKeyboard().text("🏠 Головне меню", "mainMenu");
         try {
             await ctx.deleteMessage();
         }
         catch { }
-        const sent = await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
-            reply_markup: keyboard,
-        });
+        let sent = undefined;
+        try {
+            sent = (await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
+                reply_markup: keyboard,
+            }));
+        }
+        catch (err) {
+            console.log("reply sent skipped:", err.message || err);
+        }
         setTimeout(async () => {
             try {
-                await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
+                if (sent)
+                    await ctx.api.deleteMessage(ctx.chat.id, sent.message_id);
             }
             catch { }
         }, 5000);

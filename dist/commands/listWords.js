@@ -14,8 +14,13 @@ function listWordsCommand(bot) {
     bot.callbackQuery("listwords", async (ctx) => {
         ctx.session.words = allWords;
         ctx.session.posFilter = null;
-        await sendWordPage(ctx, 0);
-        await ctx.answerCallbackQuery();
+        try {
+            await sendWordPage(ctx, 0);
+            await ctx.answerCallbackQuery();
+        }
+        catch (err) {
+            console.log("listwords callback failed:", err.message || err);
+        }
     });
     bot.callbackQuery(/listfilter:(.+)/, async (ctx) => {
         const filter = ctx.match[1];
@@ -27,15 +32,25 @@ function listWordsCommand(bot) {
             ctx.session.posFilter = filter;
             ctx.session.words = allWords.filter((w) => w.pos === filter);
         }
-        await sendWordPage(ctx, 0);
-        await ctx.answerCallbackQuery();
+        try {
+            await sendWordPage(ctx, 0);
+            await ctx.answerCallbackQuery();
+        }
+        catch (err) {
+            console.log("listfilter callback failed:", err.message || err);
+        }
     });
     bot.callbackQuery(/listwords_(\d+)/, async (ctx) => {
         const page = parseInt(ctx.match[1]);
         if (!ctx.session.words)
             ctx.session.words = allWords;
-        await sendWordPage(ctx, page);
-        await ctx.answerCallbackQuery();
+        try {
+            await sendWordPage(ctx, page);
+            await ctx.answerCallbackQuery();
+        }
+        catch (err) {
+            console.log("pagination callback failed:", err.message || err);
+        }
     });
 }
 async function sendWordPage(ctx, page) {
@@ -70,22 +85,30 @@ async function sendWordPage(ctx, page) {
     if (page > 0 || end < sessionWords.length)
         keyboard.row();
     keyboard.text("🏠 Головне меню", "mainMenu");
-    if (ctx.callbackQuery?.message) {
-        try {
-            await ctx.editMessageText(text, { reply_markup: keyboard });
-        }
-        catch (err) {
-            const chunks = chunkArray(pageWords, 10);
-            for (const chunk of chunks) {
-                const chunkText = chunk
-                    .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
-                    .join("\n");
-                await ctx.reply(chunkText);
+    try {
+        if (ctx.callbackQuery?.message) {
+            try {
+                await ctx.editMessageText(text, { reply_markup: keyboard });
+            }
+            catch (err) {
+                const chunks = chunkArray(pageWords, 10);
+                for (const chunk of chunks) {
+                    const chunkText = chunk
+                        .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
+                        .join("\n");
+                    try {
+                        await ctx.reply(chunkText);
+                    }
+                    catch { }
+                }
             }
         }
+        else {
+            await ctx.reply(text, { reply_markup: keyboard });
+        }
     }
-    else {
-        await ctx.reply(text, { reply_markup: keyboard });
+    catch (err) {
+        console.log("sendWordPage failed:", err.message || err);
     }
 }
 function chunkArray(arr, size) {
