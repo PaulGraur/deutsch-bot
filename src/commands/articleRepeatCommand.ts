@@ -37,23 +37,17 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } catch {}
   });
 
-  bot.callbackQuery("timer_mainMenu", async (ctx) => {
+  bot.callbackQuery(/^timer_(\d+|none|mainMenu)$/, async (ctx) => {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
-    cleanupArticleSession(ctx);
-
-    await showMainMenu(ctx, false);
-  });
-
-  bot.callbackQuery(/^timer_(\d+|none)$/, async (ctx) => {
-    try {
-      await ctx.answerCallbackQuery();
-    } catch {}
-
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
+    if (selected === "mainMenu") {
+      cleanupArticleSession(ctx);
+      await forceMainMenu(ctx);
+      return;
+    }
 
     const nouns = words.filter((w) => w.pos === "noun");
     if (!nouns.length) {
@@ -104,13 +98,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
     const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
     if (!selected) return;
 
     if (selected === "mainmenu") {
       cleanupArticleSession(ctx);
-      await showMainMenu(ctx, false);
+      await forceMainMenu(ctx);
       return;
     }
 
@@ -118,7 +111,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (!s) return;
 
     s.totalClicks++;
-
     if (s.timerActive && s.timerEnd && Date.now() > s.timerEnd) {
       s.timerActive = false;
       if (s.timerInterval) clearInterval(s.timerInterval);
@@ -201,15 +193,12 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   async function updateTimerMessage(ctx: BotContext) {
     const s = ctx.session.articleRepeat as ArticleSession;
     if (!s || !ctx.chat || !s.timerMessageId || !s.timerActive) return;
-
     const remainingMs = s.timerEnd! - Date.now();
     const minutesLeft = Math.floor(remainingMs / 60000);
     const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
       .toString()
       .padStart(2, "0");
-
     const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
-
     try {
       await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, timerText);
     } catch {}
@@ -217,7 +206,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
   async function endArticleSession(ctx: BotContext, s: ArticleSession) {
     if (s.timerInterval) clearInterval(s.timerInterval);
-
     const formattedDate = new Date().toLocaleString("uk-UA", {
       year: "numeric",
       month: "2-digit",
@@ -226,7 +214,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       minute: "2-digit",
       second: "2-digit",
     });
-
     if (ctx.chat) {
       await ctx.reply(
         `📝 <b>Вправа на артиклі</b>\n📅 Дата: ${formattedDate}\n⏱ Час: ${
@@ -243,32 +230,25 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
         }
       );
     }
-
     cleanupArticleSession(ctx);
-
-    await showMainMenu(ctx, false);
+    await forceMainMenu(ctx);
   }
 
   function cleanupArticleSession(ctx: BotContext) {
     const s = ctx.session.articleRepeat as ArticleSession;
-
     if (!s) return;
-
     if (s.timerInterval) clearInterval(s.timerInterval);
-
-    if (ctx.chat && s.timerMessageId) {
-      try {
-        ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
-      } catch {}
-    }
-
-    if (ctx.chat && s.messageId) {
-      try {
-        ctx.api.deleteMessage(ctx.chat.id, s.messageId);
-      } catch {}
-    }
-
     ctx.session.articleRepeat = undefined;
     ctx.session.articleRepeatMode = false;
+  }
+
+  async function forceMainMenu(ctx: BotContext) {
+    try {
+      await showMainMenu(ctx, false);
+    } catch {
+      try {
+        await ctx.reply("🏠 Головне меню");
+      } catch {}
+    }
   }
 }
