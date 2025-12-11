@@ -66,5 +66,3 @@ bot.callbackQuery(/^article_(.+)$/, async (ctx) => {
   ctx.session.wordCreation = null;
   await ctx.answerCallbackQuery();
 });
-
-bot.start();
