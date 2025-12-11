@@ -9,22 +9,30 @@ const storage = new GithubJsonStorage({
   token: process.env.GITHUB_TOKEN!,
 });
 
+const POS_LIST = [
+  "noun",
+  "verb",
+  "adjective",
+  "adverb",
+  "preposition",
+  "phrase",
+  "other",
+];
+
 export function addWordCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("add", async (ctx) => {
     const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
 
-    try {
-      await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
-        reply_markup: keyboard,
-      });
-    } catch {}
+    await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
+      reply_markup: keyboard,
+    });
 
-    try {
-      await ctx.answerCallbackQuery();
-    } catch {}
+    await ctx.answerCallbackQuery();
   });
 
   bot.on("message:text", async (ctx) => {
+    if (ctx.session.wordCreation) return;
+
     const text = ctx.message.text.trim();
     if (!text.includes("-")) return;
 
@@ -34,36 +42,55 @@ export function addWordCommand(bot: Bot<BotContext>) {
       return;
     }
 
+    ctx.session.wordCreation = { de, ua };
+
+    const kb = new InlineKeyboard();
+    POS_LIST.forEach((p) => kb.text(p, `pos-${p}`).row());
+    kb.text("❌ Скасувати", "pos-cancel");
+
+    await ctx.reply(`Обери частину мови для:\n<b>${de}</b> — ${ua}`, {
+      reply_markup: kb,
+      parse_mode: "HTML",
+    });
+  });
+
+  bot.callbackQuery(/pos-(.+)/, async (ctx) => {
+    const pos = ctx.match![1];
+
+    if (pos === "cancel") {
+      ctx.session.wordCreation = null;
+
+      await ctx.editMessageText("Додавання слова скасовано ❌");
+      return;
+    }
+
+    const pending = ctx.session.wordCreation;
+    if (!pending) {
+      await ctx.answerCallbackQuery({
+        text: "Немає слова для збереження",
+        show_alert: true,
+      });
+      return;
+    }
+
     const { data: words, sha } = await storage.readJSON<Word[]>();
 
     words.push({
-      de,
-      ua,
-      pos: "noun",
+      de: pending.de,
+      ua: pending.ua,
+      pos,
       createdAt: new Date().toISOString(),
     });
 
     await storage.writeJSON(words, sha);
 
-    const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
+    ctx.session.wordCreation = null;
 
-    try {
-      await ctx.deleteMessage();
-    } catch {}
+    await ctx.editMessageText(
+      `✅ Додано слово:\n<b>${pending.de}</b> — ${pending.ua}\nPOS: <i>${pos}</i>`,
+      { parse_mode: "HTML" }
+    );
 
-    let reply;
-    try {
-      reply = await ctx.reply(`✅ Додано:\n${de} — ${ua}`, {
-        reply_markup: keyboard,
-      });
-    } catch {}
-
-    if (reply) {
-      setTimeout(async () => {
-        try {
-          await ctx.api.deleteMessage(ctx.chat.id, reply.message_id);
-        } catch {}
-      }, 5000);
-    }
+    await ctx.answerCallbackQuery();
   });
 }

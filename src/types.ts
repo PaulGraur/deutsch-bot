@@ -41,6 +41,11 @@ export interface Word {
   pos?: string;
 }
 
+export interface WordCreationSession {
+  de: string;
+  ua: string;
+}
+
 export interface SessionData {
   currentWord?: Word;
   attemptsLeft?: number;
@@ -62,6 +67,8 @@ export interface SessionData {
     timerInterval?: NodeJS.Timeout;
     timerSelected?: string;
   };
+
+  wordCreation?: WordCreationSession | null;
 }
 
 export type BotContext = Context & SessionFlavor<SessionData>;
