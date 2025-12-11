@@ -39,11 +39,13 @@ export interface Word {
   ua: string;
   createdAt: string;
   pos?: string;
+  article?: string;
 }
 
 export interface WordCreationSession {
   de: string;
   ua: string;
+  pos?: string;
 }
 
 export interface SessionData {

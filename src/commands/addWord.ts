@@ -19,6 +19,8 @@ const POS_LIST = [
   "other",
 ];
 
+const ARTICLES = ["der", "die", "das", "Без артикля"];
+
 export function addWordCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("add", async (ctx) => {
     const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
@@ -59,7 +61,6 @@ export function addWordCommand(bot: Bot<BotContext>) {
 
     if (pos === "cancel") {
       ctx.session.wordCreation = null;
-
       await ctx.editMessageText("Додавання слова скасовано ❌");
       return;
     }
@@ -73,6 +74,19 @@ export function addWordCommand(bot: Bot<BotContext>) {
       return;
     }
 
+    if (pos === "noun") {
+      const kb = new InlineKeyboard();
+      ARTICLES.forEach((a) => kb.text(a, `article-${a}`).row());
+      kb.text("❌ Скасувати", "article-cancel");
+
+      await ctx.editMessageText(
+        `Оберіть артикль для слова:\n<b>${pending.de}</b> — ${pending.ua}`,
+        { reply_markup: kb, parse_mode: "HTML" }
+      );
+      ctx.session.wordCreation = { ...pending, pos };
+      return;
+    }
+
     const { data: words, sha } = await storage.readJSON<Word[]>();
 
     words.push({
@@ -83,11 +97,43 @@ export function addWordCommand(bot: Bot<BotContext>) {
     });
 
     await storage.writeJSON(words, sha);
-
     ctx.session.wordCreation = null;
 
     await ctx.editMessageText(
       `✅ Додано слово:\n<b>${pending.de}</b> — ${pending.ua}\nPOS: <i>${pos}</i>`,
+      { parse_mode: "HTML" }
+    );
+
+    await ctx.answerCallbackQuery();
+  });
+
+  bot.callbackQuery(/article-(.+)/, async (ctx) => {
+    const article = ctx.match![1];
+    const pending = ctx.session.wordCreation;
+
+    if (article === "cancel" || !pending) {
+      ctx.session.wordCreation = null;
+      await ctx.editMessageText("Додавання слова скасовано ❌");
+      return;
+    }
+
+    const { data: words, sha } = await storage.readJSON<Word[]>();
+
+    words.push({
+      de: pending.de,
+      ua: pending.ua,
+      pos: pending.pos ?? "noun",
+      createdAt: new Date().toISOString(),
+      article: article === "Без артикля" ? undefined : article,
+    });
+
+    await storage.writeJSON(words, sha);
+    ctx.session.wordCreation = null;
+
+    await ctx.editMessageText(
+      `✅ Додано слово:\n<b>${pending.de}</b> — ${pending.ua}\nPOS: <i>${
+        pending.pos
+      }</i>\nАртикль: <i>${article === "Без артикля" ? "-" : article}</i>`,
       { parse_mode: "HTML" }
     );
 

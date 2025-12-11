@@ -19,6 +19,8 @@ export class GithubJsonStorage {
   }
 
   async readJSON<T = any>(): Promise<{ data: T; sha: string | null }> {
+    console.log("➡️ Reading JSON from GitHub:", this.apiUrl);
+
     const res = await fetch(this.apiUrl, {
       headers: {
         Authorization: `Bearer ${this.token}`,
@@ -26,16 +28,22 @@ export class GithubJsonStorage {
       },
     });
 
+    console.log("⬅️ Response status:", res.status);
+
     if (res.status === 404) {
+      console.log("File not found → returning empty array");
       return { data: [] as unknown as T, sha: null };
     }
 
     const json = await res.json();
+    console.log("⬅️ JSON fetched:", json);
+
     const content = Buffer.from(json.content, "base64").toString("utf-8");
     return { data: JSON.parse(content), sha: json.sha };
   }
 
   async writeJSON(data: any, sha: string | null) {
+    console.log("➡️ Writing JSON to GitHub...", { sha, length: data.length });
     const body = {
       message: "Update words.json via Telegram bot",
       content: Buffer.from(JSON.stringify(data, null, 2)).toString("base64"),
@@ -52,11 +60,14 @@ export class GithubJsonStorage {
       body: JSON.stringify(body),
     });
 
+    console.log("⬅️ Write response status:", res.status);
+    const text = await res.text();
+    console.log("⬅️ Write response body:", text);
+
     if (!res.ok) {
-      const t = await res.text();
-      throw new Error("GitHub write failed: " + t);
+      throw new Error("GitHub write failed: " + text);
     }
 
-    return res.json();
+    return JSON.parse(text);
   }
 }
