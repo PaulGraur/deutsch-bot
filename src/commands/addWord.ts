@@ -6,7 +6,7 @@ const storage = new GithubJsonStorage({
   owner: "PaulGraur",
   repo: "deutsch-bot",
   path: "data/words.json",
-  token: process.env.GITHUB_TOKEN!,
+  token: process.env.DEUTSCH_BOT_TOKEN!,
 });
 
 const POS_LIST = [
