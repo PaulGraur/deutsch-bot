@@ -44,7 +44,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
     if (selected === "mainMenu") {
-      cleanupArticleSession(ctx);
+      cleanupArticleSession(ctx, true);
       await showMainMenu(ctx, false);
       return;
     }
@@ -102,7 +102,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (!selected) return;
 
     if (selected === "mainmenu") {
-      cleanupArticleSession(ctx);
+      cleanupArticleSession(ctx, true);
       await showMainMenu(ctx, false);
       return;
     }
@@ -230,25 +230,31 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
         }
       );
     }
-    cleanupArticleSession(ctx);
+    cleanupArticleSession(ctx, true);
     await showMainMenu(ctx, false);
   }
 
-  function cleanupArticleSession(ctx: BotContext) {
+  function cleanupArticleSession(ctx: BotContext, removeTimerOnly = false) {
     const s = ctx.session.articleRepeat as ArticleSession;
     if (!s) return;
     if (s.timerInterval) clearInterval(s.timerInterval);
+
     if (ctx.chat) {
-      if (s.timerMessageId)
+      if (s.timerMessageId) {
         try {
           ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
         } catch {}
-      if (s.messageId)
+      }
+      if (!removeTimerOnly && s.messageId) {
         try {
           ctx.api.deleteMessage(ctx.chat.id, s.messageId);
         } catch {}
+      }
     }
-    ctx.session.articleRepeat = undefined;
-    ctx.session.articleRepeatMode = false;
+
+    if (!removeTimerOnly) {
+      ctx.session.articleRepeat = undefined;
+      ctx.session.articleRepeatMode = false;
+    }
   }
 }
