@@ -276,55 +276,55 @@
     "rules": [
       {
         "title": "🧠 Що таке Dativ?",
-        "content": "Dativ — це відмінок, який показує:\n👉 **кому? чому? де? з ким? від кого?**\n\nВін використовується, коли:\n- ти НЕ бачиш прямого удару по об’єкту\n- є стан, контакт, джерело, супровід, час\n\nЛогіка:\n👉 **Dativ = отримувач дії або місце перебування**",
+        "content": "Dativ — це давальний відмінок. Показує: кому? чому? де? від кого? з ким? Використовується, коли об’єкт НЕ отримує прямого удару, а є отримувачем, місцем або джерелом.\n\nЛогіка: Dativ = отримувач або стан.\n\nПриклади:\nIch gebe dem Mann ein Buch.\nIch bin bei dem Arzt.\nIch komme von der Arbeit.\nIch spreche mit dem Freund.",
         "examples": [
-          "Ich gebe dem Mann ein Buch. – кому? → dem Mann",
-          "Ich bin bei dem Arzt. – де? → beim Arzt",
-          "Ich komme von der Arbeit. – звідки? → von der Arbeit",
-          "Ich spreche mit dem Freund. – з ким? → mit dem Freund"
+          "Ich gebe dem Mann ein Buch.",
+          "Ich bin bei dem Arzt.",
+          "Ich komme von der Arbeit.",
+          "Ich spreche mit dem Freund."
         ],
-        "notes": "🔹 Якщо ти можеш задати питання «кому? де? від кого?» — це Dativ без варіантів."
+        "notes": "Якщо можна запитати «кому? де? від кого?» — це Dativ."
       },
       {
         "title": "🧠 Що таке Akkusativ?",
-        "content": "Akkusativ — це відмінок, який показує:\n👉 **кого? що? куди?**\n\nВін використовується, коли:\n- дія НАПРЯМУ впливає на об’єкт\n- є фізичний рух або ціль\n\nЛогіка:\n👉 **Akkusativ = ціль удару або напрямок руху**",
+        "content": "Akkusativ — це знахідний відмінок. Показує: кого? що? куди? Використовується, коли дія напряму б'є по об’єкту або є чіткий напрямок руху.\n\nЛогіка: Akkusativ = прямий об’єкт або рух у точку.\n\nПриклади:\nIch sehe den Mann.\nIch habe das Buch.\nIch gehe in den Park.\nIch kaufe einen Apfel.",
         "examples": [
-          "Ich sehe den Mann. – кого? → den Mann",
-          "Ich habe das Buch. – що? → das Buch",
-          "Ich gehe in den Park. – куди? → in den Park",
-          "Ich kaufe einen Apfel. – що? → einen Apfel"
+          "Ich sehe den Mann.",
+          "Ich habe das Buch.",
+          "Ich gehe in den Park.",
+          "Ich kaufe einen Apfel."
         ],
-        "notes": "🔹 Якщо можна поставити питання «кого? що? куди?» — це Akkusativ."
+        "notes": "Якщо питання «кого? що? куди?» — це Akkusativ."
       },
       {
-        "title": "🧱 Прийменники з Dativ — ЛОГІКА ВИБОРУ",
-        "content": "Використовуй Dativ після цих прийменників, коли:\n1️⃣ НЕМАЄ фізичного напрямку руху\n2️⃣ АБО є рух, але він НЕ змінює місце як «точку призначення»\n\nОсновне правило:\n👉 **Dativ = стан, контакт, джерело, супровід, час**\n\nСписок:\n- **mit** – з (з ким?) → супровід\n- **bei** – у, при → перебування біля когось\n- **von** – від → точка ВИХОДУ\n- **zu** – до → люди, установи\n- **aus** – з → зсередини\n- **nach** – до → міста, країни\n- **seit** – з → початок у часі",
+        "title": "🧱 Прийменники з Dativ — логіка",
+        "content": "Dativ після цих прийменників, якщо немає руху в точку або є контакт/стан/джерело.\n\nmit, bei, von, zu, aus, nach, seit\n\nПриклади:\nIch gehe mit dem Freund.\nIch bin bei der Frau.\nIch komme von der Arbeit.\nIch gehe zu dem Arzt.\nIch komme aus dem Haus.\nIch fahre nach Deutschland.\nIch lerne Deutsch seit dem Montag.",
         "examples": [
           "Ich gehe mit dem Freund.",
-          "Ich bin bei dem Arzt.",
+          "Ich bin bei der Frau.",
           "Ich komme von der Arbeit.",
           "Ich gehe zu dem Arzt.",
           "Ich komme aus dem Haus.",
           "Ich fahre nach Deutschland.",
           "Ich lerne Deutsch seit dem Montag."
         ],
-        "notes": "🔹 Якщо можеш задати питання: «З ким? Де? Від кого? Звідки?» — це 100% Dativ."
+        "notes": "Питання «з ким? де? від кого? звідки?» = Dativ."
       },
       {
         "title": "📝 Dativ – зміна артикля",
-        "content": "Dativ змінює артиклі ТАК:\n- der → dem\n- die → der\n- das → dem\n- die (мн.) → den (+ n до іменника)\n\nФормула:\n👉 **mit/bei/von/zu/aus/nach/seit + dem/der/den**",
+        "content": "Зміни:\nder → dem\ndie → der\ndas → dem\ndie (мн.) → den (+ n)\n\nПриклади:\nmit dem Mann\nbei der Frau\naus dem Haus\nzum Arzt\nmit den Kindern",
         "examples": [
           "mit dem Mann",
           "bei der Frau",
           "aus dem Haus",
-          "zu dem Arzt → zum Arzt",
+          "zum Arzt",
           "mit den Kindern"
         ],
-        "notes": "🔹 Якщо бачиш ці прийменники — автоматично вмикай Dativ."
+        "notes": "Після mit/bei/von/zu/aus/nach/seit — завжди Dativ."
       },
       {
-        "title": "🎯 Прийменники з Akkusativ — ЛОГІКА ВИБОРУ",
-        "content": "Akkusativ використовується, коли є:\n👉 **РЕАЛЬНИЙ РУХ крізь / навколо / проти / без / заради**\n\nСписок:\n- **durch** – крізь\n- **für** – для (мета)\n- **gegen** – проти\n- **ohne** – без\n- **um** – навколо\n\nФормула:\n👉 якщо дія «пробиває простір» → Akkusativ",
+        "title": "🎯 Прийменники з Akkusativ — логіка",
+        "content": "Akkusativ, коли є рух, напрямок або прямий вплив.\n\ndurch, für, gegen, ohne, um\n\nПриклади:\nIch gehe durch den Park.\nDas Geschenk ist für die Frau.\nWir spielen gegen den Gegner.\nIch fahre ohne den Bruder.\nDas Auto fährt um die Ecke.",
         "examples": [
           "Ich gehe durch den Park.",
           "Das Geschenk ist für die Frau.",
@@ -332,22 +332,22 @@
           "Ich fahre ohne den Bruder.",
           "Das Auto fährt um die Ecke."
         ],
-        "notes": "🔹 Якщо можеш підставити слово «напролом» — це Akkusativ."
+        "notes": "Якщо дія «пробиває простір» — це Akkusativ."
       },
       {
         "title": "📝 Akkusativ – зміна артикля",
-        "content": "Akkusativ змінює тільки ЧОЛОВІЧИЙ РІД:\n- der → den\n- die → die\n- das → das\n- die (мн.) → die",
+        "content": "Змінюється тільки чоловічий рід:\nder → den\ndie → die\ndas → das\ndie (мн.) → die",
         "examples": [
           "Ich sehe den Mann",
           "Ich kenne die Frau",
           "Ich besuche das Kind",
           "Ich sehe die Kinder"
         ],
-        "notes": "🔹 Якщо бачиш «den» — це гарантований Akkusativ."
+        "notes": "den = Akkusativ."
       },
       {
-        "title": "🧭 Wo? Wohin? Woher? — ЯДРО ВСІЄЇ СИСТЕМИ",
-        "content": "Це **головний перемикач відмінків у німецькій**:\n\n- **Wo? (де?) → Dativ → СТАН**\n- **Wohin? (куди?) → Akkusativ → РУХ**\n- **Woher? (звідки?) → von + Dativ → ДЖЕРЕЛО**\n\nФіксовані:\n- zu Hause – Wo (Dativ)\n- nach Hause – Wohin\n- von zu Hause – Woher",
+        "title": "🧭 Wo? Wohin? Woher?",
+        "content": "Wo? → Dativ → стан\nWohin? → Akkusativ → рух\nWoher? → von + Dativ → джерело\n\nПриклади:\nIch bin beim Arzt.\nIch gehe zum Arzt.\nIch komme vom Arzt.\nIch bin zu Hause.\nIch komme nach Hause.\nIch komme von zu Hause.",
         "examples": [
           "Ich bin beim Arzt",
           "Ich gehe zum Arzt",
@@ -356,7 +356,7 @@
           "Ich komme nach Hause",
           "Ich komme von zu Hause"
         ],
-        "notes": "🔹 Якщо ти не задав собі Wo/Wohin/Woher — ти гарантовано помилишся."
+        "notes": "Не задав Wo/Wohin/Woher — помилишся."
       }
     ]
   },

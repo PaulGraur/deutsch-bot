@@ -26,6 +26,19 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", startTimerSelection);
   bot.callbackQuery("article_repeat", startTimerSelection);
 
+  bot.callbackQuery("delete_summary", async (ctx) => {
+    try {
+      await ctx.answerCallbackQuery();
+    } catch {}
+
+    const msgId = ctx.callbackQuery?.message?.message_id;
+    if (!msgId || !ctx.chat) return;
+
+    try {
+      await ctx.api.deleteMessage(ctx.chat.id, msgId);
+    } catch {}
+  });
+
   bot.callbackQuery(/^timer_(\d+|none|mainMenu)$/, async (ctx) => {
     try {
       await ctx.answerCallbackQuery();
@@ -254,7 +267,13 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
         }  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${
           sessionData.totalClicks
         }`,
-        { parse_mode: "HTML" }
+        {
+          parse_mode: "HTML",
+          reply_markup: new InlineKeyboard().text(
+            "🗑 Видалити повідомлення",
+            "delete_summary"
+          ),
+        }
       );
     }
 
