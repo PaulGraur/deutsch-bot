@@ -104,7 +104,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("Без таймера", "timer_none")
       .row()
-      .text("🏠 Головне меню", "global_mainMenu");
+      .text("🏠 Головне меню", "timer_mainMenu");
 
     const text = "⏱️ Вибери таймер для вправи:";
 
