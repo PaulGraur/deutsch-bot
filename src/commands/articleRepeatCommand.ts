@@ -45,7 +45,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     if (!selected) return;
     if (selected === "mainMenu") {
       cleanupArticleSession(ctx);
-      await forceMainMenu(ctx);
+      await showMainMenu(ctx, false);
       return;
     }
 
@@ -103,7 +103,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     if (selected === "mainmenu") {
       cleanupArticleSession(ctx);
-      await forceMainMenu(ctx);
+      await showMainMenu(ctx, false);
       return;
     }
 
@@ -231,24 +231,24 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       );
     }
     cleanupArticleSession(ctx);
-    await forceMainMenu(ctx);
+    await showMainMenu(ctx, false);
   }
 
   function cleanupArticleSession(ctx: BotContext) {
     const s = ctx.session.articleRepeat as ArticleSession;
     if (!s) return;
     if (s.timerInterval) clearInterval(s.timerInterval);
+    if (ctx.chat) {
+      if (s.timerMessageId)
+        try {
+          ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
+        } catch {}
+      if (s.messageId)
+        try {
+          ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+        } catch {}
+    }
     ctx.session.articleRepeat = undefined;
     ctx.session.articleRepeatMode = false;
-  }
-
-  async function forceMainMenu(ctx: BotContext) {
-    try {
-      await showMainMenu(ctx, false);
-    } catch {
-      try {
-        await ctx.reply("🏠 Головне меню");
-      } catch {}
-    }
   }
 }
