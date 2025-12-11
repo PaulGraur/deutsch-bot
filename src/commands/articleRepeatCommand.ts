@@ -30,25 +30,30 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
     const msgId = ctx.callbackQuery?.message?.message_id;
     if (!msgId || !ctx.chat) return;
-
     try {
       await ctx.api.deleteMessage(ctx.chat.id, msgId);
     } catch {}
   });
 
-  bot.callbackQuery(/^timer_(\d+|none|mainMenu)$/, async (ctx) => {
+  bot.callbackQuery("timer_mainMenu", async (ctx) => {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
+
+    cleanupArticleSession(ctx);
+
+    await showMainMenu(ctx, false);
+  });
+
+  bot.callbackQuery(/^timer_(\d+|none)$/, async (ctx) => {
+    try {
+      await ctx.answerCallbackQuery();
+    } catch {}
+
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
-    if (selected === "mainMenu") {
-      await showMainMenu(ctx);
-      return;
-    }
 
     const nouns = words.filter((w) => w.pos === "noun");
     if (!nouns.length) {
@@ -73,15 +78,14 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       messageId: msgId,
     } as ArticleSession;
 
-    if (selected !== "none") {
-      const timerMsg = await ctx.reply("⏱ Таймер: завантаження...", {
-        reply_markup: undefined,
-      });
-      ctx.session.articleRepeat.timerMessageId = timerMsg.message_id;
+    const s = ctx.session.articleRepeat;
 
-      ctx.session.articleRepeat.timerInterval = setInterval(async () => {
-        const s = ctx.session.articleRepeat as ArticleSession;
-        if (!s || !ctx.chat || !s.timerActive) return;
+    if (selected !== "none") {
+      const timerMsg = await ctx.reply("⏱ Таймер: завантаження...");
+      s.timerMessageId = timerMsg.message_id;
+
+      s.timerInterval = setInterval(async () => {
+        if (!s.timerActive || !ctx.chat) return;
         const remainingMs = s.timerEnd! - Date.now();
         if (remainingMs <= 0) {
           clearInterval(s.timerInterval);
@@ -94,6 +98,45 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     }
 
     await updateSessionMessage(ctx);
+  });
+
+  bot.callbackQuery(/^article_(der|die|das|mainMenu)$/, async (ctx) => {
+    try {
+      await ctx.answerCallbackQuery();
+    } catch {}
+
+    const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
+    if (!selected) return;
+
+    if (selected === "mainmenu") {
+      cleanupArticleSession(ctx);
+      await showMainMenu(ctx, false);
+      return;
+    }
+
+    const s = ctx.session.articleRepeat as ArticleSession;
+    if (!s) return;
+
+    s.totalClicks++;
+
+    if (s.timerActive && s.timerEnd && Date.now() > s.timerEnd) {
+      s.timerActive = false;
+      if (s.timerInterval) clearInterval(s.timerInterval);
+      await endArticleSession(ctx, s);
+      return;
+    }
+
+    const currentWord = s.nouns[s.index];
+    const correctArticle = currentWord.de.split(" ")[0].toLowerCase();
+
+    if (selected === correctArticle) {
+      s.correctCount++;
+      s.index = Math.floor(Math.random() * s.nouns.length);
+      await updateSessionMessage(ctx);
+    } else {
+      s.wrongCount++;
+      await updateSessionMessage(ctx, true);
+    }
   });
 
   async function startTimerSelection(ctx: BotContext) {
@@ -122,83 +165,16 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } catch {}
   }
 
-  bot.callbackQuery(/^article_(der|die|das|mainMenu)$/, async (ctx) => {
-    try {
-      await ctx.answerCallbackQuery();
-    } catch {}
-
-    const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
-    if (!selected) return;
-
-    if (selected === "mainmenu") {
-      const s = ctx.session.articleRepeat as ArticleSession;
-
-      if (s?.timerInterval) clearInterval(s.timerInterval);
-
-      if (ctx.chat && s?.timerMessageId) {
-        try {
-          await ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
-        } catch {}
-      }
-
-      if (ctx.chat && s?.messageId) {
-        try {
-          await ctx.api.deleteMessage(ctx.chat.id, s.messageId);
-        } catch {}
-      }
-
-      ctx.session.articleRepeat = undefined;
-      ctx.session.articleRepeatMode = false;
-
-      await showMainMenu(ctx, false);
-      return;
-    }
-
-    const sessionData = ctx.session.articleRepeat as ArticleSession;
-    if (!sessionData) return;
-
-    sessionData.totalClicks++;
-
-    if (
-      sessionData.timerActive &&
-      sessionData.timerEnd &&
-      Date.now() > sessionData.timerEnd
-    ) {
-      sessionData.timerActive = false;
-      if (sessionData.timerInterval) clearInterval(sessionData.timerInterval);
-      await endArticleSession(ctx, sessionData);
-      return;
-    }
-
-    const currentWord = sessionData.nouns[sessionData.index];
-    const correctArticle = currentWord.de.split(" ")[0].toLowerCase();
-
-    if (selected === correctArticle) {
-      sessionData.correctCount++;
-      sessionData.index = Math.floor(Math.random() * sessionData.nouns.length);
-      await updateSessionMessage(ctx);
-    } else {
-      sessionData.wrongCount++;
-      await updateSessionMessage(ctx, true);
-    }
-  });
-
   async function updateSessionMessage(ctx: BotContext, retry = false) {
     const s = ctx.session.articleRepeat as ArticleSession;
     if (!s || !ctx.chat || !s.nouns?.length) return;
 
     const word = s.nouns[s.index];
     const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
-    const articles = [
-      { text: "🔵 der", value: "der" },
-      { text: "🔴 die", value: "die" },
-      { text: "🟢 das", value: "das" },
-    ];
-
     const keyboard = new InlineKeyboard()
-      .text(articles[0].text, `article_${articles[0].value}`)
-      .text(articles[1].text, `article_${articles[1].value}`)
-      .text(articles[2].text, `article_${articles[2].value}`)
+      .text("🔵 der", "article_der")
+      .text("🔴 die", "article_die")
+      .text("🟢 das", "article_das")
       .row()
       .text("🏠 Головне меню", "article_mainMenu");
 
@@ -239,15 +215,10 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } catch {}
   }
 
-  async function endArticleSession(
-    ctx: BotContext,
-    sessionData: ArticleSession
-  ) {
-    if (!sessionData) return;
-    if (sessionData.timerInterval) clearInterval(sessionData.timerInterval);
+  async function endArticleSession(ctx: BotContext, s: ArticleSession) {
+    if (s.timerInterval) clearInterval(s.timerInterval);
 
-    const endTime = new Date();
-    const formattedDate = endTime.toLocaleString("uk-UA", {
+    const formattedDate = new Date().toLocaleString("uk-UA", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
@@ -258,15 +229,11 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     if (ctx.chat) {
       await ctx.reply(
-        `📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Час проходження: ${
-          sessionData.timerSelected === "none"
-            ? "Без таймера"
-            : sessionData.timerSelected + " хв"
-        }\n\n✅ <b>Правильно:</b> ${
-          sessionData.correctCount
-        }  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${
-          sessionData.totalClicks
-        }`,
+        `📝 <b>Вправа на артиклі</b>\n📅 Дата: ${formattedDate}\n⏱ Час: ${
+          s.timerSelected === "none" ? "Без таймера" : s.timerSelected + " хв"
+        }\n\n✅ <b>Правильно:</b> ${s.correctCount}  ❌ <b>Помилки:</b> ${
+          s.wrongCount
+        }  🔘 <b>Натискань:</b> ${s.totalClicks}`,
         {
           parse_mode: "HTML",
           reply_markup: new InlineKeyboard().text(
@@ -277,26 +244,31 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       );
     }
 
-    ctx.session.articleRepeat = undefined;
-    ctx.session.articleRepeatMode = false;
-
-    if (ctx.chat && sessionData.messageId) {
-      try {
-        await ctx.api.editMessageText(
-          ctx.chat.id,
-          sessionData.messageId,
-          "🏠 Головне меню",
-          { reply_markup: undefined }
-        );
-      } catch {}
-    }
-
-    if (ctx.chat && sessionData.timerMessageId) {
-      try {
-        await ctx.api.deleteMessage(ctx.chat.id, sessionData.timerMessageId);
-      } catch {}
-    }
+    cleanupArticleSession(ctx);
 
     await showMainMenu(ctx, false);
+  }
+
+  function cleanupArticleSession(ctx: BotContext) {
+    const s = ctx.session.articleRepeat as ArticleSession;
+
+    if (!s) return;
+
+    if (s.timerInterval) clearInterval(s.timerInterval);
+
+    if (ctx.chat && s.timerMessageId) {
+      try {
+        ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
+      } catch {}
+    }
+
+    if (ctx.chat && s.messageId) {
+      try {
+        ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+      } catch {}
+    }
+
+    ctx.session.articleRepeat = undefined;
+    ctx.session.articleRepeatMode = false;
   }
 }
