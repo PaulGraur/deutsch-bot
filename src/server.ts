@@ -11,19 +11,24 @@ app.get("/", (_req, res) => {
   res.send("Bot is running!");
 });
 
-app.post("/webhook", webhookCallback(bot, "express"));
+const isProduction = true;
+
+if (isProduction) {
+  app.post("/webhook", webhookCallback(bot, "express"));
+}
 
 app.listen(PORT, async () => {
   console.log(`✅ HTTP server running on port ${PORT}`);
 
-  if (!process.env.WEBHOOK_URL) {
-    throw new Error("❌ WEBHOOK_URL не заданий");
+  if (isProduction) {
+    const webhookUrl = `${process.env.WEBHOOK_URL}/webhook`;
+    await bot.api.setWebhook(webhookUrl);
+    console.log(`✅ Webhook встановлено: ${webhookUrl}`);
+  } else {
+    console.log("⚡ Локальний режим (polling) запущено");
+    bot.start({
+      onStart: (info) =>
+        console.log(`🤖 Бот запущено локально: ${info.username}`),
+    });
   }
-
-  const webhookUrl = `${process.env.WEBHOOK_URL}/webhook`;
-
-  await bot.api.setWebhook(webhookUrl);
-
-  
-  console.log(`✅ Webhook встановлено: ${webhookUrl}`);
 });

@@ -1,11 +1,8 @@
-import { readFileSync } from "fs";
 import { google } from "googleapis";
 
-const credentials = JSON.parse(readFileSync("./service-account.json", "utf8"));
-
 const auth = new google.auth.JWT({
-  email: credentials.client_email,
-  key: credentials.private_key,
+  email: process.env.GOOGLE_CLIENT_EMAIL,
+  key: process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 

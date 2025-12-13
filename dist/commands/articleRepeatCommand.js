@@ -12,6 +12,19 @@ const words = JSON.parse(fs_1.default.readFileSync(path_1.default.join("./data/w
 function articleRepeatCommand(bot) {
     bot.command("article_repeat", startTimerSelection);
     bot.callbackQuery("article_repeat", startTimerSelection);
+    bot.callbackQuery("delete_summary", async (ctx) => {
+        try {
+            await ctx.answerCallbackQuery();
+        }
+        catch { }
+        const msgId = ctx.callbackQuery?.message?.message_id;
+        if (!msgId || !ctx.chat)
+            return;
+        try {
+            await ctx.api.deleteMessage(ctx.chat.id, msgId);
+        }
+        catch { }
+    });
     bot.callbackQuery(/^timer_(\d+|none|mainMenu)$/, async (ctx) => {
         try {
             await ctx.answerCallbackQuery();
@@ -21,7 +34,8 @@ function articleRepeatCommand(bot) {
         if (!selected)
             return;
         if (selected === "mainMenu") {
-            await (0, start_js_1.showMainMenu)(ctx);
+            cleanupArticleSession(ctx, true);
+            await (0, start_js_1.showMainMenu)(ctx, false);
             return;
         }
         const nouns = words.filter((w) => w.pos === "noun");
@@ -44,10 +58,12 @@ function articleRepeatCommand(bot) {
             timerSelected: selected,
             messageId: msgId,
         };
+        const s = ctx.session.articleRepeat;
         if (selected !== "none") {
-            ctx.session.articleRepeat.timerInterval = setInterval(async () => {
-                const s = ctx.session.articleRepeat;
-                if (!s || !ctx.chat || !s.timerActive)
+            const timerMsg = await ctx.reply("⏱ Таймер: завантаження...");
+            s.timerMessageId = timerMsg.message_id;
+            s.timerInterval = setInterval(async () => {
+                if (!s.timerActive || !ctx.chat)
                     return;
                 const remainingMs = s.timerEnd - Date.now();
                 if (remainingMs <= 0) {
@@ -56,35 +72,11 @@ function articleRepeatCommand(bot) {
                     await endArticleSession(ctx, s);
                     return;
                 }
-                await updateSessionMessage(ctx);
+                await updateTimerMessage(ctx);
             }, 1000);
         }
         await updateSessionMessage(ctx);
     });
-    async function startTimerSelection(ctx) {
-        const timerKeyboard = new grammy_1.InlineKeyboard()
-            .text("1 хв", "timer_1")
-            .text("3 хв", "timer_3")
-            .text("5 хв", "timer_5")
-            .row()
-            .text("Без таймера", "timer_none")
-            .row()
-            .text("🏠 Головне меню", "global_mainMenu");
-        const text = "Вибери таймер для вправи:";
-        try {
-            if (ctx.callbackQuery?.message) {
-                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, text, { reply_markup: timerKeyboard });
-            }
-            else {
-                const msg = await ctx.reply(text, { reply_markup: timerKeyboard });
-                ctx.session.articleRepeatMode = true;
-                ctx.session.articleRepeat = {
-                    messageId: msg.message_id,
-                };
-            }
-        }
-        catch { }
-    }
     bot.callbackQuery(/^article_(der|die|das|mainMenu)$/, async (ctx) => {
         try {
             await ctx.answerCallbackQuery();
@@ -94,92 +86,104 @@ function articleRepeatCommand(bot) {
         if (!selected)
             return;
         if (selected === "mainmenu") {
-            const sessionData = ctx.session.articleRepeat;
-            if (sessionData?.timerInterval)
-                clearInterval(sessionData.timerInterval);
-            ctx.session.articleRepeat = undefined;
-            ctx.session.articleRepeatMode = false;
-            if (ctx.callbackQuery?.message) {
-                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, "🏠 Головне меню", { reply_markup: undefined });
-                await (0, start_js_1.showMainMenu)(ctx, false);
-            }
-            else {
-                await (0, start_js_1.showMainMenu)(ctx, false);
-            }
+            cleanupArticleSession(ctx, true);
+            await (0, start_js_1.showMainMenu)(ctx, false);
             return;
         }
-        const sessionData = ctx.session.articleRepeat;
-        if (!sessionData)
+        const s = ctx.session.articleRepeat;
+        if (!s)
             return;
-        sessionData.totalClicks++;
-        if (sessionData.timerActive &&
-            sessionData.timerEnd &&
-            Date.now() > sessionData.timerEnd) {
-            sessionData.timerActive = false;
-            if (sessionData.timerInterval)
-                clearInterval(sessionData.timerInterval);
-            await endArticleSession(ctx, sessionData);
+        s.totalClicks++;
+        if (s.timerActive && s.timerEnd && Date.now() > s.timerEnd) {
+            s.timerActive = false;
+            if (s.timerInterval)
+                clearInterval(s.timerInterval);
+            await endArticleSession(ctx, s);
             return;
         }
-        const currentWord = sessionData.nouns[sessionData.index];
+        const currentWord = s.nouns[s.index];
         const correctArticle = currentWord.de.split(" ")[0].toLowerCase();
         if (selected === correctArticle) {
-            sessionData.correctCount++;
-            sessionData.index = Math.floor(Math.random() * sessionData.nouns.length);
+            s.correctCount++;
+            s.index = Math.floor(Math.random() * s.nouns.length);
             await updateSessionMessage(ctx);
         }
         else {
-            sessionData.wrongCount++;
+            s.wrongCount++;
             await updateSessionMessage(ctx, true);
         }
     });
-    async function updateSessionMessage(ctx, retry = false) {
-        const sessionData = ctx.session.articleRepeat;
-        if (!sessionData ||
-            !ctx.chat ||
-            !sessionData.nouns?.length ||
-            !sessionData.messageId)
-            return;
-        const word = sessionData.nouns[sessionData.index];
-        const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
-        const articles = [
-            { text: "🔵 der", value: "der" },
-            { text: "🔴 die", value: "die" },
-            { text: "🟢 das", value: "das" },
-        ];
-        const keyboard = new grammy_1.InlineKeyboard()
-            .text(articles[0].text, `article_${articles[0].value}`)
-            .text(articles[1].text, `article_${articles[1].value}`)
-            .text(articles[2].text, `article_${articles[2].value}`)
+    async function startTimerSelection(ctx) {
+        const timerKeyboard = new grammy_1.InlineKeyboard()
+            .text("1 хв", "timer_1")
+            .text("3 хв", "timer_3")
+            .text("5 хв", "timer_5")
             .row()
-            .text("🏠 Головне меню", "article_mainMenu");
-        let timerText = "";
-        if (sessionData.timerActive && sessionData.timerEnd) {
-            const remainingMs = sessionData.timerEnd - Date.now();
-            const minutesLeft = Math.floor(remainingMs / 60000);
-            const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
-                .toString()
-                .padStart(2, "0");
-            timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}\n\n`;
-        }
-        const text = retry
-            ? `${timerText}😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
-            : `${timerText}😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
+            .text("Без таймера", "timer_none")
+            .row()
+            .text("🏠 Головне меню", "timer_mainMenu");
+        const text = "⏱️ Вибери таймер для вправи:";
         try {
-            await ctx.api.editMessageText(ctx.chat.id, sessionData.messageId, text, {
-                reply_markup: keyboard,
-                parse_mode: "HTML",
-            });
+            if (ctx.callbackQuery?.message) {
+                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, text, { reply_markup: timerKeyboard });
+            }
+            else {
+                await ctx.reply(text, { reply_markup: timerKeyboard });
+            }
         }
         catch { }
     }
-    async function endArticleSession(ctx, sessionData) {
-        if (!sessionData)
+    async function updateSessionMessage(ctx, retry = false) {
+        const s = ctx.session.articleRepeat;
+        if (!s || !ctx.chat || !s.nouns?.length)
             return;
-        if (sessionData.timerInterval)
-            clearInterval(sessionData.timerInterval);
-        const endTime = new Date();
-        const formattedDate = endTime.toLocaleString("uk-UA", {
+        const word = s.nouns[s.index];
+        const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
+        const keyboard = new grammy_1.InlineKeyboard()
+            .text("🔵 der", "article_der")
+            .text("🔴 die", "article_die")
+            .text("🟢 das", "article_das")
+            .row()
+            .text("🏠 Головне меню", "article_mainMenu");
+        const text = retry
+            ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
+            : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
+        try {
+            if (!s.messageId) {
+                const msg = await ctx.reply(text, {
+                    reply_markup: keyboard,
+                    parse_mode: "HTML",
+                });
+                s.messageId = msg.message_id;
+            }
+            else {
+                await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+                    reply_markup: keyboard,
+                    parse_mode: "HTML",
+                });
+            }
+        }
+        catch { }
+    }
+    async function updateTimerMessage(ctx) {
+        const s = ctx.session.articleRepeat;
+        if (!s || !ctx.chat || !s.timerMessageId || !s.timerActive)
+            return;
+        const remainingMs = s.timerEnd - Date.now();
+        const minutesLeft = Math.floor(remainingMs / 60000);
+        const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
+            .toString()
+            .padStart(2, "0");
+        const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
+        try {
+            await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, timerText);
+        }
+        catch { }
+    }
+    async function endArticleSession(ctx, s) {
+        if (s.timerInterval)
+            clearInterval(s.timerInterval);
+        const formattedDate = new Date().toLocaleString("uk-UA", {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
@@ -188,18 +192,37 @@ function articleRepeatCommand(bot) {
             second: "2-digit",
         });
         if (ctx.chat) {
-            await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата проходження: ${formattedDate}\n⏱ Час проходження: ${sessionData.timerSelected === "none"
-                ? "Без таймера"
-                : sessionData.timerSelected + " хв"}\n\n✅ <b>Правильно:</b> ${sessionData.correctCount}  ❌ <b>Помилки:</b> ${sessionData.wrongCount}  🔘 <b>Натискань:</b> ${sessionData.totalClicks}`, { parse_mode: "HTML" });
+            await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата: ${formattedDate}\n⏱ Час: ${s.timerSelected === "none" ? "Без таймера" : s.timerSelected + " хв"}\n\n✅ <b>Правильно:</b> ${s.correctCount}  ❌ <b>Помилки:</b> ${s.wrongCount}  🔘 <b>Натискань:</b> ${s.totalClicks}`, {
+                parse_mode: "HTML",
+                reply_markup: new grammy_1.InlineKeyboard().text("🗑 Видалити повідомлення", "delete_summary"),
+            });
         }
-        ctx.session.articleRepeat = undefined;
-        ctx.session.articleRepeatMode = false;
-        if (ctx.chat && sessionData.messageId) {
-            try {
-                await ctx.api.editMessageText(ctx.chat.id, sessionData.messageId, "🏠 Головне меню", { reply_markup: undefined });
-            }
-            catch { }
-        }
+        cleanupArticleSession(ctx, true);
         await (0, start_js_1.showMainMenu)(ctx, false);
+    }
+    function cleanupArticleSession(ctx, removeTimerOnly = false) {
+        const s = ctx.session.articleRepeat;
+        if (!s)
+            return;
+        if (s.timerInterval)
+            clearInterval(s.timerInterval);
+        if (ctx.chat) {
+            if (s.timerMessageId) {
+                try {
+                    ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
+                }
+                catch { }
+            }
+            if (!removeTimerOnly && s.messageId) {
+                try {
+                    ctx.api.deleteMessage(ctx.chat.id, s.messageId);
+                }
+                catch { }
+            }
+        }
+        if (!removeTimerOnly) {
+            ctx.session.articleRepeat = undefined;
+            ctx.session.articleRepeatMode = false;
+        }
     }
 }
