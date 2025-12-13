@@ -1,12 +1,7 @@
 import { Bot, InlineKeyboard } from "grammy";
+import { sheets, SPREADSHEET_ID } from "../sheets";
 import { BotContext, Word } from "../types.js";
-import fs from "fs";
-import path from "path";
 import { showMainMenu } from "./start.js";
-
-const words: Word[] = JSON.parse(
-  fs.readFileSync(path.join("./data/words.json"), "utf-8")
-);
 
 type ArticleSession = {
   nouns: Word[];
@@ -43,13 +38,26 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     } catch {}
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
+
     if (selected === "mainMenu") {
       cleanupArticleSession(ctx, true);
       await showMainMenu(ctx, false);
       return;
     }
 
-    const nouns = words.filter((w) => w.pos === "noun");
+    const sheetRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: "wörter!A2:E",
+    });
+
+    const allWords: Word[] = (sheetRes.data.values ?? []).map((row) => ({
+      de: row[1],
+      ua: row[2],
+      pos: row[3],
+      createdAt: row[4] ?? new Date().toISOString(),
+    }));
+
+    const nouns = allWords.filter((w) => w.pos === "noun");
     if (!nouns.length) {
       await ctx.reply("Немає іменників для повторення артиклів 😕");
       return;

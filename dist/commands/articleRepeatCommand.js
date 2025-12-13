@@ -1,14 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.articleRepeatCommand = articleRepeatCommand;
 const grammy_1 = require("grammy");
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const sheets_1 = require("../sheets");
 const start_js_1 = require("./start.js");
-const words = JSON.parse(fs_1.default.readFileSync(path_1.default.join("./data/words.json"), "utf-8"));
 function articleRepeatCommand(bot) {
     bot.command("article_repeat", startTimerSelection);
     bot.callbackQuery("article_repeat", startTimerSelection);
@@ -38,7 +33,17 @@ function articleRepeatCommand(bot) {
             await (0, start_js_1.showMainMenu)(ctx, false);
             return;
         }
-        const nouns = words.filter((w) => w.pos === "noun");
+        const sheetRes = await sheets_1.sheets.spreadsheets.values.get({
+            spreadsheetId: sheets_1.SPREADSHEET_ID,
+            range: "wörter!A2:E",
+        });
+        const allWords = (sheetRes.data.values ?? []).map((row) => ({
+            de: row[1],
+            ua: row[2],
+            pos: row[3],
+            createdAt: row[4] ?? new Date().toISOString(),
+        }));
+        const nouns = allWords.filter((w) => w.pos === "noun");
         if (!nouns.length) {
             await ctx.reply("Немає іменників для повторення артиклів 😕");
             return;

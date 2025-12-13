@@ -24,7 +24,7 @@ function listWordsCommand(bot) {
 async function fetchWords() {
     const res = await sheets_1.sheets.spreadsheets.values.get({
         spreadsheetId: sheets_1.SPREADSHEET_ID,
-        range: "wörter!A2:G",
+        range: "wörter!A2:H",
     });
     return (res.data.values?.map((row, index) => ({
         de: row[1],
@@ -60,6 +60,11 @@ async function sendWordPage(ctx, page) {
         .text("🚀 Прислівники", "listfilter:adverb")
         .row()
         .text("🧭 Прийменники", "listfilter:preposition")
+        .text("🔹 Частки", "listfilter:partikel")
+        .text("👤 Особові займенники", "listfilter:personalpronomen")
+        .row()
+        .text("💡 Вирази", "listfilter:expression")
+        .text("🔗 Сполучники", "listfilter:conjunction")
         .row()
         .text("🔄 Всі", "listfilter:all")
         .row();
@@ -110,6 +115,14 @@ function translatePosToLabel(pos) {
             return "Прислівники";
         case "preposition":
             return "Прийменники";
+        case "partikel":
+            return "Частки";
+        case "personalpronomen":
+            return "Особові займенники";
+        case "expression":
+            return "Вирази";
+        case "conjunction":
+            return "Сполучники";
         default:
             return "Інше";
     }

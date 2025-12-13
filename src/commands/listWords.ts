@@ -81,8 +81,7 @@ async function sendWordPage(ctx: BotContext, page: number) {
     .text("🔗 Сполучники", "listfilter:conjunction")
     .row()
     .text("🔄 Всі", "listfilter:all")
-    .row()
-    .text("🏠 Головне меню", "mainMenu");
+    .row();
 
   if (page > 0) keyboard.text("⬅️", `listwords_${page - 1}`);
   if (end < filteredWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
