@@ -43,6 +43,7 @@ export interface Word {
 }
 
 export interface WordCreationSession {
+  step: "de" | "ua" | "pos" | "confirm";
   de: string;
   ua: string;
   pos?: string;

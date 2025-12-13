@@ -1,140 +1,99 @@
 import { Bot, InlineKeyboard } from "grammy";
-import { BotContext, Word } from "../types.js";
-import { GithubJsonStorage } from "../services/GithubJsonStorage.js";
+import { google } from "googleapis";
+import { BotContext } from "../types.js";
 
-const storage = new GithubJsonStorage({
-  owner: "PaulGraur",
-  repo: "deutsch-bot",
-  path: "data/words.json",
-  token: process.env.DEUTSCH_BOT_TOKEN!,
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID!;
+
+const auth = new google.auth.GoogleAuth({
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-const POS_LIST = [
-  "noun",
-  "verb",
-  "adjective",
-  "adverb",
-  "preposition",
-  "phrase",
-  "other",
-];
+const sheets = google.sheets({ version: "v4", auth });
 
-const ARTICLES = ["der", "die", "das", "Без артикля"];
+const POS_LIST = [
+  { key: "noun", label: "Іменники" },
+  { key: "verb", label: "Дієслова" },
+  { key: "adjective", label: "Прикметники" },
+  { key: "adverb", label: "Прислівники" },
+  { key: "preposition", label: "Прийменники" },
+  { key: "other", label: "Інше" },
+];
 
 export function addWordCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("add", async (ctx) => {
-    const keyboard = new InlineKeyboard().text("🏠 Головне меню", "mainMenu");
+    ctx.session.wordCreation = {
+      step: "de",
+      de: "",
+      ua: "",
+    };
 
-    await ctx.editMessageText("Відправ слово у форматі:\nwort - переклад", {
-      reply_markup: keyboard,
-    });
-
+    await ctx.editMessageText("Введи слово німецькою:");
     await ctx.answerCallbackQuery();
   });
 
   bot.on("message:text", async (ctx) => {
-    if (ctx.session.wordCreation) return;
+    const session = ctx.session.wordCreation;
+    if (!session) return;
 
     const text = ctx.message.text.trim();
-    if (!text.includes("-")) return;
+    if (!text) return;
 
-    const [de, ua] = text.split("-").map((s) => s.trim());
-    if (!de || !ua) {
-      await ctx.reply("Невірний формат. Приклад:\nHaus - дім");
+    if (session.step === "de") {
+      ctx.session.wordCreation = {
+        ...session,
+        de: text,
+        step: "ua",
+      };
+      await ctx.reply("Тепер введи український переклад:");
       return;
     }
 
-    ctx.session.wordCreation = { de, ua };
+    if (session.step === "ua") {
+      ctx.session.wordCreation = {
+        ...session,
+        ua: text,
+        step: "pos",
+      };
 
-    const kb = new InlineKeyboard();
-    POS_LIST.forEach((p) => kb.text(p, `pos-${p}`).row());
-    kb.text("❌ Скасувати", "pos-cancel");
+      const kb = new InlineKeyboard();
+      POS_LIST.forEach((p) => kb.text(p.label, `pos-${p.key}`).row());
 
-    await ctx.reply(`Обери частину мови для:\n<b>${de}</b> — ${ua}`, {
-      reply_markup: kb,
-      parse_mode: "HTML",
-    });
+      await ctx.reply("Обери частину мови:", { reply_markup: kb });
+    }
   });
 
   bot.callbackQuery(/pos-(.+)/, async (ctx) => {
     const pos = ctx.match![1];
+    const data = ctx.session.wordCreation;
 
-    if (pos === "cancel") {
-      ctx.session.wordCreation = null;
-      await ctx.editMessageText("Додавання слова скасовано ❌");
-      return;
-    }
-
-    const pending = ctx.session.wordCreation;
-    if (!pending) {
+    if (!data || !data.de || !data.ua) {
       await ctx.answerCallbackQuery({
-        text: "Немає слова для збереження",
+        text: "Стан зламаний",
         show_alert: true,
       });
       return;
     }
 
-    if (pos === "noun") {
-      const kb = new InlineKeyboard();
-      ARTICLES.forEach((a) => kb.text(a, `article-${a}`).row());
-      kb.text("❌ Скасувати", "article-cancel");
-
-      await ctx.editMessageText(
-        `Оберіть артикль для слова:\n<b>${pending.de}</b> — ${pending.ua}`,
-        { reply_markup: kb, parse_mode: "HTML" }
-      );
-      ctx.session.wordCreation = { ...pending, pos };
-      return;
-    }
-
-    const { data: words, sha } = await storage.readJSON<Word[]>();
-
-    words.push({
-      de: pending.de,
-      ua: pending.ua,
-      pos,
-      createdAt: new Date().toISOString(),
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: "wörter!A2:A",
     });
 
-    await storage.writeJSON(words, sha);
+    const nextId = (res.data.values?.length ?? 0) + 1;
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: SPREADSHEET_ID,
+      range: "wörter!A:D",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [[nextId, data.de, data.ua, pos]],
+      },
+    });
+
     ctx.session.wordCreation = null;
 
     await ctx.editMessageText(
-      `✅ Додано слово:\n<b>${pending.de}</b> — ${pending.ua}\nPOS: <i>${pos}</i>`,
-      { parse_mode: "HTML" }
-    );
-
-    await ctx.answerCallbackQuery();
-  });
-
-  bot.callbackQuery(/article-(.+)/, async (ctx) => {
-    const article = ctx.match![1];
-    const pending = ctx.session.wordCreation;
-
-    if (article === "cancel" || !pending) {
-      ctx.session.wordCreation = null;
-      await ctx.editMessageText("Додавання слова скасовано ❌");
-      return;
-    }
-
-    const { data: words, sha } = await storage.readJSON<Word[]>();
-
-    words.push({
-      de: pending.de,
-      ua: pending.ua,
-      pos: pending.pos ?? "noun",
-      createdAt: new Date().toISOString(),
-      article: article === "Без артикля" ? undefined : article,
-    });
-
-    await storage.writeJSON(words, sha);
-    ctx.session.wordCreation = null;
-
-    await ctx.editMessageText(
-      `✅ Додано слово:\n<b>${pending.de}</b> — ${pending.ua}\nPOS: <i>${
-        pending.pos
-      }</i>\nАртикль: <i>${article === "Без артикля" ? "-" : article}</i>`,
-      { parse_mode: "HTML" }
+      `✅ Додано слово\n\n${nextId}. ${data.de} — ${data.ua}\nPOS: ${pos}`
     );
 
     await ctx.answerCallbackQuery();
