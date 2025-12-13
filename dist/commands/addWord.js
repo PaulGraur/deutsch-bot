@@ -45,21 +45,28 @@ function addWordCommand(bot) {
         if (!s || s.step !== "pos")
             return;
         const pos = ctx.match[1];
-        const res = await sheets_1.sheets.spreadsheets.values.get({
-            spreadsheetId: sheets_1.SPREADSHEET_ID,
-            range: "wörter!A2:A",
-        });
-        const id = (res.data.values?.length ?? 0) + 1;
-        await sheets_1.sheets.spreadsheets.values.append({
-            spreadsheetId: sheets_1.SPREADSHEET_ID,
-            range: "wörter!A:D",
-            valueInputOption: "RAW",
-            requestBody: {
-                values: [[id, s.de, s.ua, pos]],
-            },
-        });
-        ctx.session.wordCreation = null;
-        await ctx.editMessageText(`✅ ${id}. ${s.de} — ${s.ua}`);
-        await ctx.answerCallbackQuery();
+        try {
+            const res = await sheets_1.sheets.spreadsheets.values.get({
+                spreadsheetId: sheets_1.SPREADSHEET_ID,
+                range: "wörter!A2:A",
+            });
+            const id = (res.data.values?.length ?? 0) + 1;
+            await sheets_1.sheets.spreadsheets.values.append({
+                spreadsheetId: sheets_1.SPREADSHEET_ID,
+                range: "wörter!A:D",
+                valueInputOption: "RAW",
+                requestBody: {
+                    values: [[id, s.de, s.ua, pos]],
+                },
+            });
+            ctx.session.wordCreation = null;
+            await ctx.editMessageText(`✅ ${id}. ${s.de} — ${s.ua}`);
+            await ctx.answerCallbackQuery();
+        }
+        catch (err) {
+            console.error("Error writing to sheet:", err);
+            await ctx.reply("❌ Не вдалося записати в таблицю. Перевір лог.");
+            await ctx.answerCallbackQuery();
+        }
     });
 }

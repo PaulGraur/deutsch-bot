@@ -1,76 +1,72 @@
 import { Bot, InlineKeyboard } from "grammy";
+import { sheets, SPREADSHEET_ID } from "../sheets";
 import { BotContext, Word } from "../types.js";
-import fs from "fs";
-import path from "path";
 
 const PAGE_SIZE = 20;
-const WORDS_FILE = path.join(process.cwd(), "data", "words.json");
-const allWords: Word[] = JSON.parse(fs.readFileSync(WORDS_FILE, "utf-8"));
 
 export function listWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("listwords", async (ctx) => {
-    ctx.session.words = allWords;
     ctx.session.posFilter = null;
-
-    try {
-      await sendWordPage(ctx, 0);
-      await ctx.answerCallbackQuery();
-    } catch (err: unknown) {
-      console.log("listwords callback failed:", (err as Error).message || err);
-    }
+    await sendWordPage(ctx, 0);
+    await ctx.answerCallbackQuery();
   });
 
   bot.callbackQuery(/listfilter:(.+)/, async (ctx) => {
-    const filter = ctx.match[1];
-    if (filter === "all") {
-      ctx.session.posFilter = null;
-      ctx.session.words = allWords;
-    } else {
-      ctx.session.posFilter = filter;
-      ctx.session.words = allWords.filter((w) => w.pos === filter);
-    }
-
-    try {
-      await sendWordPage(ctx, 0);
-      await ctx.answerCallbackQuery();
-    } catch (err: unknown) {
-      console.log("listfilter callback failed:", (err as Error).message || err);
-    }
+    ctx.session.posFilter = ctx.match[1] === "all" ? null : ctx.match[1];
+    await sendWordPage(ctx, 0);
+    await ctx.answerCallbackQuery();
   });
 
   bot.callbackQuery(/listwords_(\d+)/, async (ctx) => {
     const page = parseInt(ctx.match[1]);
-    if (!ctx.session.words) ctx.session.words = allWords;
-
-    try {
-      await sendWordPage(ctx, page);
-      await ctx.answerCallbackQuery();
-    } catch (err: unknown) {
-      console.log("pagination callback failed:", (err as Error).message || err);
-    }
+    await sendWordPage(ctx, page);
+    await ctx.answerCallbackQuery();
   });
 }
 
+async function fetchWords(): Promise<(Word & { rowNumber: number })[]> {
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: SPREADSHEET_ID,
+    range: "wörter!A2:H",
+  });
+
+  return (
+    res.data.values?.map((row, index) => ({
+      de: row[1],
+      ua: row[2],
+      pos: row[3],
+      score: row[4] ? Number(row[4]) : 0,
+      lastSeen: row[5] ? Number(row[5]) : 0,
+      createdAt: row[6] ? String(row[6]) : String(Date.now()),
+      rowNumber: index + 2,
+    })) || []
+  );
+}
+
 async function sendWordPage(ctx: BotContext, page: number) {
-  const sessionWords = ctx.session.words || [];
+  const allWords = await fetchWords();
+  const filteredWords = ctx.session.posFilter
+    ? allWords.filter((w) => w.pos === ctx.session.posFilter)
+    : allWords;
+
   const start = page * PAGE_SIZE;
   const end = start + PAGE_SIZE;
-  const pageWords = sessionWords.slice(start, end);
+  const pageWords = filteredWords.slice(start, end);
   const currentFilter = ctx.session.posFilter ?? "all";
 
   let header =
     currentFilter === "all"
       ? "📚 Всі слова"
       : `📚 ${translatePosToLabel(currentFilter)}`;
-  let text = `${header}\n${start + 1}-${Math.min(end, sessionWords.length)} з ${
-    sessionWords.length
-  }:\n\n`;
+  let text = `${header}\n${start + 1}-${Math.min(
+    end,
+    filteredWords.length
+  )} з ${filteredWords.length}:\n\n`;
   text += pageWords
     .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
     .join("\n");
 
-  const keyboard = new InlineKeyboard();
-  keyboard
+  const keyboard = new InlineKeyboard()
     .text("📘 Іменники", "listfilter:noun")
     .text("⚡ Дієслова", "listfilter:verb")
     .row()
@@ -78,35 +74,37 @@ async function sendWordPage(ctx: BotContext, page: number) {
     .text("🚀 Прислівники", "listfilter:adverb")
     .row()
     .text("🧭 Прийменники", "listfilter:preposition")
+    .text("🔹 Частки", "listfilter:partikel")
+    .text("👤 Особові займенники", "listfilter:personalpronomen")
+    .row()
+    .text("💡 Вирази", "listfilter:expression")
+    .text("🔗 Сполучники", "listfilter:conjunction")
     .row()
     .text("🔄 Всі", "listfilter:all")
-    .row();
+    .row()
+    .text("🏠 Головне меню", "mainMenu");
 
   if (page > 0) keyboard.text("⬅️", `listwords_${page - 1}`);
-  if (end < sessionWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
-  if (page > 0 || end < sessionWords.length) keyboard.row();
+  if (end < filteredWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
+  if (page > 0 || end < filteredWords.length) keyboard.row();
   keyboard.text("🏠 Головне меню", "mainMenu");
 
-  try {
-    if (ctx.callbackQuery?.message) {
-      try {
-        await ctx.editMessageText(text, { reply_markup: keyboard });
-      } catch (err: unknown) {
-        const chunks = chunkArray(pageWords, 10);
-        for (const chunk of chunks) {
-          const chunkText = chunk
-            .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
-            .join("\n");
-          try {
-            await ctx.reply(chunkText);
-          } catch {}
-        }
+  if (ctx.callbackQuery?.message) {
+    try {
+      await ctx.editMessageText(text, { reply_markup: keyboard });
+    } catch (err) {
+      const chunks = chunkArray(pageWords, 10);
+      for (const chunk of chunks) {
+        const chunkText = chunk
+          .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
+          .join("\n");
+        try {
+          await ctx.reply(chunkText);
+        } catch {}
       }
-    } else {
-      await ctx.reply(text, { reply_markup: keyboard });
     }
-  } catch (err: unknown) {
-    console.log("sendWordPage failed:", (err as Error).message || err);
+  } else {
+    await ctx.reply(text, { reply_markup: keyboard });
   }
 }
 
@@ -130,6 +128,14 @@ function translatePosToLabel(pos: string): string {
       return "Прислівники";
     case "preposition":
       return "Прийменники";
+    case "partikel":
+      return "Частки";
+    case "personalpronomen":
+      return "Особові займенники";
+    case "expression":
+      return "Вирази";
+    case "conjunction":
+      return "Сполучники";
     default:
       return "Інше";
   }
