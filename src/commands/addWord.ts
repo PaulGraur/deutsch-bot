@@ -1,6 +1,6 @@
 import { Bot, InlineKeyboard } from "grammy";
 import { BotContext } from "../types.js";
-import { sheets, SPREADSHEET_ID } from "../sheets.js";
+import { sheets, SPREADSHEET_ID } from "../sheets";
 
 const POS = [
   { k: "noun", v: "Іменники" },
