@@ -2,100 +2,83 @@ import { Bot, InlineKeyboard } from "grammy";
 import { google } from "googleapis";
 import { BotContext } from "../types.js";
 
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID!;
-
-const auth = new google.auth.GoogleAuth({
+const auth = new google.auth.JWT({
+  email: process.env.GOOGLE_CLIENT_EMAIL,
+  key: process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
 const sheets = google.sheets({ version: "v4", auth });
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID!;
 
-const POS_LIST = [
-  { key: "noun", label: "Іменники" },
-  { key: "verb", label: "Дієслова" },
-  { key: "adjective", label: "Прикметники" },
-  { key: "adverb", label: "Прислівники" },
-  { key: "preposition", label: "Прийменники" },
-  { key: "other", label: "Інше" },
+const POS = [
+  { k: "noun", v: "Іменники" },
+  { k: "verb", v: "Дієслова" },
+  { k: "adjective", v: "Прикметники" },
+  { k: "adverb", v: "Прислівники" },
+  { k: "preposition", v: "Прийменники" },
+  { k: "other", v: "Інше" },
 ];
 
 export function addWordCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("add", async (ctx) => {
-    ctx.session.wordCreation = {
-      step: "de",
-      de: "",
-      ua: "",
-    };
-
+    ctx.session.wordCreation = { step: "de" };
     await ctx.editMessageText("Введи слово німецькою:");
     await ctx.answerCallbackQuery();
   });
 
   bot.on("message:text", async (ctx) => {
-    const session = ctx.session.wordCreation;
-    if (!session) return;
+    const s = ctx.session.wordCreation;
+    if (!s) return;
 
-    const text = ctx.message.text.trim();
-    if (!text) return;
-
-    if (session.step === "de") {
+    if (s.step === "de") {
       ctx.session.wordCreation = {
-        ...session,
-        de: text,
         step: "ua",
+        de: ctx.message.text.trim(),
       };
-      await ctx.reply("Тепер введи український переклад:");
+      await ctx.reply("Введи переклад українською:");
       return;
     }
 
-    if (session.step === "ua") {
+    if (s.step === "ua") {
       ctx.session.wordCreation = {
-        ...session,
-        ua: text,
         step: "pos",
+        de: s.de,
+        ua: ctx.message.text.trim(),
       };
 
       const kb = new InlineKeyboard();
-      POS_LIST.forEach((p) => kb.text(p.label, `pos-${p.key}`).row());
+      POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
 
       await ctx.reply("Обери частину мови:", { reply_markup: kb });
     }
   });
 
   bot.callbackQuery(/pos-(.+)/, async (ctx) => {
-    const pos = ctx.match![1];
-    const data = ctx.session.wordCreation;
+    const s = ctx.session.wordCreation;
+    if (!s || s.step !== "pos") return;
 
-    if (!data || !data.de || !data.ua) {
-      await ctx.answerCallbackQuery({
-        text: "Стан зламаний",
-        show_alert: true,
-      });
-      return;
-    }
+    const pos = ctx.match![1];
 
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: "wörter!A2:A",
     });
 
-    const nextId = (res.data.values?.length ?? 0) + 1;
+    const id = (res.data.values?.length ?? 0) + 1;
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: "wörter!A:D",
       valueInputOption: "RAW",
       requestBody: {
-        values: [[nextId, data.de, data.ua, pos]],
+        values: [[id, s.de, s.ua, pos]],
       },
     });
 
     ctx.session.wordCreation = null;
 
-    await ctx.editMessageText(
-      `✅ Додано слово\n\n${nextId}. ${data.de} — ${data.ua}\nPOS: ${pos}`
-    );
-
+    await ctx.editMessageText(`✅ ${id}. ${s.de} — ${s.ua}`);
     await ctx.answerCallbackQuery();
   });
 }

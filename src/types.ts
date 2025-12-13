@@ -42,12 +42,10 @@ export interface Word {
   article?: string;
 }
 
-export interface WordCreationSession {
-  step: "de" | "ua" | "pos" | "confirm";
-  de: string;
-  ua: string;
-  pos?: string;
-}
+export type WordCreationSession =
+  | { step: "de" }
+  | { step: "ua"; de: string }
+  | { step: "pos"; de: string; ua: string };
 
 export interface SessionData {
   currentWord?: Word;
