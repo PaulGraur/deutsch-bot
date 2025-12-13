@@ -19,6 +19,7 @@ type ArticleSession = {
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", startTimerSelection);
+  
   bot.callbackQuery("article_repeat", startTimerSelection);
 
   bot.callbackQuery("delete_summary", async (ctx) => {
