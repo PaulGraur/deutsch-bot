@@ -1,15 +1,6 @@
 import { Bot, InlineKeyboard } from "grammy";
-import { google } from "googleapis";
 import { BotContext } from "../types.js";
-
-const auth = new google.auth.JWT({
-  email: process.env.GOOGLE_CLIENT_EMAIL,
-  key: process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
-
-const sheets = google.sheets({ version: "v4", auth });
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID!;
+import { sheets, SPREADSHEET_ID } from "../sheets.js";
 
 const POS = [
   { k: "noun", v: "Іменники" },
