@@ -107,4 +107,3 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
     },
   },
 ];
-//

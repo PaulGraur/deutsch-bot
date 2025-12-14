@@ -45,7 +45,6 @@ export async function appendWords(newWords: Omit<WordItem, "id">[]) {
 export async function pickRandom(n = 1): Promise<WordItem[]> {
   const all = await readAll();
   if (all.length === 0) return [];
-  // Fisher-Yates sampling
   const res: WordItem[] = [];
   const copy = all.slice();
   for (let i = 0; i < Math.min(n, copy.length); i++) {
