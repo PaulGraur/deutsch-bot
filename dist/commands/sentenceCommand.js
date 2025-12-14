@@ -7,6 +7,7 @@ exports.sentenceCommand = sentenceCommand;
 const grammy_1 = require("grammy");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const patterns_js_1 = require("../commands/patterns.js");
 const sentencesPath = path_1.default.resolve("data/sentences.json");
 function loadSentences() {
     try {
@@ -24,11 +25,29 @@ function randomSentenceId(sentences, excludeId) {
         return null;
     return candidates[Math.floor(Math.random() * candidates.length)].id;
 }
+async function clearStructureMessages(ctx) {
+    if (ctx.session.structureMessageIds) {
+        for (const msgId of ctx.session.structureMessageIds) {
+            try {
+                await ctx.api.deleteMessage(ctx.chat.id, msgId);
+            }
+            catch { }
+        }
+        ctx.session.structureMessageIds = [];
+    }
+}
 function sentenceCommand(bot) {
-    bot.command("sentence", async (ctx) => safeSendRandomSentence(ctx));
-    bot.callbackQuery("sentenceMode", async (ctx) => safeSendRandomSentence(ctx));
+    bot.command("sentence", async (ctx) => {
+        await clearStructureMessages(ctx);
+        await safeSendRandomSentence(ctx);
+    });
+    bot.callbackQuery("sentenceMode", async (ctx) => {
+        await clearStructureMessages(ctx);
+        await safeSendRandomSentence(ctx);
+    });
     bot.callbackQuery(/sentence:other:(.+)/, async (ctx) => {
         try {
+            await clearStructureMessages(ctx);
             const sentences = loadSentences();
             const curId = ctx.callbackQuery?.data?.split(":")[2] ?? null;
             const nextId = randomSentenceId(sentences, curId);
@@ -43,6 +62,7 @@ function sentenceCommand(bot) {
     });
     bot.callbackQuery(/sentence:show:(.+)/, async (ctx) => {
         try {
+            await clearStructureMessages(ctx);
             const id = ctx.callbackQuery?.data?.split(":")[2];
             if (!id)
                 return;
@@ -55,6 +75,7 @@ function sentenceCommand(bot) {
     });
     bot.callbackQuery(/sentence:word:(.+):(\d+)/, async (ctx) => {
         try {
+            await clearStructureMessages(ctx);
             const parts = (ctx.callbackQuery?.data ?? "").split(":");
             const sentenceId = parts[2];
             const index = Number(parts[3]);
@@ -99,29 +120,7 @@ function sentenceCommand(bot) {
             const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
             if (!sentenceId)
                 return;
-            const s = loadSentences().find((x) => x.id === sentenceId);
-            if (!s)
-                return await ctx.answerCallbackQuery({ text: "Речення не знайдено" });
-            const txt = [
-                "🧠 *Структура речення (DE)*",
-                "━━━━━━━━━━━━━━━━━━",
-                "",
-                "🧩 *Схема:*",
-                s.structure || "— Немає опису —",
-                "",
-                s.rule ? ["📘 *Граматичне правило:*", s.rule].join("\n") : "",
-                "",
-                "⚡ *Підказка:*",
-                "Починай з дієслова — в німецькій це вісь речення.",
-            ].join("\n");
-            const keyboard = new grammy_1.InlineKeyboard()
-                .text("🔙 До речення", `sentence:show:${sentenceId}`)
-                .row()
-                .text("🏠 Меню", "mainMenu");
-            await ctx.editMessageText(txt, {
-                reply_markup: keyboard,
-                parse_mode: "Markdown",
-            });
+            await safeShowStructure(ctx, sentenceId);
             await ctx.answerCallbackQuery();
         }
         catch (err) {
@@ -130,6 +129,7 @@ function sentenceCommand(bot) {
     });
     bot.callbackQuery(/sentence:assemble:(.+)/, async (ctx) => {
         try {
+            await clearStructureMessages(ctx);
             const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
             if (!sentenceId)
                 return;
@@ -203,6 +203,38 @@ function sentenceCommand(bot) {
             console.log("sentence:assemble_submit callback failed:", err.message || err);
         }
     });
+    bot.callbackQuery(/sentence:pattern:(.+)/, async (ctx) => {
+        try {
+            const id = ctx.callbackQuery?.data?.split(":")[2];
+            const pattern = patterns_js_1.SENTENCE_PATTERNS.find((p) => p.id === id);
+            if (!pattern)
+                return;
+            const txt = [
+                `🔍 *Розгорнуто: ${pattern.title}*`,
+                "━━━━━━━━━━━━━━━━━━",
+                "🧩 *Схема:*",
+                pattern.short.scheme,
+                "",
+                ...pattern.detailed.blocks.map((b) => `• ${b}`),
+                "",
+                "📌 *Приклади:*",
+                ...pattern.detailed.examples,
+                "",
+                pattern.detailed.tip ? `⚡ *Підказка:*\n${pattern.detailed.tip}` : "",
+            ]
+                .filter(Boolean)
+                .join("\n");
+            const kb = new grammy_1.InlineKeyboard()
+                .text("🔙 До схем", `sentence:structure:${ctx.session.currentSentenceId}`)
+                .row();
+            await ctx.editMessageText(txt, {
+                reply_markup: kb,
+                parse_mode: "Markdown",
+            });
+            await ctx.answerCallbackQuery();
+        }
+        catch { }
+    });
 }
 async function safeSendRandomSentence(ctx) {
     try {
@@ -214,12 +246,11 @@ async function safeSendRandomSentence(ctx) {
             return await ctx.reply("❌ Немає речень.");
         await safeShowSentence(ctx, id);
     }
-    catch (err) {
-        console.log("sendRandomSentence failed:", err.message || err);
-    }
+    catch { }
 }
 async function safeShowSentence(ctx, sentenceId) {
     try {
+        await clearStructureMessages(ctx);
         const sentences = loadSentences();
         const s = sentences.find((x) => x.id === sentenceId);
         if (!s)
@@ -228,11 +259,9 @@ async function safeShowSentence(ctx, sentenceId) {
         ctx.session.assembledIndexes = [];
         const keyboard = new grammy_1.InlineKeyboard();
         const shuffledWords = [...s.words].sort(() => Math.random() - 0.5);
-        shuffledWords.forEach((w) => {
-            keyboard
-                .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
-                .row();
-        });
+        shuffledWords.forEach((w) => keyboard
+            .text(w.text, `sentence:word:${sentenceId}:${s.words.indexOf(w)}`)
+            .row());
         keyboard
             .row()
             .text("🧩 Зібрати", `sentence:assemble:${sentenceId}`)
@@ -248,12 +277,11 @@ async function safeShowSentence(ctx, sentenceId) {
             parse_mode: "Markdown",
         });
     }
-    catch (err) {
-        console.log("showSentence failed:", err.message || err);
-    }
+    catch { }
 }
 async function safeShowAssembleView(ctx, sentenceId) {
     try {
+        await clearStructureMessages(ctx);
         const sentences = loadSentences();
         const s = sentences.find((x) => x.id === sentenceId);
         if (!s)
@@ -269,9 +297,7 @@ async function safeShowAssembleView(ctx, sentenceId) {
             .map((w, idx) => ({ w, idx }))
             .filter(({ idx }) => !used.has(idx))
             .sort(() => Math.random() - 0.5);
-        remainingWords.forEach(({ w, idx }) => {
-            kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row();
-        });
+        remainingWords.forEach(({ w, idx }) => kb.text(w.text, `sentence:assemble_add:${sentenceId}:${idx}`).row());
         kb.row()
             .text("↩️ Видалити", `sentence:assemble_remove:${sentenceId}`)
             .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
@@ -283,7 +309,34 @@ async function safeShowAssembleView(ctx, sentenceId) {
             parse_mode: "Markdown",
         });
     }
-    catch (err) {
-        console.log("showAssembleView failed:", err.message || err);
+    catch { }
+}
+async function safeShowStructure(ctx, sentenceId) {
+    if (!ctx.session.structureMessageIds)
+        ctx.session.structureMessageIds = [];
+    for (const msgId of ctx.session.structureMessageIds) {
+        try {
+            await ctx.api.deleteMessage(ctx.chat.id, msgId);
+        }
+        catch { }
     }
+    ctx.session.structureMessageIds = [];
+    for (const pattern of patterns_js_1.SENTENCE_PATTERNS) {
+        const txt = [
+            `*${pattern.title}*`,
+            pattern.short.scheme,
+            `_${pattern.short.example}_`,
+        ].join("\n");
+        const kb = new grammy_1.InlineKeyboard().text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`);
+        const sentMsg = await ctx.reply(txt, {
+            reply_markup: kb,
+            parse_mode: "Markdown",
+        });
+        ctx.session.structureMessageIds.push(sentMsg.message_id);
+    }
+    const kbMenu = new grammy_1.InlineKeyboard().text("🔙 До речення", `sentence:show:${sentenceId}`);
+    const sentMenu = await ctx.reply(".", {
+        reply_markup: kbMenu,
+    });
+    ctx.session.structureMessageIds.push(sentMenu.message_id);
 }

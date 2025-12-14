@@ -11,7 +11,7 @@ app.get("/", (_req, res) => {
   res.send("Bot is running!");
 });
 
-const isProduction = true;
+const isProduction = false;
 
 if (isProduction) {
   app.post("/webhook", webhookCallback(bot, "express"));

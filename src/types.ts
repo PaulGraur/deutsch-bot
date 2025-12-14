@@ -70,7 +70,8 @@ export interface SessionData {
     timerInterval?: NodeJS.Timeout;
     timerSelected?: string;
   };
-
+  
+  structureMessageIds?: number[];
   wordCreation?: WordCreationSession | null;
 }
 
