@@ -34,7 +34,11 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
         "Verb — дія, завжди 2-га позиція",
         "Objekt — на кого / що (Akk / Dat)",
       ],
-      examples: ["Ich sehe den Hund.", "Er liest ein Buch."],
+      examples: [
+        "Ich sehe den Hund.",
+        "Er liest ein Buch.",
+        "Ich wische den Tisch ab.",
+      ],
       tip: "Знайди дієслово — це центр речення.",
     },
   },
@@ -51,7 +55,11 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
         "Adverb відповідає на: коли? де? як?",
         "Може стояти на 1-й позиції",
       ],
-      examples: ["Ich lerne heute Deutsch.", "Heute lerne ich Deutsch."],
+      examples: [
+        "Ich lerne heute Deutsch.",
+        "Heute lerne ich Deutsch.",
+        "Ich gehe morgen in die Schule.",
+      ],
     },
   },
 
@@ -64,7 +72,11 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
     },
     detailed: {
       blocks: ["Adjektiv завжди перед іменником", "Має закінчення"],
-      examples: ["Ich trinke heißen Kaffee.", "Sie kauft ein neues Auto."],
+      examples: [
+        "Ich trinke heißen Kaffee.",
+        "Sie kauft ein neues Auto.",
+        "Ich schenke meiner lieben Schwester das schöne Buch.",
+      ],
     },
   },
 
@@ -77,7 +89,11 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
     },
     detailed: {
       blocks: ["Прийменник керує відмінком", "mit → Dativ / für → Akkusativ"],
-      examples: ["Ich gehe mit dem Freund.", "Ich warte auf den Bus."],
+      examples: [
+        "Ich gehe mit dem Freund.",
+        "Ich warte auf den Bus.",
+        "Ich gehe auf den Berg, weil es extrem ist.",
+      ],
     },
   },
 
@@ -90,7 +106,7 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
     },
     detailed: {
       blocks: ["Не перекладається дослівно", "Надає емоцію або акцент"],
-      examples: ["Ich komme nicht.", "Komm mal her."],
+      examples: ["Ich komme nicht.", "Komm mal her.", "Geh bitte schnell!"],
     },
   },
 
@@ -103,7 +119,11 @@ export const SENTENCE_PATTERNS: SentencePattern[] = [
     },
     detailed: {
       blocks: ["weil / dass ламають порядок", "Дієслово йде в кінець"],
-      examples: ["Ich bleibe zu Hause, weil ich müde bin."],
+      examples: [
+        "Ich bleibe zu Hause, weil ich müde bin.",
+        "Der Lehrer erklärt dem aufmerksamen Schüler die schwierige Aufgabe, die viele Fehler enthält.",
+        "Meine Mutter kocht meinem hungrigen Bruder das leckere Abendessen, das frisch aus dem Ofen kommt.",
+      ],
     },
   },
 ];
