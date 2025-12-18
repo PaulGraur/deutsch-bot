@@ -103,7 +103,7 @@ function sentenceCommand(bot) {
             const keyboard = new grammy_1.InlineKeyboard()
                 .text("🔙 До речення", `sentence:show:${sentenceId}`)
                 .row()
-                .text("🏠 Меню", "mainMenu");
+                .text("🏠 Дім", "mainMenu");
             await ctx.editMessageText(txt, {
                 reply_markup: keyboard,
                 parse_mode: "Markdown",
@@ -192,7 +192,7 @@ function sentenceCommand(bot) {
                 .row()
                 .text("♻️ Інше", `sentence:other:${sentenceId}`)
                 .row()
-                .text("🏠 Меню", "mainMenu");
+                .text("🏠 Дім", "mainMenu");
             const msg = ok
                 ? `✅ *Вірно!*\n\n🧩 ${assembled.join(" ")}`
                 : `❌ *Помилка!*\n\nТвій варіант:\n${assembled.join(" ")}\n\n✅ Правильно:\n${correct.join(" ")}`;
@@ -291,7 +291,7 @@ async function safeShowSentence(ctx, sentenceId) {
             .text("🧭 Структура", `sentence:structure:${sentenceId}`)
             .row()
             .text("♻️ Інше", `sentence:other:${sentenceId}`)
-            .text("🏠 Меню", "mainMenu");
+            .text("🏠 Дім", "mainMenu");
         const text = [`🇩🇪 *${s.de}*`, s.ua ? `🇺🇦 ${s.ua}` : ""]
             .filter(Boolean)
             .join("\n");
@@ -326,7 +326,7 @@ async function safeShowAssembleView(ctx, sentenceId) {
             .text("✅ Перевірити", `sentence:assemble_submit:${sentenceId}`)
             .row()
             .text("🔙 До речення", `sentence:show:${sentenceId}`)
-            .text("🏠 Меню", "mainMenu");
+            .text("🏠 Дім", "mainMenu");
         await ctx.editMessageText(header, {
             reply_markup: kb,
             parse_mode: "Markdown",

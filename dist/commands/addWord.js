@@ -52,13 +52,13 @@ function addWordCommand(bot) {
     const createPOSKeyboard = () => {
         const kb = new grammy_1.InlineKeyboard();
         POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
-        kb.row().text("🏠 Вийти в головне меню", "mainMenu");
+        kb.row().text("🏠 Вийти в додому", "mainMenu");
         return kb;
     };
     const createAddWordKeyboard = () => new grammy_1.InlineKeyboard()
         .text("➕ Додати ще слово", "add")
         .row()
-        .text("🏠 Вийти в головне меню", "mainMenu");
+        .text("🏠 Вийти в додому", "mainMenu");
     const deleteAllSessionMessages = async (ctx) => {
         const s = ctx.session.wordCreation;
         if (!s)
@@ -73,7 +73,7 @@ function addWordCommand(bot) {
     };
     const sendMessageAndRecord = async (ctx, text, kb) => {
         const s = ctx.session.wordCreation;
-        const replyMarkup = kb ?? new grammy_1.InlineKeyboard().text("🏠 Вийти в головне меню", "mainMenu");
+        const replyMarkup = kb ?? new grammy_1.InlineKeyboard().text("🏠 Вийти в додому", "mainMenu");
         const msg = await ctx.reply(text, { reply_markup: replyMarkup });
         s.messages.push(msg.message_id);
         return msg.message_id;

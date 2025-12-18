@@ -31,7 +31,7 @@ async function showGrammarLevels(ctx) {
         .row()
         .text("📖 Граматика C1–C2", "grammar_level_C1")
         .row()
-        .text("🏠 Головне меню", "mainMenu");
+        .text("🏠 Дім", "mainMenu");
     await safeEdit(ctx, "📚 Обери рівень граматики:", keyboard);
 }
 function getGrammarTopicsByLevel(level) {
@@ -65,7 +65,7 @@ async function showTopics(ctx, level) {
     const keyboard = new grammy_1.InlineKeyboard();
     topics.forEach((topic, i) => keyboard.text(topic.name, `topic_${i}_${level}`).row());
     keyboard.text("🔙 До рівнів", "grammar_levels").row();
-    keyboard.text("🏠 Головне меню", "mainMenu");
+    keyboard.text("🏠 Дім", "mainMenu");
     await safeEdit(ctx, `📘 Теми рівня *${level}*`, keyboard);
 }
 async function showRules(ctx, topicIndex, level) {
@@ -73,7 +73,7 @@ async function showRules(ctx, topicIndex, level) {
     const keyboard = new grammy_1.InlineKeyboard();
     topic.rules.forEach((rule, i) => keyboard.text(rule.title, `rule_${topicIndex}_${i}_${level}`).row());
     keyboard.text("🔙 До тем", `grammar_level_${level}`).row();
-    keyboard.text("🏠 Головне меню", "mainMenu");
+    keyboard.text("🏠 Дім", "mainMenu");
     await safeEdit(ctx, `📘 *${topic.name}*`, keyboard);
 }
 async function sendRule(ctx, topicIndex, ruleIndex, level) {
@@ -81,11 +81,11 @@ async function sendRule(ctx, topicIndex, ruleIndex, level) {
     const rule = topic.rules[ruleIndex];
     const keyboard = new grammy_1.InlineKeyboard();
     if (ruleIndex > 0)
-        keyboard.text("⬅️ Попереднє", `rule_${topicIndex}_${ruleIndex - 1}_${level}`);
+        keyboard.text("⬅️", `rule_${topicIndex}_${ruleIndex - 1}_${level}`);
     if (ruleIndex < topic.rules.length - 1)
-        keyboard.text("➡️ Наступне", `rule_${topicIndex}_${ruleIndex + 1}_${level}`);
+        keyboard.text("➡️", `rule_${topicIndex}_${ruleIndex + 1}_${level}`);
     keyboard.row().text("🔙 До підтем", `topic_${topicIndex}_${level}`);
-    keyboard.row().text("🏠 Головне меню", "mainMenu");
+    keyboard.row().text("🏠 Дім", "mainMenu");
     let text = `📘 *${rule.title}*\n\n${rule.content}\n\n*Приклади:*\n${rule.examples.join("\n")}`;
     if (rule.notes)
         text += `\n\n*Примітки:*\n${rule.notes}`;

@@ -43,7 +43,7 @@ export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
     .row()
     .text("📚 Список слів", "listwords")
     .row()
-    .text("⚡⚡⚡", "global_mainMenu");
+    .text("⚡", "global_mainMenu");
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 

@@ -20,6 +20,10 @@ function listWordsCommand(bot) {
         await sendWordPage(ctx, page);
         await ctx.answerCallbackQuery();
     });
+    bot.callbackQuery("filters", async (ctx) => {
+        await sendFilterMenu(ctx);
+        await ctx.answerCallbackQuery();
+    });
 }
 async function fetchWords() {
     const res = await sheets_1.sheets.spreadsheets.values.get({
@@ -52,6 +56,37 @@ async function sendWordPage(ctx, page) {
     text += pageWords
         .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
         .join("\n");
+    const keyboard = new grammy_1.InlineKeyboard();
+    if (page > 0)
+        keyboard.text("⬅️", `listwords_${page - 1}`);
+    if (end < filteredWords.length)
+        keyboard.text("➡️", `listwords_${page + 1}`);
+    if (page > 0 || end < filteredWords.length)
+        keyboard.row();
+    // Кнопки внизу: Фільтри і Дім
+    keyboard.text("⚙️ Фільтри", "filters").text("🏠 Дім", "mainMenu");
+    if (ctx.callbackQuery?.message) {
+        try {
+            await ctx.editMessageText(text, { reply_markup: keyboard });
+        }
+        catch {
+            const chunks = chunkArray(pageWords, 10);
+            for (const chunk of chunks) {
+                const chunkText = chunk
+                    .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
+                    .join("\n");
+                try {
+                    await ctx.reply(chunkText);
+                }
+                catch { }
+            }
+        }
+    }
+    else {
+        await ctx.reply(text, { reply_markup: keyboard });
+    }
+}
+async function sendFilterMenu(ctx) {
     const keyboard = new grammy_1.InlineKeyboard()
         .text("📘 Іменники", "listfilter:noun")
         .text("⚡ Дієслова", "listfilter:verb")
@@ -67,33 +102,13 @@ async function sendWordPage(ctx, page) {
         .text("🔗 Сполучники", "listfilter:conjunction")
         .row()
         .text("🔄 Всі", "listfilter:all")
-        .row();
-    if (page > 0)
-        keyboard.text("⬅️", `listwords_${page - 1}`);
-    if (end < filteredWords.length)
-        keyboard.text("➡️", `listwords_${page + 1}`);
-    if (page > 0 || end < filteredWords.length)
-        keyboard.row();
-    keyboard.text("🏠 Головне меню", "mainMenu");
+        .row()
+        .text("⬅️ Назад", "listwords");
     if (ctx.callbackQuery?.message) {
-        try {
-            await ctx.editMessageText(text, { reply_markup: keyboard });
-        }
-        catch (err) {
-            const chunks = chunkArray(pageWords, 10);
-            for (const chunk of chunks) {
-                const chunkText = chunk
-                    .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
-                    .join("\n");
-                try {
-                    await ctx.reply(chunkText);
-                }
-                catch { }
-            }
-        }
+        await ctx.editMessageText("Виберіть фільтр:", { reply_markup: keyboard });
     }
     else {
-        await ctx.reply(text, { reply_markup: keyboard });
+        await ctx.reply("Виберіть фільтр:", { reply_markup: keyboard });
     }
 }
 function chunkArray(arr, size) {
