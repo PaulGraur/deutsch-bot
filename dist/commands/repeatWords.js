@@ -1,12 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.repeatWordsCommand = repeatWordsCommand;
 const grammy_1 = require("grammy");
 const sheets_1 = require("../sheets");
-const regime_js_1 = __importDefault(require("../public/regime.js"));
 const MAX_SCORE = 8;
 const DAILY_LIMIT = 1000;
 const intervalForScore = [
@@ -23,43 +19,46 @@ const intervalForScore = [
 function repeatWordsCommand(bot) {
     bot.callbackQuery("repeat", async (ctx) => {
         await initWordsSession(ctx);
-        const randomText = regime_js_1.default[Math.floor(Math.random() * regime_js_1.default.length)];
         const keyboard = new grammy_1.InlineKeyboard()
-            .text("🇩🇪 → 🇺🇦", "mode:de2ua")
+            .text("🇩🇪 🔛 🇺🇦", "mode:de2ua")
             .row()
-            .text("🇺🇦 → 🇩🇪", "mode:ua2de")
+            .text("🇺🇦 🔛 🇩🇪", "mode:ua2de")
             .row()
             .text("🏠 Дім", "mainMenu");
-        await ctx.editMessageText(randomText, { reply_markup: keyboard });
+        await ctx.editMessageText("Вибери режим повторів:", {
+            reply_markup: keyboard,
+        });
         await ctx.answerCallbackQuery();
     });
-    bot.callbackQuery(/mode:.+/, async (ctx) => {
-        ctx.session.repeatMode = ctx.callbackQuery.data.split(":")[1];
+    bot.callbackQuery(/mode:(de2ua|ua2de)/, async (ctx) => {
+        ctx.session.repeatMode = ctx.callbackQuery?.data.split(":")[1];
         await showNewWord(ctx);
         await ctx.answerCallbackQuery();
     });
-    bot.callbackQuery(/rate:.+/, async (ctx) => {
-        const rate = ctx.callbackQuery.data.split(":")[1];
+    bot.callbackQuery(/answer:(.+)/, async (ctx) => {
+        const selected = ctx.callbackQuery?.data.split(":")[1];
         const word = ctx.session.currentWord;
         if (!word)
             return;
         const now = Date.now();
-        if (rate === "again") {
-            word.score = Math.max(word.score - 2, 0);
-            word.lastSeen = now;
-        }
-        if (rate === "hard") {
-            word.score = Math.max(word.score - 1, 0);
-            word.lastSeen = now - intervalForScore[word.score] / 2;
-        }
-        if (rate === "easy") {
+        let correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
+        const isCorrect = selected === correctAnswer;
+        if (isCorrect) {
             word.score = Math.min(word.score + 1, MAX_SCORE);
             word.lastSeen = now;
+        }
+        else {
+            word.score = Math.max(word.score - 1, 0);
+            word.lastSeen = now - intervalForScore[word.score] / 2;
         }
         ctx.session.dailyRepeats = (ctx.session.dailyRepeats ?? 0) + 1;
         await saveProgressBatch(ctx);
         await showNewWord(ctx);
-        await ctx.answerCallbackQuery();
+        await ctx.answerCallbackQuery({
+            text: isCorrect
+                ? "✅ Правильно!"
+                : `❌ Неправильно! Правильна: ${correctAnswer}`,
+        });
     });
 }
 async function initWordsSession(ctx) {
@@ -83,7 +82,7 @@ async function initWordsSession(ctx) {
         return {
             de: row[1],
             ua: row[2],
-            createdAt: row[6],
+            createdAt: row[6] || String(Date.now()),
             score: Number(p[1] || 0),
             lastSeen: Number(p[2] || 0),
             rowNumber: i + 2,
@@ -102,16 +101,31 @@ async function showNewWord(ctx) {
     const pool = due.length ? due : cache;
     const word = weightedRandom(pool);
     ctx.session.currentWord = word;
-    const text = ctx.session.repeatMode === "de2ua" ? `🇩🇪 ${word.de}` : `🇺🇦 ${word.ua}`;
-    const keyboard = new grammy_1.InlineKeyboard()
-        .text("🔁 Again", "rate:again")
-        .row()
-        .text("⚠️ Hard", "rate:hard")
-        .row()
-        .text("✅ Easy", "rate:easy")
-        .row()
-        .text("🏠 Дім", "mainMenu");
-    await ctx.editMessageText(text, { reply_markup: keyboard });
+    const question = ctx.session.repeatMode === "de2ua" ? word.de : word.ua;
+    const options = generateOptions(word, cache, ctx.session.repeatMode);
+    const keyboard = new grammy_1.InlineKeyboard();
+    for (const opt of options) {
+        keyboard.text(opt, `answer:${opt}`).row();
+    }
+    keyboard.text("🏠 Дім", "mainMenu");
+    await ctx.editMessageText(`${ctx.session.repeatMode === "de2ua" ? "🇩🇪" : "🇺🇦"} ${question}`, { reply_markup: keyboard });
+}
+function generateOptions(word, cache, mode) {
+    const optionsSet = new Set();
+    const correct = mode === "de2ua" ? word.ua : word.de;
+    optionsSet.add(correct);
+    while (optionsSet.size < Math.min(4, cache.length)) {
+        const randomWord = cache[Math.floor(Math.random() * cache.length)];
+        const option = mode === "de2ua" ? randomWord.ua : randomWord.de;
+        if (option)
+            optionsSet.add(option);
+    }
+    const options = Array.from(optionsSet);
+    for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+    }
+    return options;
 }
 async function saveProgressBatch(ctx) {
     const values = ctx.session.wordsCache.map((w) => [

@@ -8,7 +8,6 @@ exports.showMainMenu = showMainMenu;
 const grammy_1 = require("grammy");
 const mainMenuTexts_js_1 = __importDefault(require("../public/mainMenuTexts.js"));
 const articleRepeatCommand_js_1 = require("./articleRepeatCommand.js");
-const dativAkkusativCommand_js_1 = require("./dativAkkusativCommand.js"); // <-- підключення блоку
 function startCommand(bot) {
     bot.command("start", async (ctx) => {
         await showMainMenu(ctx);
@@ -29,12 +28,6 @@ function startCommand(bot) {
         await showMainMenu(ctx, false);
     });
     (0, articleRepeatCommand_js_1.articleRepeatCommand)(bot);
-    (0, dativAkkusativCommand_js_1.dativAkkusativCommand)(bot);
-    // Кнопка запуску блоку
-    bot.callbackQuery("dativAkk", async (ctx) => {
-        await safeAnswer(ctx);
-        await ctx.editMessageText("🔹 Блок Dativ/Akkusativ запущено!");
-    });
 }
 async function showMainMenu(ctx, createNewMessage = true) {
     const keyboard = new grammy_1.InlineKeyboard()
@@ -49,8 +42,6 @@ async function showMainMenu(ctx, createNewMessage = true) {
         .text("🧩 Розбір речень", "sentenceMode")
         .row()
         .text("📚 Список слів", "listwords")
-        .row()
-        .text("📌 Dativ / Akkusativ", "dativAkk")
         .row()
         .text("⚡", "global_mainMenu");
     const text = mainMenuTexts_js_1.default[Math.floor(Math.random() * mainMenuTexts_js_1.default.length)];
