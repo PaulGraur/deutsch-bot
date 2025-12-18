@@ -35,7 +35,7 @@ async function showGrammarLevels(ctx: BotContext) {
     .row()
     .text("📖 Граматика C1–C2", "grammar_level_C1")
     .row()
-    .text("🏠 Головне меню", "mainMenu");
+    .text("🏠 Дім", "mainMenu");
 
   await safeEdit(ctx, "📚 Обери рівень граматики:", keyboard);
 }
@@ -79,7 +79,7 @@ async function showTopics(ctx: BotContext, level: string) {
   );
 
   keyboard.text("🔙 До рівнів", "grammar_levels").row();
-  keyboard.text("🏠 Головне меню", "mainMenu");
+  keyboard.text("🏠 Дім", "mainMenu");
 
   await safeEdit(ctx, `📘 Теми рівня *${level}*`, keyboard);
 }
@@ -93,7 +93,7 @@ async function showRules(ctx: BotContext, topicIndex: number, level: string) {
   );
 
   keyboard.text("🔙 До тем", `grammar_level_${level}`).row();
-  keyboard.text("🏠 Головне меню", "mainMenu");
+  keyboard.text("🏠 Дім", "mainMenu");
 
   await safeEdit(ctx, `📘 *${topic.name}*`, keyboard);
 }
@@ -110,19 +110,13 @@ async function sendRule(
   const keyboard = new InlineKeyboard();
 
   if (ruleIndex > 0)
-    keyboard.text(
-      "⬅️ Попереднє",
-      `rule_${topicIndex}_${ruleIndex - 1}_${level}`
-    );
+    keyboard.text("⬅️", `rule_${topicIndex}_${ruleIndex - 1}_${level}`);
 
   if (ruleIndex < topic.rules.length - 1)
-    keyboard.text(
-      "➡️ Наступне",
-      `rule_${topicIndex}_${ruleIndex + 1}_${level}`
-    );
+    keyboard.text("➡️", `rule_${topicIndex}_${ruleIndex + 1}_${level}`);
 
   keyboard.row().text("🔙 До підтем", `topic_${topicIndex}_${level}`);
-  keyboard.row().text("🏠 Головне меню", "mainMenu");
+  keyboard.row().text("🏠 Дім", "mainMenu");
 
   let text = `📘 *${rule.title}*\n\n${
     rule.content

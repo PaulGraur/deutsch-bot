@@ -19,7 +19,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
   const createPOSKeyboard = () => {
     const kb = new InlineKeyboard();
     POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
-    kb.row().text("🏠 Вийти в головне меню", "mainMenu");
+    kb.row().text("🏠 Вийти в додому", "mainMenu");
     return kb;
   };
 
@@ -27,7 +27,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
     new InlineKeyboard()
       .text("➕ Додати ще слово", "add")
       .row()
-      .text("🏠 Вийти в головне меню", "mainMenu");
+      .text("🏠 Вийти в додому", "mainMenu");
 
   const deleteAllSessionMessages = async (ctx: any) => {
     const s = ctx.session.wordCreation as WordCreationSession | undefined;
@@ -47,7 +47,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
   ) => {
     const s = ctx.session.wordCreation! as WordCreationSession;
     const replyMarkup =
-      kb ?? new InlineKeyboard().text("🏠 Вийти в головне меню", "mainMenu");
+      kb ?? new InlineKeyboard().text("🏠 Вийти в додому", "mainMenu");
     const msg = await ctx.reply(text, { reply_markup: replyMarkup });
     s.messages.push(msg.message_id);
     return msg.message_id;

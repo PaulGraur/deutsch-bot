@@ -30,7 +30,7 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
       .row()
       .text("🇺🇦 → 🇩🇪", "mode:ua2de")
       .row()
-      .text("🏠 Головне меню", "mainMenu");
+      .text("🏠 Дім", "mainMenu");
 
     await ctx.editMessageText(randomText, { reply_markup: keyboard });
     await ctx.answerCallbackQuery();
@@ -137,7 +137,7 @@ async function showNewWord(ctx: BotContext) {
     .row()
     .text("✅ Easy", "rate:easy")
     .row()
-    .text("🏠 Головне меню", "mainMenu");
+    .text("🏠 Дім", "mainMenu");
 
   await ctx.editMessageText(text, { reply_markup: keyboard });
 }

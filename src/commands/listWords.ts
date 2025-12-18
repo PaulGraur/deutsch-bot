@@ -86,7 +86,7 @@ async function sendWordPage(ctx: BotContext, page: number) {
   if (page > 0) keyboard.text("⬅️", `listwords_${page - 1}`);
   if (end < filteredWords.length) keyboard.text("➡️", `listwords_${page + 1}`);
   if (page > 0 || end < filteredWords.length) keyboard.row();
-  keyboard.text("🏠 Головне меню", "mainMenu");
+  keyboard.text("🏠 Дім", "mainMenu");
 
   if (ctx.callbackQuery?.message) {
     try {
