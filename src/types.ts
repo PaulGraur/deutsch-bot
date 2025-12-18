@@ -49,19 +49,28 @@ export type WordCreationSession = {
   messages: number[];
 };
 
+export type CachedWord = Word & {
+  score: number;
+  lastSeen: number;
+  rowNumber: number;
+};
+
 export interface SessionData {
-  currentWord?: Word;
+  dailyRepeats: number;
+  dailyDate: string;
+
+  currentWord?: CachedWord;
+  wordsCache?: CachedWord[];
+
   attemptsLeft?: number;
-  words?: Word[];
-  wordsCache?: (Word & {
-    score?: number;
-    lastSeen?: number;
-    rowNumber: number;
-  })[];
   repeatMode?: "de2ua" | "ua2de";
   posFilter?: string | null;
+
+  words?: Word[];
+
   currentSentenceId?: string | null;
   assembledIndexes?: number[];
+
   articleRepeatMode?: boolean;
   articleRepeat?: {
     nouns: Word[];
@@ -75,8 +84,10 @@ export interface SessionData {
     timerInterval?: NodeJS.Timeout;
     timerSelected?: string;
   };
+
   previousStructureId?: string | null;
   structureMessageIds?: number[];
+
   wordCreation?: WordCreationSession | null;
 }
 

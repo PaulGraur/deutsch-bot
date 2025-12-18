@@ -1,7 +1,10 @@
 import { Bot, InlineKeyboard } from "grammy";
 import { sheets } from "../sheets";
-import { BotContext, Word } from "../types.js";
+import { BotContext, CachedWord } from "../types.js";
 import regimeTexts from "../public/regime.js";
+
+const MAX_SCORE = 8;
+const DAILY_LIMIT = 1000;
 
 const intervalForScore = [
   0,
@@ -17,16 +20,12 @@ const intervalForScore = [
 
 export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("repeat", async (ctx) => {
-    if (!ctx.session.wordsCache || !ctx.session.wordsCache.length) {
-      await initWordsSession(ctx);
-    }
+    await initWordsSession(ctx);
 
     const randomText =
       regimeTexts[Math.floor(Math.random() * regimeTexts.length)];
 
     const keyboard = new InlineKeyboard()
-      .text("🧩 Частини мови", "choose_pos")
-      .row()
       .text("🇩🇪 → 🇺🇦", "mode:de2ua")
       .row()
       .text("🇺🇦 → 🇩🇪", "mode:ua2de")
@@ -37,181 +36,117 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
     await ctx.answerCallbackQuery();
   });
 
-  const posKeyboard = new InlineKeyboard()
-    .text("📘 Іменники", "pos:noun")
-    .row()
-    .text("⚡ Дієслова", "pos:verb")
-    .row()
-    .text("🎨 Прикметники", "pos:adjective")
-    .row()
-    .text("🚀 Прислівники", "pos:adverb")
-    .row()
-    .text("🧭 Прийменники", "pos:preposition")
-    .row()
-    .text("🔹 Частки", "pos:partikel")
-    .row()
-    .text("👤 Особові займенники", "pos:personalpronomen")
-    .row()
-    .text("💡 Вирази", "pos:expression")
-    .row()
-    .text("🔗 Сполучники", "pos:conjunction")
-    .row()
-    .text("🔄 Без фільтру", "pos:all")
-    .row()
-    .text("🏠 Головне меню", "mainMenu");
-
-  bot.callbackQuery("choose_pos", async (ctx) => {
-    await ctx.editMessageText("Оберіть частину мови:", {
-      reply_markup: posKeyboard,
-    });
-    await ctx.answerCallbackQuery();
-  });
-
-  bot.callbackQuery(/pos:.+/, async (ctx) => {
-    const pos = ctx.callbackQuery?.data?.split(":")[1];
-    ctx.session.posFilter = pos === "all" ? null : pos;
-
-    await ctx.answerCallbackQuery({ text: "✔️ Фільтр застосовано" });
-
-    await ctx.editMessageText("Вибери режим повторення:", {
-      reply_markup: new InlineKeyboard()
-        .text("🇩🇪 → 🇺🇦", "mode:de2ua")
-        .row()
-        .text("🇺🇦 → 🇩🇪", "mode:ua2de")
-        .row()
-        .text("🏠 Головне меню", "mainMenu"),
-    });
-  });
-
   bot.callbackQuery(/mode:.+/, async (ctx) => {
-    const mode = ctx.callbackQuery?.data?.split(":")[1];
-    if (!mode || (mode !== "de2ua" && mode !== "ua2de")) return;
+    ctx.session.repeatMode = ctx.callbackQuery.data.split(":")[1] as
+      | "de2ua"
+      | "ua2de";
 
-    ctx.session.repeatMode = mode;
     await showNewWord(ctx);
     await ctx.answerCallbackQuery();
   });
 
-  bot.callbackQuery(/answer:.+/, async (ctx) => {
-    const data = ctx.callbackQuery?.data;
-    if (!data || !ctx.session.currentWord || !ctx.session.repeatMode) return;
+  bot.callbackQuery(/rate:.+/, async (ctx) => {
+    const rate = ctx.callbackQuery.data.split(":")[1];
+    const word = ctx.session.currentWord as CachedWord | undefined;
+    if (!word) return;
 
-    const answer = data.split(":")[1];
-    const word = ctx.session.currentWord as Word & {
-      score?: number;
-      lastSeen?: number;
-      pos?: string;
-      rowNumber: number;
-    };
+    const now = Date.now();
 
-    const correct =
-      ctx.session.repeatMode === "de2ua"
-        ? answer === word.ua
-        : answer === word.de;
-
-    if (correct) {
-      word.score = Math.min((word.score || 0) + 1, 5);
-      word.lastSeen = Date.now();
-      await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
-    } else {
-      ctx.session.attemptsLeft = (ctx.session.attemptsLeft ?? 2) - 1;
-      if (ctx.session.attemptsLeft > 0) {
-        await ctx.answerCallbackQuery({
-          text: `❌ Неправильно! Залишилось спроб: ${ctx.session.attemptsLeft}`,
-        });
-        return;
-      } else {
-        const correctAnswer =
-          ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
-        await ctx.answerCallbackQuery({
-          text: `❌ Неправильно! Правильна відповідь: ${correctAnswer}`,
-        });
-        word.score = Math.max((word.score || 0) - 1, 0);
-        word.lastSeen = Date.now();
-      }
+    if (rate === "again") {
+      word.score = Math.max(word.score - 2, 0);
+      word.lastSeen = now;
     }
 
+    if (rate === "hard") {
+      word.score = Math.max(word.score - 1, 0);
+      word.lastSeen = now - intervalForScore[word.score] / 2;
+    }
+
+    if (rate === "easy") {
+      word.score = Math.min(word.score + 1, MAX_SCORE);
+      word.lastSeen = now;
+    }
+
+    ctx.session.dailyRepeats = (ctx.session.dailyRepeats ?? 0) + 1;
     await saveProgressBatch(ctx);
     await showNewWord(ctx);
+    await ctx.answerCallbackQuery();
   });
 }
 
 async function initWordsSession(ctx: BotContext) {
-  const resWords = await sheets.spreadsheets.values.get({
+  if (ctx.session.wordsCache) return;
+
+  const today = new Date().toISOString().slice(0, 10);
+  if (ctx.session.dailyDate !== today) {
+    ctx.session.dailyDate = today;
+    ctx.session.dailyRepeats = 0;
+  }
+
+  const wordsRes = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEET_ID,
     range: "wörter!A2:G",
   });
 
-  const resProgress = await sheets.spreadsheets.values.get({
+  const progressRes = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEET_ID,
     range: "fortschritt!A2:C",
   });
 
-  ctx.session.wordsCache =
-    resWords.data.values?.map((row, index) => {
-      const prog = resProgress.data.values?.[index] || [];
+  const words: CachedWord[] =
+    wordsRes.data.values?.map((row, i) => {
+      const p = progressRes.data.values?.[i] || [];
       return {
         de: row[1],
         ua: row[2],
-        pos: row[3],
-        score: Number(prog[1] || 0),
-        lastSeen: Number(prog[2] || 0),
-        createdAt: row[6] || String(Date.now()),
-        rowNumber: index + 2,
+        createdAt: row[6],
+        score: Number(p[1] || 0),
+        lastSeen: Number(p[2] || 0),
+        rowNumber: i + 2,
       };
     }) || [];
+
+  ctx.session.wordsCache = words;
 }
 
 async function showNewWord(ctx: BotContext) {
-  if (!ctx.session.wordsCache) return;
+  if ((ctx.session.dailyRepeats ?? 0) >= DAILY_LIMIT) {
+    await ctx.editMessageText("⛔ Денний ліміт повторів вичерпано.");
+    return;
+  }
 
   const now = Date.now();
-  const filtered = ctx.session.posFilter
-    ? ctx.session.wordsCache.filter((w) => w.pos === ctx.session.posFilter)
-    : ctx.session.wordsCache;
+  const cache = ctx.session.wordsCache as CachedWord[];
 
-  if (!filtered.length)
-    return await ctx.editMessageText("❌ Немає слів цієї частини мови.");
-
-  const dueWords = filtered.filter(
-    (w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]
+  const due: CachedWord[] = cache.filter(
+    (w) => now - w.lastSeen >= intervalForScore[w.score]
   );
 
-  const word = (dueWords.length ? dueWords : filtered)[
-    Math.floor(Math.random() * (dueWords.length ? dueWords : filtered).length)
-  ];
+  const pool: CachedWord[] = due.length ? due : cache;
+  const word = weightedRandom(pool);
 
   ctx.session.currentWord = word;
-  ctx.session.attemptsLeft = 2;
-
-  const correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
-  const wrongOptions = shuffle(
-    filtered
-      .filter(
-        (w) =>
-          (ctx.session.repeatMode === "de2ua" ? w.ua : w.de) !== correctAnswer
-      )
-      .map((w) => (ctx.session.repeatMode === "de2ua" ? w.ua : w.de))
-  ).slice(0, 3);
-
-  const options = shuffle([correctAnswer, ...wrongOptions]);
-
-  const keyboard = new InlineKeyboard();
-  options.forEach((opt) => keyboard.text(opt, `answer:${opt}`).row());
-  keyboard.row().text("🏠 Головне меню", "mainMenu");
 
   const text =
     ctx.session.repeatMode === "de2ua" ? `🇩🇪 ${word.de}` : `🇺🇦 ${word.ua}`;
+
+  const keyboard = new InlineKeyboard()
+    .text("🔁 Again", "rate:again")
+    .row()
+    .text("⚠️ Hard", "rate:hard")
+    .row()
+    .text("✅ Easy", "rate:easy")
+    .row()
+    .text("🏠 Головне меню", "mainMenu");
+
   await ctx.editMessageText(text, { reply_markup: keyboard });
 }
 
 async function saveProgressBatch(ctx: BotContext) {
-  if (!ctx.session.wordsCache?.length) return;
-
-  const values = ctx.session.wordsCache.map((w) => [
+  const values = (ctx.session.wordsCache as CachedWord[]).map((w) => [
     w.de,
-    w.score || 0,
-    w.lastSeen || 0,
+    w.score,
+    w.lastSeen,
   ]);
 
   await sheets.spreadsheets.values.update({
@@ -222,11 +157,14 @@ async function saveProgressBatch(ctx: BotContext) {
   });
 }
 
-function shuffle<T>(array: T[]): T[] {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+function weightedRandom(words: CachedWord[]): CachedWord {
+  const weights = words.map((w) => MAX_SCORE - w.score + 1);
+  const total = weights.reduce((a, b) => a + b, 0);
+  let rnd = Math.random() * total;
+
+  for (let i = 0; i < words.length; i++) {
+    rnd -= weights[i];
+    if (rnd <= 0) return words[i];
   }
-  return arr;
+  return words[0];
 }
