@@ -62,11 +62,10 @@ function sentenceCommand(bot) {
     });
     bot.callbackQuery(/sentence:show:(.+)/, async (ctx) => {
         try {
-            await clearStructureMessages(ctx);
-            const id = ctx.callbackQuery?.data?.split(":")[2];
-            if (!id)
+            const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+            if (!sentenceId)
                 return;
-            await safeShowSentence(ctx, id);
+            await safeShowSentence(ctx, sentenceId);
             await ctx.answerCallbackQuery();
         }
         catch (err) {
@@ -120,12 +119,18 @@ function sentenceCommand(bot) {
             const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
             if (!sentenceId)
                 return;
-            await safeShowStructure(ctx, sentenceId);
+            const kb = new grammy_1.InlineKeyboard();
+            for (const pattern of patterns_js_1.SENTENCE_PATTERNS) {
+                kb.text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`).row();
+            }
+            kb.row().text("🔙 До речення", `sentence:show:${sentenceId}`);
+            await ctx.editMessageText("📚 *Схеми речень:*", {
+                reply_markup: kb,
+                parse_mode: "Markdown",
+            });
             await ctx.answerCallbackQuery();
         }
-        catch (err) {
-            console.log("sentence:structure callback failed:", err.message || err);
-        }
+        catch { }
     });
     bot.callbackQuery(/sentence:assemble:(.+)/, async (ctx) => {
         try {
@@ -224,11 +229,29 @@ function sentenceCommand(bot) {
             ]
                 .filter(Boolean)
                 .join("\n");
-            const kb = new grammy_1.InlineKeyboard()
-                .text("🔙 До схем", `sentence:structure:${ctx.session.currentSentenceId}`)
-                .row();
+            const kb = new grammy_1.InlineKeyboard().text("🔙 До схем", `sentence:structure:${ctx.session.currentSentenceId}`);
             await ctx.editMessageText(txt, {
                 reply_markup: kb,
+                parse_mode: "Markdown",
+            });
+            await ctx.answerCallbackQuery();
+        }
+        catch { }
+    });
+    bot.callbackQuery("sentence:structure_back", async (ctx) => {
+        try {
+            const sentenceId = ctx.session.previousStructureId;
+            if (!sentenceId)
+                return;
+            const keyboard = new grammy_1.InlineKeyboard();
+            for (const pattern of patterns_js_1.SENTENCE_PATTERNS) {
+                keyboard
+                    .text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`)
+                    .row();
+            }
+            keyboard.row().text("🔙 До речення", `sentence:show:${sentenceId}`);
+            await ctx.editMessageText("📚 *Схеми речень:*", {
+                reply_markup: keyboard,
                 parse_mode: "Markdown",
             });
             await ctx.answerCallbackQuery();
@@ -310,33 +333,4 @@ async function safeShowAssembleView(ctx, sentenceId) {
         });
     }
     catch { }
-}
-async function safeShowStructure(ctx, sentenceId) {
-    if (!ctx.session.structureMessageIds)
-        ctx.session.structureMessageIds = [];
-    for (const msgId of ctx.session.structureMessageIds) {
-        try {
-            await ctx.api.deleteMessage(ctx.chat.id, msgId);
-        }
-        catch { }
-    }
-    ctx.session.structureMessageIds = [];
-    for (const pattern of patterns_js_1.SENTENCE_PATTERNS) {
-        const txt = [
-            `*${pattern.title}*`,
-            pattern.short.scheme,
-            `_${pattern.short.example}_`,
-        ].join("\n");
-        const kb = new grammy_1.InlineKeyboard().text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`);
-        const sentMsg = await ctx.reply(txt, {
-            reply_markup: kb,
-            parse_mode: "Markdown",
-        });
-        ctx.session.structureMessageIds.push(sentMsg.message_id);
-    }
-    const kbMenu = new grammy_1.InlineKeyboard().text("🔙 До речення", `sentence:show:${sentenceId}`);
-    const sentMenu = await ctx.reply(".", {
-        reply_markup: kbMenu,
-    });
-    ctx.session.structureMessageIds.push(sentMenu.message_id);
 }

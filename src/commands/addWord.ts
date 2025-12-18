@@ -72,9 +72,43 @@ export function addWordCommand(bot: Bot<BotContext>) {
     s.messages.push(ctx.message.message_id);
 
     if (s.step === "de") {
-      s.de = ctx.message.text.trim();
-      s.step = "ua";
-      await sendMessageAndRecord(ctx, "Введи переклад українською:");
+      const word = ctx.message.text.trim();
+
+      try {
+        const res = await sheets.spreadsheets.values.get({
+          spreadsheetId: SPREADSHEET_ID,
+          range: "wörter!B2:B",
+        });
+        const existingWords = res.data.values?.flat() || [];
+
+        if (existingWords.includes(word)) {
+          await deleteAllSessionMessages(ctx);
+
+          const msgId = await sendMessageAndRecord(
+            ctx,
+            `⚠️ Слово "${word}" вже збережене.\nВведи нове слово німецькою:`
+          );
+
+          ctx.session.wordCreation = {
+            step: "de",
+            messages: [msgId],
+            de: "",
+            ua: "",
+          };
+          return;
+        }
+
+        s.de = word;
+        s.step = "ua";
+        await sendMessageAndRecord(ctx, "Введи переклад українською:");
+      } catch (err) {
+        console.error("Error checking duplicates:", err);
+        await sendMessageAndRecord(
+          ctx,
+          "❌ Не вдалося перевірити слово. Спробуй ще раз."
+        );
+      }
+
       return;
     }
 
@@ -110,9 +144,10 @@ export function addWordCommand(bot: Bot<BotContext>) {
     try {
       const res = await sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
-        range: "wörter!A2:A",
+        range: "wörter!B2:B",
       });
-      const id = (res.data.values?.length ?? 0) + 1;
+      const existingWords = res.data.values?.flat() || [];
+      const id = existingWords.length + 1;
 
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,

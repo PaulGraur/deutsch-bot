@@ -64,10 +64,9 @@ export function sentenceCommand(bot: Bot<BotContext>) {
 
   bot.callbackQuery(/sentence:show:(.+)/, async (ctx) => {
     try {
-      await clearStructureMessages(ctx);
-      const id = ctx.callbackQuery?.data?.split(":")[2];
-      if (!id) return;
-      await safeShowSentence(ctx, id);
+      const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
+      if (!sentenceId) return;
+      await safeShowSentence(ctx, sentenceId);
       await ctx.answerCallbackQuery();
     } catch (err: unknown) {
       console.log(
@@ -125,14 +124,19 @@ export function sentenceCommand(bot: Bot<BotContext>) {
     try {
       const sentenceId = ctx.callbackQuery?.data?.split(":")[2];
       if (!sentenceId) return;
-      await safeShowStructure(ctx, sentenceId);
+
+      const kb = new InlineKeyboard();
+      for (const pattern of SENTENCE_PATTERNS) {
+        kb.text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`).row();
+      }
+      kb.row().text("🔙 До речення", `sentence:show:${sentenceId}`);
+
+      await ctx.editMessageText("📚 *Схеми речень:*", {
+        reply_markup: kb,
+        parse_mode: "Markdown",
+      });
       await ctx.answerCallbackQuery();
-    } catch (err: unknown) {
-      console.log(
-        "sentence:structure callback failed:",
-        (err as Error).message || err
-      );
-    }
+    } catch {}
   });
 
   bot.callbackQuery(/sentence:assemble:(.+)/, async (ctx) => {
@@ -229,6 +233,7 @@ export function sentenceCommand(bot: Bot<BotContext>) {
       const id = ctx.callbackQuery?.data?.split(":")[2] as SentencePatternId;
       const pattern = SENTENCE_PATTERNS.find((p) => p.id === id);
       if (!pattern) return;
+
       const txt = [
         `🔍 *Розгорнуто: ${pattern.title}*`,
         "━━━━━━━━━━━━━━━━━━",
@@ -244,14 +249,35 @@ export function sentenceCommand(bot: Bot<BotContext>) {
       ]
         .filter(Boolean)
         .join("\n");
-      const kb = new InlineKeyboard()
-        .text(
-          "🔙 До схем",
-          `sentence:structure:${ctx.session.currentSentenceId}`
-        )
-        .row();
+
+      const kb = new InlineKeyboard().text(
+        "🔙 До схем",
+        `sentence:structure:${ctx.session.currentSentenceId}`
+      );
+
       await ctx.editMessageText(txt, {
         reply_markup: kb,
+        parse_mode: "Markdown",
+      });
+      await ctx.answerCallbackQuery();
+    } catch {}
+  });
+
+  bot.callbackQuery("sentence:structure_back", async (ctx) => {
+    try {
+      const sentenceId = ctx.session.previousStructureId;
+      if (!sentenceId) return;
+
+      const keyboard = new InlineKeyboard();
+      for (const pattern of SENTENCE_PATTERNS) {
+        keyboard
+          .text(`🔍 ${pattern.title}`, `sentence:pattern:${pattern.id}`)
+          .row();
+      }
+      keyboard.row().text("🔙 До речення", `sentence:show:${sentenceId}`);
+
+      await ctx.editMessageText("📚 *Схеми речень:*", {
+        reply_markup: keyboard,
         parse_mode: "Markdown",
       });
       await ctx.answerCallbackQuery();
@@ -334,39 +360,4 @@ async function safeShowAssembleView(ctx: BotContext, sentenceId: string) {
       parse_mode: "Markdown",
     });
   } catch {}
-}
-
-async function safeShowStructure(ctx: BotContext, sentenceId: string) {
-  if (!ctx.session.structureMessageIds) ctx.session.structureMessageIds = [];
-  for (const msgId of ctx.session.structureMessageIds) {
-    try {
-      await ctx.api.deleteMessage(ctx.chat!.id, msgId);
-    } catch {}
-  }
-  ctx.session.structureMessageIds = [];
-  for (const pattern of SENTENCE_PATTERNS) {
-    const txt = [
-      `*${pattern.title}*`,
-      pattern.short.scheme,
-      `_${pattern.short.example}_`,
-    ].join("\n");
-    const kb = new InlineKeyboard().text(
-      `🔍 ${pattern.title}`,
-      `sentence:pattern:${pattern.id}`
-    );
-    const sentMsg = await ctx.reply(txt, {
-      reply_markup: kb,
-      parse_mode: "Markdown",
-    });
-    ctx.session.structureMessageIds.push(sentMsg.message_id);
-  }
-  const kbMenu = new InlineKeyboard().text(
-    "🔙 До речення",
-    `sentence:show:${sentenceId}`
-  );
-
-  const sentMenu = await ctx.reply(".", {
-    reply_markup: kbMenu,
-  });
-  ctx.session.structureMessageIds.push(sentMenu.message_id);
 }
