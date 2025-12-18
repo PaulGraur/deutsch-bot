@@ -17,6 +17,9 @@ const intervalForScore = [
 ];
 function repeatWordsCommand(bot) {
     bot.callbackQuery("repeat", async (ctx) => {
+        if (!ctx.session.wordsCache || !ctx.session.wordsCache.length) {
+            await initWordsSession(ctx);
+        }
         const randomText = regime_js_1.default[Math.floor(Math.random() * regime_js_1.default.length)];
         const keyboard = new grammy_1.InlineKeyboard()
             .text("🧩 Частини мови", "choose_pos")
@@ -88,11 +91,9 @@ function repeatWordsCommand(bot) {
             ? answer === word.ua
             : answer === word.de;
         if (correct) {
-            await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
             word.score = Math.min((word.score || 0) + 1, 5);
             word.lastSeen = Date.now();
-            await saveWordsProgress(word);
-            await showNewWord(ctx);
+            await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
         }
         else {
             ctx.session.attemptsLeft = (ctx.session.attemptsLeft ?? 2) - 1;
@@ -100,6 +101,7 @@ function repeatWordsCommand(bot) {
                 await ctx.answerCallbackQuery({
                     text: `❌ Неправильно! Залишилось спроб: ${ctx.session.attemptsLeft}`,
                 });
+                return;
             }
             else {
                 const correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
@@ -108,38 +110,53 @@ function repeatWordsCommand(bot) {
                 });
                 word.score = Math.max((word.score || 0) - 1, 0);
                 word.lastSeen = Date.now();
-                await saveWordsProgress(word);
-                await showNewWord(ctx);
             }
         }
+        // Зберігаємо прогрес після кожної відповіді
+        await saveProgressBatch(ctx);
+        await showNewWord(ctx);
     });
 }
-async function showNewWord(ctx) {
-    const res = await sheets_1.sheets.spreadsheets.values.get({
-        spreadsheetId: sheets_1.SPREADSHEET_ID,
+// ---- Ініціалізація слів та прогресу ----
+async function initWordsSession(ctx) {
+    const resWords = await sheets_1.sheets.spreadsheets.values.get({
+        spreadsheetId: process.env.SPREADSHEET_ID,
         range: "wörter!A2:G",
     });
-    const words = res.data.values?.map((row, index) => ({
-        de: row[1],
-        ua: row[2],
-        pos: row[3],
-        score: row[4] ? Number(row[4]) : 0,
-        lastSeen: row[5] ? Number(row[5]) : 0,
-        createdAt: row[6] ? String(row[6]) : String(Date.now()),
-        rowNumber: index + 2,
-    })) || [];
-    let filteredWords = ctx.session.posFilter
-        ? words.filter((w) => w.pos === ctx.session.posFilter)
-        : words;
-    if (!filteredWords.length)
-        return await ctx.editMessageText("❌ Немає слів цієї частини мови.");
+    const resProgress = await sheets_1.sheets.spreadsheets.values.get({
+        spreadsheetId: process.env.SPREADSHEET_ID,
+        range: "fortschritt!A2:C",
+    });
+    ctx.session.wordsCache =
+        resWords.data.values?.map((row, index) => {
+            const prog = resProgress.data.values?.[index] || [];
+            return {
+                de: row[1],
+                ua: row[2],
+                pos: row[3],
+                score: Number(prog[1] || 0),
+                lastSeen: Number(prog[2] || 0),
+                createdAt: row[6] || String(Date.now()),
+                rowNumber: index + 2,
+            };
+        }) || [];
+}
+// ---- Показ нового слова ----
+async function showNewWord(ctx) {
+    if (!ctx.session.wordsCache)
+        return;
     const now = Date.now();
-    const dueWords = filteredWords.filter((w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]);
-    const word = (dueWords.length > 0 ? dueWords : filteredWords)[Math.floor(Math.random() * (dueWords.length > 0 ? dueWords : filteredWords).length)];
+    const filtered = ctx.session.posFilter
+        ? ctx.session.wordsCache.filter((w) => w.pos === ctx.session.posFilter)
+        : ctx.session.wordsCache;
+    if (!filtered.length)
+        return await ctx.editMessageText("❌ Немає слів цієї частини мови.");
+    const dueWords = filtered.filter((w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]);
+    const word = (dueWords.length ? dueWords : filtered)[Math.floor(Math.random() * (dueWords.length ? dueWords : filtered).length)];
     ctx.session.currentWord = word;
     ctx.session.attemptsLeft = 2;
     const correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
-    const wrongOptions = shuffle(filteredWords
+    const wrongOptions = shuffle(filtered
         .filter((w) => (ctx.session.repeatMode === "de2ua" ? w.ua : w.de) !== correctAnswer)
         .map((w) => (ctx.session.repeatMode === "de2ua" ? w.ua : w.de))).slice(0, 3);
     const options = shuffle([correctAnswer, ...wrongOptions]);
@@ -149,16 +166,23 @@ async function showNewWord(ctx) {
     const text = ctx.session.repeatMode === "de2ua" ? `🇩🇪 ${word.de}` : `🇺🇦 ${word.ua}`;
     await ctx.editMessageText(text, { reply_markup: keyboard });
 }
-async function saveWordsProgress(word) {
+// ---- Автозбереження прогресу ----
+async function saveProgressBatch(ctx) {
+    if (!ctx.session.wordsCache?.length)
+        return;
+    const values = ctx.session.wordsCache.map((w) => [
+        w.de,
+        w.score || 0,
+        w.lastSeen || 0,
+    ]);
     await sheets_1.sheets.spreadsheets.values.update({
-        spreadsheetId: sheets_1.SPREADSHEET_ID,
-        range: `wörter!E${word.rowNumber}:F${word.rowNumber}`,
+        spreadsheetId: process.env.SPREADSHEET_ID,
+        range: "fortschritt!A2:C",
         valueInputOption: "RAW",
-        requestBody: {
-            values: [[word.score ?? 0, word.lastSeen ?? 0]],
-        },
+        requestBody: { values },
     });
 }
+// ---- Утиліти ----
 function shuffle(array) {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {

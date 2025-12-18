@@ -1,21 +1,29 @@
 import { Bot, InlineKeyboard } from "grammy";
-import { sheets, SPREADSHEET_ID } from "../sheets";
+import { sheets } from "../sheets";
 import { BotContext, Word } from "../types.js";
 import regimeTexts from "../public/regime.js";
 
 const intervalForScore = [
   0,
-  10 * 60 * 1000,
+  5 * 60 * 1000,
   30 * 60 * 1000,
-  60 * 60 * 1000,
-  2 * 24 * 60 * 60 * 1000,
-  5 * 24 * 60 * 60 * 1000,
+  2 * 60 * 60 * 1000,
+  1 * 24 * 60 * 60 * 1000,
+  3 * 24 * 60 * 60 * 1000,
+  7 * 24 * 60 * 60 * 1000,
+  14 * 24 * 60 * 60 * 1000,
+  30 * 24 * 60 * 60 * 1000,
 ];
 
 export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("repeat", async (ctx) => {
+    if (!ctx.session.wordsCache || !ctx.session.wordsCache.length) {
+      await initWordsSession(ctx);
+    }
+
     const randomText =
       regimeTexts[Math.floor(Math.random() * regimeTexts.length)];
+
     const keyboard = new InlineKeyboard()
       .text("🧩 Частини мови", "choose_pos")
       .row()
@@ -62,7 +70,9 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery(/pos:.+/, async (ctx) => {
     const pos = ctx.callbackQuery?.data?.split(":")[1];
     ctx.session.posFilter = pos === "all" ? null : pos;
+
     await ctx.answerCallbackQuery({ text: "✔️ Фільтр застосовано" });
+
     await ctx.editMessageText("Вибери режим повторення:", {
       reply_markup: new InlineKeyboard()
         .text("🇩🇪 → 🇺🇦", "mode:de2ua")
@@ -76,6 +86,7 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
   bot.callbackQuery(/mode:.+/, async (ctx) => {
     const mode = ctx.callbackQuery?.data?.split(":")[1];
     if (!mode || (mode !== "de2ua" && mode !== "ua2de")) return;
+
     ctx.session.repeatMode = mode;
     await showNewWord(ctx);
     await ctx.answerCallbackQuery();
@@ -92,23 +103,23 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
       pos?: string;
       rowNumber: number;
     };
+
     const correct =
       ctx.session.repeatMode === "de2ua"
         ? answer === word.ua
         : answer === word.de;
 
     if (correct) {
-      await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
       word.score = Math.min((word.score || 0) + 1, 5);
       word.lastSeen = Date.now();
-      await saveWordsProgress(word);
-      await showNewWord(ctx);
+      await ctx.answerCallbackQuery({ text: "✅ Правильно!" });
     } else {
       ctx.session.attemptsLeft = (ctx.session.attemptsLeft ?? 2) - 1;
       if (ctx.session.attemptsLeft > 0) {
         await ctx.answerCallbackQuery({
           text: `❌ Неправильно! Залишилось спроб: ${ctx.session.attemptsLeft}`,
         });
+        return;
       } else {
         const correctAnswer =
           ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
@@ -117,50 +128,57 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
         });
         word.score = Math.max((word.score || 0) - 1, 0);
         word.lastSeen = Date.now();
-        await saveWordsProgress(word);
-        await showNewWord(ctx);
       }
     }
+
+    await saveProgressBatch(ctx);
+    await showNewWord(ctx);
   });
 }
 
-async function showNewWord(ctx: BotContext) {
-  const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: SPREADSHEET_ID,
+async function initWordsSession(ctx: BotContext) {
+  const resWords = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.SPREADSHEET_ID,
     range: "wörter!A2:G",
   });
 
-  const words: (Word & {
-    score?: number;
-    lastSeen?: number;
-    pos?: string;
-    rowNumber: number;
-  })[] =
-    res.data.values?.map((row, index) => ({
-      de: row[1],
-      ua: row[2],
-      pos: row[3],
-      score: row[4] ? Number(row[4]) : 0,
-      lastSeen: row[5] ? Number(row[5]) : 0,
-      createdAt: row[6] ? String(row[6]) : String(Date.now()),
-      rowNumber: index + 2,
-    })) || [];
+  const resProgress = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.SPREADSHEET_ID,
+    range: "fortschritt!A2:C",
+  });
 
-  let filteredWords = ctx.session.posFilter
-    ? words.filter((w) => w.pos === ctx.session.posFilter)
-    : words;
+  ctx.session.wordsCache =
+    resWords.data.values?.map((row, index) => {
+      const prog = resProgress.data.values?.[index] || [];
+      return {
+        de: row[1],
+        ua: row[2],
+        pos: row[3],
+        score: Number(prog[1] || 0),
+        lastSeen: Number(prog[2] || 0),
+        createdAt: row[6] || String(Date.now()),
+        rowNumber: index + 2,
+      };
+    }) || [];
+}
 
-  if (!filteredWords.length)
-    return await ctx.editMessageText("❌ Немає слів цієї частини мови.");
+async function showNewWord(ctx: BotContext) {
+  if (!ctx.session.wordsCache) return;
 
   const now = Date.now();
-  const dueWords = filteredWords.filter(
+  const filtered = ctx.session.posFilter
+    ? ctx.session.wordsCache.filter((w) => w.pos === ctx.session.posFilter)
+    : ctx.session.wordsCache;
+
+  if (!filtered.length)
+    return await ctx.editMessageText("❌ Немає слів цієї частини мови.");
+
+  const dueWords = filtered.filter(
     (w) => !w.lastSeen || now - w.lastSeen > intervalForScore[w.score || 0]
   );
-  const word = (dueWords.length > 0 ? dueWords : filteredWords)[
-    Math.floor(
-      Math.random() * (dueWords.length > 0 ? dueWords : filteredWords).length
-    )
+
+  const word = (dueWords.length ? dueWords : filtered)[
+    Math.floor(Math.random() * (dueWords.length ? dueWords : filtered).length)
   ];
 
   ctx.session.currentWord = word;
@@ -168,14 +186,16 @@ async function showNewWord(ctx: BotContext) {
 
   const correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
   const wrongOptions = shuffle(
-    filteredWords
+    filtered
       .filter(
         (w) =>
           (ctx.session.repeatMode === "de2ua" ? w.ua : w.de) !== correctAnswer
       )
       .map((w) => (ctx.session.repeatMode === "de2ua" ? w.ua : w.de))
   ).slice(0, 3);
+
   const options = shuffle([correctAnswer, ...wrongOptions]);
+
   const keyboard = new InlineKeyboard();
   options.forEach((opt) => keyboard.text(opt, `answer:${opt}`).row());
   keyboard.row().text("🏠 Головне меню", "mainMenu");
@@ -185,21 +205,20 @@ async function showNewWord(ctx: BotContext) {
   await ctx.editMessageText(text, { reply_markup: keyboard });
 }
 
-async function saveWordsProgress(
-  word: Word & {
-    score?: number;
-    lastSeen?: number;
-    pos?: string;
-    rowNumber: number;
-  }
-) {
+async function saveProgressBatch(ctx: BotContext) {
+  if (!ctx.session.wordsCache?.length) return;
+
+  const values = ctx.session.wordsCache.map((w) => [
+    w.de,
+    w.score || 0,
+    w.lastSeen || 0,
+  ]);
+
   await sheets.spreadsheets.values.update({
-    spreadsheetId: SPREADSHEET_ID,
-    range: `wörter!E${word.rowNumber}:F${word.rowNumber}`,
+    spreadsheetId: process.env.SPREADSHEET_ID,
+    range: "fortschritt!A2:C",
     valueInputOption: "RAW",
-    requestBody: {
-      values: [[word.score ?? 0, word.lastSeen ?? 0]],
-    },
+    requestBody: { values },
   });
 }
 

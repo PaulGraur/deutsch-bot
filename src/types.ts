@@ -53,6 +53,11 @@ export interface SessionData {
   currentWord?: Word;
   attemptsLeft?: number;
   words?: Word[];
+  wordsCache?: (Word & {
+    score?: number;
+    lastSeen?: number;
+    rowNumber: number;
+  })[];
   repeatMode?: "de2ua" | "ua2de";
   posFilter?: string | null;
   currentSentenceId?: string | null;
