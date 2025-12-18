@@ -37,7 +37,7 @@ export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
     .row()
     .text("🔁 Повторити слова", "repeat")
     .row()
-    .text("📰 Повторити артиклі", "article_repeat")
+    .text("🔖 Повторити артиклі", "article_repeat")
     .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
