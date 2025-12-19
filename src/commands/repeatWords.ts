@@ -37,6 +37,7 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
   });
 
   bot.callbackQuery(/mode:(de2ua|ua2de|mixed)/, async (ctx) => {
+    await initWordsSession(ctx);
     ctx.session.repeatMode = ctx.callbackQuery!.data.split(":")[1] as
       | "de2ua"
       | "ua2de"
@@ -114,13 +115,17 @@ async function initWordsSession(ctx: BotContext) {
 }
 
 async function showNewWord(ctx: BotContext) {
+  if (!ctx.session.wordsCache || ctx.session.wordsCache.length === 0) {
+    await initWordsSession(ctx);
+  }
+
   if ((ctx.session.dailyRepeats ?? 0) >= DAILY_LIMIT) {
     await ctx.editMessageText("⛔ Денний ліміт повторів вичерпано.");
     return;
   }
 
   const now = Date.now();
-  const cache = ctx.session.wordsCache as CachedWord[];
+  const cache = ctx.session.wordsCache!;
 
   const due = cache.filter(
     (w) => now - w.lastSeen >= intervalForScore[w.score]
