@@ -26,6 +26,8 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
       .row()
       .text("🇺🇦 → 🇩🇪", "mode:ua2de")
       .row()
+      .text("🎲 Змішаний", "mode:mixed")
+      .row()
       .text("🏠 Дім", "mainMenu");
 
     await ctx.editMessageText("Вибери режим повторів:", {
@@ -34,22 +36,27 @@ export function repeatWordsCommand(bot: Bot<BotContext>) {
     await ctx.answerCallbackQuery();
   });
 
-  bot.callbackQuery(/mode:(de2ua|ua2de)/, async (ctx) => {
-    ctx.session.repeatMode = ctx.callbackQuery?.data.split(":")[1] as
+  bot.callbackQuery(/mode:(de2ua|ua2de|mixed)/, async (ctx) => {
+    ctx.session.repeatMode = ctx.callbackQuery!.data.split(":")[1] as
       | "de2ua"
-      | "ua2de";
+      | "ua2de"
+      | "mixed";
+
     await showNewWord(ctx);
     await ctx.answerCallbackQuery();
   });
 
   bot.callbackQuery(/answer:(.+)/, async (ctx) => {
-    const selected = ctx.callbackQuery?.data.split(":")[1];
-    const word = ctx.session.currentWord as CachedWord | undefined;
-    if (!word) return;
+    const selected = ctx.callbackQuery!.data.split(":")[1];
+    const word = ctx.session.currentWord;
+    const direction = ctx.session.repeatDirection;
+
+    if (!word || !direction) return;
+
+    const correctAnswer = word[direction.answerLang];
+    const isCorrect = selected === correctAnswer;
 
     const now = Date.now();
-    let correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
-    const isCorrect = selected === correctAnswer;
 
     if (isCorrect) {
       word.score = Math.min(word.score + 1, MAX_SCORE);
@@ -94,8 +101,8 @@ async function initWordsSession(ctx: BotContext) {
     wordsRes.data.values?.map((row, i) => {
       const p = progressRes.data.values?.[i] || [];
       return {
-        de: row[1],
-        ua: row[2],
+        de: normalizeWord(row[1]),
+        ua: normalizeWord(row[2]),
         createdAt: row[6] || String(Date.now()),
         score: Number(p[1] || 0),
         lastSeen: Number(p[2] || 0),
@@ -114,16 +121,35 @@ async function showNewWord(ctx: BotContext) {
 
   const now = Date.now();
   const cache = ctx.session.wordsCache as CachedWord[];
+
   const due = cache.filter(
     (w) => now - w.lastSeen >= intervalForScore[w.score]
   );
-  const pool: CachedWord[] = due.length ? due : cache;
-  const word = weightedRandom(pool);
 
+  const pool = due.length ? due : cache;
+  const word = weightedRandom(pool);
   ctx.session.currentWord = word;
 
-  const question = ctx.session.repeatMode === "de2ua" ? word.de : word.ua;
-  const options = generateOptions(word, cache, ctx.session.repeatMode!);
+  let askLang: "de" | "ua";
+  let answerLang: "de" | "ua";
+
+  if (ctx.session.repeatMode === "mixed") {
+    if (Math.random() < 0.5) {
+      askLang = "de";
+      answerLang = "ua";
+    } else {
+      askLang = "ua";
+      answerLang = "de";
+    }
+  } else {
+    askLang = ctx.session.repeatMode === "de2ua" ? "de" : "ua";
+    answerLang = askLang === "de" ? "ua" : "de";
+  }
+
+  ctx.session.repeatDirection = { askLang, answerLang };
+
+  const question = word[askLang];
+  const options = generateOptionsByLang(word, cache, answerLang);
 
   const keyboard = new InlineKeyboard();
   for (const opt of options) {
@@ -131,34 +157,25 @@ async function showNewWord(ctx: BotContext) {
   }
   keyboard.text("🏠 Дім", "mainMenu");
 
-  await ctx.editMessageText(
-    `${ctx.session.repeatMode === "de2ua" ? "🇩🇪" : "🇺🇦"} ${question}`,
-    { reply_markup: keyboard }
-  );
+  await ctx.editMessageText(`${askLang === "de" ? "🇩🇪" : "🇺🇦"} ${question}`, {
+    reply_markup: keyboard,
+  });
 }
 
-function generateOptions(
+function generateOptionsByLang(
   word: CachedWord,
   cache: CachedWord[],
-  mode: "de2ua" | "ua2de"
+  lang: "de" | "ua"
 ): string[] {
-  const optionsSet = new Set<string>();
-  const correct = mode === "de2ua" ? word.ua : word.de;
-  optionsSet.add(correct);
+  const options = new Set<string>();
+  options.add(word[lang]);
 
-  while (optionsSet.size < Math.min(4, cache.length)) {
-    const randomWord = cache[Math.floor(Math.random() * cache.length)];
-    const option = mode === "de2ua" ? randomWord.ua : randomWord.de;
-    if (option) optionsSet.add(option);
+  while (options.size < Math.min(4, cache.length)) {
+    const w = cache[Math.floor(Math.random() * cache.length)];
+    if (w[lang]) options.add(w[lang]);
   }
 
-  const options = Array.from(optionsSet);
-  for (let i = options.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [options[i], options[j]] = [options[j], options[i]];
-  }
-
-  return options;
+  return Array.from(options).sort(() => Math.random() - 0.5);
 }
 
 async function saveProgressBatch(ctx: BotContext) {
@@ -186,4 +203,9 @@ function weightedRandom(words: CachedWord[]): CachedWord {
     if (rnd <= 0) return words[i];
   }
   return words[0];
+}
+
+function normalizeWord(text: string): string {
+  if (!text) return text;
+  return text.replace(/^[🔴🔵🟢]+/g, "").trim();
 }

@@ -63,7 +63,12 @@ export interface SessionData {
   wordsCache?: CachedWord[];
 
   attemptsLeft?: number;
-  repeatMode?: "de2ua" | "ua2de";
+  repeatMode?: "de2ua" | "ua2de" | "mixed";
+  repeatDirection?: {
+    askLang: "de" | "ua";
+    answerLang: "de" | "ua";
+  };
+
   posFilter?: string | null;
 
   words?: Word[];

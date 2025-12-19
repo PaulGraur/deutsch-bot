@@ -63,7 +63,6 @@ async function sendWordPage(ctx, page) {
         keyboard.text("➡️", `listwords_${page + 1}`);
     if (page > 0 || end < filteredWords.length)
         keyboard.row();
-    // Кнопки внизу: Фільтри і Дім
     keyboard.text("⚙️ Фільтри", "filters").text("🏠 Дім", "mainMenu");
     if (ctx.callbackQuery?.message) {
         try {

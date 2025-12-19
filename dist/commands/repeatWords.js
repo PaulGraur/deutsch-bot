@@ -20,9 +20,11 @@ function repeatWordsCommand(bot) {
     bot.callbackQuery("repeat", async (ctx) => {
         await initWordsSession(ctx);
         const keyboard = new grammy_1.InlineKeyboard()
-            .text("🇩🇪 🔛 🇺🇦", "mode:de2ua")
+            .text("🇩🇪 → 🇺🇦", "mode:de2ua")
             .row()
-            .text("🇺🇦 🔛 🇩🇪", "mode:ua2de")
+            .text("🇺🇦 → 🇩🇪", "mode:ua2de")
+            .row()
+            .text("🎲 Змішаний", "mode:mixed")
             .row()
             .text("🏠 Дім", "mainMenu");
         await ctx.editMessageText("Вибери режим повторів:", {
@@ -30,19 +32,20 @@ function repeatWordsCommand(bot) {
         });
         await ctx.answerCallbackQuery();
     });
-    bot.callbackQuery(/mode:(de2ua|ua2de)/, async (ctx) => {
-        ctx.session.repeatMode = ctx.callbackQuery?.data.split(":")[1];
+    bot.callbackQuery(/mode:(de2ua|ua2de|mixed)/, async (ctx) => {
+        ctx.session.repeatMode = ctx.callbackQuery.data.split(":")[1];
         await showNewWord(ctx);
         await ctx.answerCallbackQuery();
     });
     bot.callbackQuery(/answer:(.+)/, async (ctx) => {
-        const selected = ctx.callbackQuery?.data.split(":")[1];
+        const selected = ctx.callbackQuery.data.split(":")[1];
         const word = ctx.session.currentWord;
-        if (!word)
+        const direction = ctx.session.repeatDirection;
+        if (!word || !direction)
             return;
-        const now = Date.now();
-        let correctAnswer = ctx.session.repeatMode === "de2ua" ? word.ua : word.de;
+        const correctAnswer = word[direction.answerLang];
         const isCorrect = selected === correctAnswer;
+        const now = Date.now();
         if (isCorrect) {
             word.score = Math.min(word.score + 1, MAX_SCORE);
             word.lastSeen = now;
@@ -80,8 +83,8 @@ async function initWordsSession(ctx) {
     const words = wordsRes.data.values?.map((row, i) => {
         const p = progressRes.data.values?.[i] || [];
         return {
-            de: row[1],
-            ua: row[2],
+            de: normalizeWord(row[1]),
+            ua: normalizeWord(row[2]),
             createdAt: row[6] || String(Date.now()),
             score: Number(p[1] || 0),
             lastSeen: Number(p[2] || 0),
@@ -101,31 +104,43 @@ async function showNewWord(ctx) {
     const pool = due.length ? due : cache;
     const word = weightedRandom(pool);
     ctx.session.currentWord = word;
-    const question = ctx.session.repeatMode === "de2ua" ? word.de : word.ua;
-    const options = generateOptions(word, cache, ctx.session.repeatMode);
+    let askLang;
+    let answerLang;
+    if (ctx.session.repeatMode === "mixed") {
+        if (Math.random() < 0.5) {
+            askLang = "de";
+            answerLang = "ua";
+        }
+        else {
+            askLang = "ua";
+            answerLang = "de";
+        }
+    }
+    else {
+        askLang = ctx.session.repeatMode === "de2ua" ? "de" : "ua";
+        answerLang = askLang === "de" ? "ua" : "de";
+    }
+    ctx.session.repeatDirection = { askLang, answerLang };
+    const question = word[askLang];
+    const options = generateOptionsByLang(word, cache, answerLang);
     const keyboard = new grammy_1.InlineKeyboard();
     for (const opt of options) {
         keyboard.text(opt, `answer:${opt}`).row();
     }
     keyboard.text("🏠 Дім", "mainMenu");
-    await ctx.editMessageText(`${ctx.session.repeatMode === "de2ua" ? "🇩🇪" : "🇺🇦"} ${question}`, { reply_markup: keyboard });
+    await ctx.editMessageText(`${askLang === "de" ? "🇩🇪" : "🇺🇦"} ${question}`, {
+        reply_markup: keyboard,
+    });
 }
-function generateOptions(word, cache, mode) {
-    const optionsSet = new Set();
-    const correct = mode === "de2ua" ? word.ua : word.de;
-    optionsSet.add(correct);
-    while (optionsSet.size < Math.min(4, cache.length)) {
-        const randomWord = cache[Math.floor(Math.random() * cache.length)];
-        const option = mode === "de2ua" ? randomWord.ua : randomWord.de;
-        if (option)
-            optionsSet.add(option);
+function generateOptionsByLang(word, cache, lang) {
+    const options = new Set();
+    options.add(word[lang]);
+    while (options.size < Math.min(4, cache.length)) {
+        const w = cache[Math.floor(Math.random() * cache.length)];
+        if (w[lang])
+            options.add(w[lang]);
     }
-    const options = Array.from(optionsSet);
-    for (let i = options.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [options[i], options[j]] = [options[j], options[i]];
-    }
-    return options;
+    return Array.from(options).sort(() => Math.random() - 0.5);
 }
 async function saveProgressBatch(ctx) {
     const values = ctx.session.wordsCache.map((w) => [
@@ -150,4 +165,9 @@ function weightedRandom(words) {
             return words[i];
     }
     return words[0];
+}
+function normalizeWord(text) {
+    if (!text)
+        return text;
+    return text.replace(/^[🔴🔵🟢]+/g, "").trim();
 }
