@@ -33,10 +33,11 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.POS = void 0;
 exports.addWordCommand = addWordCommand;
 const grammy_1 = require("grammy");
 const sheets_1 = require("../sheets");
-const POS = [
+exports.POS = [
     { k: "noun", v: "Іменники" },
     { k: "verb", v: "Дієслова" },
     { k: "adjective", v: "Прикметники" },
@@ -51,7 +52,7 @@ const POS = [
 function addWordCommand(bot) {
     const createPOSKeyboard = () => {
         const kb = new grammy_1.InlineKeyboard();
-        POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
+        exports.POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
         kb.row().text("🏠 Вийти в додому", "mainMenu");
         return kb;
     };

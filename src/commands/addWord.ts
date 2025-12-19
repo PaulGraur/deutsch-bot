@@ -2,7 +2,7 @@ import { Bot, InlineKeyboard } from "grammy";
 import { sheets, SPREADSHEET_ID } from "../sheets";
 import { BotContext, WordCreationSession } from "../types.js";
 
-const POS = [
+export const POS = [
   { k: "noun", v: "Іменники" },
   { k: "verb", v: "Дієслова" },
   { k: "adjective", v: "Прикметники" },
