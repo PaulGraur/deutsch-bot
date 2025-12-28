@@ -60,7 +60,14 @@ export function addWordCommand(bot: Bot<BotContext>) {
         await ctx.deleteMessage();
       } catch {}
     }
-    ctx.session.wordCreation = { step: "de", messages: [], de: "", ua: "" };
+
+    ctx.session.wordCreation = {
+      step: "de",
+      messages: [],
+      de: "",
+      ua: "",
+    };
+
     await sendMessageAndRecord(ctx, "Введи слово німецькою:");
     await ctx.answerCallbackQuery();
   });
@@ -71,30 +78,27 @@ export function addWordCommand(bot: Bot<BotContext>) {
 
     s.messages.push(ctx.message.message_id);
 
+    const userId = ctx.from!.id;
+
     if (s.step === "de") {
       const word = ctx.message.text.trim();
 
       try {
         const res = await sheets.spreadsheets.values.get({
           spreadsheetId: SPREADSHEET_ID,
-          range: "wörter!B2:B",
+          range: "wörter!A:F",
         });
-        const existingWords = res.data.values?.flat() || [];
+
+        const rows = res.data.values ?? [];
+        const userWords = rows.filter((r) => String(r[1]) === String(userId));
+        const existingWords = userWords.map((r) => r[2]);
 
         if (existingWords.includes(word)) {
           await deleteAllSessionMessages(ctx);
-
-          const msgId = await sendMessageAndRecord(
+          await sendMessageAndRecord(
             ctx,
-            `⚠️ Слово "${word}" вже збережене.\nВведи нове слово німецькою:`
+            `⚠️ Слово "${word}" вже додане саме тобою.\nВведи інше:`
           );
-
-          ctx.session.wordCreation = {
-            step: "de",
-            messages: [msgId],
-            de: "",
-            ua: "",
-          };
           return;
         }
 
@@ -102,10 +106,10 @@ export function addWordCommand(bot: Bot<BotContext>) {
         s.step = "ua";
         await sendMessageAndRecord(ctx, "Введи переклад українською:");
       } catch (err) {
-        console.error("Error checking duplicates:", err);
+        console.error("Duplicate check error:", err);
         await sendMessageAndRecord(
           ctx,
-          "❌ Не вдалося перевірити слово. Спробуй ще раз."
+          "❌ Помилка перевірки. Спробуй ще раз."
         );
       }
 
@@ -120,7 +124,6 @@ export function addWordCommand(bot: Bot<BotContext>) {
         "Обери частину мови:",
         createPOSKeyboard()
       );
-      return;
     }
   });
 
@@ -138,37 +141,42 @@ export function addWordCommand(bot: Bot<BotContext>) {
     const s = ctx.session.wordCreation as WordCreationSession | undefined;
     if (!s || s.step !== "pos") return;
 
+    const userId = ctx.from!.id;
     const pos = ctx.match![1];
     const createdAt = new Date().toISOString();
+    const id = Date.now(); // безпечний у межах Google Sheets
 
     try {
-      const res = await sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: "wörter!B2:B",
-      });
-      const existingWords = res.data.values?.flat() || [];
-      const id = existingWords.length + 1;
-
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
-        range: "wörter!A:E",
+        range: "wörter!A:F",
         valueInputOption: "RAW",
-        requestBody: { values: [[id, s.de ?? "", s.ua ?? "", pos, createdAt]] },
+        requestBody: {
+          values: [[id, userId, s.de, s.ua, pos, createdAt]],
+        },
       });
 
       await deleteAllSessionMessages(ctx);
-      ctx.session.wordCreation = { step: "de", messages: [], de: "", ua: "" };
+      ctx.session.wordCreation = {
+        step: "de",
+        messages: [],
+        de: "",
+        ua: "",
+      };
+
       await sendMessageAndRecord(
         ctx,
-        `✅ Додано: ${id}. ${s.de} — ${s.ua}`,
+        `✅ Додано: ${s.de} — ${s.ua}`,
         createAddWordKeyboard()
       );
     } catch (err) {
-      console.error("Error writing to sheet:", err);
+      console.error("Write error:", err);
       await sendMessageAndRecord(
         ctx,
-        "❌ Не вдалося записати в таблицю. Перевір лог."
+        "❌ Не вдалося записати слово. Перевір доступ до таблиці."
       );
     }
+
+    await ctx.answerCallbackQuery();
   });
 }
