@@ -5,13 +5,13 @@ import { bot } from "./bot.js";
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+const isProduction = !!process.env.WEBHOOK_URL;
+
 app.use(express.json());
 
 app.get("/", (_req, res) => {
   res.send("Bot is running!");
 });
-
-const isProduction = true;
 
 if (isProduction) {
   app.post("/webhook", webhookCallback(bot, "express"));
