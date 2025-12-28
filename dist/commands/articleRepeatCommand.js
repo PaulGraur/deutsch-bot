@@ -155,10 +155,16 @@ function articleRepeatCommand(bot) {
             s.messageId = msg.message_id;
         }
         else {
-            await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-                reply_markup: keyboard,
-                parse_mode: "HTML",
-            });
+            try {
+                await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+                    reply_markup: keyboard,
+                    parse_mode: "HTML",
+                });
+            }
+            catch (err) {
+                if (!err.description?.includes("message is not modified"))
+                    throw err;
+            }
         }
     }
     async function updateTimerMessage(ctx) {
@@ -170,7 +176,13 @@ function articleRepeatCommand(bot) {
         const sec = Math.floor((remaining % 60000) / 1000)
             .toString()
             .padStart(2, "0");
-        await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, `⏱ Залишилось: ${min}:${sec}`);
+        try {
+            await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, `⏱ Залишилось: ${min}:${sec}`);
+        }
+        catch (err) {
+            if (!err.description?.includes("message is not modified"))
+                throw err;
+        }
     }
     async function endArticleSession(ctx, s) {
         if (s.timerInterval)

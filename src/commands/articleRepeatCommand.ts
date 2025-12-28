@@ -173,10 +173,14 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       });
       s.messageId = msg.message_id;
     } else {
-      await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-        reply_markup: keyboard,
-        parse_mode: "HTML",
-      });
+      try {
+        await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+          reply_markup: keyboard,
+          parse_mode: "HTML",
+        });
+      } catch (err: any) {
+        if (!err.description?.includes("message is not modified")) throw err;
+      }
     }
   }
 
@@ -190,11 +194,15 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .toString()
       .padStart(2, "0");
 
-    await ctx.api.editMessageText(
-      ctx.chat.id,
-      s.timerMessageId,
-      `⏱ Залишилось: ${min}:${sec}`
-    );
+    try {
+      await ctx.api.editMessageText(
+        ctx.chat.id,
+        s.timerMessageId,
+        `⏱ Залишилось: ${min}:${sec}`
+      );
+    } catch (err: any) {
+      if (!err.description?.includes("message is not modified")) throw err;
+    }
   }
 
   async function endArticleSession(ctx: BotContext, s: ArticleSession) {
