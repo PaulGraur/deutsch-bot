@@ -25,6 +25,20 @@ export interface WordMeta {
   difficulty?: number;
 }
 
+export type ArticleSession = {
+  nouns: Word[];
+  index: number;
+  correctCount: number;
+  wrongCount: number;
+  totalClicks: number;
+  timerActive: boolean;
+  timerEnd: number | null;
+  timerInterval?: NodeJS.Timeout;
+  timerSelected?: string;
+  messageId?: number;
+  timerMessageId?: number;
+};
+
 export interface Sentence {
   id: string;
   de: string;
@@ -56,6 +70,7 @@ export type CachedWord = Word & {
 };
 
 export interface SessionData {
+  articleRepeat?: ArticleSession;
   dailyRepeats: number;
   dailyDate: string;
 
@@ -77,18 +92,6 @@ export interface SessionData {
   assembledIndexes?: number[];
 
   articleRepeatMode?: boolean;
-  articleRepeat?: {
-    nouns: Word[];
-    index: number;
-    correctCount: number;
-    wrongCount: number;
-    totalClicks: number;
-    timerEnd: number | null;
-    timerActive: boolean;
-    timerMessageId?: number;
-    timerInterval?: NodeJS.Timeout;
-    timerSelected?: string;
-  };
 
   previousStructureId?: string | null;
   structureMessageIds?: number[];
