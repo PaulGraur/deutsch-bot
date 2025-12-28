@@ -62,8 +62,11 @@ function articleRepeatCommand(bot) {
             totalClicks: 0,
             timerActive: selected !== "none",
             timerEnd: selected !== "none" ? Date.now() + Number(selected) * 60000 : null,
-            timerSelected: selected,
+            userId,
             messageId: msgId,
+            timerMessageId: undefined,
+            timerInterval: undefined,
+            timerSelected: selected,
         };
         const s = ctx.session.articleRepeat;
         if (!s)
@@ -147,7 +150,7 @@ function articleRepeatCommand(bot) {
         const text = retry
             ? `❌ Спробуй ще раз: <b>${pureWord}</b>`
             : `🤔 Який артикль у слова: <b>${pureWord}</b>`;
-        if (!s.messageId) {
+        if (s.messageId === undefined) {
             const msg = await ctx.reply(text, {
                 reply_markup: keyboard,
                 parse_mode: "HTML",
@@ -155,16 +158,10 @@ function articleRepeatCommand(bot) {
             s.messageId = msg.message_id;
         }
         else {
-            try {
-                await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-                    reply_markup: keyboard,
-                    parse_mode: "HTML",
-                });
-            }
-            catch (err) {
-                if (!err.description?.includes("message is not modified"))
-                    throw err;
-            }
+            await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+                reply_markup: keyboard,
+                parse_mode: "HTML",
+            });
         }
     }
     async function updateTimerMessage(ctx) {
@@ -176,18 +173,12 @@ function articleRepeatCommand(bot) {
         const sec = Math.floor((remaining % 60000) / 1000)
             .toString()
             .padStart(2, "0");
-        try {
-            await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, `⏱ Залишилось: ${min}:${sec}`);
-        }
-        catch (err) {
-            if (!err.description?.includes("message is not modified"))
-                throw err;
-        }
+        await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, `⏱ Залишилось: ${min}:${sec}`);
     }
     async function endArticleSession(ctx, s) {
         if (s.timerInterval)
             clearInterval(s.timerInterval);
-        await ctx.reply(`📊 <b>Результат</b>\n\n✅ ${s.correctCount}\n❌ ${s.wrongCount}\n🔘 ${s.totalClicks}`, { parse_mode: "HTML" });
+        await ctx.reply(`📊 <b>Результат вправи на артиклі:</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`, { parse_mode: "HTML" });
         cleanupArticleSession(ctx, true);
         await (0, start_js_1.showMainMenu)(ctx, false);
     }

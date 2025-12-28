@@ -66,8 +66,11 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       timerActive: selected !== "none",
       timerEnd:
         selected !== "none" ? Date.now() + Number(selected) * 60000 : null,
-      timerSelected: selected,
+      userId,
       messageId: msgId,
+      timerMessageId: undefined,
+      timerInterval: undefined,
+      timerSelected: selected,
     } as ArticleSession;
 
     const s = ctx.session.articleRepeat;
@@ -166,21 +169,17 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       ? `❌ Спробуй ще раз: <b>${pureWord}</b>`
       : `🤔 Який артикль у слова: <b>${pureWord}</b>`;
 
-    if (!s.messageId) {
+    if (s.messageId === undefined) {
       const msg = await ctx.reply(text, {
         reply_markup: keyboard,
         parse_mode: "HTML",
       });
       s.messageId = msg.message_id;
     } else {
-      try {
-        await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-          reply_markup: keyboard,
-          parse_mode: "HTML",
-        });
-      } catch (err: any) {
-        if (!err.description?.includes("message is not modified")) throw err;
-      }
+      await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+        reply_markup: keyboard,
+        parse_mode: "HTML",
+      });
     }
   }
 
@@ -194,22 +193,18 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .toString()
       .padStart(2, "0");
 
-    try {
-      await ctx.api.editMessageText(
-        ctx.chat.id,
-        s.timerMessageId,
-        `⏱ Залишилось: ${min}:${sec}`
-      );
-    } catch (err: any) {
-      if (!err.description?.includes("message is not modified")) throw err;
-    }
+    await ctx.api.editMessageText(
+      ctx.chat.id,
+      s.timerMessageId,
+      `⏱ Залишилось: ${min}:${sec}`
+    );
   }
 
   async function endArticleSession(ctx: BotContext, s: ArticleSession) {
     if (s.timerInterval) clearInterval(s.timerInterval);
 
     await ctx.reply(
-      `📊 <b>Результат</b>\n\n✅ ${s.correctCount}\n❌ ${s.wrongCount}\n🔘 ${s.totalClicks}`,
+      `📊 <b>Результат вправи на артиклі:</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`,
       { parse_mode: "HTML" }
     );
 

@@ -4,7 +4,6 @@ import { bot } from "./bot.js";
 
 const app = express();
 const PORT = process.env.PORT || 10000;
-
 const isProduction = !!process.env.WEBHOOK_URL;
 
 app.use(express.json());
