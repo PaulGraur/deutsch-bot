@@ -225,11 +225,22 @@ async function endArticleSession(ctx: BotContext, s: ArticleSession) {
         `🔘 Натискань: ${s.totalClicks}`,
       { parse_mode: "HTML" }
     );
+
+    const keyboard = new InlineKeyboard()
+      .text("1 хв", "timer_1")
+      .text("3 хв", "timer_3")
+      .text("5 хв", "timer_5")
+      .row()
+      .text("Без таймера", "timer_none")
+      .row()
+      .text("🏠 Головне меню", "timer_mainMenu");
+
+    await ctx.reply("⏱ Обери тривалість вправи:", {
+      reply_markup: keyboard,
+    });
   }
 
   cleanupArticleSession(ctx);
-
-  await startTimerSelection(ctx);
 }
 
 function cleanupArticleSession(ctx: BotContext, keepTimer = false) {
