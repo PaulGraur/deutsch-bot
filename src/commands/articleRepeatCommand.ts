@@ -139,8 +139,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   });
 }
 
-/* ---------------- HELPERS ---------------- */
-
 async function startTimerSelection(ctx: BotContext) {
   const keyboard = new InlineKeyboard()
     .text("1 хв", "timer_1")
@@ -219,16 +217,17 @@ async function updateTimerMessage(ctx: BotContext) {
 async function endArticleSession(ctx: BotContext, s: ArticleSession) {
   if (s.timerInterval) clearInterval(s.timerInterval);
 
-  await ctx.reply(
-    `📊 <b>Результат вправи</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`,
-    {
-      parse_mode: "HTML",
-      reply_markup: new InlineKeyboard().text("🗑 Видалити", "delete_summary"),
-    }
-  );
+  if (ctx.chat) {
+    await ctx.reply(
+      `📊 <b>Результат вправи</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`,
+      { parse_mode: "HTML" }
+    );
+  }
 
   cleanupArticleSession(ctx);
-  await showMainMenu(ctx, false);
+
+  await ctx.reply("🏠 Головне меню");
+  await showMainMenu(ctx, true);
 }
 
 function cleanupArticleSession(ctx: BotContext, keepTimer = false) {
