@@ -143,15 +143,19 @@ export function addWordCommand(bot: Bot<BotContext>) {
 
     const pos = ctx.match![1];
     const createdAt = new Date().toISOString();
-    const userId = ctx.from!.id; 
+    const userId = ctx.from!.id;
 
     try {
       const res = await sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
-        range: "wörter!A2:A",
+        range: "wörter!A:F",
       });
-      const existingIds = res.data.values?.flat() || [];
-      const id = existingIds.length + 1;
+
+      const rows = res.data.values ?? [];
+
+      const userRows = rows.filter((r) => String(r[1]) === String(userId));
+
+      const id = userRows.length + 1;
 
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
