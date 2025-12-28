@@ -87,7 +87,12 @@ function addWordCommand(bot) {
             }
             catch { }
         }
-        ctx.session.wordCreation = { step: "de", messages: [], de: "", ua: "" };
+        ctx.session.wordCreation = {
+            step: "de",
+            messages: [],
+            de: "",
+            ua: "",
+        };
         await sendMessageAndRecord(ctx, "Введи слово німецькою:");
         await ctx.answerCallbackQuery();
     });
@@ -96,23 +101,20 @@ function addWordCommand(bot) {
         if (!s)
             return;
         s.messages.push(ctx.message.message_id);
+        const userId = ctx.from.id;
         if (s.step === "de") {
             const word = ctx.message.text.trim();
             try {
                 const res = await sheets_1.sheets.spreadsheets.values.get({
                     spreadsheetId: sheets_1.SPREADSHEET_ID,
-                    range: "wörter!B2:B",
+                    range: "wörter!A:F",
                 });
-                const existingWords = res.data.values?.flat() || [];
+                const rows = res.data.values ?? [];
+                const userWords = rows.filter((r) => String(r[1]) === String(userId));
+                const existingWords = userWords.map((r) => r[2]);
                 if (existingWords.includes(word)) {
                     await deleteAllSessionMessages(ctx);
-                    const msgId = await sendMessageAndRecord(ctx, `⚠️ Слово "${word}" вже збережене.\nВведи нове слово німецькою:`);
-                    ctx.session.wordCreation = {
-                        step: "de",
-                        messages: [msgId],
-                        de: "",
-                        ua: "",
-                    };
+                    await sendMessageAndRecord(ctx, `⚠️ Слово "${word}" вже додане саме тобою.\nВведи інше:`);
                     return;
                 }
                 s.de = word;
@@ -120,8 +122,8 @@ function addWordCommand(bot) {
                 await sendMessageAndRecord(ctx, "Введи переклад українською:");
             }
             catch (err) {
-                console.error("Error checking duplicates:", err);
-                await sendMessageAndRecord(ctx, "❌ Не вдалося перевірити слово. Спробуй ще раз.");
+                console.error("Duplicate check error:", err);
+                await sendMessageAndRecord(ctx, "❌ Помилка перевірки. Спробуй ще раз.");
             }
             return;
         }
@@ -129,7 +131,6 @@ function addWordCommand(bot) {
             s.ua = ctx.message.text.trim();
             s.step = "pos";
             await sendMessageAndRecord(ctx, "Обери частину мови:", createPOSKeyboard());
-            return;
         }
     });
     bot.callbackQuery("mainMenu", async (ctx) => {
@@ -145,18 +146,21 @@ function addWordCommand(bot) {
             return;
         const pos = ctx.match[1];
         const createdAt = new Date().toISOString();
+        const userId = ctx.from.id;
         try {
             const res = await sheets_1.sheets.spreadsheets.values.get({
                 spreadsheetId: sheets_1.SPREADSHEET_ID,
-                range: "wörter!B2:B",
+                range: "wörter!A2:A",
             });
-            const existingWords = res.data.values?.flat() || [];
-            const id = existingWords.length + 1;
+            const existingIds = res.data.values?.flat() || [];
+            const id = existingIds.length + 1;
             await sheets_1.sheets.spreadsheets.values.append({
                 spreadsheetId: sheets_1.SPREADSHEET_ID,
-                range: "wörter!A:E",
+                range: "wörter!A:F",
                 valueInputOption: "RAW",
-                requestBody: { values: [[id, s.de ?? "", s.ua ?? "", pos, createdAt]] },
+                requestBody: {
+                    values: [[id, userId, s.de ?? "", s.ua ?? "", pos, createdAt]],
+                },
             });
             await deleteAllSessionMessages(ctx);
             ctx.session.wordCreation = { step: "de", messages: [], de: "", ua: "" };

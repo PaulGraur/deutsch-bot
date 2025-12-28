@@ -141,42 +141,40 @@ export function addWordCommand(bot: Bot<BotContext>) {
     const s = ctx.session.wordCreation as WordCreationSession | undefined;
     if (!s || s.step !== "pos") return;
 
-    const userId = ctx.from!.id;
     const pos = ctx.match![1];
     const createdAt = new Date().toISOString();
-    const id = Date.now(); // безпечний у межах Google Sheets
+    const userId = ctx.from!.id; 
 
     try {
+      const res = await sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: "wörter!A2:A",
+      });
+      const existingIds = res.data.values?.flat() || [];
+      const id = existingIds.length + 1;
+
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
         range: "wörter!A:F",
         valueInputOption: "RAW",
         requestBody: {
-          values: [[id, userId, s.de, s.ua, pos, createdAt]],
+          values: [[id, userId, s.de ?? "", s.ua ?? "", pos, createdAt]],
         },
       });
 
       await deleteAllSessionMessages(ctx);
-      ctx.session.wordCreation = {
-        step: "de",
-        messages: [],
-        de: "",
-        ua: "",
-      };
-
+      ctx.session.wordCreation = { step: "de", messages: [], de: "", ua: "" };
       await sendMessageAndRecord(
         ctx,
-        `✅ Додано: ${s.de} — ${s.ua}`,
+        `✅ Додано: ${id}. ${s.de} — ${s.ua}`,
         createAddWordKeyboard()
       );
     } catch (err) {
-      console.error("Write error:", err);
+      console.error("Error writing to sheet:", err);
       await sendMessageAndRecord(
         ctx,
-        "❌ Не вдалося записати слово. Перевір доступ до таблиці."
+        "❌ Не вдалося записати в таблицю. Перевір лог."
       );
     }
-
-    await ctx.answerCallbackQuery();
   });
 }

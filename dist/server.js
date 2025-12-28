@@ -12,7 +12,7 @@ app.use(express_1.default.json());
 app.get("/", (_req, res) => {
     res.send("Bot is running!");
 });
-const isProduction = true;
+const isProduction = false;
 if (isProduction) {
     app.post("/webhook", (0, grammy_1.webhookCallback)(bot_js_1.bot, "express"));
 }

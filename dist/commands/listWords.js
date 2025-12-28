@@ -16,7 +16,7 @@ function listWordsCommand(bot) {
         await ctx.answerCallbackQuery();
     });
     bot.callbackQuery(/listwords_(\d+)/, async (ctx) => {
-        const page = parseInt(ctx.match[1]);
+        const page = Number(ctx.match[1]);
         await sendWordPage(ctx, page);
         await ctx.answerCallbackQuery();
     });
@@ -25,23 +25,25 @@ function listWordsCommand(bot) {
         await ctx.answerCallbackQuery();
     });
 }
-async function fetchWords() {
+async function fetchWords(userId) {
     const res = await sheets_1.sheets.spreadsheets.values.get({
         spreadsheetId: sheets_1.SPREADSHEET_ID,
-        range: "wörter!A2:H",
+        range: "wörter!A:F",
     });
-    return (res.data.values?.map((row, index) => ({
-        de: row[1],
-        ua: row[2],
-        pos: row[3],
-        score: row[4] ? Number(row[4]) : 0,
-        lastSeen: row[5] ? Number(row[5]) : 0,
-        createdAt: row[6] ? String(row[6]) : String(Date.now()),
+    const rows = res.data.values ?? [];
+    return rows
+        .filter((r) => String(r[1]) === String(userId))
+        .map((row, index) => ({
+        de: row[2],
+        ua: row[3],
+        pos: row[4],
+        createdAt: row[5],
         rowNumber: index + 2,
-    })) || []);
+    }));
 }
 async function sendWordPage(ctx, page) {
-    const allWords = await fetchWords();
+    const userId = ctx.from.id;
+    const allWords = await fetchWords(userId);
     const filteredWords = ctx.session.posFilter
         ? allWords.filter((w) => w.pos === ctx.session.posFilter)
         : allWords;
@@ -49,8 +51,8 @@ async function sendWordPage(ctx, page) {
     const end = start + PAGE_SIZE;
     const pageWords = filteredWords.slice(start, end);
     const currentFilter = ctx.session.posFilter ?? "all";
-    let header = currentFilter === "all"
-        ? "📚 Всі слова"
+    const header = currentFilter === "all"
+        ? "📚 Твої слова"
         : `📚 ${translatePosToLabel(currentFilter)}`;
     let text = `${header}\n${start + 1}-${Math.min(end, filteredWords.length)} з ${filteredWords.length}:\n\n`;
     text += pageWords
@@ -69,16 +71,7 @@ async function sendWordPage(ctx, page) {
             await ctx.editMessageText(text, { reply_markup: keyboard });
         }
         catch {
-            const chunks = chunkArray(pageWords, 10);
-            for (const chunk of chunks) {
-                const chunkText = chunk
-                    .map((w, i) => `${start + i + 1}. ${w.de} — ${w.ua}`)
-                    .join("\n");
-                try {
-                    await ctx.reply(chunkText);
-                }
-                catch { }
-            }
+            await ctx.reply(text, { reply_markup: keyboard });
         }
     }
     else {
@@ -109,13 +102,6 @@ async function sendFilterMenu(ctx) {
     else {
         await ctx.reply("Виберіть фільтр:", { reply_markup: keyboard });
     }
-}
-function chunkArray(arr, size) {
-    const chunks = [];
-    for (let i = 0; i < arr.length; i += size) {
-        chunks.push(arr.slice(i, i + size));
-    }
-    return chunks;
 }
 function translatePosToLabel(pos) {
     switch (pos) {
