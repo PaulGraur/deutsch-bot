@@ -3,7 +3,7 @@ import { webhookCallback } from "grammy";
 import { bot } from "./bot.js";
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 10000;
 
 app.use(express.json());
 
