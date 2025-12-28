@@ -108,7 +108,6 @@ function articleRepeatCommand(bot) {
         }
     });
 }
-/* ---------------- HELPERS ---------------- */
 async function startTimerSelection(ctx) {
     const keyboard = new grammy_1.InlineKeyboard()
         .text("1 хв", "timer_1")
@@ -172,12 +171,14 @@ async function updateTimerMessage(ctx) {
 async function endArticleSession(ctx, s) {
     if (s.timerInterval)
         clearInterval(s.timerInterval);
-    await ctx.reply(`📊 <b>Результат вправи</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`, {
-        parse_mode: "HTML",
-        reply_markup: new grammy_1.InlineKeyboard().text("🗑 Видалити", "delete_summary"),
-    });
+    if (ctx.chat) {
+        await ctx.reply(`📊 <b>Результат вправи</b>\n\n` +
+            `✅ Правильно: ${s.correctCount}\n` +
+            `❌ Помилки: ${s.wrongCount}\n` +
+            `🔘 Натискань: ${s.totalClicks}`, { parse_mode: "HTML" });
+    }
     cleanupArticleSession(ctx);
-    await (0, start_js_1.showMainMenu)(ctx, false);
+    await startTimerSelection(ctx);
 }
 function cleanupArticleSession(ctx, keepTimer = false) {
     const s = ctx.session.articleRepeat;

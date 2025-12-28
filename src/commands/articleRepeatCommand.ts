@@ -219,15 +219,17 @@ async function endArticleSession(ctx: BotContext, s: ArticleSession) {
 
   if (ctx.chat) {
     await ctx.reply(
-      `📊 <b>Результат вправи</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`,
+      `📊 <b>Результат вправи</b>\n\n` +
+        `✅ Правильно: ${s.correctCount}\n` +
+        `❌ Помилки: ${s.wrongCount}\n` +
+        `🔘 Натискань: ${s.totalClicks}`,
       { parse_mode: "HTML" }
     );
   }
 
   cleanupArticleSession(ctx);
 
-  await ctx.reply("🏠 Головне меню");
-  await showMainMenu(ctx, true);
+  await startTimerSelection(ctx);
 }
 
 function cleanupArticleSession(ctx: BotContext, keepTimer = false) {
