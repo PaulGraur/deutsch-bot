@@ -33,21 +33,21 @@ function articleRepeatCommand(bot) {
             await (0, start_js_1.showMainMenu)(ctx, false);
             return;
         }
-        const userId = String(ctx.from.id);
         const sheetRes = await sheets_1.sheets.spreadsheets.values.get({
             spreadsheetId: sheets_1.SPREADSHEET_ID,
             range: "wörter!A2:F",
         });
-        const nouns = (sheetRes.data.values ?? [])
-            .filter((row) => String(row[1]) === userId && row[4] === "noun")
+        const allWords = (sheetRes.data.values ?? [])
+            .filter((row) => row[1] === String(ctx.from?.id))
             .map((row) => ({
             de: row[2],
             ua: row[3],
             pos: row[4],
             createdAt: row[5] ?? new Date().toISOString(),
         }));
+        const nouns = allWords.filter((w) => w.pos === "noun");
         if (!nouns.length) {
-            await ctx.reply("У тебе ще немає іменників для цієї вправи 😕");
+            await ctx.reply("Немає іменників для повторення артиклів 😕");
             return;
         }
         const msgId = ctx.callbackQuery?.message?.message_id;
@@ -61,24 +61,19 @@ function articleRepeatCommand(bot) {
             wrongCount: 0,
             totalClicks: 0,
             timerActive: selected !== "none",
-            timerEnd: selected !== "none" ? Date.now() + Number(selected) * 60000 : null,
-            userId,
-            messageId: msgId,
-            timerMessageId: undefined,
-            timerInterval: undefined,
+            timerEnd: selected !== "none" ? Date.now() + parseInt(selected) * 60000 : null,
             timerSelected: selected,
+            messageId: msgId,
         };
         const s = ctx.session.articleRepeat;
-        if (!s)
-            return;
         if (selected !== "none") {
-            const timerMsg = await ctx.reply("⏱ Таймер: запуск...");
+            const timerMsg = await ctx.reply("⏱ Таймер: завантаження...");
             s.timerMessageId = timerMsg.message_id;
             s.timerInterval = setInterval(async () => {
                 if (!s.timerActive || !ctx.chat)
                     return;
-                const remaining = s.timerEnd - Date.now();
-                if (remaining <= 0) {
+                const remainingMs = s.timerEnd - Date.now();
+                if (remainingMs <= 0) {
                     clearInterval(s.timerInterval);
                     s.timerActive = false;
                     await endArticleSession(ctx, s);
@@ -94,10 +89,10 @@ function articleRepeatCommand(bot) {
             await ctx.answerCallbackQuery();
         }
         catch { }
-        const selected = ctx.callbackQuery?.data.split("_")[1];
+        const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
         if (!selected)
             return;
-        if (selected === "mainMenu") {
+        if (selected === "mainmenu") {
             cleanupArticleSession(ctx, true);
             await (0, start_js_1.showMainMenu)(ctx, false);
             return;
@@ -106,6 +101,13 @@ function articleRepeatCommand(bot) {
         if (!s)
             return;
         s.totalClicks++;
+        if (s.timerActive && s.timerEnd && Date.now() > s.timerEnd) {
+            s.timerActive = false;
+            if (s.timerInterval)
+                clearInterval(s.timerInterval);
+            await endArticleSession(ctx, s);
+            return;
+        }
         const currentWord = s.nouns[s.index];
         const correctArticle = currentWord.de.split(" ")[0].toLowerCase();
         if (selected === correctArticle) {
@@ -119,7 +121,7 @@ function articleRepeatCommand(bot) {
         }
     });
     async function startTimerSelection(ctx) {
-        const keyboard = new grammy_1.InlineKeyboard()
+        const timerKeyboard = new grammy_1.InlineKeyboard()
             .text("1 хв", "timer_1")
             .text("3 хв", "timer_3")
             .text("5 хв", "timer_5")
@@ -127,20 +129,23 @@ function articleRepeatCommand(bot) {
             .text("Без таймера", "timer_none")
             .row()
             .text("🏠 Головне меню", "timer_mainMenu");
-        const text = "⏱️ Обери тривалість вправи:";
-        if (ctx.callbackQuery?.message) {
-            await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, text, { reply_markup: keyboard });
+        const text = "⏱️ Вибери таймер для вправи:";
+        try {
+            if (ctx.callbackQuery?.message) {
+                await ctx.api.editMessageText(ctx.chat.id, ctx.callbackQuery.message.message_id, text, { reply_markup: timerKeyboard });
+            }
+            else {
+                await ctx.reply(text, { reply_markup: timerKeyboard });
+            }
         }
-        else {
-            await ctx.reply(text, { reply_markup: keyboard });
-        }
+        catch { }
     }
     async function updateSessionMessage(ctx, retry = false) {
         const s = ctx.session.articleRepeat;
-        if (!s || !ctx.chat)
+        if (!s || !ctx.chat || !s.nouns?.length)
             return;
         const word = s.nouns[s.index];
-        const pureWord = word.de.split(" ").slice(1).join(" ");
+        const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
         const keyboard = new grammy_1.InlineKeyboard()
             .text("🔵 der", "article_der")
             .text("🔴 die", "article_die")
@@ -148,59 +153,81 @@ function articleRepeatCommand(bot) {
             .row()
             .text("🏠 Головне меню", "article_mainMenu");
         const text = retry
-            ? `❌ Спробуй ще раз: <b>${pureWord}</b>`
-            : `🤔 Який артикль у слова: <b>${pureWord}</b>`;
-        if (s.messageId === undefined) {
-            const msg = await ctx.reply(text, {
-                reply_markup: keyboard,
-                parse_mode: "HTML",
-            });
-            s.messageId = msg.message_id;
+            ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
+            : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
+        try {
+            if (!s.messageId) {
+                const msg = await ctx.reply(text, {
+                    reply_markup: keyboard,
+                    parse_mode: "HTML",
+                });
+                s.messageId = msg.message_id;
+            }
+            else {
+                await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+                    reply_markup: keyboard,
+                    parse_mode: "HTML",
+                });
+            }
         }
-        else {
-            await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-                reply_markup: keyboard,
-                parse_mode: "HTML",
-            });
-        }
+        catch { }
     }
     async function updateTimerMessage(ctx) {
         const s = ctx.session.articleRepeat;
-        if (!s || !s.timerActive || !s.timerMessageId || !ctx.chat)
+        if (!s || !ctx.chat || !s.timerMessageId || !s.timerActive)
             return;
-        const remaining = s.timerEnd - Date.now();
-        const min = Math.floor(remaining / 60000);
-        const sec = Math.floor((remaining % 60000) / 1000)
+        const remainingMs = s.timerEnd - Date.now();
+        const minutesLeft = Math.floor(remainingMs / 60000);
+        const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
             .toString()
             .padStart(2, "0");
-        await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, `⏱ Залишилось: ${min}:${sec}`);
+        const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
+        try {
+            await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, timerText);
+        }
+        catch { }
     }
     async function endArticleSession(ctx, s) {
         if (s.timerInterval)
             clearInterval(s.timerInterval);
-        await ctx.reply(`📊 <b>Результат вправи на артиклі:</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`, { parse_mode: "HTML" });
+        const formattedDate = new Date().toLocaleString("uk-UA", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
+        if (ctx.chat) {
+            await ctx.reply(`📝 <b>Вправа на артиклі</b>\n📅 Дата: ${formattedDate}\n⏱ Час: ${s.timerSelected === "none" ? "Без таймера" : s.timerSelected + " хв"}\n\n✅ <b>Правильно:</b> ${s.correctCount}  ❌ <b>Помилки:</b> ${s.wrongCount}  🔘 <b>Натискань:</b> ${s.totalClicks}`, {
+                parse_mode: "HTML",
+                reply_markup: new grammy_1.InlineKeyboard().text("🗑 Видалити повідомлення", "delete_summary"),
+            });
+        }
         cleanupArticleSession(ctx, true);
         await (0, start_js_1.showMainMenu)(ctx, false);
     }
-    function cleanupArticleSession(ctx, keepUI = false) {
+    function cleanupArticleSession(ctx, removeTimerOnly = false) {
         const s = ctx.session.articleRepeat;
         if (!s)
             return;
         if (s.timerInterval)
             clearInterval(s.timerInterval);
         if (ctx.chat) {
-            if (s.timerMessageId)
+            if (s.timerMessageId) {
                 try {
                     ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
                 }
                 catch { }
-            if (!keepUI && s.messageId)
+            }
+            if (!removeTimerOnly && s.messageId) {
                 try {
                     ctx.api.deleteMessage(ctx.chat.id, s.messageId);
                 }
                 catch { }
+            }
         }
-        if (!keepUI) {
+        if (!removeTimerOnly) {
             ctx.session.articleRepeat = undefined;
             ctx.session.articleRepeatMode = false;
         }

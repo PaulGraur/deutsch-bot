@@ -5,6 +5,7 @@ import { showMainMenu } from "./start.js";
 
 export function articleRepeatCommand(bot: Bot<BotContext>) {
   bot.command("article_repeat", startTimerSelection);
+
   bot.callbackQuery("article_repeat", startTimerSelection);
 
   bot.callbackQuery("delete_summary", async (ctx) => {
@@ -22,7 +23,6 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-
     const selected = ctx.callbackQuery?.data.split("_")[1];
     if (!selected) return;
 
@@ -32,15 +32,13 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       return;
     }
 
-    const userId = String(ctx.from!.id);
-
     const sheetRes = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: "wörter!A2:F",
     });
 
-    const nouns: Word[] = (sheetRes.data.values ?? [])
-      .filter((row) => String(row[1]) === userId && row[4] === "noun")
+    const allWords: Word[] = (sheetRes.data.values ?? [])
+      .filter((row) => row[1] === String(ctx.from?.id))
       .map((row) => ({
         de: row[2],
         ua: row[3],
@@ -48,8 +46,9 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
         createdAt: row[5] ?? new Date().toISOString(),
       }));
 
+    const nouns = allWords.filter((w) => w.pos === "noun");
     if (!nouns.length) {
-      await ctx.reply("У тебе ще немає іменників для цієї вправи 😕");
+      await ctx.reply("Немає іменників для повторення артиклів 😕");
       return;
     }
 
@@ -65,25 +64,21 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       totalClicks: 0,
       timerActive: selected !== "none",
       timerEnd:
-        selected !== "none" ? Date.now() + Number(selected) * 60000 : null,
-      userId,
-      messageId: msgId,
-      timerMessageId: undefined,
-      timerInterval: undefined,
+        selected !== "none" ? Date.now() + parseInt(selected) * 60000 : null,
       timerSelected: selected,
+      messageId: msgId,
     } as ArticleSession;
 
     const s = ctx.session.articleRepeat;
-    if (!s) return;
 
     if (selected !== "none") {
-      const timerMsg = await ctx.reply("⏱ Таймер: запуск...");
+      const timerMsg = await ctx.reply("⏱ Таймер: завантаження...");
       s.timerMessageId = timerMsg.message_id;
 
       s.timerInterval = setInterval(async () => {
         if (!s.timerActive || !ctx.chat) return;
-        const remaining = s.timerEnd! - Date.now();
-        if (remaining <= 0) {
+        const remainingMs = s.timerEnd! - Date.now();
+        if (remainingMs <= 0) {
           clearInterval(s.timerInterval);
           s.timerActive = false;
           await endArticleSession(ctx, s);
@@ -100,19 +95,25 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
     try {
       await ctx.answerCallbackQuery();
     } catch {}
-    const selected = ctx.callbackQuery?.data.split("_")[1];
+    const selected = ctx.callbackQuery?.data.split("_")[1]?.toLowerCase();
     if (!selected) return;
 
-    if (selected === "mainMenu") {
+    if (selected === "mainmenu") {
       cleanupArticleSession(ctx, true);
       await showMainMenu(ctx, false);
       return;
     }
 
-    const s = ctx.session.articleRepeat;
+    const s = ctx.session.articleRepeat as ArticleSession;
     if (!s) return;
 
     s.totalClicks++;
+    if (s.timerActive && s.timerEnd && Date.now() > s.timerEnd) {
+      s.timerActive = false;
+      if (s.timerInterval) clearInterval(s.timerInterval);
+      await endArticleSession(ctx, s);
+      return;
+    }
 
     const currentWord = s.nouns[s.index];
     const correctArticle = currentWord.de.split(" ")[0].toLowerCase();
@@ -128,7 +129,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
   });
 
   async function startTimerSelection(ctx: BotContext) {
-    const keyboard = new InlineKeyboard()
+    const timerKeyboard = new InlineKeyboard()
       .text("1 хв", "timer_1")
       .text("3 хв", "timer_3")
       .text("5 хв", "timer_5")
@@ -137,27 +138,28 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("🏠 Головне меню", "timer_mainMenu");
 
-    const text = "⏱️ Обери тривалість вправи:";
+    const text = "⏱️ Вибери таймер для вправи:";
 
-    if (ctx.callbackQuery?.message) {
-      await ctx.api.editMessageText(
-        ctx.chat!.id,
-        ctx.callbackQuery.message.message_id,
-        text,
-        { reply_markup: keyboard }
-      );
-    } else {
-      await ctx.reply(text, { reply_markup: keyboard });
-    }
+    try {
+      if (ctx.callbackQuery?.message) {
+        await ctx.api.editMessageText(
+          ctx.chat!.id,
+          ctx.callbackQuery.message.message_id,
+          text,
+          { reply_markup: timerKeyboard }
+        );
+      } else {
+        await ctx.reply(text, { reply_markup: timerKeyboard });
+      }
+    } catch {}
   }
 
   async function updateSessionMessage(ctx: BotContext, retry = false) {
-    const s = ctx.session.articleRepeat;
-    if (!s || !ctx.chat) return;
+    const s = ctx.session.articleRepeat as ArticleSession;
+    if (!s || !ctx.chat || !s.nouns?.length) return;
 
     const word = s.nouns[s.index];
-    const pureWord = word.de.split(" ").slice(1).join(" ");
-
+    const wordWithoutArticle = word.de.split(" ").slice(1).join(" ");
     const keyboard = new InlineKeyboard()
       .text("🔵 der", "article_der")
       .text("🔴 die", "article_die")
@@ -166,70 +168,88 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .text("🏠 Головне меню", "article_mainMenu");
 
     const text = retry
-      ? `❌ Спробуй ще раз: <b>${pureWord}</b>`
-      : `🤔 Який артикль у слова: <b>${pureWord}</b>`;
+      ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
+      : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
 
-    if (s.messageId === undefined) {
-      const msg = await ctx.reply(text, {
-        reply_markup: keyboard,
-        parse_mode: "HTML",
-      });
-      s.messageId = msg.message_id;
-    } else {
-      await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
-        reply_markup: keyboard,
-        parse_mode: "HTML",
-      });
-    }
+    try {
+      if (!s.messageId) {
+        const msg = await ctx.reply(text, {
+          reply_markup: keyboard,
+          parse_mode: "HTML",
+        });
+        s.messageId = msg.message_id;
+      } else {
+        await ctx.api.editMessageText(ctx.chat.id, s.messageId, text, {
+          reply_markup: keyboard,
+          parse_mode: "HTML",
+        });
+      }
+    } catch {}
   }
 
   async function updateTimerMessage(ctx: BotContext) {
-    const s = ctx.session.articleRepeat;
-    if (!s || !s.timerActive || !s.timerMessageId || !ctx.chat) return;
-
-    const remaining = s.timerEnd! - Date.now();
-    const min = Math.floor(remaining / 60000);
-    const sec = Math.floor((remaining % 60000) / 1000)
+    const s = ctx.session.articleRepeat as ArticleSession;
+    if (!s || !ctx.chat || !s.timerMessageId || !s.timerActive) return;
+    const remainingMs = s.timerEnd! - Date.now();
+    const minutesLeft = Math.floor(remainingMs / 60000);
+    const secondsLeft = Math.floor((remainingMs % 60000) / 1000)
       .toString()
       .padStart(2, "0");
-
-    await ctx.api.editMessageText(
-      ctx.chat.id,
-      s.timerMessageId,
-      `⏱ Залишилось: ${min}:${sec}`
-    );
+    const timerText = `⏱ Час залишився: ${minutesLeft}:${secondsLeft}`;
+    try {
+      await ctx.api.editMessageText(ctx.chat.id, s.timerMessageId, timerText);
+    } catch {}
   }
 
   async function endArticleSession(ctx: BotContext, s: ArticleSession) {
     if (s.timerInterval) clearInterval(s.timerInterval);
-
-    await ctx.reply(
-      `📊 <b>Результат вправи на артиклі:</b>\n\n✅ Правильно: ${s.correctCount}\n❌ Помилки: ${s.wrongCount}\n🔘 Натискань: ${s.totalClicks}`,
-      { parse_mode: "HTML" }
-    );
-
+    const formattedDate = new Date().toLocaleString("uk-UA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    if (ctx.chat) {
+      await ctx.reply(
+        `📝 <b>Вправа на артиклі</b>\n📅 Дата: ${formattedDate}\n⏱ Час: ${
+          s.timerSelected === "none" ? "Без таймера" : s.timerSelected + " хв"
+        }\n\n✅ <b>Правильно:</b> ${s.correctCount}  ❌ <b>Помилки:</b> ${
+          s.wrongCount
+        }  🔘 <b>Натискань:</b> ${s.totalClicks}`,
+        {
+          parse_mode: "HTML",
+          reply_markup: new InlineKeyboard().text(
+            "🗑 Видалити повідомлення",
+            "delete_summary"
+          ),
+        }
+      );
+    }
     cleanupArticleSession(ctx, true);
     await showMainMenu(ctx, false);
   }
 
-  function cleanupArticleSession(ctx: BotContext, keepUI = false) {
-    const s = ctx.session.articleRepeat;
+  function cleanupArticleSession(ctx: BotContext, removeTimerOnly = false) {
+    const s = ctx.session.articleRepeat as ArticleSession;
     if (!s) return;
-
     if (s.timerInterval) clearInterval(s.timerInterval);
 
     if (ctx.chat) {
-      if (s.timerMessageId)
+      if (s.timerMessageId) {
         try {
           ctx.api.deleteMessage(ctx.chat.id, s.timerMessageId);
         } catch {}
-      if (!keepUI && s.messageId)
+      }
+      if (!removeTimerOnly && s.messageId) {
         try {
           ctx.api.deleteMessage(ctx.chat.id, s.messageId);
         } catch {}
+      }
     }
 
-    if (!keepUI) {
+    if (!removeTimerOnly) {
       ctx.session.articleRepeat = undefined;
       ctx.session.articleRepeatMode = false;
     }
