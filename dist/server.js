@@ -7,12 +7,12 @@ const express_1 = __importDefault(require("express"));
 const grammy_1 = require("grammy");
 const bot_js_1 = require("./bot.js");
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 10000;
+const isProduction = !!process.env.WEBHOOK_URL;
 app.use(express_1.default.json());
 app.get("/", (_req, res) => {
     res.send("Bot is running!");
 });
-const isProduction = false;
 if (isProduction) {
     app.post("/webhook", (0, grammy_1.webhookCallback)(bot_js_1.bot, "express"));
 }

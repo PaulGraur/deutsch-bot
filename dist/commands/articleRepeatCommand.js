@@ -33,8 +33,7 @@ function articleRepeatCommand(bot) {
             range: "wörter!A:F",
         });
         const nouns = (sheetRes.data.values ?? [])
-            .filter((r) => String(r[1]) === String(userId) && // 🔥 USER ISOLATION
-            r[4] === "noun")
+            .filter((r) => String(r[1]) === String(userId) && r[4] === "noun")
             .map((row) => ({
             de: row[2],
             ua: row[3],

@@ -53,13 +53,13 @@ function addWordCommand(bot) {
     const createPOSKeyboard = () => {
         const kb = new grammy_1.InlineKeyboard();
         exports.POS.forEach((p) => kb.text(p.v, `pos-${p.k}`).row());
-        kb.row().text("🏠 Вийти в додому", "mainMenu");
+        kb.row().text("🏠 Вийти додому", "mainMenu");
         return kb;
     };
     const createAddWordKeyboard = () => new grammy_1.InlineKeyboard()
         .text("➕ Додати ще слово", "add")
         .row()
-        .text("🏠 Вийти в додому", "mainMenu");
+        .text("🏠 Вийти додому", "mainMenu");
     const deleteAllSessionMessages = async (ctx) => {
         const s = ctx.session.wordCreation;
         if (!s)
@@ -74,7 +74,7 @@ function addWordCommand(bot) {
     };
     const sendMessageAndRecord = async (ctx, text, kb) => {
         const s = ctx.session.wordCreation;
-        const replyMarkup = kb ?? new grammy_1.InlineKeyboard().text("🏠 Вийти в додому", "mainMenu");
+        const replyMarkup = kb ?? new grammy_1.InlineKeyboard().text("🏠 Вийти додому", "mainMenu");
         const msg = await ctx.reply(text, { reply_markup: replyMarkup });
         s.messages.push(msg.message_id);
         return msg.message_id;
@@ -150,10 +150,11 @@ function addWordCommand(bot) {
         try {
             const res = await sheets_1.sheets.spreadsheets.values.get({
                 spreadsheetId: sheets_1.SPREADSHEET_ID,
-                range: "wörter!A2:A",
+                range: "wörter!A:F",
             });
-            const existingIds = res.data.values?.flat() || [];
-            const id = existingIds.length + 1;
+            const rows = res.data.values ?? [];
+            const userRows = rows.filter((r) => String(r[1]) === String(userId));
+            const id = userRows.length + 1;
             await sheets_1.sheets.spreadsheets.values.append({
                 spreadsheetId: sheets_1.SPREADSHEET_ID,
                 range: "wörter!A:F",
