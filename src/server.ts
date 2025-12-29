@@ -5,7 +5,7 @@ import { bot } from "./bot.js";
 const app = express();
 const PORT = 10000;
 
-const isProduction = false;
+const isProduction = true;
 
 app.use(express.json());
 
