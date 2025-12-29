@@ -2,6 +2,9 @@ import { Bot, InlineKeyboard } from "grammy";
 import { BotContext } from "../types.js";
 import mainMenuTexts from "../public/mainMenuTexts.js";
 import { articleRepeatCommand } from "./articleRepeatCommand.js";
+import { adminCommand } from "./adminCommand.js";
+
+const ADMIN_ID = process.env.ADMIN_USER_ID;
 
 export function startCommand(bot: Bot<BotContext>) {
   bot.command("start", async (ctx) => {
@@ -15,7 +18,6 @@ export function startCommand(bot: Bot<BotContext>) {
       if (ctx.callbackQuery?.message) {
         await ctx.deleteMessage().catch(() => {});
       }
-
       await showMainMenu(ctx);
     } catch (err) {
       console.log("Помилка глобального меню:", err);
@@ -25,6 +27,8 @@ export function startCommand(bot: Bot<BotContext>) {
   bot.callbackQuery("mainMenu", async (ctx) => {
     await showMainMenu(ctx, false);
   });
+
+  adminCommand(bot);
 
   articleRepeatCommand(bot);
 }
@@ -41,9 +45,13 @@ export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
     .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
-    .text("📚 Список слів", "listwords")
-    .row()
-    .text("⚡", "global_mainMenu");
+    .text("📚 Список слів", "listwords");
+
+  if (String(ctx.from?.id) === ADMIN_ID) {
+    keyboard.row().text("👑 Адмін", "admin_panel");
+  }
+
+  keyboard.row().text("⚡", "global_mainMenu");
 
   const text = mainMenuTexts[Math.floor(Math.random() * mainMenuTexts.length)];
 
@@ -53,6 +61,7 @@ export async function showMainMenu(ctx: BotContext, createNewMessage = true) {
     if (ctx.callbackQuery?.message && !createNewMessage) {
       const message = ctx.callbackQuery.message;
       const sameText = message?.text === text;
+
       if (!sameText) {
         await ctx
           .editMessageText(text, { reply_markup: keyboard })

@@ -1,6 +1,17 @@
 import { SessionFlavor } from "grammy";
 import { Context } from "grammy";
 
+export interface KnownUser {
+  id: number;
+  is_bot: boolean;
+  first_name?: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+  is_premium?: boolean;
+  firstSeen: number;
+}
+
 export interface GrammarRule {
   title: string;
   content: string;
@@ -78,6 +89,15 @@ export interface SessionData {
   dailyRepeats: number;
   dailyDate: string;
 
+  knownUsers?: KnownUser[];
+  userTracked?: boolean;
+  firstSeen?: string;
+  registrationDate?: string;
+  userSort?: {
+    field: "name" | "date";
+    direction: "asc" | "desc";
+  };
+
   currentWord?: CachedWord;
   wordsCache?: CachedWord[];
 
@@ -89,7 +109,6 @@ export interface SessionData {
   };
 
   posFilter?: string | null;
-
   words?: Word[];
 
   currentSentenceId?: string | null;

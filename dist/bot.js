@@ -8,18 +8,24 @@ const grammarCommand_js_1 = require("./commands/grammarCommand.js");
 const addWord_js_1 = require("./commands/addWord.js");
 const repeatWords_js_1 = require("./commands/repeatWords.js");
 const listWords_js_1 = require("./commands/listWords.js");
+const adminCommand_js_1 = require("./commands/adminCommand.js");
 const sentenceCommand_js_1 = require("./commands/sentenceCommand.js");
 const articleRepeatCommand_js_1 = require("./commands/articleRepeatCommand.js");
+const users_data_js_1 = require("./users_data.js");
 const token = process.env.BOT_TOKEN;
-if (!token) {
+if (!token)
     throw new Error("❌ BOT_TOKEN не існує");
-}
 exports.bot = new grammy_1.Bot(token);
 exports.bot.use((0, grammy_1.session)({ initial: () => ({}) }));
+exports.bot.use(async (ctx, next) => {
+    await (0, users_data_js_1.trackUser)(ctx);
+    await next();
+});
 (0, start_js_1.startCommand)(exports.bot);
 (0, grammarCommand_js_1.grammarCommand)(exports.bot);
 (0, addWord_js_1.addWordCommand)(exports.bot);
 (0, repeatWords_js_1.repeatWordsCommand)(exports.bot);
 (0, listWords_js_1.listWordsCommand)(exports.bot);
 (0, sentenceCommand_js_1.sentenceCommand)(exports.bot);
+(0, adminCommand_js_1.adminCommand)(exports.bot);
 (0, articleRepeatCommand_js_1.articleRepeatCommand)(exports.bot);
