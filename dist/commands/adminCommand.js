@@ -16,7 +16,7 @@ function adminCommand(bot) {
         const keyboard = new grammy_1.InlineKeyboard()
             .text("👥 Активні юзери", "admin_users_page_1")
             .row()
-            .text("🏠 Меню", "mainMenu");
+            .text("🏠 Дім", "mainMenu");
         await ctx.editMessageText("👑 <b>Адмін-панель</b>", {
             parse_mode: "HTML",
             reply_markup: keyboard,
@@ -79,7 +79,7 @@ async function renderUsersPage(ctx, page) {
     });
     const rows = sheetRes.data.values ?? [];
     if (!rows.length) {
-        const keyboard = new grammy_1.InlineKeyboard().text("🏠 Меню", "mainMenu");
+        const keyboard = new grammy_1.InlineKeyboard().text("🏠 Дім", "mainMenu");
         return ctx.editMessageText("❌ Немає активних користувачів", {
             parse_mode: "HTML",
             reply_markup: keyboard,

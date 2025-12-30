@@ -8,7 +8,7 @@ const grammy_1 = require("grammy");
 const bot_js_1 = require("./bot.js");
 const app = (0, express_1.default)();
 const PORT = 10000;
-const isProduction = false;
+const isProduction = true;
 app.use(express_1.default.json());
 app.get("/", (_req, res) => {
     res.send(isProduction

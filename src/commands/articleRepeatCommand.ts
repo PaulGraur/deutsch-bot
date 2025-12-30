@@ -136,7 +136,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .row()
       .text("Без таймера", "timer_none")
       .row()
-      .text("🏠 Головне меню", "timer_mainMenu");
+      .text("🏠 Дім", "timer_mainMenu");
 
     const text = "⏱️ Вибери таймер для вправи:";
 
@@ -165,7 +165,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
       .text("🔴 die", "article_die")
       .text("🟢 das", "article_das")
       .row()
-      .text("🏠 Головне меню", "article_mainMenu");
+      .text("🏠 Дім", "article_mainMenu");
 
     const text = retry
       ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`

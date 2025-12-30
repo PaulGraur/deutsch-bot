@@ -17,7 +17,7 @@ export function adminCommand(bot: Bot<BotContext>) {
     const keyboard = new InlineKeyboard()
       .text("👥 Активні юзери", "admin_users_page_1")
       .row()
-      .text("🏠 Меню", "mainMenu");
+      .text("🏠 Дім", "mainMenu");
 
     await ctx.editMessageText("👑 <b>Адмін-панель</b>", {
       parse_mode: "HTML",
@@ -90,7 +90,7 @@ async function renderUsersPage(ctx: BotContext, page: number) {
   const rows = sheetRes.data.values ?? [];
 
   if (!rows.length) {
-    const keyboard = new InlineKeyboard().text("🏠 Меню", "mainMenu");
+    const keyboard = new InlineKeyboard().text("🏠 Дім", "mainMenu");
     return ctx.editMessageText("❌ Немає активних користувачів", {
       parse_mode: "HTML",
       reply_markup: keyboard,

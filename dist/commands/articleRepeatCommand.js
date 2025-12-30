@@ -128,7 +128,7 @@ function articleRepeatCommand(bot) {
             .row()
             .text("Без таймера", "timer_none")
             .row()
-            .text("🏠 Головне меню", "timer_mainMenu");
+            .text("🏠 Дім", "timer_mainMenu");
         const text = "⏱️ Вибери таймер для вправи:";
         try {
             if (ctx.callbackQuery?.message) {
@@ -151,7 +151,7 @@ function articleRepeatCommand(bot) {
             .text("🔴 die", "article_die")
             .text("🟢 das", "article_das")
             .row()
-            .text("🏠 Головне меню", "article_mainMenu");
+            .text("🏠 Дім", "article_mainMenu");
         const text = retry
             ? `😥 Спробуй ще раз: <b>${wordWithoutArticle}</b>`
             : `😏 Який артикль для слова: <b>${wordWithoutArticle}</b>`;
