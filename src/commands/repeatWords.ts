@@ -242,7 +242,7 @@ async function saveProgressBatch(ctx: BotContext) {
 
   await sheets.spreadsheets.values.update({
     spreadsheetId: process.env.SPREADSHEET_ID,
-    range: "fortschritt!A2:C",
+    range: "fortschritt!A2:D",
     valueInputOption: "RAW",
     requestBody: { values },
   });
