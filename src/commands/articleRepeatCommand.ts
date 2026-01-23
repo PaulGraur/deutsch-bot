@@ -28,7 +28,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     if (selected === "mainMenu") {
       cleanupArticleSession(ctx, true);
-      await showMainMenu(ctx, false);
+      await showMainMenu(ctx, "edit");
       return;
     }
 
@@ -100,7 +100,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
 
     if (selected === "mainmenu") {
       cleanupArticleSession(ctx, true);
-      await showMainMenu(ctx, false);
+      await showMainMenu(ctx, "edit");
       return;
     }
 
@@ -146,7 +146,7 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
           ctx.chat!.id,
           ctx.callbackQuery.message.message_id,
           text,
-          { reply_markup: timerKeyboard }
+          { reply_markup: timerKeyboard },
         );
       } else {
         await ctx.reply(text, { reply_markup: timerKeyboard });
@@ -222,13 +222,13 @@ export function articleRepeatCommand(bot: Bot<BotContext>) {
           parse_mode: "HTML",
           reply_markup: new InlineKeyboard().text(
             "🗑 Видалити повідомлення",
-            "delete_summary"
+            "delete_summary",
           ),
-        }
+        },
       );
     }
     cleanupArticleSession(ctx, true);
-    await showMainMenu(ctx, false);
+    await showMainMenu(ctx, "reply");
   }
 
   function cleanupArticleSession(ctx: BotContext, removeTimerOnly = false) {
