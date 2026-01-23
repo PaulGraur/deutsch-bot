@@ -43,7 +43,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
   const sendMessageAndRecord = async (
     ctx: any,
     text: string,
-    kb?: InlineKeyboard
+    kb?: InlineKeyboard,
   ) => {
     const s = ctx.session.wordCreation! as WordCreationSession;
     const replyMarkup =
@@ -97,7 +97,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
           await deleteAllSessionMessages(ctx);
           await sendMessageAndRecord(
             ctx,
-            `⚠️ Слово "${word}" вже додане саме тобою.\nВведи інше:`
+            `⚠️ Слово "${word}" вже додане саме тобою.\nВведи інше:`,
           );
           return;
         }
@@ -109,7 +109,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
         console.error("Duplicate check error:", err);
         await sendMessageAndRecord(
           ctx,
-          "❌ Помилка перевірки. Спробуй ще раз."
+          "❌ Помилка перевірки. Спробуй ще раз.",
         );
       }
 
@@ -122,7 +122,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
       await sendMessageAndRecord(
         ctx,
         "Обери частину мови:",
-        createPOSKeyboard()
+        createPOSKeyboard(),
       );
     }
   });
@@ -132,7 +132,7 @@ export function addWordCommand(bot: Bot<BotContext>) {
     ctx.session.wordCreation = null;
 
     const { showMainMenu } = await import("./start.js");
-    await showMainMenu(ctx);
+    await showMainMenu(ctx, "edit");
 
     await ctx.answerCallbackQuery();
   });
@@ -171,13 +171,13 @@ export function addWordCommand(bot: Bot<BotContext>) {
       await sendMessageAndRecord(
         ctx,
         `✅ Додано: ${id}. ${s.de} — ${s.ua}`,
-        createAddWordKeyboard()
+        createAddWordKeyboard(),
       );
     } catch (err) {
       console.error("Error writing to sheet:", err);
       await sendMessageAndRecord(
         ctx,
-        "❌ Не вдалося записати в таблицю. Перевір лог."
+        "❌ Не вдалося записати в таблицю. Перевір лог.",
       );
     }
   });

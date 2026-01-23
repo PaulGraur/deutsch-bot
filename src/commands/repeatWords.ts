@@ -137,7 +137,7 @@ async function initWordsSession(ctx: BotContext) {
 
   const wordsRes = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEET_ID,
-    range: "wörter!A2:G",
+    range: "wörter!A2:F",
   });
 
   const progressRes = await sheets.spreadsheets.values.get({
@@ -149,10 +149,10 @@ async function initWordsSession(ctx: BotContext) {
     wordsRes.data.values?.map((row, i) => {
       const p = progressRes.data.values?.[i] || [];
       return {
-        de: normalizeWord(row[1]),
-        ua: normalizeWord(row[2]),
-        pos: row[3],
-        createdAt: row[6] || String(Date.now()),
+        de: normalizeWord(row[2]),
+        ua: normalizeWord(row[3]),
+        pos: row[4],
+        createdAt: row[5] ?? String(Date.now()),
         score: Number(p[1] || 0),
         lastSeen: Number(p[2] || 0),
         rowNumber: i + 2,
@@ -183,7 +183,7 @@ async function showNewWord(ctx: BotContext) {
   }
 
   const due = filtered.filter(
-    (w) => now - w.lastSeen >= intervalForScore[w.score]
+    (w) => now - w.lastSeen >= intervalForScore[w.score],
   );
 
   const pool = due.length ? due : filtered;
@@ -212,7 +212,7 @@ async function showNewWord(ctx: BotContext) {
 
   await ctx.editMessageText(
     `${askLang === "de" ? "🇩🇪" : "🇺🇦"} ${word[askLang]}`,
-    { reply_markup: keyboard }
+    { reply_markup: keyboard },
   );
 }
 
@@ -221,7 +221,7 @@ async function showNewWord(ctx: BotContext) {
 function generateOptions(
   word: CachedWord,
   pool: CachedWord[],
-  lang: "de" | "ua"
+  lang: "de" | "ua",
 ): string[] {
   const set = new Set<string>([word[lang]]);
 
