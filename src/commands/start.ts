@@ -37,15 +37,15 @@ export async function showMainMenu(ctx: BotContext, mode: MenuMode) {
   const keyboard = new InlineKeyboard()
     .text("📖 Граматика", "grammar_levels")
     .row()
-    .text("➕ Додати слово", "add")
-    .row()
-    .text("🔁 Повторити слова", "repeat")
-    .row()
+    // .text("➕ Додати слово", "add")
+    // .row()
+    // .text("🔁 Повторити слова", "repeat")
+    // .row()
     .text("🔖 Повторити артиклі", "article_repeat")
     .row()
     .text("🧩 Розбір речень", "sentenceMode")
     .row()
-    .text("📚 Список слів", "listwords");
+    // .text("📚 Список слів", "listwords");
 
   if (String(ctx.from?.id) === ADMIN_ID) {
     keyboard.row().text("👑 Адмін", "admin_panel");
