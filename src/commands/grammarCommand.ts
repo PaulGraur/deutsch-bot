@@ -21,7 +21,7 @@ export function grammarCommand(bot: Bot<BotContext>) {
 
   bot.callbackQuery(/rule_(\d+)_(\d+)_(.+)/, async (ctx) => {
     const [, topicIndexStr, ruleIndexStr, level] = ctx.callbackQuery.data.match(
-      /rule_(\d+)_(\d+)_(.+)/
+      /rule_(\d+)_(\d+)_(.+)/,
     )!;
     await sendRule(ctx, Number(topicIndexStr), Number(ruleIndexStr), level);
   });
@@ -29,11 +29,14 @@ export function grammarCommand(bot: Bot<BotContext>) {
 
 async function showGrammarLevels(ctx: BotContext) {
   const keyboard = new InlineKeyboard()
-    .text("📖 Граматика A1–A2", "grammar_level_A1")
+    .text("📖 Граматика A1", "grammar_level_A1")
+    .text("📖 Граматика A2", "grammar_level_A2")
     .row()
-    .text("📖 Граматика B1–B2", "grammar_level_B1")
+    .text("📖 Граматика B1", "grammar_level_B1")
+    .text("📖 Граматика B2", "grammar_level_B2")
     .row()
-    .text("📖 Граматика C1–C2", "grammar_level_C1")
+    .text("📖 Граматика C1", "grammar_level_C1")
+    .text("📖 Граматика C2", "grammar_level_C2")
     .row()
     .text("🏠 Дім", "mainMenu");
 
@@ -46,15 +49,10 @@ function getGrammarTopicsByLevel(level: string): GrammarTopic[] {
   return all.filter((t) => t.level === level);
 }
 
-function getGrammarTopics(): GrammarTopic[] {
-  const raw = fs.readFileSync(grammarPath, "utf-8");
-  return JSON.parse(raw) as GrammarTopic[];
-}
-
 async function safeEdit(
   ctx: BotContext,
   text: string,
-  keyboard?: InlineKeyboard
+  keyboard?: InlineKeyboard,
 ) {
   try {
     if (ctx.callbackQuery) {
@@ -75,7 +73,7 @@ async function showTopics(ctx: BotContext, level: string) {
 
   const keyboard = new InlineKeyboard();
   topics.forEach((topic, i) =>
-    keyboard.text(topic.name, `topic_${i}_${level}`).row()
+    keyboard.text(topic.name, `topic_${i}_${level}`).row(),
   );
 
   keyboard.text("🔙 До рівнів", "grammar_levels").row();
@@ -89,7 +87,7 @@ async function showRules(ctx: BotContext, topicIndex: number, level: string) {
 
   const keyboard = new InlineKeyboard();
   topic.rules.forEach((rule, i) =>
-    keyboard.text(rule.title, `rule_${topicIndex}_${i}_${level}`).row()
+    keyboard.text(rule.title, `rule_${topicIndex}_${i}_${level}`).row(),
   );
 
   keyboard.text("🔙 До тем", `grammar_level_${level}`).row();
@@ -102,7 +100,7 @@ async function sendRule(
   ctx: BotContext,
   topicIndex: number,
   ruleIndex: number,
-  level: string
+  level: string,
 ) {
   const topic = getGrammarTopicsByLevel(level)[topicIndex];
   const rule = topic.rules[ruleIndex];
