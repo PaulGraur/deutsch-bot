@@ -4,9 +4,9 @@ import { BotContext } from "./types.js";
 
 import { startCommand } from "./commands/start.js";
 import { grammarCommand } from "./commands/grammarCommand.js";
-import { addWordCommand } from "./commands/addWord.js";
-import { repeatWordsCommand } from "./commands/repeatWords.js";
-import { listWordsCommand } from "./commands/listWords.js";
+// import { addWordCommand } from "./commands/addWord.js";
+// import { repeatWordsCommand } from "./commands/repeatWords.js";
+// import { listWordsCommand } from "./commands/listWords.js";
 import { adminCommand } from "./commands/adminCommand.js";
 import { sentenceCommand } from "./commands/sentenceCommand.js";
 import { articleRepeatCommand } from "./commands/articleRepeatCommand.js";
@@ -27,9 +27,9 @@ bot.use(async (ctx, next) => {
 
 startCommand(bot);
 grammarCommand(bot);
-addWordCommand(bot);
-repeatWordsCommand(bot);
-listWordsCommand(bot);
+// addWordCommand(bot);
+// repeatWordsCommand(bot);
+// listWordsCommand(bot);
 sentenceCommand(bot);
 adminCommand(bot);
 articleRepeatCommand(bot);
