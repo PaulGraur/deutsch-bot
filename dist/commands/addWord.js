@@ -137,7 +137,7 @@ function addWordCommand(bot) {
         await deleteAllSessionMessages(ctx);
         ctx.session.wordCreation = null;
         const { showMainMenu } = await Promise.resolve().then(() => __importStar(require("./start.js")));
-        await showMainMenu(ctx);
+        await showMainMenu(ctx, "edit");
         await ctx.answerCallbackQuery();
     });
     bot.callbackQuery(/pos-(.+)/, async (ctx) => {

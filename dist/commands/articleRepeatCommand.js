@@ -30,7 +30,7 @@ function articleRepeatCommand(bot) {
             return;
         if (selected === "mainMenu") {
             cleanupArticleSession(ctx, true);
-            await (0, start_js_1.showMainMenu)(ctx, false);
+            await (0, start_js_1.showMainMenu)(ctx, "edit");
             return;
         }
         const sheetRes = await sheets_1.sheets.spreadsheets.values.get({
@@ -94,7 +94,7 @@ function articleRepeatCommand(bot) {
             return;
         if (selected === "mainmenu") {
             cleanupArticleSession(ctx, true);
-            await (0, start_js_1.showMainMenu)(ctx, false);
+            await (0, start_js_1.showMainMenu)(ctx, "edit");
             return;
         }
         const s = ctx.session.articleRepeat;
@@ -205,7 +205,7 @@ function articleRepeatCommand(bot) {
             });
         }
         cleanupArticleSession(ctx, true);
-        await (0, start_js_1.showMainMenu)(ctx, false);
+        await (0, start_js_1.showMainMenu)(ctx, "reply");
     }
     function cleanupArticleSession(ctx, removeTimerOnly = false) {
         const s = ctx.session.articleRepeat;

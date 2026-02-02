@@ -25,11 +25,14 @@ function grammarCommand(bot) {
 }
 async function showGrammarLevels(ctx) {
     const keyboard = new grammy_1.InlineKeyboard()
-        .text("📖 Граматика A1–A2", "grammar_level_A1")
+        .text("📖 Граматика A1", "grammar_level_A1")
+        .text("📖 Граматика A2", "grammar_level_A2")
         .row()
-        .text("📖 Граматика B1–B2", "grammar_level_B1")
+        .text("📖 Граматика B1", "grammar_level_B1")
+        .text("📖 Граматика B2", "grammar_level_B2")
         .row()
-        .text("📖 Граматика C1–C2", "grammar_level_C1")
+        .text("📖 Граматика C1", "grammar_level_C1")
+        .text("📖 Граматика C2", "grammar_level_C2")
         .row()
         .text("🏠 Дім", "mainMenu");
     await safeEdit(ctx, "📚 Обери рівень граматики:", keyboard);
@@ -38,10 +41,6 @@ function getGrammarTopicsByLevel(level) {
     const raw = fs_1.default.readFileSync(grammarPath, "utf-8");
     const all = JSON.parse(raw);
     return all.filter((t) => t.level === level);
-}
-function getGrammarTopics() {
-    const raw = fs_1.default.readFileSync(grammarPath, "utf-8");
-    return JSON.parse(raw);
 }
 async function safeEdit(ctx, text, keyboard) {
     try {
